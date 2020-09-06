@@ -1,0 +1,25 @@
+program Drafts;
+
+{$mode objfpc}{$H+}
+
+uses
+  {$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+  {$ENDIF}{$ENDIF}
+  Interfaces, // this includes the LCL widgetset
+  Forms, FrameViewer09, zcomponent, UMain, UDM, UBrowser, UPlayerEdit,
+  UInstructionView, ureport, upaintgrid, ufillitems, uPrepareQuery;
+
+{$R *.res}
+
+begin
+  RequireDerivedFormResource:=True;
+  Application.Scaled:=True;
+  Application.Initialize;
+  Application.CreateForm(Tdm, dm);
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmBrowser, frmBrowser);
+  Application.CreateForm(TfrmInstructionView, frmInstructionView);
+  Application.Run;
+end.
+

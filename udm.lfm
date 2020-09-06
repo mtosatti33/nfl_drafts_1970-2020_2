@@ -1,0 +1,230 @@
+object dm: Tdm
+  OldCreateOrder = False
+  Height = 275
+  HorizontalOffset = 275
+  VerticalOffset = 127
+  Width = 859
+  PPI = 96
+  object conn: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
+    Properties.Strings = (
+      'AutoEncodeStrings=ON'
+    )
+    Connected = True
+    Port = 0
+    Database = 'D:\Documentos\Delphi-Lazarus Projects\Lazarus\Drafts_new\2.0\DRAFTS_NEW_2.0.FDB'
+    User = 'sysdba'
+    Password = 'masterkey'
+    Protocol = 'firebird-2.5'
+    LibraryLocation = 'C:\FBCLIENT.DLL'
+    left = 62
+    top = 27
+  end
+  object qryPicks: TZQuery
+    Connection = conn
+    SQL.Strings = (
+      'select * from sp_select(:yr_from, :yr_to, :team, :rnd, :pos, :college, :udfa, :active, :suppl, :first_pick, :never_played,'
+      ':hofer, :all_pro, :pro_bowl)'
+      'order by yr, rnd, pick'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pos'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
+    left = 128
+    top = 27
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pos'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
+  end
+  object qryTeamCount: TZQuery
+    Connection = conn
+    Params = <>
+    left = 208
+    top = 27
+  end
+  object qryCollegeCount: TZQuery
+    Connection = conn
+    Params = <>
+    left = 328
+    top = 27
+  end
+  object qryPositionCount: TZQuery
+    Connection = conn
+    Params = <>
+    left = 424
+    top = 27
+  end
+  object qryTeamAV: TZQuery
+    Connection = conn
+    Params = <>
+    left = 208
+    top = 96
+  end
+  object qryCollegeAV: TZQuery
+    Connection = conn
+    Params = <>
+    left = 328
+    top = 96
+  end
+  object qryPositionAV: TZQuery
+    Connection = conn
+    Params = <>
+    left = 424
+    top = 96
+  end
+  object qryTeamName: TZQuery
+    Connection = conn
+    Params = <>
+    left = 208
+    top = 176
+  end
+  object qryCollegeName: TZQuery
+    Connection = conn
+    Params = <>
+    left = 328
+    top = 176
+  end
+  object qryPositionName: TZQuery
+    Connection = conn
+    Params = <>
+    left = 424
+    top = 176
+  end
+end

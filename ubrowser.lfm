@@ -1,0 +1,8 @@
+object frmBrowser: TfrmBrowser
+  Left = 319
+  Height = 365
+  Top = 223
+  Width = 654
+  Caption = 'frmBrowser'
+  LCLVersion = '2.0.4.0'
+end

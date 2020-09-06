@@ -1,0 +1,466 @@
+object frmPlayerEdit: TfrmPlayerEdit
+  Left = 367
+  Height = 427
+  Top = 135
+  Width = 421
+  BorderStyle = bsToolWindow
+  Caption = 'Edit Player Information'
+  ClientHeight = 427
+  ClientWidth = 421
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '2.0.6.0'
+  object lblName: TLabel
+    Left = 161
+    Height = 37
+    Top = 17
+    Width = 101
+    Caption = 'lblName'
+    Font.Height = -27
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblPosition: TLabel
+    Left = 161
+    Height = 15
+    Top = 57
+    Width = 56
+    Caption = 'lblPosition'
+    ParentColor = False
+  end
+  object Label1: TLabel
+    Left = 49
+    Height = 15
+    Top = 221
+    Width = 91
+    Caption = '1st. Team All-Pro'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 49
+    Height = 15
+    Top = 249
+    Width = 47
+    Caption = 'Pro Bowl'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 49
+    Height = 15
+    Top = 277
+    Width = 56
+    Caption = 'Yrs. Starter'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 49
+    Height = 15
+    Top = 305
+    Width = 36
+    Caption = 'Games'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 49
+    Height = 15
+    Top = 333
+    Width = 52
+    Caption = 'Career AV'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 49
+    Height = 15
+    Top = 361
+    Width = 90
+    Caption = 'Team Drafted AV'
+    ParentColor = False
+  end
+  object edtAllPro: TEdit
+    Left = 161
+    Height = 23
+    Top = 221
+    Width = 208
+    TabOrder = 0
+  end
+  object edtProBowl: TEdit
+    Left = 161
+    Height = 23
+    Top = 249
+    Width = 208
+    TabOrder = 1
+  end
+  object edtStarter: TEdit
+    Left = 161
+    Height = 23
+    Top = 277
+    Width = 208
+    TabOrder = 2
+  end
+  object edtGames: TEdit
+    Left = 161
+    Height = 23
+    Top = 305
+    Width = 208
+    TabOrder = 3
+  end
+  object edtCarAV: TEdit
+    Left = 161
+    Height = 23
+    Top = 333
+    Width = 208
+    TabOrder = 4
+  end
+  object edtTmAV: TEdit
+    Left = 161
+    Height = 23
+    Top = 361
+    Width = 208
+    TabOrder = 5
+  end
+  object lblCollege: TLabel
+    Left = 161
+    Height = 15
+    Top = 73
+    Width = 53
+    Caption = 'lblCollege'
+    ParentColor = False
+  end
+  object Button1: TButton
+    Left = 105
+    Height = 25
+    Top = 393
+    Width = 107
+    Action = actApply
+    Anchors = [akLeft, akBottom]
+    Caption = 'Apply && Close'
+    TabOrder = 6
+  end
+  object Button2: TButton
+    Left = 217
+    Height = 25
+    Top = 393
+    Width = 104
+    Action = actCancel
+    Anchors = [akLeft, akBottom]
+    Caption = 'Cancel && Close'
+    TabOrder = 7
+  end
+  object lblID: TLabel
+    Left = 161
+    Height = 15
+    Top = 113
+    Width = 24
+    Caption = 'lblID'
+    ParentColor = False
+    Visible = False
+  end
+  object Label7: TLabel
+    Left = 49
+    Height = 15
+    Top = 137
+    Width = 33
+    Caption = 'Active'
+    ParentColor = False
+  end
+  object Label8: TLabel
+    Left = 49
+    Height = 15
+    Top = 165
+    Width = 71
+    Caption = 'Hall of Famer'
+    ParentColor = False
+  end
+  object Label9: TLabel
+    Left = 49
+    Height = 15
+    Top = 193
+    Width = 85
+    Caption = 'Last Year Played'
+    ParentColor = False
+  end
+  object edtLastYear: TEdit
+    Left = 161
+    Height = 23
+    Top = 193
+    Width = 208
+    TabOrder = 8
+  end
+  object cmbHofer: TComboBox
+    Left = 161
+    Height = 23
+    Top = 165
+    Width = 208
+    ItemHeight = 15
+    Items.Strings = (
+      'No'
+      'Yes'
+    )
+    Style = csDropDownList
+    TabOrder = 9
+  end
+  object cmbActive: TComboBox
+    Left = 161
+    Height = 23
+    Top = 137
+    Width = 208
+    ItemHeight = 15
+    Items.Strings = (
+      'No'
+      'Yes'
+    )
+    Style = csDropDownList
+    TabOrder = 10
+  end
+  object Shape1: TShape
+    Left = 48
+    Height = 1
+    Top = 104
+    Width = 319
+  end
+  object Image1: TImage
+    Left = 47
+    Height = 89
+    Top = 8
+    Width = 74
+    Center = True
+    Picture.Data = {
+      0A544A706567496D616765060A0000FFD8FFE000104A46494600010100000100
+      010000FFDB004300020202020201020202020302020303060403030303070505
+      04060807090808070808090A0D0B090A0C0A08080B0F0B0C0D0E0E0F0E090B10
+      11100E110D0E0E0EFFDB004301020303030303070404070E0908090E0E0E0E0E
+      0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E
+      0E0E0E0E0E0E0E0E0E0E0E0E0EFFC20011080078005A03011100021101031101
+      FFC4001D000100010501010100000000000000000000080203040607050109FF
+      C4001B01010002030101000000000000000000000002060104050307FFDA000C
+      03010002100310000000FD86B670C0D676F539B7739D8F98DCC67A2F1FA1B768
+      6E80290687D5D08AB7CAA599C40FB19CA4A2D9FA3F1FA400AC851F4AA578FB5E
+      00017A129B3F32BAE6F9FA81893F282FF53A45F880004BAF9DDB772E7EF81853
+      F1833F53A4DF88002D9323E7171DA34B6C04503BEB144BB1C0005A96270FCB6F
+      1E879FA81A96FE943DFA2D42B00029249D2ACBD6F81D703EC6303FEAD46AD800
+      0B52CCD3F995CBDED6D902B2395BEB9C76CBC6000DFB91D095F42B67C0018F98
+      418FA9D1AB0012768D68E9FC4EA000231825F56A359CE2EE1E57A47D08CE57FC
+      FED1D1393D3005388F2EEEF3231DE2B1F4C09B2239C9C63AAF07ADDB2B1DADB3
+      9DB9F24E1568E0687D5D2F3763CB55DFD4FA003DDD4D8F5F5BD333CFD364D2D9
+      D3FA3A4062CDE6EC795BCC6A8CBD3F2F5CBF2002B4800000001FFFC4003B1000
+      010301060403030B030500000000000102030411000506123151072021411381
+      926171B110152223324252627291A11416344363A3D1E1FFDA0008010100013F
+      00A9DED53BDAA77B625C6370E1165AF9E643C24BE92A622C768ADD706F4D123D
+      A6CFF1C618591130BC971034548989493E434B39C71393EA70A1F13B97278CBF
+      C0B45E38B05749F859E423F14598144792AD87B1E618C4EF88D764F5B5789151
+      0A5B65B788F66A0F91B54EF6A9DED53BDAA77F971FE3238470CB5FD1F84E5F53
+      094C443BD43691D0BA53DC03D057A136972E5CFBD1F9B3E53B3663CAABAF3CB2
+      54A3E7A0D80E469D79894DBF1DE723486D40B6EB4B29520F6208EA2DC3CC72DE
+      28BA8DDD3DF3FDC31DBAB895D2B250357127B9DC6BDF95192AA53872B69054B3
+      B002A7F816C477EC8C4D8EAF3BF2413F5EE94B08ECD32924212076A015F7F343
+      9D32EBBD62DE7773C63CF88E0758713D88EC77047422D74DE4CDF5852ECBE63A
+      436CCD8C97C207DC24751E46A392F2596F09DF0E0D5177BE453F42AD1FFC36BF
+      40F873F0E1251C01C2815A98AA3E5E212392F419B085F69DEEE7C7FC6AB31FE0
+      B5FA073134696764DB02B659E08E146D5D142EE4920FB5448E45A5B5C492875C
+      434D2995A56B71602520A48A927A0B369C8D946B914A483B80A201FE39960A98
+      5A520952BE88035249A0F8DAE810D8C3D0EED892D894ABBE3B51A4258742FC15
+      A50094AA87A2BAE9C98FEED5DEFC12C4709AA97446F1D007DE2D9CC41F6102C1
+      59DB4AC68403CC35F85B82D75987C319F7994E5F9CA7928FCC86C6507CCD7AF2
+      1651263BF15C2436F34B69646A0292413E55B786195BAC05670D38B6C2FF0010
+      4A8807CC0E65A8A597143509ADB09C066EBE15E1D811C92CB7010AA9D4958CEA
+      3E64F221452B0A1A8B63FE1B42B870DCAC43723F2151D12334B88F5141A4ACFD
+      A42B5CA09A1077D79B871852262BC672917A34E3B74438FE23E96D6539D64D10
+      8275A135240ED6484A5B4A109086D09094212281200A0006C072CE8A89D71CF8
+      4E00A4488CB694142A085248EA2C12508C8AFB48394FBC1A1F872F0821B71F84
+      0652520392E738B5ABBA823E826BEE00F315A5A65D7546894214A27D80126C54
+      16F3CE0D16E2943DC5448F8D96E785F4D40A9AFBE522A51EDA0D46F66C78CDE7
+      668F20E8A6CE606D2AF78ECCF3774302F4BE0E90D8701F087E3757A3691DEA6A
+      7402B6610E371C25E78487B55AD232827BE51D923B57ADB852E257C0E80907AB
+      725F4ABDE17CAF3AD468EA7A4BCDC6680A95BCB0948F326D8DF1FDCB1B015E90
+      AE99E265E925A2C32594128466E8B51569D05694B014400340282D5A75167EEB
+      BBA4B8E29E8892A5FDB2859466F7E53D6D122C48308C78315984C1352865B090
+      4EE7B93ED3F270EF1D0C39754DBAA54154D8AB7FC7416DC095A090028007A106
+      80DAEEC71866F10129BC44278E8DCC47866BEFD0FEF6414B8C871A525D6CE8B4
+      10A49F92F4E25DFB30AD17632CDC8C1E8081E2BD4FD47A0F216952A54F7CBD3E
+      53D39D3D733EE157EC0F41E42D3628930CA050389EAD93BEDE76CAA4ACA56929
+      503420EA0F2DD7096CA9525E1916534423B807526C402284546C6D06F0BC2EC7
+      4AEEE9F2202BFD974A53E634FE2C38818C4240F9DDB553BAA1A093C8FC362575
+      71242C740B4F43FF00B65DCCAFF4E40A7E641ADBE67903475B3FBFFD59173B95
+      FAC7D291F94126D1A0C78FF4909CCE0FBEAEA7CB6E5CA763E9B653B1F4DB29D8
+      FA6D94EC7D36CA763E9B653B1F4DB29D8FA6D94EC7D36CA763E9B653B1F4DB29
+      D8FA6D94EC7D36FFC40033110001030203050506070000000000000001020311
+      0004122021053141517110133242B11452618191A1303334C1D1F0F1FFDA0008
+      010201013F00EDB6B47EEA7BA1A0E277527622F8B83E4286C4E6E7DA95B115E4
+      707CC55C58DD5B265634E63767B0B3F6B74E2F08DFFC521086D2108100642125
+      30448ADA1646D578D1E03F6F866B76136AC06870DFD78E65A10EA0A17A83A1A7
+      5B530E968EF06323425D48F88F5AF367DA3FAF73AFED91AFCD4F51EB5E6CF7C6
+      6F5CEB9062911CE8E614E632B2B208C44913C464B073BABD6D6AE71F5FC0DB2E
+      E3BA08F747AE49C1AF2A99D79E61574E29DBA716AE7E996C368ADF7432E8131A
+      1E9CF36D1BA5DA30307889FF004E642B02C2F9119B6BAD46F239019A274A88A1
+      AD1D28214532AD07F7751ADA622F55D065482B5614EB56560FA9F4ADD1091AF6
+      8528512A3AABB2FEC7DA0870183114E595C37C27A6B474DFD8D6CD611E3388FD
+      0525086D30811D290AC2ACCEAE741D8B6D0E78C035EC167EE7DCE44AD48DD41E
+      F78577C9A2F27CA294B52B2CD4D4D4D4D4D4D4D4D4D4D4D7FFC4003011000200
+      0500070703050000000000000001020003041120101213213132710514224151
+      A1B130346142628191D1FFDA0008010301013F00D33AA2548E7E307B497C90FF
+      00707B4BF67BC0ED25F34F789555267F850EFF00439D5547774F0F13C3FD8662
+      ED726E700581D658A4A9DBAD8F30F7CA74D33E6973E7F192B323075E2211D662
+      075F3C1CDA59E86072E749F6ABD307E46E86072E74C2D4CBD3119CBD508003C3
+      761549B4A671F8F8FA1D9C96905FD4FC616BEE8B5BC391890AA921557D31AAA3
+      5969B44FE465492167B9D7E03265D7523F19502DA9AFEA72BEAC5EFA4B7E91C6
+      0450FDB8EA7126DC62A6AA5094550DC9D2554C00A39745254EC94A11784A990F
+      E76EBA5EB269E4DD0CCCFC4DE196EB922DB7E85774E06D1DEAA7D702AA63671B
+      331B380AA31B45A2D168B45A2D168B45A2D168FFD9
+    }
+    Stretch = True
+  end
+  object ActionList1: TActionList
+    left = 281
+    top = 17
+    object actApply: TAction
+      Caption = 'Apply'
+      OnExecute = actApplyExecute
+    end
+    object actCancel: TAction
+      Caption = 'Cancel'
+      OnExecute = actCancelExecute
+    end
+  end
+  object qryStats: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'UPDATE STATS '
+      'SET ALL_PRO=:ALL_PRO,'
+      'PRO_BOWL=:PRO_BOWL,'
+      'YEARS_STARTER=:YEARS_STARTER,'
+      'GAMES=:GAMES,'
+      'CAREER_AV=:CAREER_AV,'
+      'TEAM_AV=:TEAM_AV'
+      'WHERE PLAYER_ID=:PLAYER_ID'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ALL_PRO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PRO_BOWL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEARS_STARTER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GAMES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CAREER_AV'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'TEAM_AV'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PLAYER_ID'
+        ParamType = ptUnknown
+      end>
+    left = 393
+    top = 17
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ALL_PRO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PRO_BOWL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YEARS_STARTER'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GAMES'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CAREER_AV'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'TEAM_AV'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PLAYER_ID'
+        ParamType = ptUnknown
+      end>
+  end
+  object qryPlayer: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'UPDATE players a'
+      'set a.is_active=:active,'
+      'a.is_hofer=:hofer,'
+      'a.years_to=:yrs_to'
+      'where a.id=:id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yrs_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'id'
+        ParamType = ptUnknown
+      end>
+    left = 337
+    top = 17
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yrs_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'id'
+        ParamType = ptUnknown
+      end>
+  end
+end

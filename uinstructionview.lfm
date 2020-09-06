@@ -1,0 +1,19 @@
+object frmInstructionView: TfrmInstructionView
+  Left = 276
+  Height = 240
+  Top = 118
+  Width = 630
+  BorderStyle = bsToolWindow
+  Caption = 'frmInstructionView'
+  ClientHeight = 240
+  ClientWidth = 630
+  LCLVersion = '2.0.4.0'
+  object mmoSQL: TMemo
+    Left = 0
+    Height = 240
+    Top = 0
+    Width = 630
+    Align = alClient
+    TabOrder = 0
+  end
+end

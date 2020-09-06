@@ -1,0 +1,757 @@
+object frmMain: TfrmMain
+  Left = 137
+  Height = 684
+  Top = 58
+  Width = 1370
+  Caption = 'Drafts 1970-2019'
+  ClientHeight = 664
+  ClientWidth = 1370
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '2.0.6.0'
+  WindowState = wsMaximized
+  object DBGrid1: TDBGrid
+    Left = 272
+    Height = 664
+    Hint = 'Double click for entering player''s site'
+    Top = 8
+    Width = 736
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'Yr.'
+        Width = 45
+        FieldName = 'YR'
+      end    
+      item
+        Title.Caption = 'Rnd.'
+        Width = 30
+        FieldName = 'RND'
+      end    
+      item
+        Title.Caption = 'Pick'
+        Width = 30
+        FieldName = 'PICK'
+      end    
+      item
+        Title.Caption = 'Team'
+        Width = 76
+        FieldName = 'TEAM_NAME'
+      end    
+      item
+        Title.Caption = 'Player'
+        Width = 115
+        FieldName = 'PLAYER_NAME'
+      end    
+      item
+        Title.Caption = 'Pos.'
+        Width = 30
+        FieldName = 'POS_NAME'
+      end    
+      item
+        Title.Caption = 'College'
+        Width = 125
+        FieldName = 'COLLEGE_NAME'
+      end    
+      item
+        Title.Caption = 'All Pro'
+        Width = 42
+        FieldName = 'ALL_PRO'
+      end    
+      item
+        Title.Caption = 'Pro Bowl'
+        Width = 52
+        FieldName = 'PRO_BOWL'
+      end    
+      item
+        Title.Caption = 'Yrs.'
+        Width = 32
+        FieldName = 'YEARS_STARTER'
+      end    
+      item
+        Title.Caption = 'G.'
+        Width = 30
+        FieldName = 'GAMES'
+      end    
+      item
+        Font.Style = [fsBold]
+        Title.Caption = 'AV'
+        Width = 30
+        FieldName = 'CAR_AV'
+      end    
+      item
+        Title.Caption = 'Tm. AV'
+        Width = 45
+        FieldName = 'TEAM_AV'
+      end>
+    DataSource = dsTable
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    PopupMenu = mnuOptions
+    TabOrder = 14
+    TitleStyle = tsNative
+    OnDblClick = DBGrid1DblClick
+    OnPrepareCanvas = DBGrid1PrepareCanvas
+    OnTitleClick = DBGrid1TitleClick
+  end
+  object cmbYearToList: TComboBox
+    Left = 148
+    Height = 23
+    Top = 8
+    Width = 65
+    ItemHeight = 15
+    OnChange = cmbChange
+    TabOrder = 1
+  end
+  object Label2: TLabel
+    Left = 33
+    Height = 15
+    Top = 72
+    Width = 30
+    Caption = 'Team'
+    ParentColor = False
+  end
+  object cmbTeamList: TComboBox
+    Left = 72
+    Height = 23
+    Top = 72
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    OnChange = cmbChange
+    TabOrder = 3
+  end
+  object Label3: TLabel
+    Left = 21
+    Height = 15
+    Top = 104
+    Width = 43
+    Caption = 'Position'
+    ParentColor = False
+  end
+  object cmbPositionList: TComboBox
+    Left = 72
+    Height = 23
+    Top = 104
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    OnChange = cmbChange
+    TabOrder = 4
+  end
+  object Label4: TLabel
+    Left = 24
+    Height = 15
+    Top = 136
+    Width = 40
+    Caption = 'College'
+    ParentColor = False
+  end
+  object btnClear: TButton
+    Left = 89
+    Height = 25
+    Top = 304
+    Width = 70
+    Action = actClear
+    TabOrder = 7
+  end
+  object cmbCollegeList: TComboBox
+    Left = 72
+    Height = 23
+    Top = 136
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    OnChange = cmbChange
+    TabOrder = 5
+  end
+  object cmbRoundList: TComboBox
+    Left = 72
+    Height = 23
+    Top = 40
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    Enabled = False
+    ItemHeight = 15
+    OnChange = cmbChange
+    TabOrder = 2
+  end
+  object Label6: TLabel
+    Left = 27
+    Height = 15
+    Top = 40
+    Width = 35
+    Caption = 'Round'
+    ParentColor = False
+  end
+  object chkFirstPicks: TCheckBox
+    Left = 72
+    Height = 19
+    Top = 388
+    Width = 72
+    Caption = 'First Picks'
+    OnChange = chkChange
+    TabOrder = 10
+  end
+  object chkNeverPlayed: TCheckBox
+    Left = 72
+    Height = 19
+    Top = 360
+    Width = 159
+    AutoSize = False
+    Caption = 'Not Played In NFL'
+    OnChange = chkChange
+    TabOrder = 9
+  end
+  object Label7: TLabel
+    Left = 28
+    Height = 32
+    Top = 648
+    Width = 202
+    AutoSize = False
+    Caption = 'All data and rights to pro-football-reference.com'
+    ParentColor = False
+    WordWrap = True
+  end
+  object cmbYearFromList: TComboBox
+    Left = 72
+    Height = 23
+    Top = 8
+    Width = 65
+    ItemHeight = 15
+    OnChange = cmbChange
+    TabOrder = 0
+  end
+  object Label9: TLabel
+    Left = 34
+    Height = 15
+    Top = 8
+    Width = 28
+    Caption = 'Years'
+    ParentColor = False
+  end
+  object Label11: TLabel
+    Left = 24
+    Height = 15
+    Top = 488
+    Width = 75
+    Caption = 'Highlight Grid'
+    ParentColor = False
+  end
+  object cmbHighlight: TComboBox
+    Left = 71
+    Height = 21
+    Top = 512
+    Width = 168
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    Enabled = False
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'Team Color'
+      'AV Margin (Car AV - Tm AV)'
+      'AV by Round'
+      'Efficiency'
+    )
+    OnChange = cmbChange
+    Style = csOwnerDrawFixed
+    TabOrder = 13
+    Text = 'Team Color'
+  end
+  object btnRoundClear: TSpeedButton
+    Left = 216
+    Height = 22
+    Top = 40
+    Width = 23
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000000000000000
+      0000000000000000000000000000000000000000000200000005000000080000
+      0008000000060000000300000000000000000000000000000000000000000000
+      0000000000000000000600000015000000200016162E007D967A0052635A0018
+      203E000000320000002C00000023000000180000000A00000000000000000000
+      00000000000B0000001B0000002A0000003924A7C0CC31C1D9FF39BFD2F91AA4
+      BEDC0C7C94A80009094E000B0F410000002E0000001F0000000F000000000000
+      00000000000B0000001B0000002B0F7F958031C1D7FE25C3DBFF1BC4DDFF35C7
+      DDFF45C8DAFD13A5C1DC00394554002D393E0000001F0000000F000000000000
+      00000000000000000008000A141922B4CAC71CC3DCFF1EC6E0FF36D2E8FF24C5
+      DEFF0FBBD5FF40CFE2FF37BFD4F11196AC660000000C00000000000000000000
+      00000000000000000000009EC11D2AC4D7EA19CDE6FF28D6F0FF26CCE7FF1DC3
+      DCFF1FC6DDFF26C3DAFF52CEE2F717B4D1A10000000000000000000000000000
+      0000000000000000000000AFCD3332CEE4FF30DBF4FF40E3FAFF1DC9E2FF16C9
+      DEFF1BC2D9FF52CEE1E629B9D25C000000000000000000000000000000000000
+      00000000000000005503026BA96F46DBF0FF55E6FBFF44DBF3FF28D7EFFF12C3
+      D9FF46CCDBD917B3D02C00000000000000000000000000000000000000000000
+      0000000000000002816A0005A8FB1748ADF76BCCE7FF4EE6FBFF2DD6EAFF22BF
+      D7C800AAC31E0000000000000000000000000000000000000000000000000000
+      000000A9C61211A9C7B2175CAFFE2B37C5FF3945CDFC2261B2EE26C0D89F00AA
+      D40C000000000000000000000000000000000000000000000000000000000000
+      000000AFCF1014B2D29651D5E9F96BCEEBFF3658B8F9031190CF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000116BA5B0147DB0FF40B4D2DF56D1E5CF009FCF10000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00001B73AD711D7CBEFD1675B2F7045F973B0FABCA3100FFFF01000000000000
+      000000000000000000000000000000000000000000000000000000000000055C
+      972F2882BBEA1882C3FF1F7BB2BA00557F060000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000767
+      A2605698C1FF3D89BAFE1871AC53000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000006D
+      B6070668A69F0868A77700000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000
+    }
+    OnClick = btnRoundClearClick
+  end
+  object btnTeamClear: TSpeedButton
+    Left = 216
+    Height = 22
+    Top = 72
+    Width = 23
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000000000000000
+      0000000000000000000000000000000000000000000200000005000000080000
+      0008000000060000000300000000000000000000000000000000000000000000
+      0000000000000000000600000015000000200016162E007D967A0052635A0018
+      203E000000320000002C00000023000000180000000A00000000000000000000
+      00000000000B0000001B0000002A0000003924A7C0CC31C1D9FF39BFD2F91AA4
+      BEDC0C7C94A80009094E000B0F410000002E0000001F0000000F000000000000
+      00000000000B0000001B0000002B0F7F958031C1D7FE25C3DBFF1BC4DDFF35C7
+      DDFF45C8DAFD13A5C1DC00394554002D393E0000001F0000000F000000000000
+      00000000000000000008000A141922B4CAC71CC3DCFF1EC6E0FF36D2E8FF24C5
+      DEFF0FBBD5FF40CFE2FF37BFD4F11196AC660000000C00000000000000000000
+      00000000000000000000009EC11D2AC4D7EA19CDE6FF28D6F0FF26CCE7FF1DC3
+      DCFF1FC6DDFF26C3DAFF52CEE2F717B4D1A10000000000000000000000000000
+      0000000000000000000000AFCD3332CEE4FF30DBF4FF40E3FAFF1DC9E2FF16C9
+      DEFF1BC2D9FF52CEE1E629B9D25C000000000000000000000000000000000000
+      00000000000000005503026BA96F46DBF0FF55E6FBFF44DBF3FF28D7EFFF12C3
+      D9FF46CCDBD917B3D02C00000000000000000000000000000000000000000000
+      0000000000000002816A0005A8FB1748ADF76BCCE7FF4EE6FBFF2DD6EAFF22BF
+      D7C800AAC31E0000000000000000000000000000000000000000000000000000
+      000000A9C61211A9C7B2175CAFFE2B37C5FF3945CDFC2261B2EE26C0D89F00AA
+      D40C000000000000000000000000000000000000000000000000000000000000
+      000000AFCF1014B2D29651D5E9F96BCEEBFF3658B8F9031190CF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000116BA5B0147DB0FF40B4D2DF56D1E5CF009FCF10000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00001B73AD711D7CBEFD1675B2F7045F973B0FABCA3100FFFF01000000000000
+      000000000000000000000000000000000000000000000000000000000000055C
+      972F2882BBEA1882C3FF1F7BB2BA00557F060000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000767
+      A2605698C1FF3D89BAFE1871AC53000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000006D
+      B6070668A69F0868A77700000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000
+    }
+    OnClick = btnRoundClearClick
+  end
+  object btnPositionClear: TSpeedButton
+    Left = 216
+    Height = 22
+    Top = 104
+    Width = 23
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000000000000000
+      0000000000000000000000000000000000000000000200000005000000080000
+      0008000000060000000300000000000000000000000000000000000000000000
+      0000000000000000000600000015000000200016162E007D967A0052635A0018
+      203E000000320000002C00000023000000180000000A00000000000000000000
+      00000000000B0000001B0000002A0000003924A7C0CC31C1D9FF39BFD2F91AA4
+      BEDC0C7C94A80009094E000B0F410000002E0000001F0000000F000000000000
+      00000000000B0000001B0000002B0F7F958031C1D7FE25C3DBFF1BC4DDFF35C7
+      DDFF45C8DAFD13A5C1DC00394554002D393E0000001F0000000F000000000000
+      00000000000000000008000A141922B4CAC71CC3DCFF1EC6E0FF36D2E8FF24C5
+      DEFF0FBBD5FF40CFE2FF37BFD4F11196AC660000000C00000000000000000000
+      00000000000000000000009EC11D2AC4D7EA19CDE6FF28D6F0FF26CCE7FF1DC3
+      DCFF1FC6DDFF26C3DAFF52CEE2F717B4D1A10000000000000000000000000000
+      0000000000000000000000AFCD3332CEE4FF30DBF4FF40E3FAFF1DC9E2FF16C9
+      DEFF1BC2D9FF52CEE1E629B9D25C000000000000000000000000000000000000
+      00000000000000005503026BA96F46DBF0FF55E6FBFF44DBF3FF28D7EFFF12C3
+      D9FF46CCDBD917B3D02C00000000000000000000000000000000000000000000
+      0000000000000002816A0005A8FB1748ADF76BCCE7FF4EE6FBFF2DD6EAFF22BF
+      D7C800AAC31E0000000000000000000000000000000000000000000000000000
+      000000A9C61211A9C7B2175CAFFE2B37C5FF3945CDFC2261B2EE26C0D89F00AA
+      D40C000000000000000000000000000000000000000000000000000000000000
+      000000AFCF1014B2D29651D5E9F96BCEEBFF3658B8F9031190CF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000116BA5B0147DB0FF40B4D2DF56D1E5CF009FCF10000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00001B73AD711D7CBEFD1675B2F7045F973B0FABCA3100FFFF01000000000000
+      000000000000000000000000000000000000000000000000000000000000055C
+      972F2882BBEA1882C3FF1F7BB2BA00557F060000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000767
+      A2605698C1FF3D89BAFE1871AC53000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000006D
+      B6070668A69F0868A77700000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000
+    }
+    OnClick = btnRoundClearClick
+  end
+  object btnCollegeClear: TSpeedButton
+    Left = 216
+    Height = 22
+    Top = 136
+    Width = 23
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000000000000000
+      0000000000000000000000000000000000000000000200000005000000080000
+      0008000000060000000300000000000000000000000000000000000000000000
+      0000000000000000000600000015000000200016162E007D967A0052635A0018
+      203E000000320000002C00000023000000180000000A00000000000000000000
+      00000000000B0000001B0000002A0000003924A7C0CC31C1D9FF39BFD2F91AA4
+      BEDC0C7C94A80009094E000B0F410000002E0000001F0000000F000000000000
+      00000000000B0000001B0000002B0F7F958031C1D7FE25C3DBFF1BC4DDFF35C7
+      DDFF45C8DAFD13A5C1DC00394554002D393E0000001F0000000F000000000000
+      00000000000000000008000A141922B4CAC71CC3DCFF1EC6E0FF36D2E8FF24C5
+      DEFF0FBBD5FF40CFE2FF37BFD4F11196AC660000000C00000000000000000000
+      00000000000000000000009EC11D2AC4D7EA19CDE6FF28D6F0FF26CCE7FF1DC3
+      DCFF1FC6DDFF26C3DAFF52CEE2F717B4D1A10000000000000000000000000000
+      0000000000000000000000AFCD3332CEE4FF30DBF4FF40E3FAFF1DC9E2FF16C9
+      DEFF1BC2D9FF52CEE1E629B9D25C000000000000000000000000000000000000
+      00000000000000005503026BA96F46DBF0FF55E6FBFF44DBF3FF28D7EFFF12C3
+      D9FF46CCDBD917B3D02C00000000000000000000000000000000000000000000
+      0000000000000002816A0005A8FB1748ADF76BCCE7FF4EE6FBFF2DD6EAFF22BF
+      D7C800AAC31E0000000000000000000000000000000000000000000000000000
+      000000A9C61211A9C7B2175CAFFE2B37C5FF3945CDFC2261B2EE26C0D89F00AA
+      D40C000000000000000000000000000000000000000000000000000000000000
+      000000AFCF1014B2D29651D5E9F96BCEEBFF3658B8F9031190CF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000116BA5B0147DB0FF40B4D2DF56D1E5CF009FCF10000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00001B73AD711D7CBEFD1675B2F7045F973B0FABCA3100FFFF01000000000000
+      000000000000000000000000000000000000000000000000000000000000055C
+      972F2882BBEA1882C3FF1F7BB2BA00557F060000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000767
+      A2605698C1FF3D89BAFE1871AC53000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000006D
+      B6070668A69F0868A77700000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000
+    }
+    OnClick = btnRoundClearClick
+  end
+  object chkProBowlers: TCheckBox
+    Left = 72
+    Height = 19
+    Top = 415
+    Width = 82
+    Caption = 'Pro Bowlers'
+    OnChange = chkChange
+    TabOrder = 11
+  end
+  object chkAllPros: TCheckBox
+    Left = 72
+    Height = 19
+    Top = 443
+    Width = 114
+    Caption = '1st Team All Pro''s'
+    OnChange = chkChange
+    TabOrder = 12
+  end
+  object btnReport: TButton
+    Left = 163
+    Height = 25
+    Top = 304
+    Width = 70
+    Action = actReport
+    Enabled = False
+    TabOrder = 8
+  end
+  object btnSearch: TButton
+    Left = 17
+    Height = 25
+    Top = 304
+    Width = 70
+    Action = actSearch
+    TabOrder = 6
+  end
+  object Label5: TLabel
+    Left = 1024
+    Height = 15
+    Top = 8
+    Width = 37
+    Caption = 'Sort By'
+    ParentColor = False
+  end
+  object cmbSortByList: TComboBox
+    Left = 1072
+    Height = 21
+    Top = 8
+    Width = 124
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    Items.Strings = (
+      'Name / Picks'
+      'Draft Picks'
+      'Aprox. Value'
+    )
+    OnChange = cmbChange
+    Style = csOwnerDrawFixed
+    TabOrder = 15
+  end
+  object lstTeamList: TListBox
+    Left = 1024
+    Height = 632
+    Top = 40
+    Width = 96
+    ItemHeight = 0
+    OnClick = lstClick
+    TabOrder = 16
+  end
+  object lstCollegeList: TListBox
+    Left = 1128
+    Height = 632
+    Top = 40
+    Width = 144
+    ItemHeight = 0
+    OnClick = lstClick
+    TabOrder = 17
+  end
+  object lstPositionList: TListBox
+    Left = 1280
+    Height = 632
+    Top = 40
+    Width = 68
+    ItemHeight = 0
+    OnClick = lstClick
+    TabOrder = 18
+  end
+  object Label8: TLabel
+    Left = 33
+    Height = 15
+    Top = 168
+    Width = 30
+    Caption = 'UDFA'
+    ParentColor = False
+  end
+  object cmbUDFA: TComboBox
+    Left = 72
+    Height = 21
+    Top = 168
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'Either'
+      'No'
+      'Yes'
+    )
+    OnChange = cmbChange
+    Style = csOwnerDrawFixed
+    TabOrder = 19
+    Text = 'Either'
+  end
+  object cmbActive: TComboBox
+    Left = 72
+    Height = 21
+    Top = 200
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'Either'
+      'No'
+      'Yes'
+    )
+    OnChange = cmbChange
+    Style = csOwnerDrawFixed
+    TabOrder = 20
+    Text = 'Either'
+  end
+  object Label12: TLabel
+    Left = 29
+    Height = 15
+    Top = 200
+    Width = 33
+    Caption = 'Active'
+    ParentColor = False
+  end
+  object cmbSuppl: TComboBox
+    Left = 72
+    Height = 21
+    Top = 232
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'Either'
+      'No'
+      'Yes'
+    )
+    OnChange = cmbChange
+    Style = csOwnerDrawFixed
+    TabOrder = 21
+    Text = 'Either'
+  end
+  object Label13: TLabel
+    Left = 31
+    Height = 15
+    Top = 232
+    Width = 33
+    Caption = 'Suppl.'
+    ParentColor = False
+  end
+  object cmbHofer: TComboBox
+    Left = 72
+    Height = 21
+    Top = 264
+    Width = 141
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'Either'
+      'No'
+      'Yes'
+    )
+    OnChange = cmbChange
+    Style = csOwnerDrawFixed
+    TabOrder = 22
+    Text = 'Either'
+  end
+  object Label14: TLabel
+    Left = 27
+    Height = 15
+    Top = 264
+    Width = 34
+    Caption = 'HOFer'
+    ParentColor = False
+  end
+  object MainMenu1: TMainMenu
+    left = 896
+    top = 88
+    object MenuItem1: TMenuItem
+      Caption = 'Main'
+      object MenuItem2: TMenuItem
+        Action = actPreferences
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem3: TMenuItem
+        Action = actExit
+      end
+    end
+  end
+  object ActionList1: TActionList
+    left = 680
+    top = 88
+    object actPreferences: TAction
+      Caption = 'Preferences'
+    end
+    object actExit: TAction
+      Caption = 'Exit'
+      OnExecute = actExitExecute
+    end
+    object actSearch: TAction
+      Caption = 'Search'
+      OnExecute = actSearchExecute
+      ShortCut = 13
+    end
+    object actClear: TAction
+      Caption = 'Clear'
+      OnExecute = actClearExecute
+      ShortCut = 27
+    end
+    object actReport: TAction
+      Caption = 'Report'
+      OnExecute = actReportExecute
+    end
+    object actEditPlayer: TAction
+      Caption = 'Edit Player'
+      OnExecute = actEditPlayerExecute
+      ShortCut = 16453
+    end
+    object actCmbClear: TAction
+      OnExecute = actCmbClearExecute
+      ShortCut = 8219
+    end
+    object actLstClear: TAction
+      OnExecute = actLstClearExecute
+    end
+    object actChkSetToFalse: TAction
+      OnExecute = actChkSetToFalseExecute
+    end
+  end
+  object dsTable: TDataSource
+    DataSet = dm.qryPicks
+    left = 755
+    top = 442
+  end
+  object qryYearList: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'SELECT DISTINCT YR FROM PICKS ORDER BY YR DESC'
+    )
+    Params = <>
+    left = 432
+    top = 288
+  end
+  object qryTeamList: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'SELECT NAME FROM TEAMS'
+    )
+    Params = <>
+    left = 432
+    top = 352
+  end
+  object qryPositionList: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'SELECT NAME FROM POSITIONS'
+    )
+    Params = <>
+    left = 432
+    top = 416
+  end
+  object qryCollegeList: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'SELECT NAME FROM COLLEGES'
+    )
+    Params = <>
+    left = 432
+    top = 464
+  end
+  object qryRoundList: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'select distinct RND from picks where YR=:year and is_undrafted=0'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'year'
+        ParamType = ptUnknown
+      end>
+    left = 432
+    top = 232
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'year'
+        ParamType = ptUnknown
+      end>
+  end
+  object mnuOptions: TPopupMenu
+    left = 787
+    top = 209
+    object MenuItem4: TMenuItem
+      Action = actEditPlayer
+    end
+  end
+end
