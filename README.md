@@ -6,4 +6,4 @@ This program is made on LazarusIDE
 
 -Opening the project you inform the database path (on the same folder on the project) on component TZConnection named "conn"
 
--Enjoy
+-Compile the source and Enjoy
