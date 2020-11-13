@@ -1,5 +1,5 @@
 object frmReport: TfrmReport
-  Left = 218
+  Left = 212
   Height = 523
   Top = 178
   Width = 1148
@@ -64,7 +64,7 @@ object frmReport: TfrmReport
       end
       object RLSystemInfo1: TRLSystemInfo
         Left = 912
-        Height = 16
+        Height = 15
         Top = 8
         Width = 39
         Alignment = taRightJustify
@@ -75,7 +75,7 @@ object frmReport: TfrmReport
       end
       object RLSystemInfo2: TRLSystemInfo
         Left = 960
-        Height = 16
+        Height = 15
         Top = 8
         Width = 39
         Info = itHour
@@ -97,9 +97,9 @@ object frmReport: TfrmReport
       RealBounds.Height = 0
       object RLLabel3: TRLLabel
         Left = 8
-        Height = 16
+        Height = 15
         Top = 16
-        Width = 31
+        Width = 29
         Caption = 'Year'
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -108,7 +108,7 @@ object frmReport: TfrmReport
       end
       object RLLabel4: TRLLabel
         Left = 48
-        Height = 16
+        Height = 15
         Top = 16
         Width = 31
         Caption = 'Rnd.'
@@ -119,7 +119,7 @@ object frmReport: TfrmReport
       end
       object RLLabel5: TRLLabel
         Left = 88
-        Height = 16
+        Height = 15
         Top = 16
         Width = 30
         Caption = 'Pick'
@@ -130,9 +130,9 @@ object frmReport: TfrmReport
       end
       object RLLabel6: TRLLabel
         Left = 136
-        Height = 16
+        Height = 15
         Top = 16
-        Width = 36
+        Width = 35
         Caption = 'Team'
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -141,7 +141,7 @@ object frmReport: TfrmReport
       end
       object RLLabel7: TRLLabel
         Left = 216
-        Height = 16
+        Height = 15
         Top = 16
         Width = 41
         Caption = 'Player'
@@ -152,7 +152,7 @@ object frmReport: TfrmReport
       end
       object RLLabel8: TRLLabel
         Left = 384
-        Height = 16
+        Height = 15
         Top = 16
         Width = 31
         Caption = 'Pos.'
@@ -163,7 +163,7 @@ object frmReport: TfrmReport
       end
       object RLLabel9: TRLLabel
         Left = 432
-        Height = 16
+        Height = 15
         Top = 16
         Width = 47
         Caption = 'College'
@@ -174,7 +174,7 @@ object frmReport: TfrmReport
       end
       object RLLabel10: TRLLabel
         Left = 544
-        Height = 16
+        Height = 15
         Top = 16
         Width = 43
         Caption = 'All Pro'
@@ -185,7 +185,7 @@ object frmReport: TfrmReport
       end
       object RLLabel11: TRLLabel
         Left = 600
-        Height = 16
+        Height = 15
         Top = 16
         Width = 56
         Caption = 'Pro Bowl'
@@ -196,7 +196,7 @@ object frmReport: TfrmReport
       end
       object RLLabel12: TRLLabel
         Left = 664
-        Height = 16
+        Height = 15
         Top = 16
         Width = 28
         Caption = 'Yrs.'
@@ -207,7 +207,7 @@ object frmReport: TfrmReport
       end
       object RLLabel13: TRLLabel
         Left = 720
-        Height = 16
+        Height = 15
         Top = 16
         Width = 46
         Caption = 'Games'
@@ -218,9 +218,9 @@ object frmReport: TfrmReport
       end
       object RLLabel14: TRLLabel
         Left = 776
-        Height = 16
+        Height = 15
         Top = 16
-        Width = 64
+        Width = 62
         Caption = 'Career AV'
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -229,9 +229,9 @@ object frmReport: TfrmReport
       end
       object RLLabel15: TRLLabel
         Left = 848
-        Height = 16
+        Height = 15
         Top = 16
-        Width = 58
+        Width = 55
         Caption = 'Team AV'
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -304,7 +304,7 @@ object frmReport: TfrmReport
         Top = 5
         Width = 72
         AutoSize = False
-        DataField = 'TEAM_NAME'
+        DataField = 'team'
         DataSource = frmMain.dsTable
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -317,7 +317,7 @@ object frmReport: TfrmReport
         Top = 5
         Width = 160
         AutoSize = False
-        DataField = 'PLAYER_NAME'
+        DataField = 'player'
         DataSource = frmMain.dsTable
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -330,7 +330,7 @@ object frmReport: TfrmReport
         Top = 5
         Width = 33
         AutoSize = False
-        DataField = 'POS_NAME'
+        DataField = 'pos_name'
         DataSource = frmMain.dsTable
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -343,7 +343,7 @@ object frmReport: TfrmReport
         Top = 5
         Width = 104
         AutoSize = False
-        DataField = 'COLLEGE_NAME'
+        DataField = 'college'
         DataSource = frmMain.dsTable
         RealBounds.Left = 0
         RealBounds.Top = 0
@@ -408,7 +408,7 @@ object frmReport: TfrmReport
         Top = 5
         Width = 64
         AutoSize = False
-        DataField = 'CAR_AV'
+        DataField = 'CAREER_AV'
         DataSource = frmMain.dsTable
         Font.Color = clBlack
         Font.Height = -13
@@ -451,7 +451,7 @@ object frmReport: TfrmReport
       RealBounds.Height = 0
       object lblCheckboxes: TRLLabel
         Left = 16
-        Height = 16
+        Height = 15
         Top = 160
         Width = 89
         RealBounds.Left = 0

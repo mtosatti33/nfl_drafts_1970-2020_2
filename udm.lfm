@@ -11,22 +11,41 @@ object dm: Tdm
     Properties.Strings = (
       'AutoEncodeStrings=ON'
     )
-    Connected = True
+    HostName = 'localhost'
     Port = 0
-    Database = 'D:\Documentos\Delphi-Lazarus Projects\Lazarus\Drafts_new\2.0\DRAFTS_NEW_2.0.FDB'
-    User = 'sysdba'
-    Password = 'masterkey'
-    Protocol = 'firebird-2.5'
-    LibraryLocation = 'C:\FBCLIENT.DLL'
+    Database = '/home/marcelo/bin/nfl_drafts_1970-2020/db/drafts.db'
+    Protocol = 'sqlite'
     left = 62
     top = 27
   end
   object qryPicks: TZQuery
     Connection = conn
     SQL.Strings = (
-      'select * from sp_select(:yr_from, :yr_to, :team, :rnd, :pos, :college, :udfa, :active, :suppl, :first_pick, :never_played,'
-      ':hofer, :all_pro, :pro_bowl)'
-      'order by yr, rnd, pick'
+      'SELECT A.YR ,A.RND, A.PICK, b.ID, C.NAME as team, B.NAME as player,'
+      'e.NAME as pos_name, d.NAME as college, '
+      'f.ALL_PRO, f.PRO_BOWL, f.CAREER_AV , f.TEAM_AV, f.games, f.years_starter, b.PFR_SITE, '
+      'c.primary_colors, c.secondary_colors, '
+      'b.is_active, b.is_hofer, b.YEARS_TO'
+      'FROM picks A, players B, TEAMS c, colleges d, positions e, stats f '
+      'WHERE A.player_id=B.ID '
+      'and A.team_id=C.ID '
+      'and b.position_id=e.id '
+      'and b.college_id=d.id '
+      'and b.id=f.player_id '
+      'and (-1=:yr_from or A.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or c.id=:team_id)'
+      'and (0=:rnd or a.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or a.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or a.is_supplemental=:is_suppl) '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or a.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (f.games=0 or f.games is null)))'
+      'and (0=:all_pro or f.all_pro > 0)'
+      'and (0=:pro_bowl or f.pro_bowl > 0)'
+      'order by A.YR ,A.RND, A.PICK'
     )
     Params = <    
       item
@@ -41,7 +60,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'team'
+        Name = 'team_id'
         ParamType = ptUnknown
       end    
       item
@@ -51,7 +70,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'pos'
+        Name = 'position'
         ParamType = ptUnknown
       end    
       item
@@ -61,17 +80,22 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'udfa'
+        Name = 'is_udfa'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'active'
+        Name = 'is_active'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'suppl'
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -82,11 +106,6 @@ object dm: Tdm
       item
         DataType = ftUnknown
         Name = 'never_played'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'hofer'
         ParamType = ptUnknown
       end    
       item
@@ -114,7 +133,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'team'
+        Name = 'team_id'
         ParamType = ptUnknown
       end    
       item
@@ -124,7 +143,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'pos'
+        Name = 'position'
         ParamType = ptUnknown
       end    
       item
@@ -134,17 +153,22 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'udfa'
+        Name = 'is_udfa'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'active'
+        Name = 'is_active'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'suppl'
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -155,11 +179,6 @@ object dm: Tdm
       item
         DataType = ftUnknown
         Name = 'never_played'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'hofer'
         ParamType = ptUnknown
       end    
       item
@@ -175,56 +194,1550 @@ object dm: Tdm
   end
   object qryTeamCount: TZQuery
     Connection = conn
-    Params = <>
+    SQL.Strings = (
+      '/*TEAM COUNT*/'
+      'select a.NAME,'
+      'count(c.player_id) as count'
+      'from teams a, players b, picks c, stats d '
+      'where a.id=c.team_id '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or a.id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by 2 desc, a.name asc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
     left = 208
     top = 27
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryCollegeCount: TZQuery
     Connection = conn
-    Params = <>
+    SQL.Strings = (
+      '/*COLLEGE COUNT*/'
+      'select a.NAME,'
+      'COUNT(A.NAME) as count'
+      'from COLLEGES a, players b, picks c, stats d '
+      'where a.id=B.COLLEGE_ID '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by 2 DESC, A.NAME ASC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
     left = 328
     top = 27
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryPositionCount: TZQuery
     Connection = conn
-    Params = <>
-    left = 424
+    SQL.Strings = (
+      '/*POSITION COUNT*/'
+      'select a.NAME,'
+      'COUNT(A.NAME) as count'
+      'from POSITIONS a, players b, picks c, stats d '
+      'where a.id=B.POSITION_ID '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by  2 DESC, A.NAME ASC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
+    left = 448
     top = 27
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryTeamAV: TZQuery
     Connection = conn
-    Params = <>
+    SQL.Strings = (
+      '/*TEAM AV*/'
+      'select a.NAME,'
+      'SUM(d.TEAM_AV) as sum'
+      'from teams a, players b, picks c, stats d '
+      'where a.id=c.team_id '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or a.id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by 2 DESC, A.NAME ASC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
     left = 208
     top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryCollegeAV: TZQuery
     Connection = conn
-    Params = <>
+    SQL.Strings = (
+      '/*COLLEGE AV*/'
+      'select a.NAME,'
+      'SUM(d.CAREER_AV) as sum'
+      'from COLLEGES a, players b, picks c, stats d '
+      'where a.id=B.COLLEGE_ID '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by 2 DESC, A.NAME ASC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
     left = 328
     top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryPositionAV: TZQuery
     Connection = conn
-    Params = <>
-    left = 424
+    SQL.Strings = (
+      '/*POSITION AV*/'
+      'select a.NAME,'
+      'SUM(D.CAREER_AV) as sum'
+      'from POSITIONS a, players b, picks c, stats d '
+      'where a.id=B.POSITION_ID '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by  2 DESC, A.NAME ASC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
+    left = 448
     top = 96
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryTeamName: TZQuery
     Connection = conn
-    Params = <>
+    SQL.Strings = (
+      '/*TEAM NAME*/'
+      'select a.NAME,'
+      'count(c.player_id) as count'
+      'from teams a, players b, picks c, stats d '
+      'where a.id=c.team_id '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or a.id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by A.NAME ASC, 2 DESC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
     left = 208
     top = 176
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryCollegeName: TZQuery
     Connection = conn
-    Params = <>
+    SQL.Strings = (
+      '/*COLLEGE NAME*/'
+      'select a.NAME,'
+      'COUNT(A.NAME) as count'
+      'from COLLEGES a, players b, picks c, stats d '
+      'where a.id=B.COLLEGE_ID '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by A.NAME ASC, 2 DESC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
     left = 328
     top = 176
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
   object qryPositionName: TZQuery
     Connection = conn
-    Params = <>
-    left = 424
+    SQL.Strings = (
+      '/*POSITION NAME*/'
+      'select a.NAME,'
+      'COUNT(A.NAME) as count'
+      'from POSITIONS a, players b, picks c, stats d '
+      'where a.id=B.POSITION_ID '
+      'and b.id=c.player_id '
+      'and d.player_id=b.id '
+      'and d.player_id=c.player_id '
+      'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
+      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:rnd or c.rnd=:rnd)'
+      'and (0=:position or b.position_id=:position)'
+      'and (0=:college or b.college_id=:college)'
+      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
+      'AND (-1=:is_active or b.is_active=:is_active)'
+      'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
+      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
+      'and (0=:first_pick or c.pick=1)'
+      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:all_pro or d.all_pro > 0)'
+      'and (0=:pro_bowl or d.pro_bowl > 0)'
+      'group by a.name'
+      'order by A.NAME ASC, 2 DESC'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
+    left = 448
     top = 176
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'team_id'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'rnd'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'position'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'college'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_udfa'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_active'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_suppl'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'is_hofer'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'first_pick'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'never_played'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'all_pro'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pro_bowl'
+        ParamType = ptUnknown
+      end>
   end
 end

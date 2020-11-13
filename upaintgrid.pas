@@ -35,9 +35,9 @@ begin
   if FQuery.RecordCount <> 0 then
   begin
   	//Define carrer av to 0 if it's null
-    if FQuery.FieldByName('car_av').IsNull then
+    if FQuery.FieldByName('career_av').IsNull then
   	  car_av:=0 else
-  	  car_av:=FQuery.FieldByName('car_av').Value;
+  	  car_av:=FQuery.FieldByName('career_av').Value;
 
     //Define team av to 0 if it's null
     if FQuery.FieldByName('team_av').IsNull then

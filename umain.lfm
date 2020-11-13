@@ -1,11 +1,11 @@
 object frmMain: TfrmMain
-  Left = 137
+  Left = 0
   Height = 684
-  Top = 58
-  Width = 1370
+  Top = 24
+  Width = 1360
   Caption = 'Drafts 1970-2019'
-  ClientHeight = 664
-  ClientWidth = 1370
+  ClientHeight = 660
+  ClientWidth = 1360
   Menu = MainMenu1
   OnCreate = FormCreate
   Position = poScreenCenter
@@ -37,22 +37,22 @@ object frmMain: TfrmMain
       item
         Title.Caption = 'Team'
         Width = 76
-        FieldName = 'TEAM_NAME'
+        FieldName = 'team'
       end    
       item
         Title.Caption = 'Player'
         Width = 115
-        FieldName = 'PLAYER_NAME'
+        FieldName = 'player'
       end    
       item
         Title.Caption = 'Pos.'
         Width = 30
-        FieldName = 'POS_NAME'
+        FieldName = 'pos_name'
       end    
       item
         Title.Caption = 'College'
         Width = 125
-        FieldName = 'COLLEGE_NAME'
+        FieldName = 'college'
       end    
       item
         Title.Caption = 'All Pro'
@@ -78,7 +78,7 @@ object frmMain: TfrmMain
         Font.Style = [fsBold]
         Title.Caption = 'AV'
         Width = 30
-        FieldName = 'CAR_AV'
+        FieldName = 'CAREER_AV'
       end    
       item
         Title.Caption = 'Tm. AV'
@@ -95,57 +95,57 @@ object frmMain: TfrmMain
     OnTitleClick = DBGrid1TitleClick
   end
   object cmbYearToList: TComboBox
-    Left = 148
-    Height = 23
+    Left = 158
+    Height = 27
     Top = 8
-    Width = 65
-    ItemHeight = 15
+    Width = 81
+    ItemHeight = 0
     OnChange = cmbChange
     TabOrder = 1
   end
   object Label2: TLabel
     Left = 33
-    Height = 15
+    Height = 14
     Top = 72
-    Width = 30
+    Width = 32
     Caption = 'Team'
     ParentColor = False
   end
   object cmbTeamList: TComboBox
     Left = 72
-    Height = 23
+    Height = 27
     Top = 72
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-    ItemHeight = 15
+    ItemHeight = 0
     OnChange = cmbChange
     TabOrder = 3
   end
   object Label3: TLabel
     Left = 21
-    Height = 15
+    Height = 14
     Top = 104
-    Width = 43
+    Width = 49
     Caption = 'Position'
     ParentColor = False
   end
   object cmbPositionList: TComboBox
     Left = 72
-    Height = 23
+    Height = 27
     Top = 104
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-    ItemHeight = 15
+    ItemHeight = 0
     OnChange = cmbChange
     TabOrder = 4
   end
   object Label4: TLabel
     Left = 24
-    Height = 15
+    Height = 14
     Top = 136
-    Width = 40
+    Width = 46
     Caption = 'College'
     ParentColor = False
   end
@@ -159,40 +159,40 @@ object frmMain: TfrmMain
   end
   object cmbCollegeList: TComboBox
     Left = 72
-    Height = 23
+    Height = 27
     Top = 136
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-    ItemHeight = 15
+    ItemHeight = 0
     OnChange = cmbChange
     TabOrder = 5
   end
   object cmbRoundList: TComboBox
     Left = 72
-    Height = 23
+    Height = 27
     Top = 40
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     Enabled = False
-    ItemHeight = 15
+    ItemHeight = 0
     OnChange = cmbChange
     TabOrder = 2
   end
   object Label6: TLabel
     Left = 27
-    Height = 15
+    Height = 14
     Top = 40
-    Width = 35
+    Width = 40
     Caption = 'Round'
     ParentColor = False
   end
   object chkFirstPicks: TCheckBox
     Left = 72
-    Height = 19
+    Height = 23
     Top = 388
-    Width = 72
+    Width = 85
     Caption = 'First Picks'
     OnChange = chkChange
     TabOrder = 10
@@ -219,32 +219,32 @@ object frmMain: TfrmMain
   end
   object cmbYearFromList: TComboBox
     Left = 72
-    Height = 23
+    Height = 27
     Top = 8
-    Width = 65
-    ItemHeight = 15
+    Width = 81
+    ItemHeight = 0
     OnChange = cmbChange
     TabOrder = 0
   end
   object Label9: TLabel
     Left = 34
-    Height = 15
+    Height = 14
     Top = 8
-    Width = 28
+    Width = 32
     Caption = 'Years'
     ParentColor = False
   end
   object Label11: TLabel
     Left = 24
-    Height = 15
+    Height = 14
     Top = 488
-    Width = 75
+    Width = 84
     Caption = 'Highlight Grid'
     ParentColor = False
   end
   object cmbHighlight: TComboBox
     Left = 71
-    Height = 21
+    Height = 29
     Top = 512
     Width = 168
     AutoComplete = True
@@ -264,7 +264,7 @@ object frmMain: TfrmMain
     Text = 'Team Color'
   end
   object btnRoundClear: TSpeedButton
-    Left = 216
+    Left = 240
     Height = 22
     Top = 40
     Width = 23
@@ -307,7 +307,7 @@ object frmMain: TfrmMain
     OnClick = btnRoundClearClick
   end
   object btnTeamClear: TSpeedButton
-    Left = 216
+    Left = 240
     Height = 22
     Top = 72
     Width = 23
@@ -350,7 +350,7 @@ object frmMain: TfrmMain
     OnClick = btnRoundClearClick
   end
   object btnPositionClear: TSpeedButton
-    Left = 216
+    Left = 240
     Height = 22
     Top = 104
     Width = 23
@@ -393,7 +393,7 @@ object frmMain: TfrmMain
     OnClick = btnRoundClearClick
   end
   object btnCollegeClear: TSpeedButton
-    Left = 216
+    Left = 240
     Height = 22
     Top = 136
     Width = 23
@@ -437,18 +437,18 @@ object frmMain: TfrmMain
   end
   object chkProBowlers: TCheckBox
     Left = 72
-    Height = 19
+    Height = 23
     Top = 415
-    Width = 82
+    Width = 99
     Caption = 'Pro Bowlers'
     OnChange = chkChange
     TabOrder = 11
   end
   object chkAllPros: TCheckBox
     Left = 72
-    Height = 19
+    Height = 23
     Top = 443
-    Width = 114
+    Width = 132
     Caption = '1st Team All Pro''s'
     OnChange = chkChange
     TabOrder = 12
@@ -472,28 +472,30 @@ object frmMain: TfrmMain
   end
   object Label5: TLabel
     Left = 1024
-    Height = 15
+    Height = 14
     Top = 8
-    Width = 37
+    Width = 44
     Caption = 'Sort By'
     ParentColor = False
   end
   object cmbSortByList: TComboBox
     Left = 1072
-    Height = 21
+    Height = 29
     Top = 8
     Width = 124
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 15
+    ItemIndex = 0
     Items.Strings = (
       'Name / Picks'
       'Draft Picks'
       'Aprox. Value'
     )
-    OnChange = cmbChange
+    OnChange = cmbSortByListChange
     Style = csOwnerDrawFixed
     TabOrder = 15
+    Text = 'Name / Picks'
   end
   object lstTeamList: TListBox
     Left = 1024
@@ -502,7 +504,10 @@ object frmMain: TfrmMain
     Width = 96
     ItemHeight = 0
     OnClick = lstClick
+    ParentFont = False
+    ScrollWidth = 94
     TabOrder = 16
+    TopIndex = -1
   end
   object lstCollegeList: TListBox
     Left = 1128
@@ -511,7 +516,10 @@ object frmMain: TfrmMain
     Width = 144
     ItemHeight = 0
     OnClick = lstClick
+    ParentFont = False
+    ScrollWidth = 142
     TabOrder = 17
+    TopIndex = -1
   end
   object lstPositionList: TListBox
     Left = 1280
@@ -520,21 +528,24 @@ object frmMain: TfrmMain
     Width = 68
     ItemHeight = 0
     OnClick = lstClick
+    ParentFont = False
+    ScrollWidth = 66
     TabOrder = 18
+    TopIndex = -1
   end
   object Label8: TLabel
     Left = 33
-    Height = 15
+    Height = 14
     Top = 168
-    Width = 30
+    Width = 35
     Caption = 'UDFA'
     ParentColor = False
   end
   object cmbUDFA: TComboBox
     Left = 72
-    Height = 21
+    Height = 29
     Top = 168
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 15
@@ -551,9 +562,9 @@ object frmMain: TfrmMain
   end
   object cmbActive: TComboBox
     Left = 72
-    Height = 21
+    Height = 29
     Top = 200
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 15
@@ -570,17 +581,17 @@ object frmMain: TfrmMain
   end
   object Label12: TLabel
     Left = 29
-    Height = 15
+    Height = 14
     Top = 200
-    Width = 33
+    Width = 37
     Caption = 'Active'
     ParentColor = False
   end
   object cmbSuppl: TComboBox
     Left = 72
-    Height = 21
+    Height = 29
     Top = 232
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 15
@@ -597,17 +608,17 @@ object frmMain: TfrmMain
   end
   object Label13: TLabel
     Left = 31
-    Height = 15
+    Height = 14
     Top = 232
-    Width = 33
+    Width = 38
     Caption = 'Suppl.'
     ParentColor = False
   end
   object cmbHofer: TComboBox
     Left = 72
-    Height = 21
+    Height = 29
     Top = 264
-    Width = 141
+    Width = 167
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 15
@@ -624,9 +635,9 @@ object frmMain: TfrmMain
   end
   object Label14: TLabel
     Left = 27
-    Height = 15
+    Height = 14
     Top = 264
-    Width = 34
+    Width = 38
     Caption = 'HOFer'
     ParentColor = False
   end

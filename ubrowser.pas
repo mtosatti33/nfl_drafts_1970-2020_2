@@ -5,8 +5,7 @@ unit UBrowser;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, HtmlView,
-  HtmlGlobals;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs;
 
 type
 

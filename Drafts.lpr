@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, FrameViewer09, zcomponent, UMain, UDM, UBrowser, UPlayerEdit,
+  Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit,
   UInstructionView, ureport, upaintgrid, ufillitems, uPrepareQuery;
 
 {$R *.res}
