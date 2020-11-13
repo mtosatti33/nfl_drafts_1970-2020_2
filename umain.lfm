@@ -36,7 +36,7 @@ object frmMain: TfrmMain
       end    
       item
         Title.Caption = 'Team'
-        Width = 76
+        Width = 100
         FieldName = 'team'
       end    
       item
@@ -51,17 +51,17 @@ object frmMain: TfrmMain
       end    
       item
         Title.Caption = 'College'
-        Width = 125
+        Width = 120
         FieldName = 'college'
       end    
       item
-        Title.Caption = 'All Pro'
+        Title.Caption = 'AP.'
         Width = 42
         FieldName = 'ALL_PRO'
       end    
       item
-        Title.Caption = 'Pro Bowl'
-        Width = 52
+        Title.Caption = 'PB'
+        Width = 45
         FieldName = 'PRO_BOWL'
       end    
       item

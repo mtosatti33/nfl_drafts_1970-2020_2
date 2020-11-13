@@ -473,7 +473,7 @@
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit56>
     </Units>
-    <JumpHistory Count="18" HistoryIndex="17">
+    <JumpHistory Count="17" HistoryIndex="16">
       <Position1>
         <Filename Value="umain.pas"/>
         <Caret Line="501" Column="11" TopLine="493"/>
@@ -542,10 +542,6 @@
         <Filename Value="umain.pas"/>
         <Caret Line="264" Column="65" TopLine="256"/>
       </Position17>
-      <Position18>
-        <Filename Value="uplayeredit.pas"/>
-        <Caret Line="99" Column="52" TopLine="140"/>
-      </Position18>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

@@ -245,21 +245,21 @@ begin
   frmPlayerEdit := TfrmPlayerEdit.Create(Application);
 
   try
-    frmPlayerEdit.ID := dm.qryPicks['player_id'];
-    frmPlayerEdit.Name := dm.qryPicks['player'];
+    frmPlayerEdit.ID := dm.qryPicks['PLAYER_ID'];
+    frmPlayerEdit.Name := dm.qryPicks['PLAYER'];
     frmPlayerEdit.Position := dm.qryPicks['POS_NAME'];
-    frmPlayerEdit.College := dm.qryPicks['college'];
-    frmPlayerEdit.AllPro := dm.qryPicks['all_pro'];
-    frmPlayerEdit.ProBowl := dm.qryPicks['pro_bowl'];
-    frmPlayerEdit.Starter := dm.qryPicks['years_starter'];
+    frmPlayerEdit.College := dm.qryPicks['COLLEGE'];
+    frmPlayerEdit.AllPro := dm.qryPicks['ALL_PRO'];
+    frmPlayerEdit.ProBowl := dm.qryPicks['PRO_BOWL'];
+    frmPlayerEdit.Starter := dm.qryPicks['YEARS_STARTER'];
     frmPlayerEdit.Active := dm.qryPicks['IS_ACTIVE'];
     frmPlayerEdit.Hofer := dm.qryPicks['IS_HOFER'];
 
-    if not dm.qryPicks.FieldByName('games').IsNull then
-      frmPlayerEdit.Games := dm.qryPicks['games'];
+    if not dm.qryPicks.FieldByName('GAMES').IsNull then
+      frmPlayerEdit.Games := dm.qryPicks['GAMES'];
 
-    if not dm.qryPicks.FieldByName('career_av').IsNull then
-      frmPlayerEdit.CarAV := dm.qryPicks['career_av'];
+    if not dm.qryPicks.FieldByName('CAREER_AV').IsNull then
+      frmPlayerEdit.CarAV := dm.qryPicks['CAREER_AV'];
 
     if not dm.qryPicks.FieldByName('TEAM_AV').IsNull then
       frmPlayerEdit.TmAV := dm.qryPicks['TEAM_AV'];
