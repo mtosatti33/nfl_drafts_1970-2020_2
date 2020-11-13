@@ -2,8 +2,8 @@ This program is made on LazarusIDE
 
 -Installing the program/source: C:\ Disk
 
--Requires Zeos Component
+-Database is in sqlite
 
--Opening the project you inform the database path (on the same folder on the project) on component TZConnection named "conn"
+-Opening the project you should inform the database path ('../db/drafts.db') on component TZConnection named "conn" on datamodule 'dm'.
 
 -Compile the source and Enjoy
