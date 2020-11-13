@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList,
-  ExtCtrls, ZDataset, ZSqlUpdate;
+  ExtCtrls, ZDataset;
 
 type
 
@@ -85,8 +85,6 @@ var
 
 implementation
 
-uses UDM;
-
 {$R *.lfm}
 
 { TfrmPlayerEdit }
@@ -132,7 +130,7 @@ begin
   FHofer:=cmbHofer.ItemIndex;
   FLastYear:=edtLastYear.Text;
 
-  qryStats.ParamByName('all_pro').AsString:=FAllPro;
+  qryStats.ParamByName('ALL_PRO').AsString:=FAllPro;
   qryStats.ParamByName('PRO_BOWL').AsString:=FProBowl;
   qryStats.ParamByName('YEARS_STARTER').AsString:=FStarter;
 
@@ -153,15 +151,15 @@ begin
 
   qryStats.ParamByName('PLAYER_ID').AsString:=FId;
 
-  qryPlayer.ParamByName('active').AsInteger:=FActive;
-  qryPlayer.ParamByName('hofer').AsInteger:=FHofer;
+  qryPlayer.ParamByName('ACTIVE').AsInteger:=FActive;
+  qryPlayer.ParamByName('HOFER').AsInteger:=FHofer;
 
   if FLastYear <> EmptyStr then
-     qryPlayer.ParamByName('yrs_to').AsString:=FLastYear
+     qryPlayer.ParamByName('YRS_TO').AsString:=FLastYear
   else
-     qryPlayer.ParamByName('yrs_to').IsNull;
+     qryPlayer.ParamByName('YRS_TO').IsNull;
 
-  qryPlayer.ParamByName('id').AsString:=FId;
+  qryPlayer.ParamByName('ID').AsString:=FId;
 
   try
     qryStats.ExecSQL;

@@ -11,6 +11,7 @@ object dm: Tdm
     Properties.Strings = (
       'AutoEncodeStrings=ON'
     )
+    Connected = True
     HostName = 'localhost'
     Port = 0
     Database = '/home/marcelo/bin/nfl_drafts_1970-2020/db/drafts.db'
@@ -20,8 +21,9 @@ object dm: Tdm
   end
   object qryPicks: TZQuery
     Connection = conn
+    Active = True
     SQL.Strings = (
-      'SELECT A.YR ,A.RND, A.PICK, b.ID, C.NAME as team, B.NAME as player,'
+      'SELECT a.player_id, A.YR ,A.RND, A.PICK, b.ID, C.NAME as team, B.NAME as player,'
       'e.NAME as pos_name, d.NAME as college, '
       'f.ALL_PRO, f.PRO_BOWL, f.CAREER_AV , f.TEAM_AV, f.games, f.years_starter, b.PFR_SITE, '
       'c.primary_colors, c.secondary_colors, '

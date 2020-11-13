@@ -246,9 +246,9 @@ begin
 
   try
     frmPlayerEdit.ID := dm.qryPicks['player_id'];
-    frmPlayerEdit.Name := dm.qryPicks['player_name'];
+    frmPlayerEdit.Name := dm.qryPicks['player'];
     frmPlayerEdit.Position := dm.qryPicks['POS_NAME'];
-    frmPlayerEdit.College := dm.qryPicks['college_name'];
+    frmPlayerEdit.College := dm.qryPicks['college'];
     frmPlayerEdit.AllPro := dm.qryPicks['all_pro'];
     frmPlayerEdit.ProBowl := dm.qryPicks['pro_bowl'];
     frmPlayerEdit.Starter := dm.qryPicks['years_starter'];

@@ -2,20 +2,20 @@ object frmPlayerEdit: TfrmPlayerEdit
   Left = 367
   Height = 427
   Top = 135
-  Width = 421
+  Width = 439
   BorderStyle = bsToolWindow
   Caption = 'Edit Player Information'
   ClientHeight = 427
-  ClientWidth = 421
+  ClientWidth = 439
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
   object lblName: TLabel
     Left = 161
-    Height = 37
+    Height = 30
     Top = 17
-    Width = 101
+    Width = 102
     Caption = 'lblName'
     Font.Height = -27
     ParentColor = False
@@ -23,107 +23,107 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object lblPosition: TLabel
     Left = 161
-    Height = 15
+    Height = 14
     Top = 57
-    Width = 56
+    Width = 65
     Caption = 'lblPosition'
     ParentColor = False
   end
   object Label1: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 221
-    Width = 91
+    Width = 103
     Caption = '1st. Team All-Pro'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 249
-    Width = 47
+    Width = 55
     Caption = 'Pro Bowl'
     ParentColor = False
   end
   object Label3: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 277
-    Width = 56
+    Width = 65
     Caption = 'Yrs. Starter'
     ParentColor = False
   end
   object Label4: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 305
-    Width = 36
+    Width = 40
     Caption = 'Games'
     ParentColor = False
   end
   object Label5: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 333
-    Width = 52
+    Width = 59
     Caption = 'Career AV'
     ParentColor = False
   end
   object Label6: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 361
-    Width = 90
+    Width = 102
     Caption = 'Team Drafted AV'
     ParentColor = False
   end
   object edtAllPro: TEdit
     Left = 161
-    Height = 23
+    Height = 27
     Top = 221
     Width = 208
     TabOrder = 0
   end
   object edtProBowl: TEdit
     Left = 161
-    Height = 23
+    Height = 27
     Top = 249
     Width = 208
     TabOrder = 1
   end
   object edtStarter: TEdit
     Left = 161
-    Height = 23
+    Height = 27
     Top = 277
     Width = 208
     TabOrder = 2
   end
   object edtGames: TEdit
     Left = 161
-    Height = 23
+    Height = 27
     Top = 305
     Width = 208
     TabOrder = 3
   end
   object edtCarAV: TEdit
     Left = 161
-    Height = 23
+    Height = 27
     Top = 333
     Width = 208
     TabOrder = 4
   end
   object edtTmAV: TEdit
     Left = 161
-    Height = 23
+    Height = 27
     Top = 361
     Width = 208
     TabOrder = 5
   end
   object lblCollege: TLabel
     Left = 161
-    Height = 15
+    Height = 14
     Top = 73
-    Width = 53
+    Width = 62
     Caption = 'lblCollege'
     ParentColor = False
   end
@@ -149,50 +149,50 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object lblID: TLabel
     Left = 161
-    Height = 15
+    Height = 14
     Top = 113
-    Width = 24
+    Width = 30
     Caption = 'lblID'
     ParentColor = False
     Visible = False
   end
   object Label7: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 137
-    Width = 33
+    Width = 37
     Caption = 'Active'
     ParentColor = False
   end
   object Label8: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 165
-    Width = 71
+    Width = 79
     Caption = 'Hall of Famer'
     ParentColor = False
   end
   object Label9: TLabel
     Left = 49
-    Height = 15
+    Height = 14
     Top = 193
-    Width = 85
+    Width = 98
     Caption = 'Last Year Played'
     ParentColor = False
   end
   object edtLastYear: TEdit
     Left = 161
-    Height = 23
+    Height = 27
     Top = 193
     Width = 208
     TabOrder = 8
   end
   object cmbHofer: TComboBox
     Left = 161
-    Height = 23
+    Height = 26
     Top = 165
     Width = 208
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       'No'
       'Yes'
@@ -202,10 +202,10 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object cmbActive: TComboBox
     Left = 161
-    Height = 23
+    Height = 26
     Top = 137
     Width = 208
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       'No'
       'Yes'
@@ -412,11 +412,11 @@ object frmPlayerEdit: TfrmPlayerEdit
   object qryPlayer: TZQuery
     Connection = dm.conn
     SQL.Strings = (
-      'UPDATE players a'
-      'set a.is_active=:active,'
-      'a.is_hofer=:hofer,'
-      'a.years_to=:yrs_to'
-      'where a.id=:id'
+      'UPDATE players'
+      'set IS_ACTIVE =:active,'
+      'IS_HOFER =:hofer,'
+      'YEARS_TO =:yrs_to'
+      'where ID =:id'
     )
     Params = <    
       item

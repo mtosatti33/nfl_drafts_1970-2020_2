@@ -5,7 +5,7 @@ unit UDM;
 interface
 
 uses
-  Classes, SysUtils, db, ZConnection, ZDataset;
+  Classes, SysUtils, ZConnection, ZDataset;
 
 type
 

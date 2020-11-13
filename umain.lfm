@@ -3,7 +3,7 @@ object frmMain: TfrmMain
   Height = 684
   Top = 24
   Width = 1360
-  Caption = 'Drafts 1970-2019'
+  Caption = 'Drafts 1970-2020'
   ClientHeight = 660
   ClientWidth = 1360
   Menu = MainMenu1
