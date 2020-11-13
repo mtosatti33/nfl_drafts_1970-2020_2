@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+BRANCH=master
 LAZARUS_PROJECT=Drafts.lpi
 
 menu (){
@@ -67,13 +68,13 @@ while :; do
 		
 	#Push Project
 	5)
-		git push origin main
+		git push origin $BRANCH 
 		
 		press_any_key;;
 		
 	#Pull Project
 	6)
-		git pull origin main
+		git pull origin $BRANCH
 		
 		press_any_key;;
 		
