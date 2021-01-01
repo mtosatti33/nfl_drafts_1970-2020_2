@@ -353,6 +353,8 @@ begin
 
     end;
   end;
+  if not cmbSortByList.ItemIndex = 0 then
+     cmbSortByList.ItemIndex := 0;
   cmbSortByListChange(nil);
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
 end;
@@ -363,7 +365,7 @@ var
   ComboBox: TComboBox;
 begin
   btn := Sender as TSpeedButton;
-
+  ComboBox:= nil;
   if btn = btnRoundClear then
     ComboBox := cmbRoundList;
   if btn = btnTeamClear then
@@ -374,6 +376,7 @@ begin
     ComboBox := cmbCollegeList;
 
   ComboBox.ItemIndex := -1;
+
   actSearch.Execute;
 end;
 
@@ -633,6 +636,8 @@ var
   ComboBox: TComboBox;
 begin
   ListBox := Sender as TListBox;
+  ComboBox := nil;
+
   if ListBox.Items.Count <> 0 then
     if ListBox.ItemIndex <> -1 then
     begin

@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
   Left = 0
   Height = 684
-  Top = 24
+  Top = 20
   Width = 1360
   Caption = 'Drafts 1970-2020'
   ClientHeight = 660

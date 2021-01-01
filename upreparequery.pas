@@ -23,15 +23,15 @@ type
     Factive: integer;
     Fsupplemental: integer;
     Fhofer: integer;
-    Ffirst_pick: Boolean;
-    Fnever_played: Boolean;
-    Fall_pro: Boolean;
-    Fpro_bowl: Boolean;
+    Ffirst_pick: boolean;
+    Fnever_played: boolean;
+    Fall_pro: boolean;
+    Fpro_bowl: boolean;
   public
     procedure Load;
-    constructor Create(yr_from, yr_to: string; team, round,
-  position, college, udfa, active, supplemental, hofer: integer;
-  first_pick, never_played, all_pro, pro_bowl: Boolean);
+    constructor Create(yr_from, yr_to: string;
+      team, round, position, college, udfa, active, supplemental, hofer: integer;
+      first_pick, never_played, all_pro, pro_bowl: boolean);
   end;
 
 implementation
@@ -42,50 +42,50 @@ procedure TPrepareQuery.Load;
 begin
   with dm.qryPicks do
   begin
-  	Close;
+    Close;
 
     if Fyr_from <> '' then
-  	  ParamByName('yr_from').AsString:=Fyr_from
-     else
-	  ParamByName('yr_from').AsInteger:=-1;
+      ParamByName('yr_from').AsString := Fyr_from
+    else
+      ParamByName('yr_from').AsInteger := -1;
 
-    ParamByName('yr_to').AsString:= Fyr_to;
-    ParamByName('team').AsInteger:=Fteam;
-    ParamByName('rnd').AsInteger:=Fround;
-    ParamByName('pos').AsInteger:=Fposition;
-    ParamByName('college').AsInteger:=Fcollege;
-    ParamByName('udfa').AsInteger:=Fudfa;
-    ParamByName('active').AsInteger:=Factive;
-    ParamByName('suppl').AsInteger:=Fsupplemental;
-    ParamByName('hofer').AsInteger:=Fhofer;
-    ParamByName('first_pick').AsBoolean:=Ffirst_pick;
-    ParamByName('never_played').AsBoolean:=Fnever_played;
-    ParamByName('all_pro').AsBoolean:=Fall_pro;
-    ParamByName('pro_bowl').AsBoolean:=Fpro_bowl;
+    ParamByName('yr_to').AsString := Fyr_to;
+    ParamByName('team').AsInteger := Fteam;
+    ParamByName('rnd').AsInteger := Fround;
+    ParamByName('pos').AsInteger := Fposition;
+    ParamByName('college').AsInteger := Fcollege;
+    ParamByName('udfa').AsInteger := Fudfa;
+    ParamByName('active').AsInteger := Factive;
+    ParamByName('suppl').AsInteger := Fsupplemental;
+    ParamByName('hofer').AsInteger := Fhofer;
+    ParamByName('first_pick').AsBoolean := Ffirst_pick;
+    ParamByName('never_played').AsBoolean := Fnever_played;
+    ParamByName('all_pro').AsBoolean := Fall_pro;
+    ParamByName('pro_bowl').AsBoolean := Fpro_bowl;
     Open;
 
     First;
   end;
 end;
 
-constructor TPrepareQuery.Create(yr_from, yr_to: string; team, round,
-  position, college, udfa, active, supplemental, hofer: integer;
-  first_pick, never_played, all_pro, pro_bowl: Boolean);
+constructor TPrepareQuery.Create(yr_from, yr_to: string;
+  team, round, position, college, udfa, active, supplemental, hofer: integer;
+  first_pick, never_played, all_pro, pro_bowl: boolean);
 begin
-  Fyr_from:= yr_from;
-  Fyr_to:= yr_to;
-  Fteam:= team + 1;
-  Fround:= round + 1;
-  Fposition:= position + 1;
-  Fcollege:= college + 1;
-  Fudfa:= udfa -1;
-  Factive:= active -1;
-  Fsupplemental:= supplemental -1;
-  Fhofer:= hofer -1;
-  Ffirst_pick:= first_pick;
-  Fnever_played:= never_played;
-  Fall_pro:= all_pro;
-  Fpro_bowl:= pro_bowl;
+  Fyr_from := yr_from;
+  Fyr_to := yr_to;
+  Fteam := team + 1;
+  Fround := round + 1;
+  Fposition := position + 1;
+  Fcollege := college + 1;
+  Fudfa := udfa - 1;
+  Factive := active - 1;
+  Fsupplemental := supplemental - 1;
+  Fhofer := hofer - 1;
+  Ffirst_pick := first_pick;
+  Fnever_played := never_played;
+  Fall_pro := all_pro;
+  Fpro_bowl := pro_bowl;
 end;
 
 end.
