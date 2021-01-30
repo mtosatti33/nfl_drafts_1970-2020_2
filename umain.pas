@@ -35,9 +35,6 @@ type
     chkFirstPicks: TCheckBox;
     chkNeverPlayed: TCheckBox;
     cmbCollegeList: TComboBox;
-    cmbHofer: TComboBox;
-    cmbUDFA: TComboBox;
-    cmbActive: TComboBox;
     cmbSuppl: TComboBox;
     cmbHighlight: TComboBox;
     cmbRoundList: TComboBox;
@@ -49,16 +46,13 @@ type
     dsTable: TDataSource;
     DBGrid1: TDBGrid;
     Label11: TLabel;
-    Label12: TLabel;
     Label13: TLabel;
-    Label14: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    Label8: TLabel;
     Label9: TLabel;
     lstCollegeList: TListBox;
     lstPositionList: TListBox;
@@ -163,11 +157,6 @@ begin
       if cmbCollegeList.ItemIndex <> -1 then
         filter1 := filter1 + 'College: ' + cmbCollegeList.Text + #13;
 
-      filter1 := filter1 + 'UDFA: ' + cmbUDFA.Text + ', 	';
-      filter1 := filter1 + 'Active: ' + cmbActive.Text + ', 	';
-      filter1 := filter1 + 'Supplemental: ' + cmbSuppl.Text + ', 	';
-      filter1 := filter1 + 'Hall of Famers: ' + cmbHofer.Text;
-
       filter2 := 'Other Filters: ';
       j := 0;
       for i := 0 to self.ComponentCount - 1 do
@@ -228,10 +217,7 @@ begin
       TComboBox(Components[i]).ItemIndex := -1;
   end;
   cmbHighlight.ItemIndex := 0;
-  cmbUDFA.ItemIndex := 0;
-  cmbActive.ItemIndex := 0;
   cmbSuppl.ItemIndex := 0;
-  cmbHofer.ItemIndex := 0;
 end;
 
 procedure TfrmMain.actEditPlayerExecute(Sender: TObject);
@@ -337,10 +323,7 @@ begin
         qry.ParamByName('rnd').AsInteger := cmbRoundList.ItemIndex + 1;
         qry.ParamByName('position').AsInteger := cmbPositionList.ItemIndex + 1;
         qry.ParamByName('college').AsInteger := cmbCollegeList.ItemIndex + 1;
-        qry.ParamByName('is_udfa').AsInteger := cmbUDFA.ItemIndex - 1;
-        qry.ParamByName('is_active').AsInteger := cmbActive.ItemIndex - 1;
         qry.ParamByName('is_suppl').AsInteger := cmbSuppl.ItemIndex - 1;
-        qry.ParamByName('is_hofer').AsInteger := cmbHofer.ItemIndex - 1;
         qry.ParamByName('first_pick').AsInteger := integer(chkFirstPicks.Checked);
         qry.ParamByName('never_played').AsInteger := integer(chkNeverPlayed.Checked);
         qry.ParamByName('all_pro').AsInteger := integer(chkAllPros.Checked);
@@ -385,16 +368,9 @@ begin
   //chkNeverPlayed
   if Sender = chkNeverPlayed then
   begin
-    if chkNeverPlayed.Checked then
-    begin
-      cmbActive.ItemIndex := 0;
-      cmbHofer.ItemIndex := 0;
-    end;
 
-    cmbActive.Enabled := not chkNeverPlayed.Checked;
     chkProBowlers.Enabled := not chkNeverPlayed.Checked;
     chkAllPros.Enabled := not chkNeverPlayed.Checked;
-    cmbHofer.Enabled := not chkNeverPlayed.Checked;
   end;
 
   //chkFirstPicks
@@ -403,12 +379,10 @@ begin
     if chkFirstPicks.Checked then
     begin
       cmbRoundList.ItemIndex := -1;
-      cmbUDFA.ItemIndex := 0;
       cmbSuppl.ItemIndex := 1;
     end;
 
     cmbRoundList.Enabled := not chkFirstPicks.Checked;
-    cmbUDFA.Enabled := not chkFirstPicks.Checked;
     cmbSuppl.Enabled := not chkFirstPicks.Checked;
   end;
 
@@ -427,14 +401,8 @@ end;
 
 procedure TfrmMain.cmbChange(Sender: TObject);
 begin
-  if not cmbUDFA.Enabled then
-    cmbUDFA.Enabled := True;
-  if not cmbActive.Enabled then
-    cmbActive.Enabled := True;
   if not cmbSuppl.Enabled then
     cmbSuppl.Enabled := True;
-  if not cmbHofer.Enabled then
-    cmbHofer.Enabled := True;
   if not chkFirstPicks.Enabled then
     chkFirstPicks.Enabled := True;
   if not chkNeverPlayed.Enabled then
@@ -488,31 +456,10 @@ begin
 
   end;
 
-  //cmbUDFA event
-  if Sender = cmbUDFA then
-  begin
-    cmbSuppl.Enabled := cmbUDFA.ItemIndex <> 2;
-    chkFirstPicks.Enabled := cmbUDFA.ItemIndex <> 2;
-  end;
-
-  //cmbActive event
-  if Sender = cmbActive then
-  begin
-    cmbHofer.Enabled := cmbActive.ItemIndex <> 2;
-  end;
-
   //cmbSuppl event
   if Sender = cmbSuppl then
   begin
-    cmbUDFA.Enabled := cmbSuppl.ItemIndex <> 2;
     chkFirstPicks.Enabled := cmbSuppl.ItemIndex <> 2;
-  end;
-
-  //cmbHofer event
-  if Sender = cmbHofer then
-  begin
-    cmbActive.Enabled := cmbHofer.ItemIndex <> 2;
-    chkNeverPlayed.Enabled := cmbHofer.ItemIndex <> 2;
   end;
 
   //cmbHighlight event

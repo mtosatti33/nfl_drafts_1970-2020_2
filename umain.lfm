@@ -1,19 +1,19 @@
 object frmMain: TfrmMain
-  Left = 0
-  Height = 684
-  Top = 20
-  Width = 1360
+  Left = 19
+  Height = 625
+  Top = 38
+  Width = 1326
   Caption = 'Drafts 1970-2020'
-  ClientHeight = 660
-  ClientWidth = 1360
+  ClientHeight = 601
+  ClientWidth = 1326
   Menu = MainMenu1
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
   WindowState = wsMaximized
   object DBGrid1: TDBGrid
-    Left = 272
-    Height = 664
+    Left = 248
+    Height = 584
     Hint = 'Double click for entering player''s site'
     Top = 8
     Width = 736
@@ -27,12 +27,12 @@ object frmMain: TfrmMain
       item
         Title.Caption = 'Rnd.'
         Width = 30
-        FieldName = 'RND'
+        FieldName = 'Rnd'
       end    
       item
         Title.Caption = 'Pick'
         Width = 30
-        FieldName = 'PICK'
+        FieldName = 'Pick'
       end    
       item
         Title.Caption = 'Team'
@@ -42,7 +42,7 @@ object frmMain: TfrmMain
       item
         Title.Caption = 'Player'
         Width = 115
-        FieldName = 'player'
+        FieldName = 'Player'
       end    
       item
         Title.Caption = 'Pos.'
@@ -52,7 +52,7 @@ object frmMain: TfrmMain
       item
         Title.Caption = 'College'
         Width = 120
-        FieldName = 'college'
+        FieldName = 'College'
       end    
       item
         Title.Caption = 'AP.'
@@ -95,7 +95,7 @@ object frmMain: TfrmMain
     OnTitleClick = DBGrid1TitleClick
   end
   object cmbYearToList: TComboBox
-    Left = 158
+    Left = 161
     Height = 27
     Top = 8
     Width = 81
@@ -104,7 +104,7 @@ object frmMain: TfrmMain
     TabOrder = 1
   end
   object Label2: TLabel
-    Left = 33
+    Left = 36
     Height = 14
     Top = 72
     Width = 32
@@ -112,10 +112,10 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object cmbTeamList: TComboBox
-    Left = 72
+    Left = 75
     Height = 27
     Top = 72
-    Width = 167
+    Width = 136
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 0
@@ -123,7 +123,7 @@ object frmMain: TfrmMain
     TabOrder = 3
   end
   object Label3: TLabel
-    Left = 21
+    Left = 20
     Height = 14
     Top = 104
     Width = 49
@@ -131,10 +131,10 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object cmbPositionList: TComboBox
-    Left = 72
+    Left = 75
     Height = 27
     Top = 104
-    Width = 167
+    Width = 136
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 0
@@ -150,18 +150,18 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object btnClear: TButton
-    Left = 89
-    Height = 25
-    Top = 304
-    Width = 70
+    Left = 15
+    Height = 40
+    Top = 360
+    Width = 224
     Action = actClear
     TabOrder = 7
   end
   object cmbCollegeList: TComboBox
-    Left = 72
+    Left = 75
     Height = 27
     Top = 136
-    Width = 167
+    Width = 136
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 0
@@ -169,10 +169,10 @@ object frmMain: TfrmMain
     TabOrder = 5
   end
   object cmbRoundList: TComboBox
-    Left = 72
+    Left = 75
     Height = 27
     Top = 40
-    Width = 167
+    Width = 136
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     Enabled = False
@@ -181,7 +181,7 @@ object frmMain: TfrmMain
     TabOrder = 2
   end
   object Label6: TLabel
-    Left = 27
+    Left = 30
     Height = 14
     Top = 40
     Width = 40
@@ -189,18 +189,18 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object chkFirstPicks: TCheckBox
-    Left = 72
+    Left = 48
     Height = 23
-    Top = 388
+    Top = 236
     Width = 85
     Caption = 'First Picks'
     OnChange = chkChange
     TabOrder = 10
   end
   object chkNeverPlayed: TCheckBox
-    Left = 72
+    Left = 48
     Height = 19
-    Top = 360
+    Top = 208
     Width = 159
     AutoSize = False
     Caption = 'Not Played In NFL'
@@ -208,9 +208,9 @@ object frmMain: TfrmMain
     TabOrder = 9
   end
   object Label7: TLabel
-    Left = 28
+    Left = 24
     Height = 32
-    Top = 648
+    Top = 560
     Width = 202
     AutoSize = False
     Caption = 'All data and rights to pro-football-reference.com'
@@ -218,7 +218,7 @@ object frmMain: TfrmMain
     WordWrap = True
   end
   object cmbYearFromList: TComboBox
-    Left = 72
+    Left = 75
     Height = 27
     Top = 8
     Width = 81
@@ -227,7 +227,7 @@ object frmMain: TfrmMain
     TabOrder = 0
   end
   object Label9: TLabel
-    Left = 34
+    Left = 37
     Height = 14
     Top = 8
     Width = 32
@@ -235,7 +235,7 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object Label11: TLabel
-    Left = 24
+    Left = 16
     Height = 14
     Top = 488
     Width = 84
@@ -243,7 +243,7 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object cmbHighlight: TComboBox
-    Left = 71
+    Left = 63
     Height = 29
     Top = 512
     Width = 168
@@ -264,7 +264,7 @@ object frmMain: TfrmMain
     Text = 'Team Color'
   end
   object btnRoundClear: TSpeedButton
-    Left = 240
+    Left = 216
     Height = 22
     Top = 40
     Width = 23
@@ -307,7 +307,7 @@ object frmMain: TfrmMain
     OnClick = btnRoundClearClick
   end
   object btnTeamClear: TSpeedButton
-    Left = 240
+    Left = 216
     Height = 22
     Top = 72
     Width = 23
@@ -350,7 +350,7 @@ object frmMain: TfrmMain
     OnClick = btnRoundClearClick
   end
   object btnPositionClear: TSpeedButton
-    Left = 240
+    Left = 216
     Height = 22
     Top = 104
     Width = 23
@@ -393,7 +393,7 @@ object frmMain: TfrmMain
     OnClick = btnRoundClearClick
   end
   object btnCollegeClear: TSpeedButton
-    Left = 240
+    Left = 216
     Height = 22
     Top = 136
     Width = 23
@@ -436,42 +436,42 @@ object frmMain: TfrmMain
     OnClick = btnRoundClearClick
   end
   object chkProBowlers: TCheckBox
-    Left = 72
+    Left = 48
     Height = 23
-    Top = 415
+    Top = 263
     Width = 99
     Caption = 'Pro Bowlers'
     OnChange = chkChange
     TabOrder = 11
   end
   object chkAllPros: TCheckBox
-    Left = 72
+    Left = 48
     Height = 23
-    Top = 443
+    Top = 291
     Width = 132
     Caption = '1st Team All Pro''s'
     OnChange = chkChange
     TabOrder = 12
   end
   object btnReport: TButton
-    Left = 163
-    Height = 25
-    Top = 304
-    Width = 70
+    Left = 15
+    Height = 40
+    Top = 400
+    Width = 224
     Action = actReport
     Enabled = False
     TabOrder = 8
   end
   object btnSearch: TButton
-    Left = 17
-    Height = 25
-    Top = 304
-    Width = 70
+    Left = 15
+    Height = 40
+    Top = 320
+    Width = 224
     Action = actSearch
     TabOrder = 6
   end
   object Label5: TLabel
-    Left = 1024
+    Left = 992
     Height = 14
     Top = 8
     Width = 44
@@ -479,7 +479,7 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object cmbSortByList: TComboBox
-    Left = 1072
+    Left = 1040
     Height = 29
     Top = 8
     Width = 124
@@ -498,8 +498,8 @@ object frmMain: TfrmMain
     Text = 'Name / Picks'
   end
   object lstTeamList: TListBox
-    Left = 1024
-    Height = 632
+    Left = 992
+    Height = 552
     Top = 40
     Width = 96
     ItemHeight = 0
@@ -510,8 +510,8 @@ object frmMain: TfrmMain
     TopIndex = -1
   end
   object lstCollegeList: TListBox
-    Left = 1128
-    Height = 632
+    Left = 1096
+    Height = 552
     Top = 40
     Width = 144
     ItemHeight = 0
@@ -522,8 +522,8 @@ object frmMain: TfrmMain
     TopIndex = -1
   end
   object lstPositionList: TListBox
-    Left = 1280
-    Height = 632
+    Left = 1248
+    Height = 552
     Top = 40
     Width = 68
     ItemHeight = 0
@@ -533,19 +533,11 @@ object frmMain: TfrmMain
     TabOrder = 18
     TopIndex = -1
   end
-  object Label8: TLabel
-    Left = 33
-    Height = 14
-    Top = 168
-    Width = 35
-    Caption = 'UDFA'
-    ParentColor = False
-  end
-  object cmbUDFA: TComboBox
-    Left = 72
+  object cmbSuppl: TComboBox
+    Left = 74
     Height = 29
     Top = 168
-    Width = 167
+    Width = 137
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
     ItemHeight = 15
@@ -560,85 +552,12 @@ object frmMain: TfrmMain
     TabOrder = 19
     Text = 'Either'
   end
-  object cmbActive: TComboBox
-    Left = 72
-    Height = 29
-    Top = 200
-    Width = 167
-    AutoComplete = True
-    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-    ItemHeight = 15
-    ItemIndex = 0
-    Items.Strings = (
-      'Either'
-      'No'
-      'Yes'
-    )
-    OnChange = cmbChange
-    Style = csOwnerDrawFixed
-    TabOrder = 20
-    Text = 'Either'
-  end
-  object Label12: TLabel
-    Left = 29
-    Height = 14
-    Top = 200
-    Width = 37
-    Caption = 'Active'
-    ParentColor = False
-  end
-  object cmbSuppl: TComboBox
-    Left = 72
-    Height = 29
-    Top = 232
-    Width = 167
-    AutoComplete = True
-    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-    ItemHeight = 15
-    ItemIndex = 0
-    Items.Strings = (
-      'Either'
-      'No'
-      'Yes'
-    )
-    OnChange = cmbChange
-    Style = csOwnerDrawFixed
-    TabOrder = 21
-    Text = 'Either'
-  end
   object Label13: TLabel
-    Left = 31
+    Left = 32
     Height = 14
-    Top = 232
+    Top = 168
     Width = 38
     Caption = 'Suppl.'
-    ParentColor = False
-  end
-  object cmbHofer: TComboBox
-    Left = 72
-    Height = 29
-    Top = 264
-    Width = 167
-    AutoComplete = True
-    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-    ItemHeight = 15
-    ItemIndex = 0
-    Items.Strings = (
-      'Either'
-      'No'
-      'Yes'
-    )
-    OnChange = cmbChange
-    Style = csOwnerDrawFixed
-    TabOrder = 22
-    Text = 'Either'
-  end
-  object Label14: TLabel
-    Left = 27
-    Height = 14
-    Top = 264
-    Width = 38
-    Caption = 'HOFer'
     ParentColor = False
   end
   object MainMenu1: TMainMenu

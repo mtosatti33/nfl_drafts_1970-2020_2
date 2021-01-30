@@ -14,7 +14,7 @@ object dm: Tdm
     Connected = True
     HostName = 'localhost'
     Port = 0
-    Database = '/home/marcelo/bin/nfl_drafts_1970-2020/db/drafts.db'
+    Database = '/home/marcelo/bin/nfl_drafts_1970-2020_2/db/drafts.db'
     Protocol = 'sqlite'
     left = 62
     top = 27
@@ -23,31 +23,18 @@ object dm: Tdm
     Connection = conn
     Active = True
     SQL.Strings = (
-      'SELECT a.player_id, A.YR ,A.RND, A.PICK, b.ID, C.NAME as team, B.NAME as player,'
-      'e.NAME as pos_name, d.NAME as college, '
-      'f.ALL_PRO, f.PRO_BOWL, f.CAREER_AV , f.TEAM_AV, f.games, f.years_starter, b.PFR_SITE, '
-      'c.primary_colors, c.secondary_colors, '
-      'b.is_active, b.is_hofer, b.YEARS_TO'
-      'FROM picks A, players B, TEAMS c, colleges d, positions e, stats f '
-      'WHERE A.player_id=B.ID '
-      'and A.team_id=C.ID '
-      'and b.position_id=e.id '
-      'and b.college_id=d.id '
-      'and b.id=f.player_id '
-      'and (-1=:yr_from or A.YR between :yr_from and :yr_to)'
-      'and (0=:team_id or c.id=:team_id)'
-      'and (0=:rnd or a.rnd=:rnd)'
-      'and (0=:position or b.position_id=:position)'
-      'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or a.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
-      'AND (-1=:is_suppl or a.is_supplemental=:is_suppl) '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
-      'and (0=:first_pick or a.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (f.games=0 or f.games is null)))'
-      'and (0=:all_pro or f.all_pro > 0)'
-      'and (0=:pro_bowl or f.pro_bowl > 0)'
-      'order by A.YR ,A.RND, A.PICK'
+      'SELECT * FROM drafts'
+      'WHERE (-1=:yr_from or Draft_Yr between :yr_from and :yr_to)'
+      'and (0=:team_id or Tm=:team_id)'
+      'and (0=:rnd or Rnd=:rnd)'
+      'and (0=:position or "Pos"=:position)'
+      'and (0=:college or College=:college)'
+      'and (-1=:is_suppl or Is_Suppl=:is_suppl)'
+      'and (0=:first_pick or Pick=1)'
+      'and (0=:never_played or (G=0 or G is null))'
+      'and (0=:all_pro or AP1 > 0)'
+      'and (0=:pro_bowl or PB > 0)'
+      'order by Draft_Yr ,RND, PICK'
     )
     Params = <    
       item
@@ -82,22 +69,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -155,22 +127,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -210,12 +167,9 @@ object dm: Tdm
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -254,22 +208,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -327,22 +266,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -378,16 +302,13 @@ object dm: Tdm
       'and d.player_id=b.id '
       'and d.player_id=c.player_id '
       'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
-      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:team_id or a.id=:team_id)'
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -426,22 +347,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -499,22 +405,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -550,16 +441,13 @@ object dm: Tdm
       'and d.player_id=b.id '
       'and d.player_id=c.player_id '
       'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
-      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:team_id or a.id=:team_id)'
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -598,22 +486,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -671,22 +544,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -726,12 +584,9 @@ object dm: Tdm
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -770,22 +625,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -843,22 +683,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -894,16 +719,13 @@ object dm: Tdm
       'and d.player_id=b.id '
       'and d.player_id=c.player_id '
       'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
-      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:team_id or a.id=:team_id)'
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -942,22 +764,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1015,22 +822,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1066,16 +858,13 @@ object dm: Tdm
       'and d.player_id=b.id '
       'and d.player_id=c.player_id '
       'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
-      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:team_id or a.id=:team_id)'
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -1114,22 +903,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1187,22 +961,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1242,12 +1001,9 @@ object dm: Tdm
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -1286,22 +1042,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1359,22 +1100,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1410,16 +1136,13 @@ object dm: Tdm
       'and d.player_id=b.id '
       'and d.player_id=c.player_id '
       'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
-      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:team_id or a.id=:team_id)'
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -1458,22 +1181,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1531,22 +1239,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1582,16 +1275,13 @@ object dm: Tdm
       'and d.player_id=b.id '
       'and d.player_id=c.player_id '
       'and (-1=:yr_from or c.YR between :yr_from and :yr_to)'
-      'and (0=:team_id or c.team_id=:team_id)'
+      'and (0=:team_id or a.id=:team_id)'
       'and (0=:rnd or c.rnd=:rnd)'
       'and (0=:position or b.position_id=:position)'
       'and (0=:college or b.college_id=:college)'
-      'AND (-1=:is_udfa or c.is_undrafted=:is_udfa)'
-      'AND (-1=:is_active or b.is_active=:is_active)'
       'AND (-1=:is_suppl or c.is_supplemental=:is_suppl)  '
-      'and (-1=:is_hofer or b.is_hofer=:is_hofer)'
       'and (0=:first_pick or c.pick=1)'
-      'and (0=:never_played or ((B.IS_ACTIVE=0 or b.is_active is null) and (d.games=0 or d.games is null)))'
+      'and (0=:never_played or (d.games=0 or d.games is null))'
       'and (0=:all_pro or d.all_pro > 0)'
       'and (0=:pro_bowl or d.pro_bowl > 0)'
       'group by a.name'
@@ -1630,22 +1320,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
@@ -1703,22 +1378,7 @@ object dm: Tdm
       end    
       item
         DataType = ftUnknown
-        Name = 'is_udfa'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_active'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
         Name = 'is_suppl'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'is_hofer'
         ParamType = ptUnknown
       end    
       item
