@@ -10,12 +10,12 @@ object frmPlayerEdit: TfrmPlayerEdit
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.0.10.0'
   object lblName: TLabel
     Left = 161
-    Height = 30
+    Height = 37
     Top = 17
-    Width = 102
+    Width = 101
     Caption = 'lblName'
     Font.Height = -27
     ParentColor = False
@@ -23,107 +23,107 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object lblPosition: TLabel
     Left = 161
-    Height = 14
+    Height = 15
     Top = 57
-    Width = 65
+    Width = 56
     Caption = 'lblPosition'
     ParentColor = False
   end
   object Label1: TLabel
     Left = 49
-    Height = 14
-    Top = 221
-    Width = 103
+    Height = 15
+    Top = 164
+    Width = 91
     Caption = '1st. Team All-Pro'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 49
-    Height = 14
-    Top = 249
-    Width = 55
+    Height = 15
+    Top = 192
+    Width = 47
     Caption = 'Pro Bowl'
     ParentColor = False
   end
   object Label3: TLabel
     Left = 49
-    Height = 14
-    Top = 277
-    Width = 65
+    Height = 15
+    Top = 220
+    Width = 56
     Caption = 'Yrs. Starter'
     ParentColor = False
   end
   object Label4: TLabel
     Left = 49
-    Height = 14
-    Top = 305
-    Width = 40
+    Height = 15
+    Top = 248
+    Width = 36
     Caption = 'Games'
     ParentColor = False
   end
   object Label5: TLabel
     Left = 49
-    Height = 14
-    Top = 333
-    Width = 59
+    Height = 15
+    Top = 276
+    Width = 52
     Caption = 'Career AV'
     ParentColor = False
   end
   object Label6: TLabel
     Left = 49
-    Height = 14
-    Top = 361
-    Width = 102
+    Height = 15
+    Top = 304
+    Width = 90
     Caption = 'Team Drafted AV'
     ParentColor = False
   end
   object edtAllPro: TEdit
     Left = 161
-    Height = 27
-    Top = 221
+    Height = 23
+    Top = 164
     Width = 208
     TabOrder = 0
   end
   object edtProBowl: TEdit
     Left = 161
-    Height = 27
-    Top = 249
+    Height = 23
+    Top = 192
     Width = 208
     TabOrder = 1
   end
   object edtStarter: TEdit
     Left = 161
-    Height = 27
-    Top = 277
+    Height = 23
+    Top = 220
     Width = 208
     TabOrder = 2
   end
   object edtGames: TEdit
     Left = 161
-    Height = 27
-    Top = 305
+    Height = 23
+    Top = 248
     Width = 208
     TabOrder = 3
   end
   object edtCarAV: TEdit
     Left = 161
-    Height = 27
-    Top = 333
+    Height = 23
+    Top = 276
     Width = 208
     TabOrder = 4
   end
   object edtTmAV: TEdit
     Left = 161
-    Height = 27
-    Top = 361
+    Height = 23
+    Top = 304
     Width = 208
     TabOrder = 5
   end
   object lblCollege: TLabel
     Left = 161
-    Height = 14
+    Height = 15
     Top = 73
-    Width = 62
+    Width = 53
     Caption = 'lblCollege'
     ParentColor = False
   end
@@ -149,69 +149,26 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object lblID: TLabel
     Left = 161
-    Height = 14
+    Height = 15
     Top = 113
-    Width = 30
+    Width = 24
     Caption = 'lblID'
-    ParentColor = False
-    Visible = False
-  end
-  object Label7: TLabel
-    Left = 49
-    Height = 14
-    Top = 137
-    Width = 37
-    Caption = 'Active'
-    ParentColor = False
-  end
-  object Label8: TLabel
-    Left = 49
-    Height = 14
-    Top = 165
-    Width = 79
-    Caption = 'Hall of Famer'
     ParentColor = False
   end
   object Label9: TLabel
     Left = 49
-    Height = 14
-    Top = 193
-    Width = 98
+    Height = 15
+    Top = 136
+    Width = 85
     Caption = 'Last Year Played'
     ParentColor = False
   end
   object edtLastYear: TEdit
     Left = 161
-    Height = 27
-    Top = 193
+    Height = 23
+    Top = 136
     Width = 208
     TabOrder = 8
-  end
-  object cmbHofer: TComboBox
-    Left = 161
-    Height = 26
-    Top = 165
-    Width = 208
-    ItemHeight = 0
-    Items.Strings = (
-      'No'
-      'Yes'
-    )
-    Style = csDropDownList
-    TabOrder = 9
-  end
-  object cmbActive: TComboBox
-    Left = 161
-    Height = 26
-    Top = 137
-    Width = 208
-    ItemHeight = 0
-    Items.Strings = (
-      'No'
-      'Yes'
-    )
-    Style = csDropDownList
-    TabOrder = 10
   end
   object Shape1: TShape
     Left = 48
@@ -311,8 +268,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Stretch = True
   end
   object ActionList1: TActionList
-    left = 281
-    top = 17
+    Left = 281
+    Top = 17
     object actApply: TAction
       Caption = 'Apply'
       OnExecute = actApplyExecute
@@ -322,116 +279,53 @@ object frmPlayerEdit: TfrmPlayerEdit
       OnExecute = actCancelExecute
     end
   end
-  object qryStats: TZQuery
+  object qryDrafts: TZQuery
     Connection = dm.conn
     SQL.Strings = (
-      'UPDATE STATS '
-      'SET ALL_PRO=:ALL_PRO,'
-      'PRO_BOWL=:PRO_BOWL,'
-      'YEARS_STARTER=:YEARS_STARTER,'
-      'GAMES=:GAMES,'
-      'CAREER_AV=:CAREER_AV,'
-      'TEAM_AV=:TEAM_AV'
-      'WHERE PLAYER_ID=:PLAYER_ID'
-    )
-    Params = <    
-      item
-        DataType = ftUnknown
-        Name = 'ALL_PRO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'PRO_BOWL'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'YEARS_STARTER'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'GAMES'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CAREER_AV'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'TEAM_AV'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'PLAYER_ID'
-        ParamType = ptUnknown
-      end>
-    left = 393
-    top = 17
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'ALL_PRO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'PRO_BOWL'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'YEARS_STARTER'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'GAMES'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CAREER_AV'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'TEAM_AV'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'PLAYER_ID'
-        ParamType = ptUnknown
-      end>
-  end
-  object qryPlayer: TZQuery
-    Connection = dm.conn
-    SQL.Strings = (
-      'UPDATE players'
-      'set IS_ACTIVE =:active,'
-      'IS_HOFER =:hofer,'
-      'YEARS_TO =:yrs_to'
+      'UPDATE drafts '
+      'set "TO"=:TO,'
+      'AP1=:AP1,'
+      'PB=:PB,'
+      'ST=:ST,'
+      'G=:G,'
+      'CarAV=:CarAV,'
+      'DrAV=:DrAV'
       'where ID =:id'
     )
     Params = <    
       item
         DataType = ftUnknown
-        Name = 'active'
+        Name = 'TO'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'hofer'
+        Name = 'AP1'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'yrs_to'
+        Name = 'PB'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ST'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'G'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CarAV'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DrAV'
         ParamType = ptUnknown
       end    
       item
@@ -439,22 +333,42 @@ object frmPlayerEdit: TfrmPlayerEdit
         Name = 'id'
         ParamType = ptUnknown
       end>
-    left = 337
-    top = 17
+    Left = 337
+    Top = 17
     ParamData = <    
       item
         DataType = ftUnknown
-        Name = 'active'
+        Name = 'TO'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'hofer'
+        Name = 'AP1'
         ParamType = ptUnknown
       end    
       item
         DataType = ftUnknown
-        Name = 'yrs_to'
+        Name = 'PB'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ST'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'G'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CarAV'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DrAV'
         ParamType = ptUnknown
       end    
       item

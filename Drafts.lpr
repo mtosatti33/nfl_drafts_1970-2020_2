@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit,
-  UInstructionView, ureport, upaintgrid, ufillitems, uPrepareQuery;
+  UInstructionView, ureport, upaintgrid, ufillitems, uPrepareQuery, UTeamColors;
 
 {$R *.res}
 

@@ -424,7 +424,7 @@ object dm: Tdm
     Connection = conn
     SQL.Strings = (
       '/*POSITION COUNT*/'
-      'select a.Pos ,'
+      'select a.Pos,'
       'COUNT(A.Pos) as count'
       'from drafts a '
       'WHERE (-1=:yr_from or Draft_Yr between :yr_from and :yr_to)'

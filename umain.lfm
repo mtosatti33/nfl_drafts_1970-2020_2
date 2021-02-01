@@ -10,7 +10,6 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.10.0'
-  WindowState = wsMaximized
   object DBGrid1: TDBGrid
     Left = 248
     Height = 584
@@ -36,7 +35,7 @@ object frmMain: TfrmMain
       end    
       item
         Title.Caption = 'Team'
-        Width = 100
+        Width = 65
         FieldName = 'Tm'
       end    
       item
@@ -175,7 +174,6 @@ object frmMain: TfrmMain
     Width = 136
     AutoComplete = True
     AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-    Enabled = False
     ItemHeight = 15
     OnChange = cmbChange
     TabOrder = 2
@@ -631,11 +629,33 @@ object frmMain: TfrmMain
     Connection = dm.conn
     SQL.Strings = (
       'SELECT DISTINCT TM FROM DRAFTS'
+      'WHERE DRAFT_YR BETWEEN :YR_FROM AND :YR_TO'
       'ORDER BY TM'
     )
-    Params = <>
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'YR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YR_TO'
+        ParamType = ptUnknown
+      end>
     Left = 432
     Top = 352
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'YR_FROM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'YR_TO'
+        ParamType = ptUnknown
+      end>
   end
   object qryPositionList: TZQuery
     Connection = dm.conn
@@ -660,12 +680,18 @@ object frmMain: TfrmMain
   object qryRoundList: TZQuery
     Connection = dm.conn
     SQL.Strings = (
-      'select distinct RND from drafts where Draft_yr=:year'
+      'select distinct RND from drafts '
+      'where Draft_yr between :yr_from and :yr_to'
     )
     Params = <    
       item
         DataType = ftUnknown
-        Name = 'year'
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
         ParamType = ptUnknown
       end>
     Left = 432
@@ -673,7 +699,12 @@ object frmMain: TfrmMain
     ParamData = <    
       item
         DataType = ftUnknown
-        Name = 'year'
+        Name = 'yr_from'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'yr_to'
         ParamType = ptUnknown
       end>
   end

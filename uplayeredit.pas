@@ -18,8 +18,6 @@ type
     ActionList1: TActionList;
     Button1: TButton;
     Button2: TButton;
-    cmbHofer: TComboBox;
-    cmbActive: TComboBox;
     edtAllPro: TEdit;
     edtLastYear: TEdit;
     edtProBowl: TEdit;
@@ -34,15 +32,12 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
     Label9: TLabel;
     lblID: TLabel;
     lblName: TLabel;
     lblPosition: TLabel;
     lblCollege: TLabel;
-    qryStats: TZQuery;
-    qryPlayer: TZQuery;
+    qryDrafts: TZQuery;
     Shape1: TShape;
     procedure actApplyExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
@@ -59,8 +54,6 @@ type
     FGames: String;
     FCarAV: String;
     FTmAV: String;
-    FHofer: Byte;
-    FActive: Byte;
     FLastYear: string;
     FIsSave: Boolean;
   public
@@ -74,8 +67,6 @@ type
     property Games: string read FGames write FGames;
     property CarAV: string read FCarAV write FCarAV;
     property TmAV: string read FTmAV write FTmAV;
-    property Hofer: byte read FHofer write FHofer;
-    property Active: byte read FActive write FActive;
     property LastYearPlayed: string read FLastYear write FLastYear;
     property IsSave: Boolean read FIsSave write FIsSave;
   end;
@@ -96,8 +87,6 @@ begin
   lblPosition.Caption:=FPosition;
   lblCollege.Caption:=FCollege;
 
-  cmbActive.ItemIndex:=FActive;
-  cmbHofer.ItemIndex:=FHofer;
   edtLastYear.Text:=FLastYear;
   edtAllPro.Text:=FAllPro;
   edtProBowl.Text:=FProBowl;
@@ -126,47 +115,37 @@ begin
   FGames:=edtGames.Text;
   FCarAV:=edtCarAV.Text;
   FTmAV:=edtTmAV.Text;
-  FActive:=cmbActive.ItemIndex;
-  FHofer:=cmbHofer.ItemIndex;
   FLastYear:=edtLastYear.Text;
 
-  qryStats.ParamByName('ALL_PRO').AsString:=FAllPro;
-  qryStats.ParamByName('PRO_BOWL').AsString:=FProBowl;
-  qryStats.ParamByName('YEARS_STARTER').AsString:=FStarter;
+  qryDrafts.ParamByName('AP1').AsString:=FAllPro;
+  qryDrafts.ParamByName('PB').AsString:=FProBowl;
+  qryDrafts.ParamByName('ST').AsString:=FStarter;
 
   if FGames <> EmptyStr then
-     qryStats.ParamByName('GAMES').AsString:=FGames
+     qryDrafts.ParamByName('G').AsString:=FGames
   else
-      qryStats.ParamByName('GAMES').IsNull;
+      qryDrafts.ParamByName('G').IsNull;
 
   if FCarAV <> EmptyStr then
-     qryStats.ParamByName('CAREER_AV').AsString:=FCarAV
+     qryDrafts.ParamByName('CARAV').AsString:=FCarAV
   else
-      qryStats.ParamByName('CAREER_AV').IsNull;
+      qryDrafts.ParamByName('CARAV').IsNull;
 
   if FTmAV <> EmptyStr then
-      qryStats.ParamByName('TEAM_AV').AsString:=FTmAV
+      qryDrafts.ParamByName('DRAV').AsString:=FTmAV
   else
-      qryStats.ParamByName('TEAM_AV').IsNull;
-
-  qryStats.ParamByName('PLAYER_ID').AsString:=FId;
-
-  qryPlayer.ParamByName('ACTIVE').AsInteger:=FActive;
-  qryPlayer.ParamByName('HOFER').AsInteger:=FHofer;
+      qryDrafts.ParamByName('DRAV').IsNull;
 
   if FLastYear <> EmptyStr then
-     qryPlayer.ParamByName('YRS_TO').AsString:=FLastYear
+     qryDrafts.ParamByName('TO').AsString:=FLastYear
   else
-     qryPlayer.ParamByName('YRS_TO').IsNull;
+     qryDrafts.ParamByName('TO').IsNull;
 
-  qryPlayer.ParamByName('ID').AsString:=FId;
+  qryDrafts.ParamByName('ID').AsString:=FId;
 
   try
-    qryStats.ExecSQL;
-    qryStats.ApplyUpdates;
-
-    qryPlayer.ExecSQL;
-    qryPlayer.ApplyUpdates;
+    qryDrafts.ExecSQL;
+    qryDrafts.ApplyUpdates;
   finally
     Close;
   end;

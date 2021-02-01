@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery;
+  LR_Class, ufillitems, uPrepareQuery, LCLType;
 
 type
 
@@ -231,27 +231,25 @@ begin
   frmPlayerEdit := TfrmPlayerEdit.Create(Application);
 
   try
-    frmPlayerEdit.ID := dm.qryPicks['PLAYER_ID'];
+    frmPlayerEdit.ID := dm.qryPicks['ID'];
     frmPlayerEdit.Name := dm.qryPicks['PLAYER'];
-    frmPlayerEdit.Position := dm.qryPicks['POS_NAME'];
+    frmPlayerEdit.Position := dm.qryPicks['POS'];
     frmPlayerEdit.College := dm.qryPicks['COLLEGE'];
-    frmPlayerEdit.AllPro := dm.qryPicks['ALL_PRO'];
-    frmPlayerEdit.ProBowl := dm.qryPicks['PRO_BOWL'];
-    frmPlayerEdit.Starter := dm.qryPicks['YEARS_STARTER'];
-    frmPlayerEdit.Active := dm.qryPicks['IS_ACTIVE'];
-    frmPlayerEdit.Hofer := dm.qryPicks['IS_HOFER'];
+    frmPlayerEdit.AllPro := dm.qryPicks['AP1'];
+    frmPlayerEdit.ProBowl := dm.qryPicks['PB'];
+    frmPlayerEdit.Starter := dm.qryPicks['ST'];
 
-    if not dm.qryPicks.FieldByName('GAMES').IsNull then
-      frmPlayerEdit.Games := dm.qryPicks['GAMES'];
+    if not dm.qryPicks.FieldByName('G').IsNull then
+      frmPlayerEdit.Games := dm.qryPicks['G'];
 
-    if not dm.qryPicks.FieldByName('CAREER_AV').IsNull then
-      frmPlayerEdit.CarAV := dm.qryPicks['CAREER_AV'];
+    if not dm.qryPicks.FieldByName('CarAV').IsNull then
+      frmPlayerEdit.CarAV := dm.qryPicks['CarAV'];
 
-    if not dm.qryPicks.FieldByName('TEAM_AV').IsNull then
-      frmPlayerEdit.TmAV := dm.qryPicks['TEAM_AV'];
+    if not dm.qryPicks.FieldByName('DrAv').IsNull then
+      frmPlayerEdit.TmAV := dm.qryPicks['DrAv'];
 
-    if not dm.qryPicks.FieldByName('YEARS_TO').IsNull then
-      frmPlayerEdit.LastYearPlayed := dm.qryPicks['YEARS_TO'];
+    if not dm.qryPicks.FieldByName('TO').IsNull then
+      frmPlayerEdit.LastYearPlayed := dm.qryPicks['TO'];
 
     frmPlayerEdit.ShowModal;
 
@@ -284,7 +282,8 @@ begin
 
   if not ValidateSearch then
   begin
-    ShowMessage('Choose one of the Parameters Above');
+    ShowMessage('Initial and/or Final date won´t be blank');
+    cmbYearFromList.SetFocus;
     Exit;
   end;
 
@@ -337,7 +336,7 @@ begin
     end;
   end;
   if not cmbSortByList.ItemIndex = 0 then
-     cmbSortByList.ItemIndex := 0;
+    cmbSortByList.ItemIndex := 0;
 
   cmbSortByListChange(nil);
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
@@ -349,7 +348,7 @@ var
   ComboBox: TComboBox;
 begin
   btn := Sender as TSpeedButton;
-  ComboBox:= nil;
+  ComboBox := nil;
   if btn = btnRoundClear then
     ComboBox := cmbRoundList;
   if btn = btnTeamClear then
@@ -418,13 +417,21 @@ begin
     if cmbRoundList.Items.Count <> 0 then
       cmbRoundList.Items.Clear;
 
+    if cmbTeamList.Items.Count <> 0 then
+      cmbTeamList.Items.Clear;
+
     qryRoundList.Close;
-    qryRoundList.ParamByName('year').AsString := cmbYearToList.Text;
+    qryRoundList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
+    qryRoundList.ParamByName('yr_to').AsString := cmbYearToList.Text;
     qryRoundList.Open;
 
-    cmbRoundList.Items := FillItems.Fill(qryRoundList, ['RND']);
+    qryTeamList.Close;
+    qryTeamList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
+    qryTeamList.ParamByName('yr_to').AsString := cmbYearToList.Text;
+    qryTeamList.Open;
 
-    cmbRoundList.Enabled := True;
+    cmbRoundList.Items := FillItems.Fill(qryRoundList, ['RND']);
+    cmbTeamList.Items := FillItems.Fill(qryTeamList, ['Tm']);
   end;
 
   //cmbYearToList event
@@ -485,7 +492,7 @@ begin
         begin
           lstTeamList.Items := Fill(qryTeamName, ['count', 'tm']);
           lstCollegeList.Items := Fill(qryCollegeName, ['count', 'college']);
-          lstPositionList.Items := Fill(qryPositionName, ['pos']);
+          lstPositionList.Items := Fill(qryPositionName, ['count', 'pos']);
         end;
         //Draft Picks
         1:
@@ -522,15 +529,15 @@ end;
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
   Column: TColumn; AState: TGridDrawState);
-{var
-  PaintGrid: TPaintGrid;  }
+var
+  PaintGrid: TPaintGrid;
 begin
-  {PaintGrid := TPaintGrid.Create(DBGrid1, dm.qryPicks, DataCol);
+  PaintGrid := TPaintGrid.Create(DBGrid1, dm.qryPicks, DataCol);
   try
     PaintGrid.Paint(cmbHighlight.ItemIndex);
   finally
     FreeAndNil(PaintGrid);
-  end;  }
+  end;
 end;
 
 procedure TfrmMain.DBGrid1TitleClick(Column: TColumn);
@@ -555,8 +562,6 @@ begin
   FillItems := TFillItems.Create;
   FAsc := False;
 
-  if not qryTeamList.active then
-    qryTeamList.active := True;
   if not qryYearList.active then
     qryYearList.active := True;
   if not qryPositionList.active then
@@ -570,7 +575,6 @@ begin
   begin
     cmbYearFromList.Items := Fill(qryYearList, ['Draft_yr']);
     cmbYearToList.Items := Fill(qryYearList, ['Draft_yr']);
-    cmbTeamList.Items := Fill(qryTeamList, ['Tm']);
     cmbPositionList.Items := Fill(qryPositionList, ['Pos']);
     cmbCollegeList.Items := Fill(qryCollegeList, ['College']);
   end;
