@@ -624,7 +624,7 @@ object frmMain: TfrmMain
   object qryYearList: TZQuery
     Connection = dm.conn
     SQL.Strings = (
-      'SELECT DISTINCT YR FROM PICKS ORDER BY YR DESC'
+      'SELECT DISTINCT DRAFT_YR FROM DRAFTS ORDER BY DRAFT_YR DESC'
     )
     Params = <>
     left = 432
@@ -632,8 +632,9 @@ object frmMain: TfrmMain
   end
   object qryTeamList: TZQuery
     Connection = dm.conn
+    Active = True
     SQL.Strings = (
-      'SELECT NAME FROM TEAMS'
+      'SELECT TM FROM DRAFTS'
     )
     Params = <>
     left = 432
@@ -642,7 +643,7 @@ object frmMain: TfrmMain
   object qryPositionList: TZQuery
     Connection = dm.conn
     SQL.Strings = (
-      'SELECT NAME FROM POSITIONS'
+      'SELECT POS FROM DRAFTS'
     )
     Params = <>
     left = 432
@@ -651,7 +652,7 @@ object frmMain: TfrmMain
   object qryCollegeList: TZQuery
     Connection = dm.conn
     SQL.Strings = (
-      'SELECT NAME FROM COLLEGES'
+      'SELECT COLLEGE FROM DRAFTS'
     )
     Params = <>
     left = 432
@@ -659,8 +660,9 @@ object frmMain: TfrmMain
   end
   object qryRoundList: TZQuery
     Connection = dm.conn
+    Active = True
     SQL.Strings = (
-      'select distinct RND from picks where YR=:year and is_undrafted=0'
+      'select distinct RND from drafts where Draft_yr=:year'
     )
     Params = <    
       item
