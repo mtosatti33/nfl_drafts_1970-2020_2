@@ -319,10 +319,10 @@ begin
           qry.ParamByName('yr_from').AsInteger := -1;
 
         qry.ParamByName('yr_to').AsString := cmbYearToList.Text;
-        qry.ParamByName('team_id').AsInteger := cmbTeamList.ItemIndex + 1;
+        qry.ParamByName('team_id').AsString := cmbTeamList.Text;
         qry.ParamByName('rnd').AsInteger := cmbRoundList.ItemIndex + 1;
-        qry.ParamByName('position').AsInteger := cmbPositionList.ItemIndex + 1;
-        qry.ParamByName('college').AsInteger := cmbCollegeList.ItemIndex + 1;
+        qry.ParamByName('position').AsString := cmbPositionList.Text;
+        qry.ParamByName('college').AsString := cmbCollegeList.Text;
         qry.ParamByName('is_suppl').AsInteger := cmbSuppl.ItemIndex - 1;
         qry.ParamByName('first_pick').AsInteger := integer(chkFirstPicks.Checked);
         qry.ParamByName('never_played').AsInteger := integer(chkNeverPlayed.Checked);
@@ -338,6 +338,7 @@ begin
   end;
   if not cmbSortByList.ItemIndex = 0 then
      cmbSortByList.ItemIndex := 0;
+
   cmbSortByListChange(nil);
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
 end;
@@ -482,23 +483,23 @@ begin
         //Name
         0:
         begin
-          lstTeamList.Items := Fill(qryTeamName, ['count', 'NAME']);
-          lstCollegeList.Items := Fill(qryCollegeName, ['count', 'name']);
-          lstPositionList.Items := Fill(qryPositionName, ['count', 'name']);
+          lstTeamList.Items := Fill(qryTeamName, ['count', 'tm']);
+          lstCollegeList.Items := Fill(qryCollegeName, ['count', 'college']);
+          lstPositionList.Items := Fill(qryPositionName, ['pos']);
         end;
         //Draft Picks
         1:
         begin
-          lstTeamList.Items := Fill(qryTeamCount, ['count', 'NAME']);
-          lstCollegeList.Items := Fill(qryCollegeCount, ['count', 'name']);
-          lstPositionList.Items := Fill(qryPositionCount, ['count', 'name']);
+          lstTeamList.Items := Fill(qryTeamCount, ['count', 'tm']);
+          lstCollegeList.Items := Fill(qryCollegeCount, ['count', 'college']);
+          lstPositionList.Items := Fill(qryPositionCount, ['count', 'pos']);
         end;
         //Team AV
         2:
         begin
-          lstTeamList.Items := Fill(qryTeamAV, ['sum', 'name']);
-          lstCollegeList.Items := Fill(qryCollegeAV, ['sum', 'name']);
-          lstPositionList.Items := Fill(qryPositionAV, ['sum', 'name']);
+          lstTeamList.Items := Fill(qryTeamAV, ['sum', 'tm']);
+          lstCollegeList.Items := Fill(qryCollegeAV, ['sum', 'college']);
+          lstPositionList.Items := Fill(qryPositionAV, ['sum', 'pos']);
         end;
       end;
     end;
@@ -511,26 +512,25 @@ var
 begin
   if dm.qryPicks.Active then
     if dm.qryPicks.RecordCount <> 0 then
-      if not dm.qryPicks.FieldByName('PFR_SITE').IsNull then
+      if not dm.qryPicks.FieldByName('PLAYER_NFL_LINK').IsNull then
       begin
         //ShowMessage(BoolToStr(dm.qryPicks.FieldByName('PFR_SITE').IsNull));
-        str := dm.qryPicks.FieldByName('PFR_SITE').AsString;
-        OpenURL('https://www.pro-football-reference.com/players/' +
-          UpperCase(Copy(str, 1, 1)) + '/' + str + '.htm');
+        str := dm.qryPicks.FieldByName('PLAYER_NFL_LINK').AsString;
+        OpenURL('https://www.pro-football-reference.com' + str);
       end;
 end;
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
   Column: TColumn; AState: TGridDrawState);
-var
-  PaintGrid: TPaintGrid;
+{var
+  PaintGrid: TPaintGrid;  }
 begin
-  PaintGrid := TPaintGrid.Create(DBGrid1, dm.qryPicks, DataCol);
+  {PaintGrid := TPaintGrid.Create(DBGrid1, dm.qryPicks, DataCol);
   try
     PaintGrid.Paint(cmbHighlight.ItemIndex);
   finally
     FreeAndNil(PaintGrid);
-  end;
+  end;  }
 end;
 
 procedure TfrmMain.DBGrid1TitleClick(Column: TColumn);
@@ -568,11 +568,11 @@ begin
 
   with FillItems do
   begin
-    cmbYearFromList.Items := Fill(qryYearList, ['YR']);
-    cmbYearToList.Items := Fill(qryYearList, ['YR']);
-    cmbTeamList.Items := Fill(qryTeamList, ['NAME']);
-    cmbPositionList.Items := Fill(qryPositionList, ['NAME']);
-    cmbCollegeList.Items := Fill(qryCollegeList, ['NAME']);
+    cmbYearFromList.Items := Fill(qryYearList, ['Draft_yr']);
+    cmbYearToList.Items := Fill(qryYearList, ['Draft_yr']);
+    cmbTeamList.Items := Fill(qryTeamList, ['Tm']);
+    cmbPositionList.Items := Fill(qryPositionList, ['Pos']);
+    cmbCollegeList.Items := Fill(qryCollegeList, ['College']);
   end;
 end;
 
