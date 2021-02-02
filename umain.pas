@@ -19,6 +19,8 @@ type
     actEditPlayer: TAction;
     actCmbClear: TAction;
     actChkSetToFalse: TAction;
+    actViewNCAAProfile: TAction;
+    actViewNFLProfile: TAction;
     actLstClear: TAction;
     actReport: TAction;
     actSearch: TAction;
@@ -62,6 +64,8 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
     N1: TMenuItem;
     mnuOptions: TPopupMenu;
     qryCollegeList: TZQuery;
@@ -78,8 +82,13 @@ type
     procedure actLstClearExecute(Sender: TObject);
     procedure actReportExecute(Sender: TObject);
     procedure actSearchExecute(Sender: TObject);
+    procedure actViewNCAAProfileExecute(Sender: TObject);
+    procedure actViewNFLProfileExecute(Sender: TObject);
     procedure btnRoundClearClick(Sender: TObject);
-    procedure chkChange(Sender: TObject);
+    procedure chkAllProsChange(Sender: TObject);
+    procedure chkFirstPicksChange(Sender: TObject);
+    procedure chkNeverPlayedChange(Sender: TObject);
+    procedure chkProBowlersChange(Sender: TObject);
     procedure cmbChange(Sender: TObject);
     procedure cmbSortByListChange(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
@@ -90,6 +99,7 @@ type
     procedure LoadComponents;
     procedure lstClick(Sender: TObject);
     function ValidateSearch: boolean;
+    procedure OpenLink(field_url: string);
   private
     FAsc: boolean;
   public
@@ -332,7 +342,6 @@ begin
         qry.First;
 
       end;
-
     end;
   end;
   if not cmbSortByList.ItemIndex = 0 then
@@ -340,6 +349,16 @@ begin
 
   cmbSortByListChange(nil);
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
+end;
+
+procedure TfrmMain.actViewNCAAProfileExecute(Sender: TObject);
+begin
+  OpenLink('PLAYER_NCAA_LINK');
+end;
+
+procedure TfrmMain.actViewNFLProfileExecute(Sender: TObject);
+begin
+  OpenLink('PLAYER_NFL_LINK');
 end;
 
 procedure TfrmMain.btnRoundClearClick(Sender: TObject);
@@ -363,40 +382,32 @@ begin
   actSearch.Execute;
 end;
 
-procedure TfrmMain.chkChange(Sender: TObject);
+procedure TfrmMain.chkAllProsChange(Sender: TObject);
 begin
-  //chkNeverPlayed
-  if Sender = chkNeverPlayed then
-  begin
+  chkNeverPlayed.Enabled := not chkAllPros.Checked;
+end;
 
-    chkProBowlers.Enabled := not chkNeverPlayed.Checked;
-    chkAllPros.Enabled := not chkNeverPlayed.Checked;
+procedure TfrmMain.chkFirstPicksChange(Sender: TObject);
+begin
+  if chkFirstPicks.Checked then
+  begin
+    cmbRoundList.ItemIndex := -1;
+    cmbSuppl.ItemIndex := 1;
   end;
 
-  //chkFirstPicks
-  if Sender = chkFirstPicks then
-  begin
-    if chkFirstPicks.Checked then
-    begin
-      cmbRoundList.ItemIndex := -1;
-      cmbSuppl.ItemIndex := 1;
-    end;
+  cmbRoundList.Enabled := not chkFirstPicks.Checked;
+  cmbSuppl.Enabled := not chkFirstPicks.Checked;
+end;
 
-    cmbRoundList.Enabled := not chkFirstPicks.Checked;
-    cmbSuppl.Enabled := not chkFirstPicks.Checked;
-  end;
+procedure TfrmMain.chkNeverPlayedChange(Sender: TObject);
+begin
+  chkProBowlers.Enabled := not chkNeverPlayed.Checked;
+  chkAllPros.Enabled := not chkNeverPlayed.Checked;
+end;
 
-  //chkProBowlers
-  if Sender = chkProBowlers then
-  begin
-    chkNeverPlayed.Enabled := not chkProBowlers.Checked;
-  end;
-
-  //chkAllPro
-  if Sender = chkAllPros then
-  begin
-    chkNeverPlayed.Enabled := not chkAllPros.Checked;
-  end;
+procedure TfrmMain.chkProBowlersChange(Sender: TObject);
+begin
+  chkNeverPlayed.Enabled := not chkProBowlers.Checked;
 end;
 
 procedure TfrmMain.cmbChange(Sender: TObject);
@@ -514,17 +525,8 @@ begin
 end;
 
 procedure TfrmMain.DBGrid1DblClick(Sender: TObject);
-var
-  str: string;
 begin
-  if dm.qryPicks.Active then
-    if dm.qryPicks.RecordCount <> 0 then
-      if not dm.qryPicks.FieldByName('PLAYER_NFL_LINK').IsNull then
-      begin
-        //ShowMessage(BoolToStr(dm.qryPicks.FieldByName('PFR_SITE').IsNull));
-        str := dm.qryPicks.FieldByName('PLAYER_NFL_LINK').AsString;
-        OpenURL('https://www.pro-football-reference.com' + str);
-      end;
+  actViewNFLProfile.Execute;
 end;
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
@@ -616,6 +618,14 @@ begin
     not (chkNeverPlayed.Checked) and not (chkFirstPicks.Checked) and
     not (chkProBowlers.Checked) and not (chkAllPros.Checked) then
     Result := False;
+end;
+
+procedure TfrmMain.OpenLink(field_url: string);
+begin
+  if dm.qryPicks.Active then
+    if dm.qryPicks.RecordCount <> 0 then
+      if not dm.qryPicks.FieldByName(field_url).IsNull then
+        OpenURL(dm.qryPicks.FieldByName(field_url).AsString);
 end;
 
 end.

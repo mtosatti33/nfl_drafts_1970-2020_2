@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 19
+  Left = 274
   Height = 625
-  Top = 38
+  Top = 79
   Width = 1326
   Caption = 'Drafts 1970-2020'
   ClientHeight = 605
@@ -192,7 +192,7 @@ object frmMain: TfrmMain
     Top = 236
     Width = 72
     Caption = 'First Picks'
-    OnChange = chkChange
+    OnChange = chkFirstPicksChange
     TabOrder = 10
   end
   object chkNeverPlayed: TCheckBox
@@ -202,7 +202,7 @@ object frmMain: TfrmMain
     Width = 159
     AutoSize = False
     Caption = 'Not Played In NFL'
-    OnChange = chkChange
+    OnChange = chkNeverPlayedChange
     TabOrder = 9
   end
   object Label7: TLabel
@@ -439,7 +439,7 @@ object frmMain: TfrmMain
     Top = 263
     Width = 82
     Caption = 'Pro Bowlers'
-    OnChange = chkChange
+    OnChange = chkProBowlersChange
     TabOrder = 11
   end
   object chkAllPros: TCheckBox
@@ -448,7 +448,7 @@ object frmMain: TfrmMain
     Top = 291
     Width = 114
     Caption = '1st Team All Pro''s'
-    OnChange = chkChange
+    OnChange = chkAllProsChange
     TabOrder = 12
   end
   object btnReport: TButton
@@ -610,6 +610,14 @@ object frmMain: TfrmMain
     object actChkSetToFalse: TAction
       OnExecute = actChkSetToFalseExecute
     end
+    object actViewNFLProfile: TAction
+      Caption = 'View NFL Profile'
+      OnExecute = actViewNFLProfileExecute
+    end
+    object actViewNCAAProfile: TAction
+      Caption = 'View NCAA Profile'
+      OnExecute = actViewNCAAProfileExecute
+    end
   end
   object dsTable: TDataSource
     DataSet = dm.qryPicks
@@ -713,6 +721,12 @@ object frmMain: TfrmMain
     Top = 209
     object MenuItem4: TMenuItem
       Action = actEditPlayer
+    end
+    object MenuItem5: TMenuItem
+      Action = actViewNFLProfile
+    end
+    object MenuItem6: TMenuItem
+      Action = actViewNCAAProfile
     end
   end
 end
