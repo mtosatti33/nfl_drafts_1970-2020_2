@@ -278,7 +278,6 @@ var
   PrepareQuery: TPrepareQuery;
 begin
 
-  //TODO: implement the parameter`s cconstructor
   PrepareQuery := TPrepareQuery.Create(cmbYearFromList.Text,
     cmbYearToList.Text, cmbTeamList.Text,
     cmbPositionList.Text, cmbCollegeList.Text,
