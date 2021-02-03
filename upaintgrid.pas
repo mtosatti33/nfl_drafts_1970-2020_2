@@ -68,8 +68,8 @@ begin
       if FQuery.RecordCount <> 0 then
         if FDataCol = 3 then
         begin
-          FGrid.Canvas.Font.Color := TeamColor.GetForeColor(draft_yr, team);
-          FGrid.Canvas.Brush.Color := TeamColor.GetBackColor(draft_yr, team);
+          FGrid.Canvas.Font.Color := TeamColor.GetColor(draft_yr, team, FORECOLOR);
+          FGrid.Canvas.Brush.Color := TeamColor.GetColor(draft_yr, team, BACKCOLOR);
         end;
     end;
     // AV Margin

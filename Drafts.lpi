@@ -113,7 +113,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="12">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -183,6 +183,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UTeamColors"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="uteamcolorconstants.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UTeamColorConstants"/>
+      </Unit11>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

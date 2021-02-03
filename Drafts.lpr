@@ -7,8 +7,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit,
-  UInstructionView, ureport, upaintgrid, ufillitems, uPrepareQuery, UTeamColors;
+  Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit, UInstructionView,
+  ureport, upaintgrid, ufillitems, uPrepareQuery, UTeamColors, UTeamColorConstants;
 
 {$R *.res}
 

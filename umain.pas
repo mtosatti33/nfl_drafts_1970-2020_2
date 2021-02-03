@@ -89,8 +89,10 @@ type
     procedure chkFirstPicksChange(Sender: TObject);
     procedure chkNeverPlayedChange(Sender: TObject);
     procedure chkProBowlersChange(Sender: TObject);
-    procedure cmbChange(Sender: TObject);
+    procedure cmbHighlightChange(Sender: TObject);
     procedure cmbSortByListChange(Sender: TObject);
+    procedure cmbSupplChange(Sender: TObject);
+    procedure cmbYearFromListChange(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
@@ -274,12 +276,15 @@ end;
 procedure TfrmMain.actSearchExecute(Sender: TObject);
 var
   PrepareQuery: TPrepareQuery;
-  i: integer;
-  qry: TZQuery;
 begin
 
   //TODO: implement the parameter`s cconstructor
-  //PrepareQuery:= TPrepareQuery.Create();
+  PrepareQuery := TPrepareQuery.Create(cmbYearFromList.Text,
+    cmbYearToList.Text, cmbTeamList.Text,
+    cmbPositionList.Text, cmbCollegeList.Text,
+    cmbRoundList.ItemIndex, cmbSuppl.ItemIndex,
+    chkFirstPicks.Checked, chkNeverPlayed.Checked,
+    chkAllPros.Checked, chkProBowlers.Checked);
 
   // because of the cmbYearToListChange event, this line has addicted,
   // else the itemindex of the combobox doesn't works
@@ -312,38 +317,8 @@ begin
     end;
   end;
 
-  with dm do
-  begin
-    for i := 0 to ComponentCount - 1 do
-    begin
-      if Components[i] is TZQuery then
-      begin
-        qry := Components[i] as TZQuery;
+  PrepareQuery.Load;
 
-        qry.Close;
-
-        if cmbYearFromList.Text <> '' then
-          qry.ParamByName('yr_from').AsString := cmbYearFromList.Text
-        else
-          qry.ParamByName('yr_from').AsInteger := -1;
-
-        qry.ParamByName('yr_to').AsString := cmbYearToList.Text;
-        qry.ParamByName('team_id').AsString := cmbTeamList.Text;
-        qry.ParamByName('rnd').AsInteger := cmbRoundList.ItemIndex + 1;
-        qry.ParamByName('position').AsString := cmbPositionList.Text;
-        qry.ParamByName('college').AsString := cmbCollegeList.Text;
-        qry.ParamByName('is_suppl').AsInteger := cmbSuppl.ItemIndex - 1;
-        qry.ParamByName('first_pick').AsInteger := integer(chkFirstPicks.Checked);
-        qry.ParamByName('never_played').AsInteger := integer(chkNeverPlayed.Checked);
-        qry.ParamByName('all_pro').AsInteger := integer(chkAllPros.Checked);
-        qry.ParamByName('pro_bowl').AsInteger := integer(chkProBowlers.Checked);
-        qry.Open;
-
-        qry.First;
-
-      end;
-    end;
-  end;
   if not cmbSortByList.ItemIndex = 0 then
     cmbSortByList.ItemIndex := 0;
 
@@ -410,83 +385,10 @@ begin
   chkNeverPlayed.Enabled := not chkProBowlers.Checked;
 end;
 
-procedure TfrmMain.cmbChange(Sender: TObject);
+procedure TfrmMain.cmbHighlightChange(Sender: TObject);
 begin
-  if not cmbSuppl.Enabled then
-    cmbSuppl.Enabled := True;
-  if not chkFirstPicks.Enabled then
-    chkFirstPicks.Enabled := True;
-  if not chkNeverPlayed.Enabled then
-    chkNeverPlayed.Enabled := True;
-
-  //cmbYearFromList event
-  if Sender = cmbYearFromList then
-  begin
-    if cmbYearFromList.Text <> '' then
-      cmbYearToList.Text := cmbYearFromList.Text;
-
-    if cmbRoundList.Items.Count <> 0 then
-      cmbRoundList.Items.Clear;
-
-    if cmbTeamList.Items.Count <> 0 then
-      cmbTeamList.Items.Clear;
-
-    qryRoundList.Close;
-    qryRoundList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
-    qryRoundList.ParamByName('yr_to').AsString := cmbYearToList.Text;
-    qryRoundList.Open;
-
-    qryTeamList.Close;
-    qryTeamList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
-    qryTeamList.ParamByName('yr_to').AsString := cmbYearToList.Text;
-    qryTeamList.Open;
-
-    cmbRoundList.Items := FillItems.Fill(qryRoundList, ['RND']);
-    cmbTeamList.Items := FillItems.Fill(qryTeamList, ['Tm']);
-  end;
-
-  //cmbYearToList event
-  if Sender = cmbYearToList then
-  begin
-
-  end;
-
-  //cmbRoundList event
-  if Sender = cmbRoundList then
-  begin
-
-  end;
-
-  //cmbTeamList event
-  if Sender = cmbTeamList then
-  begin
-
-  end;
-
-  //cmbPositionList event
-  if Sender = cmbPositionList then
-  begin
-
-  end;
-
-  //cmbCollegeList event
-  if Sender = cmbCollegeList then
-  begin
-
-  end;
-
-  //cmbSuppl event
-  if Sender = cmbSuppl then
-  begin
-    chkFirstPicks.Enabled := cmbSuppl.ItemIndex <> 2;
-  end;
-
-  //cmbHighlight event
-  if Sender = cmbHighlight then
-  begin
-    DBGrid1.OnPrepareCanvas := @DBGrid1PrepareCanvas;
-    actSearch.Execute;
-  end;
+  DBGrid1.OnPrepareCanvas := @DBGrid1PrepareCanvas;
+  actSearch.Execute;
 end;
 
 procedure TfrmMain.cmbSortByListChange(Sender: TObject);
@@ -522,6 +424,36 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TfrmMain.cmbSupplChange(Sender: TObject);
+begin
+  chkFirstPicks.Enabled := cmbSuppl.ItemIndex <> 2;
+end;
+
+procedure TfrmMain.cmbYearFromListChange(Sender: TObject);
+begin
+  if cmbYearFromList.Text <> '' then
+    cmbYearToList.Text := cmbYearFromList.Text;
+
+  if cmbRoundList.Items.Count <> 0 then
+    cmbRoundList.Items.Clear;
+
+  if cmbTeamList.Items.Count <> 0 then
+    cmbTeamList.Items.Clear;
+
+  qryRoundList.Close;
+  qryRoundList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
+  qryRoundList.ParamByName('yr_to').AsString := cmbYearToList.Text;
+  qryRoundList.Open;
+
+  qryTeamList.Close;
+  qryTeamList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
+  qryTeamList.ParamByName('yr_to').AsString := cmbYearToList.Text;
+  qryTeamList.Open;
+
+  cmbRoundList.Items := FillItems.Fill(qryRoundList, ['RND']);
+  cmbTeamList.Items := FillItems.Fill(qryTeamList, ['Tm']);
 end;
 
 procedure TfrmMain.DBGrid1DblClick(Sender: TObject);
