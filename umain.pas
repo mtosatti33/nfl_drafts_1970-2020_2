@@ -200,7 +200,6 @@ begin
   actCmbClear.Execute;
   actChkSetToFalse.Execute;
 
-  cmbRoundList.Enabled := False;
   cmbHighlight.Enabled := False;
   dm.qryPicks.Close;
   cmbYearFromList.SetFocus;

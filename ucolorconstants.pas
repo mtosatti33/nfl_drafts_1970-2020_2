@@ -1,4 +1,4 @@
-unit UTeamColorConstants;
+unit UColorConstants;
 
 {$mode objfpc}{$H+}
 
@@ -42,6 +42,20 @@ const
   Texans:            array [1..2] of TColor = ($FFFFFF, $3019A7);
   Titans:            array [1..2] of TColor = ($DB924B, $40230C);
   Vikings:           array [1..2] of TColor = ($2FC6FF, $83264F);
+
+  //AV Margin
+  SameYear:	     array [1..2] of TColor = (clWhite, $7BBE63);
+  UntilThreeYear:    array [1..2] of TColor = ($5E4934, $84EBFF);
+  ThreeYearAndMore:  array [1..2] of TColor = (clWhite, $6B69F8);
+
+  //Draft Rounds
+  Round1:            array [1..2] of TColor = (clWhite, $6B69F8);
+  Round2:            array [1..2] of TColor = (clWhite, $7394FA);
+  Round3:            array [1..2] of TColor = ($5E4934, $7BBFFC);
+  Round4:            array [1..2] of TColor = ($5E4934, $84EBFF);
+  Round5:            array [1..2] of TColor = ($5E4934, $82DDCC);
+  Round6:            array [1..2] of TColor = (clWhite, $7FCE98);
+  Round7:            array [1..2] of TColor = (clWhite, $7BBE63);
 
   //NCAA Colors Constant (in future)
 

@@ -1,11 +1,11 @@
 object frmMain: TfrmMain
-  Left = 274
+  Left = 194
   Height = 625
-  Top = 79
-  Width = 1326
+  Top = 93
+  Width = 1289
   Caption = 'Drafts 1970-2020'
   ClientHeight = 605
-  ClientWidth = 1326
+  ClientWidth = 1289
   Menu = MainMenu1
   OnCreate = FormCreate
   Position = poScreenCenter
@@ -66,6 +66,11 @@ object frmMain: TfrmMain
       item
         Title.Caption = 'Yrs.'
         Width = 32
+        FieldName = 'St'
+      end    
+      item
+        Title.Caption = 'St'
+        Width = 27
         FieldName = 'St'
       end    
       item
@@ -494,7 +499,7 @@ object frmMain: TfrmMain
     Left = 992
     Height = 552
     Top = 40
-    Width = 96
+    Width = 64
     ItemHeight = 0
     OnClick = lstClick
     ParentFont = False
@@ -502,10 +507,10 @@ object frmMain: TfrmMain
     TabOrder = 16
   end
   object lstCollegeList: TListBox
-    Left = 1096
+    Left = 1064
     Height = 552
     Top = 40
-    Width = 144
+    Width = 152
     ItemHeight = 0
     OnClick = lstClick
     ParentFont = False
@@ -513,10 +518,10 @@ object frmMain: TfrmMain
     TabOrder = 17
   end
   object lstPositionList: TListBox
-    Left = 1248
+    Left = 1224
     Height = 552
     Top = 40
-    Width = 68
+    Width = 56
     ItemHeight = 0
     OnClick = lstClick
     ParentFont = False

@@ -179,14 +179,14 @@
         <UnitName Value="uPrepareQuery"/>
       </Unit9>
       <Unit10>
-        <Filename Value="uteamcolors.pas"/>
+        <Filename Value="ucolorconstants.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="UTeamColors"/>
+        <UnitName Value="UColorConstants"/>
       </Unit10>
       <Unit11>
-        <Filename Value="uteamcolorconstants.pas"/>
+        <Filename Value="ucolors.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="UTeamColorConstants"/>
+        <UnitName Value="UColors"/>
       </Unit11>
     </Units>
   </ProjectOptions>
