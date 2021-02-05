@@ -57,7 +57,8 @@ begin
       car_av := SetValue('carAV');
       tm_av := SetValue('DrAV');
       rnd := SetValue('rnd');
-      starter := SetValue('ST');
+      starter := SetValue('ST'); 
+      res := car_av - tm_av;
 
       case Index of
         //Team Colors
@@ -74,7 +75,6 @@ begin
         begin
           if FDatacol in [0..10] then
           begin
-            res := car_av - tm_av;
             FGrid.Canvas.Font.Color := MarginColor.GetColor(res, FORECOLOR);
             FGrid.Canvas.Brush.Color := MarginColor.GetColor(res, BACKCOLOR);
           end;
