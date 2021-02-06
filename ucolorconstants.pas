@@ -7,7 +7,10 @@ interface
 uses
   Classes, SysUtils, Graphics;
 
-//NFL Colors Constants
+{NFL Colors Constants
+     Array 1: Foreground
+     Array 2: Background
+}
 const
   Niners:            array [1..2] of TColor = ($5D99B3, $0000AA);
   Bears:             array [1..2] of TColor = ($0338C8, $2A160B);
@@ -39,7 +42,7 @@ const
   Saints:            array [1..2] of TColor = ($000000, $8DBCD3);
   Seahawks:          array [1..2] of TColor = ($28BE69, $442200);
   Steelers:          array [1..2] of TColor = ($000000, $12B6FF);
-  Texans:            array [1..2] of TColor = ($FFFFFF, $3019A7);
+  Texans:            array [1..2] of TColor = ($FFFFFF, $2F2003);
   Titans:            array [1..2] of TColor = ($DB924B, $40230C);
   Vikings:           array [1..2] of TColor = ($2FC6FF, $83264F);
 
