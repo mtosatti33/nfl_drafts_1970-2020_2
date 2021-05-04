@@ -8,10 +8,9 @@
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="75" Y="11"/>
         <UsageCount Value="198"/>
-        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -20,8 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMain"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="250"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="249"/>
         <CursorPos X="42" Y="205"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
@@ -42,7 +41,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="UDM"/>
         <TopLine Value="10"/>
-        <CursorPos X="30" Y="13"/>
+        <CursorPos X="37" Y="16"/>
         <UsageCount Value="198"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -96,9 +95,9 @@
       <Unit7>
         <Filename Value="upaintgrid.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="66"/>
-        <CursorPos X="4" Y="71"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="65"/>
+        <CursorPos X="48" Y="30"/>
         <UsageCount Value="108"/>
         <Loaded Value="True"/>
       </Unit7>
@@ -123,19 +122,19 @@
         <Filename Value="ucolorconstants.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColorConstants"/>
-        <EditorIndex Value="4"/>
-        <CursorPos X="42" Y="12"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12"/>
+        <CursorPos X="3" Y="20"/>
         <UsageCount Value="23"/>
-        <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="ucolors.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColors"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="62"/>
-        <CursorPos X="59" Y="69"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="178"/>
+        <CursorPos X="38" Y="151"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit11>
@@ -595,11 +594,10 @@
       <Unit73>
         <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\win\sysutils.pp"/>
         <UnitName Value="SysUtils"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="121"/>
         <CursorPos X="31" Y="135"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit73>
       <Unit74>
         <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\win\wininc\base.inc"/>
@@ -609,127 +607,123 @@
         <UsageCount Value="10"/>
       </Unit74>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
-        <Filename Value="umain.pas"/>
-        <Caret Line="262" Column="41" TopLine="250"/>
-      </Position1>
-      <Position2>
         <Filename Value="upaintgrid.pas"/>
         <Caret Line="53" Column="22" TopLine="41"/>
+      </Position1>
+      <Position2>
+        <Filename Value="umain.pas"/>
+        <Caret Line="262" Column="41" TopLine="250"/>
       </Position2>
       <Position3>
         <Filename Value="umain.pas"/>
-        <Caret Line="262" Column="41" TopLine="250"/>
+        <Caret Line="144" Column="26" TopLine="137"/>
       </Position3>
       <Position4>
         <Filename Value="umain.pas"/>
-        <Caret Line="144" Column="26" TopLine="137"/>
+        <Caret Line="236" Column="3" TopLine="231"/>
       </Position4>
       <Position5>
         <Filename Value="umain.pas"/>
-        <Caret Line="236" Column="3" TopLine="231"/>
+        <Caret Line="464" TopLine="456"/>
       </Position5>
       <Position6>
         <Filename Value="umain.pas"/>
-        <Caret Line="464" TopLine="456"/>
+        <Caret Line="407" Column="5" TopLine="404"/>
       </Position6>
       <Position7>
         <Filename Value="umain.pas"/>
-        <Caret Line="407" Column="5" TopLine="404"/>
+        <Caret Line="482" Column="23" TopLine="465"/>
       </Position7>
       <Position8>
-        <Filename Value="umain.pas"/>
-        <Caret Line="482" Column="23" TopLine="465"/>
-      </Position8>
-      <Position9>
         <Filename Value="upaintgrid.pas"/>
         <Caret Line="109" Column="43" TopLine="95"/>
+      </Position8>
+      <Position9>
+        <Filename Value="umain.pas"/>
+        <Caret Line="482" Column="23"/>
       </Position9>
       <Position10>
         <Filename Value="umain.pas"/>
-        <Caret Line="482" Column="23"/>
+        <Caret Line="490" Column="3" TopLine="488"/>
       </Position10>
       <Position11>
         <Filename Value="umain.pas"/>
-        <Caret Line="490" Column="3" TopLine="488"/>
+        <Caret Line="497" Column="42" TopLine="495"/>
       </Position11>
       <Position12>
-        <Filename Value="umain.pas"/>
-        <Caret Line="497" Column="42" TopLine="495"/>
+        <Filename Value="upaintgrid.pas"/>
+        <Caret Line="57" Column="7" TopLine="46"/>
       </Position12>
       <Position13>
         <Filename Value="upaintgrid.pas"/>
-        <Caret Line="57" Column="7" TopLine="46"/>
+        <Caret Line="69" Column="45" TopLine="53"/>
       </Position13>
       <Position14>
         <Filename Value="upaintgrid.pas"/>
-        <Caret Line="69" Column="45" TopLine="53"/>
+        <Caret Line="8" Column="52"/>
       </Position14>
       <Position15>
-        <Filename Value="upaintgrid.pas"/>
-        <Caret Line="8" Column="52"/>
+        <Filename Value="ucolors.pas"/>
+        <Caret Line="8" Column="33"/>
       </Position15>
       <Position16>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="8" Column="33"/>
+        <Caret Line="25" Column="40" TopLine="17"/>
       </Position16>
       <Position17>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="25" Column="40" TopLine="17"/>
+        <Caret Line="42" Column="14" TopLine="24"/>
       </Position17>
       <Position18>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="42" Column="14" TopLine="24"/>
+        <Caret Line="46" Column="36" TopLine="24"/>
       </Position18>
       <Position19>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="46" Column="36" TopLine="24"/>
+        <Caret Line="29" Column="53" TopLine="8"/>
       </Position19>
       <Position20>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="29" Column="53" TopLine="8"/>
+        <Caret Line="23" Column="24" TopLine="16"/>
       </Position20>
       <Position21>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="23" Column="24" TopLine="16"/>
+        <Caret Line="33" Column="26" TopLine="20"/>
       </Position21>
       <Position22>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="33" Column="26" TopLine="20"/>
+        <Caret Line="44" Column="9" TopLine="38"/>
       </Position22>
       <Position23>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="44" Column="9" TopLine="38"/>
+        <Caret Line="46" Column="10" TopLine="38"/>
       </Position23>
       <Position24>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="46" Column="10" TopLine="38"/>
+        <Caret Line="40" Column="61" TopLine="38"/>
       </Position24>
       <Position25>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="40" Column="61" TopLine="38"/>
+        <Caret Line="23" Column="23" TopLine="16"/>
       </Position25>
       <Position26>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="23" Column="23" TopLine="16"/>
+        <Caret Line="47" Column="35" TopLine="42"/>
       </Position26>
       <Position27>
         <Filename Value="ucolors.pas"/>
-        <Caret Line="47" Column="35" TopLine="42"/>
+        <Caret Line="46" Column="27" TopLine="25"/>
       </Position27>
       <Position28>
-        <Filename Value="ucolors.pas"/>
-        <Caret Line="46" Column="27" TopLine="25"/>
+        <Filename Value="upaintgrid.pas"/>
+        <Caret Line="47" Column="10" TopLine="42"/>
       </Position28>
       <Position29>
-        <Filename Value="ucolorconstants.pas"/>
-        <Caret Line="12" Column="42"/>
+        <Filename Value="ucolors.pas"/>
+        <Caret Line="72" Column="51" TopLine="142"/>
       </Position29>
-      <Position30>
-        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\win\sysutils.pp"/>
-        <Caret Line="140" Column="20" TopLine="121"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
