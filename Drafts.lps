@@ -20,7 +20,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMain"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="249"/>
+        <TopLine Value="248"/>
         <CursorPos X="42" Y="205"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
@@ -65,10 +65,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UPlayerEdit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="93"/>
-        <CursorPos X="40" Y="149"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="92"/>
+        <CursorPos X="35" Y="94"/>
         <UsageCount Value="148"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="uinstructionview.pas"/>
@@ -95,7 +98,7 @@
       <Unit7>
         <Filename Value="upaintgrid.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="65"/>
         <CursorPos X="48" Y="30"/>
         <UsageCount Value="108"/>
@@ -131,10 +134,9 @@
         <Filename Value="ucolors.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColors"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="178"/>
-        <CursorPos X="38" Y="151"/>
+        <CursorPos X="43" Y="189"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit11>
@@ -607,7 +609,7 @@
         <UsageCount Value="10"/>
       </Unit74>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="upaintgrid.pas"/>
         <Caret Line="53" Column="22" TopLine="41"/>
@@ -720,10 +722,6 @@
         <Filename Value="upaintgrid.pas"/>
         <Caret Line="47" Column="10" TopLine="42"/>
       </Position28>
-      <Position29>
-        <Filename Value="ucolors.pas"/>
-        <Caret Line="72" Column="51" TopLine="142"/>
-      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

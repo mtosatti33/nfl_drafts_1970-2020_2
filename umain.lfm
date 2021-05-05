@@ -9,7 +9,7 @@ object frmMain: TfrmMain
   Menu = MainMenu1
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.0.4.0'
   object DBGrid1: TDBGrid
     Left = 248
     Height = 584
@@ -40,7 +40,7 @@ object frmMain: TfrmMain
       end    
       item
         Title.Caption = 'Player'
-        Width = 115
+        Width = 160
         FieldName = 'Player'
       end    
       item
@@ -50,17 +50,17 @@ object frmMain: TfrmMain
       end    
       item
         Title.Caption = 'College'
-        Width = 120
+        Width = 110
         FieldName = 'College'
       end    
       item
         Title.Caption = 'AP.'
-        Width = 42
+        Width = 32
         FieldName = 'AP1'
       end    
       item
         Title.Caption = 'PB'
-        Width = 45
+        Width = 32
         FieldName = 'PB'
       end    
       item
@@ -556,8 +556,8 @@ object frmMain: TfrmMain
     ParentColor = False
   end
   object MainMenu1: TMainMenu
-    Left = 896
-    Top = 88
+    left = 896
+    top = 88
     object MenuItem1: TMenuItem
       Caption = 'Main'
       object MenuItem2: TMenuItem
@@ -572,8 +572,8 @@ object frmMain: TfrmMain
     end
   end
   object ActionList1: TActionList
-    Left = 680
-    Top = 88
+    left = 680
+    top = 88
     object actPreferences: TAction
       Caption = 'Preferences'
     end
@@ -621,8 +621,8 @@ object frmMain: TfrmMain
   end
   object dsTable: TDataSource
     DataSet = dm.qryPicks
-    Left = 755
-    Top = 442
+    left = 755
+    top = 442
   end
   object qryYearList: TZQuery
     Connection = dm.conn
@@ -630,8 +630,8 @@ object frmMain: TfrmMain
       'SELECT DISTINCT DRAFT_YR FROM DRAFTS ORDER BY DRAFT_YR DESC'
     )
     Params = <>
-    Left = 432
-    Top = 288
+    left = 432
+    top = 288
   end
   object qryTeamList: TZQuery
     Connection = dm.conn
@@ -651,8 +651,8 @@ object frmMain: TfrmMain
         Name = 'YR_TO'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 352
+    left = 432
+    top = 352
     ParamData = <    
       item
         DataType = ftUnknown
@@ -672,8 +672,8 @@ object frmMain: TfrmMain
       'ORDER BY POS'
     )
     Params = <>
-    Left = 432
-    Top = 416
+    left = 432
+    top = 416
   end
   object qryCollegeList: TZQuery
     Connection = dm.conn
@@ -682,8 +682,8 @@ object frmMain: TfrmMain
       'ORDER BY COLLEGE'
     )
     Params = <>
-    Left = 432
-    Top = 464
+    left = 432
+    top = 464
   end
   object qryRoundList: TZQuery
     Connection = dm.conn
@@ -702,8 +702,8 @@ object frmMain: TfrmMain
         Name = 'yr_to'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 232
+    left = 432
+    top = 232
     ParamData = <    
       item
         DataType = ftUnknown
@@ -717,8 +717,8 @@ object frmMain: TfrmMain
       end>
   end
   object mnuOptions: TPopupMenu
-    Left = 787
-    Top = 209
+    left = 787
+    top = 209
     object MenuItem4: TMenuItem
       Action = actEditPlayer
     end

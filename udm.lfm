@@ -15,7 +15,7 @@ object dm: Tdm
     Connected = True
     HostName = 'localhost'
     Port = 0
-    Database = 'D:\Documentos\GitHub\nfl_drafts_1970-2020_2\db\drafts.db'
+    Database = 'D:\Documentos\GitHub\nfl_drafts_1970-2020_2\db\drafts2.db'
     Protocol = 'sqlite'
     LibraryLocation = 'D:\Documentos\GitHub\nfl_drafts_1970-2020_2\db\sqlite3.dll'
     left = 62
