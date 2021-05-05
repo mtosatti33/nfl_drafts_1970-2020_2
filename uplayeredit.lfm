@@ -85,6 +85,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Height = 23
     Top = 232
     Width = 176
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 0
   end
   object edtProBowl: TEdit
@@ -92,6 +94,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Height = 23
     Top = 264
     Width = 176
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 1
   end
   object edtStarter: TEdit
@@ -99,6 +103,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Height = 23
     Top = 200
     Width = 176
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 2
   end
   object edtGames: TEdit
@@ -106,6 +112,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Height = 23
     Top = 232
     Width = 176
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 3
   end
   object edtCarAV: TEdit
@@ -113,6 +121,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Height = 23
     Top = 264
     Width = 176
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 4
   end
   object edtTmAV: TEdit
@@ -120,6 +130,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Height = 23
     Top = 296
     Width = 176
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 5
   end
   object lblCollege: TLabel
@@ -172,6 +184,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Height = 23
     Top = 200
     Width = 176
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 8
   end
   object Shape1: TShape
