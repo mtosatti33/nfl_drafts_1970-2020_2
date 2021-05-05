@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType;
+  LR_Class, ufillitems, uPrepareQuery, LCLType, ECEditBtns, messages;
 
 type
 
@@ -26,28 +26,32 @@ type
     actSearch: TAction;
     actPreferences: TAction;
     ActionList1: TActionList;
+    btnClear: TButton;
+    btnCollegeClear: TSpeedButton;
+    btnPositionClear: TSpeedButton;
     btnReport: TButton;
+    btnRoundClear: TSpeedButton;
     btnSearch: TButton;
     btnTeamClear: TSpeedButton;
-    btnPositionClear: TSpeedButton;
-    btnCollegeClear: TSpeedButton;
-    btnClear: TButton;
-    chkProBowlers: TCheckBox;
     chkAllPros: TCheckBox;
     chkFirstPicks: TCheckBox;
     chkNeverPlayed: TCheckBox;
+    chkProBowlers: TCheckBox;
     cmbCollegeList: TComboBox;
-    cmbSuppl: TComboBox;
     cmbHighlight: TComboBox;
+    cmbPositionList: TComboBox;
     cmbRoundList: TComboBox;
     cmbSortByList: TComboBox;
-    cmbYearToList: TComboBox;
+    cmbSuppl: TComboBox;
     cmbTeamList: TComboBox;
-    cmbPositionList: TComboBox;
     cmbYearFromList: TComboBox;
-    dsTable: TDataSource;
+    cmbYearToList: TComboBox;
     DBGrid1: TDBGrid;
+    dsTable: TDataSource;
+    Label1: TLabel;
+    Label10: TLabel;
     Label11: TLabel;
+    Label12: TLabel;
     Label13: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -55,25 +59,25 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
     Label9: TLabel;
     lstCollegeList: TListBox;
     lstPositionList: TListBox;
     lstTeamList: TListBox;
-    MainMenu1: TMainMenu;
-    MenuItem1: TMenuItem;
-    MenuItem2: TMenuItem;
-    MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
-    N1: TMenuItem;
     mnuOptions: TPopupMenu;
+    Panel1: TPanel;
+    pgcMain: TPageControl;
     qryCollegeList: TZQuery;
     qryYearList: TZQuery;
     qryTeamList: TZQuery;
     qryPositionList: TZQuery;
     qryRoundList: TZQuery;
-    btnRoundClear: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    tsMainData: TTabSheet;
+    tsFilters: TTabSheet;
     procedure actChkSetToFalseExecute(Sender: TObject);
     procedure actClearExecute(Sender: TObject);
     procedure actCmbClearExecute(Sender: TObject);
@@ -100,10 +104,17 @@ type
     procedure FormCreate(Sender: TObject);
     procedure LoadComponents;
     procedure lstClick(Sender: TObject);
+    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
+      );
+    procedure pgcMainChange(Sender: TObject);
     function ValidateSearch: boolean;
     procedure OpenLink(field_url: string);
   private
     FAsc: boolean;
+    MouseX: integer;
+    MouseY: integer;
   public
 
   end;
@@ -321,6 +332,7 @@ begin
     cmbSortByList.ItemIndex := 0;
 
   cmbSortByListChange(nil);
+  pgcMain.ActivePage:= tsMainData;
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
 end;
 
@@ -352,7 +364,7 @@ begin
 
   ComboBox.ItemIndex := -1;
 
-  actSearch.Execute;
+  //actSearch.Execute;
 end;
 
 procedure TfrmMain.chkAllProsChange(Sender: TObject);
@@ -536,7 +548,31 @@ begin
       ComboBox.ItemIndex := ComboBox.Items.IndexOf(trim(Copy(str, Pos(' ', str), 25)));
 
       actSearch.Execute;
+      pgcMain.ActivePage := tsMainData;
     end;
+end;
+
+procedure TfrmMain.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  MouseX:= X + Panel1.Left;   
+  MouseY:= Y + Panel1.Top;
+
+end;
+
+procedure TfrmMain.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  if ssLeft in Shift then
+  begin
+    Left:= Mouse.CursorPos.x - MouseX;
+    Top := Mouse.CursorPos.y - MouseY;
+  end;
+end;
+
+procedure TfrmMain.pgcMainChange(Sender: TObject);
+begin
+
 end;
 
 function TfrmMain.ValidateSearch: boolean;

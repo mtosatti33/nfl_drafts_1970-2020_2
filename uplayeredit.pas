@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList,
-  ExtCtrls, ZDataset;
+  ExtCtrls, Buttons, ZDataset;
 
 type
 
@@ -37,12 +37,15 @@ type
     lblName: TLabel;
     lblPosition: TLabel;
     lblCollege: TLabel;
+    Panel1: TPanel;
     qryDrafts: TZQuery;
     Shape1: TShape;
+    SpeedButton1: TSpeedButton;
     procedure actApplyExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     FId: string;
     FName: string;
@@ -94,6 +97,11 @@ begin
   edtGames.Text:=FGames;
   edtCarAV.Text:=FCarAV;
   edtTmAV.Text:=FTmAV;
+end;
+
+procedure TfrmPlayerEdit.SpeedButton1Click(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfrmPlayerEdit.actCancelExecute(Sender: TObject);

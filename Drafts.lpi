@@ -96,22 +96,25 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="5">
+    <RequiredPackages Count="6">
       <Item1>
-        <PackageName Value="frce"/>
+        <PackageName Value="eccontrols"/>
       </Item1>
       <Item2>
-        <PackageName Value="lazreport"/>
+        <PackageName Value="frce"/>
       </Item2>
       <Item3>
-        <PackageName Value="zcomponent"/>
+        <PackageName Value="lazreport"/>
       </Item3>
       <Item4>
-        <PackageName Value="FCL"/>
+        <PackageName Value="zcomponent"/>
       </Item4>
       <Item5>
-        <PackageName Value="LCL"/>
+        <PackageName Value="FCL"/>
       </Item5>
+      <Item6>
+        <PackageName Value="LCL"/>
+      </Item6>
     </RequiredPackages>
     <Units Count="12">
       <Unit0>

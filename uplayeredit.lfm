@@ -1,128 +1,131 @@
 object frmPlayerEdit: TfrmPlayerEdit
-  Left = 347
-  Height = 427
-  Top = 144
+  Left = 324
+  Height = 389
+  Top = 150
   Width = 712
-  BorderStyle = bsToolWindow
+  BorderStyle = bsNone
   Caption = 'Edit Player Information'
-  ClientHeight = 427
+  ClientHeight = 389
   ClientWidth = 712
+  Color = 7754266
+  Font.Color = clWhite
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '2.0.4.0'
   object lblName: TLabel
-    Left = 161
+    Left = 154
     Height = 37
-    Top = 17
+    Top = 57
     Width = 101
     Caption = 'lblName'
+    Font.Color = clWhite
     Font.Height = -27
     ParentColor = False
     ParentFont = False
   end
   object lblPosition: TLabel
-    Left = 161
+    Left = 154
     Height = 15
-    Top = 57
+    Top = 97
     Width = 56
     Caption = 'lblPosition'
     ParentColor = False
   end
   object Label1: TLabel
-    Left = 49
+    Left = 41
     Height = 15
-    Top = 176
+    Top = 232
     Width = 91
     Caption = '1st. Team All-Pro'
     ParentColor = False
   end
   object Label2: TLabel
-    Left = 49
+    Left = 41
     Height = 15
-    Top = 212
+    Top = 264
     Width = 47
     Caption = 'Pro Bowl'
     ParentColor = False
   end
   object Label3: TLabel
-    Left = 376
+    Left = 368
     Height = 15
-    Top = 136
+    Top = 200
     Width = 56
     Caption = 'Yrs. Starter'
     ParentColor = False
   end
   object Label4: TLabel
-    Left = 376
+    Left = 368
     Height = 15
-    Top = 176
+    Top = 232
     Width = 36
     Caption = 'Games'
     ParentColor = False
   end
   object Label5: TLabel
-    Left = 376
+    Left = 368
     Height = 15
-    Top = 212
+    Top = 264
     Width = 52
     Caption = 'Career AV'
     ParentColor = False
   end
   object Label6: TLabel
-    Left = 376
+    Left = 368
     Height = 15
-    Top = 248
+    Top = 296
     Width = 90
     Caption = 'Team Drafted AV'
     ParentColor = False
   end
   object edtAllPro: TEdit
-    Left = 161
+    Left = 153
     Height = 23
-    Top = 176
+    Top = 232
     Width = 176
     TabOrder = 0
   end
   object edtProBowl: TEdit
-    Left = 161
+    Left = 153
     Height = 23
-    Top = 212
+    Top = 264
     Width = 176
     TabOrder = 1
   end
   object edtStarter: TEdit
-    Left = 488
+    Left = 480
     Height = 23
-    Top = 136
+    Top = 200
     Width = 176
     TabOrder = 2
   end
   object edtGames: TEdit
-    Left = 488
+    Left = 480
     Height = 23
-    Top = 176
+    Top = 232
     Width = 176
     TabOrder = 3
   end
   object edtCarAV: TEdit
-    Left = 488
+    Left = 480
     Height = 23
-    Top = 212
+    Top = 264
     Width = 176
     TabOrder = 4
   end
   object edtTmAV: TEdit
-    Left = 488
+    Left = 480
     Height = 23
-    Top = 248
+    Top = 296
     Width = 176
     TabOrder = 5
   end
   object lblCollege: TLabel
-    Left = 161
+    Left = 154
     Height = 15
-    Top = 73
+    Top = 113
     Width = 53
     Caption = 'lblCollege'
     ParentColor = False
@@ -130,7 +133,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   object Button1: TButton
     Left = 136
     Height = 40
-    Top = 384
+    Top = 344
     Width = 224
     Action = actApply
     Anchors = [akLeft, akBottom]
@@ -140,7 +143,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   object Button2: TButton
     Left = 360
     Height = 40
-    Top = 384
+    Top = 344
     Width = 224
     Action = actCancel
     Anchors = [akLeft, akBottom]
@@ -148,38 +151,40 @@ object frmPlayerEdit: TfrmPlayerEdit
     TabOrder = 7
   end
   object lblID: TLabel
-    Left = 161
+    Left = 154
     Height = 15
-    Top = 113
+    Top = 153
     Width = 24
     Caption = 'lblID'
     ParentColor = False
+    Visible = False
   end
   object Label9: TLabel
-    Left = 49
+    Left = 41
     Height = 15
-    Top = 136
+    Top = 200
     Width = 85
     Caption = 'Last Year Played'
     ParentColor = False
   end
   object edtLastYear: TEdit
-    Left = 161
+    Left = 153
     Height = 23
-    Top = 136
+    Top = 200
     Width = 176
     TabOrder = 8
   end
   object Shape1: TShape
-    Left = 48
+    Left = 41
     Height = 1
-    Top = 104
+    Top = 144
     Width = 600
+    Pen.Color = clWhite
   end
   object Image1: TImage
-    Left = 47
+    Left = 40
     Height = 89
-    Top = 8
+    Top = 48
     Width = 74
     Center = True
     Picture.Data = {
@@ -267,9 +272,36 @@ object frmPlayerEdit: TfrmPlayerEdit
     }
     Stretch = True
   end
+  object Panel1: TPanel
+    Left = 0
+    Height = 32
+    Top = 0
+    Width = 712
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 32
+    ClientWidth = 712
+    Color = 9020695
+    ParentColor = False
+    TabOrder = 9
+    object SpeedButton1: TSpeedButton
+      Left = 678
+      Height = 32
+      Top = 0
+      Width = 34
+      Align = alRight
+      Caption = 'X'
+      Flat = True
+      Font.Color = clWhite
+      Font.Height = -29
+      Font.Name = '@Arial Unicode MS'
+      OnClick = SpeedButton1Click
+      ParentFont = False
+    end
+  end
   object ActionList1: TActionList
-    left = 281
-    top = 17
+    left = 274
+    top = 57
     object actApply: TAction
       Caption = 'Apply'
       OnExecute = actApplyExecute
@@ -333,8 +365,8 @@ object frmPlayerEdit: TfrmPlayerEdit
         Name = 'id'
         ParamType = ptUnknown
       end>
-    left = 337
-    top = 17
+    left = 330
+    top = 57
     ParamData = <    
       item
         DataType = ftUnknown
