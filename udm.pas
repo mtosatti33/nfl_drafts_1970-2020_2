@@ -5,7 +5,7 @@ unit UDM;
 interface
 
 uses
-  Classes, SysUtils, ZConnection, ZDataset, IniFiles;
+  Classes, SysUtils, ZConnection, ZDataset, IniFiles, Dialogs;
 
 const
   MAIN = 'main';
@@ -58,6 +58,12 @@ begin
   conn.Database:=iniStrings.database;
   conn.LibraryLocation:=iniStrings.libraryLoc;
   conn.Protocol:=iniStrings.protocol;
+
+  try
+    conn.Connected:=true;
+  except on E: Exception do
+    ShowMessage('A error ocurred: '+ E.Message);
+  end;
 end;
 
 procedure Tdm.ReadIniFile;
@@ -67,7 +73,6 @@ begin
      iniStrings.database:=ini.ReadString(MAIN,'database','');
      iniStrings.libraryLoc:=ini.ReadString(MAIN,'library','');
      iniStrings.protocol:=ini.ReadString(MAIN,'protocol','');
-
    finally
      ini.Free;
    end;
