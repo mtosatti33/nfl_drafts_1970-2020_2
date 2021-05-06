@@ -4,7 +4,6 @@ object dm: Tdm
   HorizontalOffset = 299
   VerticalOffset = 210
   Width = 859
-  PPI = 96
   object conn: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -15,11 +14,11 @@ object dm: Tdm
     Connected = True
     HostName = 'localhost'
     Port = 0
-    Database = 'D:\Documentos\GitHub\nfl_drafts_1970-2020_2\db\drafts.db'
+    Database = 'C:\Users\marcelo\Documents\GitHub\nfl_drafts_1970-2020_2\db\drafts.db'
     Protocol = 'sqlite'
-    LibraryLocation = 'D:\Documentos\GitHub\nfl_drafts_1970-2020_2\db\sqlite3.dll'
-    left = 62
-    top = 27
+    LibraryLocation = 'C:\Users\marcelo\Documents\GitHub\nfl_drafts_1970-2020_2\db\SQLite3-64.dll'
+    Left = 62
+    Top = 27
   end
   object qryPicks: TZQuery
     Connection = conn
@@ -93,8 +92,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 128
-    top = 27
+    Left = 128
+    Top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -228,8 +227,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 208
-    top = 27
+    Left = 208
+    Top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -363,8 +362,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 328
-    top = 27
+    Left = 328
+    Top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -498,8 +497,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 448
-    top = 27
+    Left = 448
+    Top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -633,8 +632,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 208
-    top = 96
+    Left = 208
+    Top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -768,8 +767,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 328
-    top = 96
+    Left = 328
+    Top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -903,8 +902,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 448
-    top = 96
+    Left = 448
+    Top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1038,8 +1037,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 208
-    top = 176
+    Left = 208
+    Top = 176
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1173,8 +1172,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 328
-    top = 176
+    Left = 328
+    Top = 176
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1308,8 +1307,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    left = 448
-    top = 176
+    Left = 448
+    Top = 176
     ParamData = <    
       item
         DataType = ftUnknown

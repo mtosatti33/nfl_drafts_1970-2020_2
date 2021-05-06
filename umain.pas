@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType, ECEditBtns, messages;
+  LR_Class, ufillitems, uPrepareQuery, LCLType, messages;
 
 type
 
@@ -108,7 +108,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
       );
-    procedure pgcMainChange(Sender: TObject);
     function ValidateSearch: boolean;
     procedure OpenLink(field_url: string);
   private
@@ -568,11 +567,6 @@ begin
     Left:= Mouse.CursorPos.x - MouseX;
     Top := Mouse.CursorPos.y - MouseY;
   end;
-end;
-
-procedure TfrmMain.pgcMainChange(Sender: TObject);
-begin
-
 end;
 
 function TfrmMain.ValidateSearch: boolean;
