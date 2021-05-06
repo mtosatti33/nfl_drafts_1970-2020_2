@@ -53,6 +53,7 @@ type
     Label11: TLabel;
     Label12: TLabel;
     Label13: TLabel;
+    Label14: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -69,6 +70,7 @@ type
     MenuItem6: TMenuItem;
     mnuOptions: TPopupMenu;
     Panel1: TPanel;
+    Panel2: TPanel;
     pgcMain: TPageControl;
     qryCollegeList: TZQuery;
     qryYearList: TZQuery;
@@ -104,6 +106,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure LoadComponents;
     procedure lstClick(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
     procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
@@ -151,6 +154,7 @@ procedure TfrmMain.actReportExecute(Sender: TObject);
 var
   filter1, filter2: string;
   i, j: word;
+  chkText: string;
 begin
   frmReport := TfrmReport.Create(Application);
   try
@@ -186,10 +190,30 @@ begin
         if self.Components[i] is TCheckBox then
           if TCheckBox(self.Components[i]).Checked then
           begin
+            if self.Components[i] = chkNeverPlayed then
+            begin
+              chkText := 'Never played in the NFL';
+            end;
+
+            if self.Components[i] = chkFirstPicks then
+            begin
+              chkText := 'First Picks';
+            end;
+
+            if self.Components[i] = chkAllPros then
+            begin
+              chkText := 'All Pros';
+            end;
+
+            if self.Components[i] = chkProBowlers then
+            begin
+              chkText := 'Pro Bowlers';
+            end;
+
             if j = 0 then
-              filter2 := filter2 + TCheckBox(self.Components[i]).Caption
+              filter2 := filter2 + chkText
             else
-              filter2 := filter2 + ', ' + TCheckBox(self.Components[i]).Caption;
+              filter2 := filter2 + ', ' + chkText;
             J := j + 1;
           end;
       end;
@@ -549,6 +573,11 @@ begin
       actSearch.Execute;
       pgcMain.ActivePage := tsMainData;
     end;
+end;
+
+procedure TfrmMain.Panel1Click(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmMain.Panel1MouseDown(Sender: TObject; Button: TMouseButton;

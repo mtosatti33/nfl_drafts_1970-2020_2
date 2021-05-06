@@ -45,20 +45,26 @@ type
     procedure actCancelExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: integer);
+    procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     procedure SpeedButton1Click(Sender: TObject);
   private
     FId: string;
     FName: string;
     FPosition: string;
     FCollege: string;
-    FAllPro: String;
-    FProBowl: String;
-    FStarter: String;
-    FGames: String;
-    FCarAV: String;
-    FTmAV: String;
+    FAllPro: string;
+    FProBowl: string;
+    FStarter: string;
+    FGames: string;
+    FCarAV: string;
+    FTmAV: string;
     FLastYear: string;
-    FIsSave: Boolean;
+    FIsSave: boolean;
+
+    MouseX: integer;
+    MouseY: integer;
   public
     property ID: string read FId write FId;
     property Name: string read FName write FName;
@@ -71,7 +77,7 @@ type
     property CarAV: string read FCarAV write FCarAV;
     property TmAV: string read FTmAV write FTmAV;
     property LastYearPlayed: string read FLastYear write FLastYear;
-    property IsSave: Boolean read FIsSave write FIsSave;
+    property IsSave: boolean read FIsSave write FIsSave;
   end;
 
 var
@@ -85,18 +91,35 @@ implementation
 
 procedure TfrmPlayerEdit.FormShow(Sender: TObject);
 begin
-  lblID.Caption:=FId;
-  lblName.Caption:=FName;
-  lblPosition.Caption:=FPosition;
-  lblCollege.Caption:=FCollege;
+  lblID.Caption := FId;
+  lblName.Caption := FName;
+  lblPosition.Caption := FPosition;
+  lblCollege.Caption := FCollege;
 
-  edtLastYear.Text:=FLastYear;
-  edtAllPro.Text:=FAllPro;
-  edtProBowl.Text:=FProBowl;
-  edtStarter.Text:=FStarter;
-  edtGames.Text:=FGames;
-  edtCarAV.Text:=FCarAV;
-  edtTmAV.Text:=FTmAV;
+  edtLastYear.Text := FLastYear;
+  edtAllPro.Text := FAllPro;
+  edtProBowl.Text := FProBowl;
+  edtStarter.Text := FStarter;
+  edtGames.Text := FGames;
+  edtCarAV.Text := FCarAV;
+  edtTmAV.Text := FTmAV;
+end;
+
+procedure TfrmPlayerEdit.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: integer);
+begin
+  MouseX := X + Panel1.Left;
+  MouseY := Y + Panel1.Top;
+end;
+
+procedure TfrmPlayerEdit.Panel1MouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: integer);
+begin
+  if ssLeft in Shift then
+  begin
+    Left := Mouse.CursorPos.x - MouseX;
+    Top := Mouse.CursorPos.y - MouseY;
+  end;
 end;
 
 procedure TfrmPlayerEdit.SpeedButton1Click(Sender: TObject);
@@ -111,45 +134,45 @@ end;
 
 procedure TfrmPlayerEdit.FormCreate(Sender: TObject);
 begin
-  FIsSave:= false;
+  FIsSave := False;
 end;
 
 procedure TfrmPlayerEdit.actApplyExecute(Sender: TObject);
 begin
-  FIsSave:=true;
-  FAllPro:=edtAllPro.Text;
-  FProBowl:=edtProBowl.Text;
-  FStarter:=edtStarter.Text;
-  FGames:=edtGames.Text;
-  FCarAV:=edtCarAV.Text;
-  FTmAV:=edtTmAV.Text;
-  FLastYear:=edtLastYear.Text;
+  FIsSave := True;
+  FAllPro := edtAllPro.Text;
+  FProBowl := edtProBowl.Text;
+  FStarter := edtStarter.Text;
+  FGames := edtGames.Text;
+  FCarAV := edtCarAV.Text;
+  FTmAV := edtTmAV.Text;
+  FLastYear := edtLastYear.Text;
 
-  qryDrafts.ParamByName('AP1').AsString:=FAllPro;
-  qryDrafts.ParamByName('PB').AsString:=FProBowl;
-  qryDrafts.ParamByName('ST').AsString:=FStarter;
+  qryDrafts.ParamByName('AP1').AsString := FAllPro;
+  qryDrafts.ParamByName('PB').AsString := FProBowl;
+  qryDrafts.ParamByName('ST').AsString := FStarter;
 
   if FGames <> EmptyStr then
-     qryDrafts.ParamByName('G').AsString:=FGames
+    qryDrafts.ParamByName('G').AsString := FGames
   else
-      qryDrafts.ParamByName('G').IsNull;
+    qryDrafts.ParamByName('G').IsNull;
 
   if FCarAV <> EmptyStr then
-     qryDrafts.ParamByName('CARAV').AsString:=FCarAV
+    qryDrafts.ParamByName('CARAV').AsString := FCarAV
   else
-      qryDrafts.ParamByName('CARAV').IsNull;
+    qryDrafts.ParamByName('CARAV').IsNull;
 
   if FTmAV <> EmptyStr then
-      qryDrafts.ParamByName('DRAV').AsString:=FTmAV
+    qryDrafts.ParamByName('DRAV').AsString := FTmAV
   else
-      qryDrafts.ParamByName('DRAV').IsNull;
+    qryDrafts.ParamByName('DRAV').IsNull;
 
   if FLastYear <> EmptyStr then
-     qryDrafts.ParamByName('TO').AsString:=FLastYear
+    qryDrafts.ParamByName('TO').AsString := FLastYear
   else
-     qryDrafts.ParamByName('TO').IsNull;
+    qryDrafts.ParamByName('TO').IsNull;
 
-  qryDrafts.ParamByName('ID').AsString:=FId;
+  qryDrafts.ParamByName('ID').AsString := FId;
 
   try
     qryDrafts.ExecSQL;
@@ -160,4 +183,5 @@ begin
 end;
 
 end.
+
 

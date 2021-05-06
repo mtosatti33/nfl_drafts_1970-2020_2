@@ -87,7 +87,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Width = 176
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 1
   end
   object edtProBowl: TEdit
     Left = 153
@@ -96,7 +96,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Width = 176
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 2
   end
   object edtStarter: TEdit
     Left = 480
@@ -105,7 +105,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Width = 176
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
   end
   object edtGames: TEdit
     Left = 480
@@ -114,7 +114,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Width = 176
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 4
   end
   object edtCarAV: TEdit
     Left = 480
@@ -123,7 +123,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Width = 176
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
   end
   object edtTmAV: TEdit
     Left = 480
@@ -132,15 +132,19 @@ object frmPlayerEdit: TfrmPlayerEdit
     Width = 176
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 6
   end
   object lblCollege: TLabel
     Left = 154
-    Height = 15
+    Height = 20
     Top = 113
-    Width = 53
+    Width = 68
     Caption = 'lblCollege'
+    Font.Color = clWhite
+    Font.Height = -15
     ParentColor = False
+    ParentFont = False
+    ShowAccelChar = False
   end
   object Button1: TButton
     Left = 136
@@ -150,7 +154,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Action = actApply
     Anchors = [akLeft, akBottom]
     Caption = 'Apply && Close'
-    TabOrder = 6
+    TabOrder = 7
   end
   object Button2: TButton
     Left = 360
@@ -160,7 +164,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Action = actCancel
     Anchors = [akLeft, akBottom]
     Caption = 'Cancel && Close'
-    TabOrder = 7
+    TabOrder = 8
   end
   object lblID: TLabel
     Left = 154
@@ -186,7 +190,7 @@ object frmPlayerEdit: TfrmPlayerEdit
     Width = 176
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 0
   end
   object Shape1: TShape
     Left = 41
@@ -298,6 +302,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Color = 9020695
     ParentColor = False
     TabOrder = 9
+    OnMouseDown = Panel1MouseDown
+    OnMouseMove = Panel1MouseMove
     object SpeedButton1: TSpeedButton
       Left = 678
       Height = 32

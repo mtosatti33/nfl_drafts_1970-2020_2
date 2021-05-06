@@ -11,7 +11,7 @@ object frmMain: TfrmMain
   Font.Color = clWhite
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.0.4.0'
   object Label7: TLabel
     Left = 472
     Height = 16
@@ -56,7 +56,7 @@ object frmMain: TfrmMain
         OnChange = cmbSortByListChange
         ParentFont = False
         Style = csOwnerDrawFixed
-        TabOrder = 0
+        TabOrder = 8
         Text = 'Name / Picks'
       end
       object Label5: TLabel
@@ -79,7 +79,7 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 94
-        TabOrder = 1
+        TabOrder = 9
       end
       object lstCollegeList: TListBox
         Left = 456
@@ -91,7 +91,7 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 142
-        TabOrder = 2
+        TabOrder = 10
       end
       object lstPositionList: TListBox
         Left = 616
@@ -103,22 +103,22 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 66
-        TabOrder = 3
+        TabOrder = 11
       end
       object cmbYearToList: TComboBox
-        Left = 201
+        Left = 115
         Height = 23
-        Top = 40
-        Width = 81
+        Top = 72
+        Width = 167
         Font.Color = 7754266
         ItemHeight = 15
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 1
       end
       object Label2: TLabel
-        Left = 77
+        Left = 75
         Height = 15
-        Top = 104
+        Top = 136
         Width = 30
         Caption = 'Team'
         Font.Color = 7754266
@@ -128,19 +128,19 @@ object frmMain: TfrmMain
       object cmbTeamList: TComboBox
         Left = 116
         Height = 23
-        Top = 104
-        Width = 166
+        Top = 136
+        Width = 167
         AutoComplete = True
         AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
         Font.Color = 7754266
         ItemHeight = 15
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 3
       end
       object Label3: TLabel
-        Left = 61
+        Left = 62
         Height = 15
-        Top = 136
+        Top = 168
         Width = 43
         Caption = 'Position'
         Font.Color = 7754266
@@ -150,19 +150,19 @@ object frmMain: TfrmMain
       object cmbPositionList: TComboBox
         Left = 116
         Height = 23
-        Top = 136
-        Width = 166
+        Top = 168
+        Width = 167
         AutoComplete = True
         AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
         Font.Color = 7754266
         ItemHeight = 15
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 4
       end
       object Label4: TLabel
         Left = 65
         Height = 15
-        Top = 168
+        Top = 200
         Width = 40
         Caption = 'College'
         Font.Color = 7754266
@@ -175,79 +175,59 @@ object frmMain: TfrmMain
         Top = 488
         Width = 224
         Action = actClear
-        TabOrder = 7
+        TabOrder = 13
       end
       object cmbCollegeList: TComboBox
         Left = 116
         Height = 23
-        Top = 168
-        Width = 166
-        AutoComplete = True
-        AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
-        Font.Color = 7754266
-        ItemHeight = 15
-        ParentFont = False
-        TabOrder = 8
-      end
-      object cmbRoundList: TComboBox
-        Left = 116
-        Height = 23
-        Top = 72
+        Top = 200
         Width = 167
         AutoComplete = True
         AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
         Font.Color = 7754266
         ItemHeight = 15
         ParentFont = False
-        TabOrder = 9
+        TabOrder = 5
+      end
+      object cmbRoundList: TComboBox
+        Left = 116
+        Height = 23
+        Top = 104
+        Width = 167
+        AutoComplete = True
+        AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+        Font.Color = 7754266
+        ItemHeight = 15
+        ParentFont = False
+        TabOrder = 2
       end
       object Label6: TLabel
-        Left = 71
+        Left = 70
         Height = 15
-        Top = 72
+        Top = 104
         Width = 35
         Caption = 'Round'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
       end
-      object chkFirstPicks: TCheckBox
-        Left = 116
-        Height = 19
-        Top = 284
-        Width = 20
-        Font.Color = clWhite
-        OnChange = chkFirstPicksChange
-        ParentFont = False
-        TabOrder = 10
-      end
-      object chkNeverPlayed: TCheckBox
-        Left = 116
-        Height = 19
-        Top = 256
-        Width = 20
-        Font.Color = clWhite
-        OnChange = chkNeverPlayedChange
-        ParentFont = False
-        TabOrder = 11
-      end
       object cmbYearFromList: TComboBox
         Left = 116
         Height = 23
         Top = 40
-        Width = 81
+        Width = 167
         Font.Color = 7754266
         ItemHeight = 15
         OnChange = cmbYearFromListChange
         ParentFont = False
-        TabOrder = 12
+        TabOrder = 0
       end
       object Label9: TLabel
-        Left = 78
+        Left = 46
         Height = 15
         Top = 40
-        Width = 28
-        Caption = 'Years'
+        Width = 59
+        Caption = 'Years From'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
@@ -255,7 +235,7 @@ object frmMain: TfrmMain
       object btnRoundClear: TSpeedButton
         Left = 288
         Height = 22
-        Top = 73
+        Top = 105
         Width = 23
         Flat = True
         Glyph.Data = {
@@ -299,7 +279,7 @@ object frmMain: TfrmMain
       object btnTeamClear: TSpeedButton
         Left = 288
         Height = 22
-        Top = 104
+        Top = 137
         Width = 23
         Flat = True
         Glyph.Data = {
@@ -343,7 +323,7 @@ object frmMain: TfrmMain
       object btnPositionClear: TSpeedButton
         Left = 288
         Height = 22
-        Top = 137
+        Top = 169
         Width = 23
         Flat = True
         Glyph.Data = {
@@ -385,9 +365,9 @@ object frmMain: TfrmMain
         OnClick = btnRoundClearClick
       end
       object btnCollegeClear: TSpeedButton
-        Left = 288
+        Left = 287
         Height = 22
-        Top = 168
+        Top = 201
         Width = 23
         Flat = True
         Glyph.Data = {
@@ -428,38 +408,18 @@ object frmMain: TfrmMain
         }
         OnClick = btnRoundClearClick
       end
-      object chkProBowlers: TCheckBox
-        Left = 116
-        Height = 19
-        Top = 311
-        Width = 20
-        Font.Color = clWhite
-        OnChange = chkProBowlersChange
-        ParentFont = False
-        TabOrder = 13
-      end
-      object chkAllPros: TCheckBox
-        Left = 116
-        Height = 19
-        Top = 339
-        Width = 20
-        Font.Color = clWhite
-        OnChange = chkAllProsChange
-        ParentFont = False
-        TabOrder = 14
-      end
       object btnSearch: TButton
         Left = 8
         Height = 40
         Top = 440
         Width = 224
         Action = actSearch
-        TabOrder = 15
+        TabOrder = 12
       end
       object cmbSuppl: TComboBox
-        Left = 116
+        Left = 115
         Height = 21
-        Top = 200
+        Top = 232
         Width = 167
         AutoComplete = True
         AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
@@ -474,50 +434,112 @@ object frmMain: TfrmMain
         OnChange = cmbSupplChange
         ParentFont = False
         Style = csOwnerDrawFixed
-        TabOrder = 16
+        TabOrder = 6
         Text = 'Either'
       end
       object Label13: TLabel
-        Left = 73
+        Left = 72
         Height = 15
-        Top = 200
+        Top = 232
         Width = 33
         Caption = 'Suppl.'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
       end
-      object Label1: TLabel
-        Left = 143
-        Height = 15
-        Top = 260
-        Width = 95
-        Caption = 'Not Played In NFL'
+      object Panel2: TPanel
+        Left = 65
+        Height = 162
+        Top = 256
+        Width = 216
+        BevelOuter = bvNone
+        ClientHeight = 162
+        ClientWidth = 216
+        Color = clWhite
         ParentColor = False
+        TabOrder = 7
+        object chkNeverPlayed: TCheckBox
+          Left = 48
+          Height = 19
+          Top = 36
+          Width = 20
+          Font.Color = 7754266
+          OnChange = chkNeverPlayedChange
+          ParentFont = False
+          TabOrder = 0
+        end
+        object Label1: TLabel
+          Left = 80
+          Height = 15
+          Top = 40
+          Width = 95
+          Caption = 'Not Played In NFL'
+          ParentColor = False
+        end
+        object Label8: TLabel
+          Left = 80
+          Height = 15
+          Top = 68
+          Width = 52
+          Caption = 'First Picks'
+          ParentColor = False
+        end
+        object chkFirstPicks: TCheckBox
+          Left = 48
+          Height = 19
+          Top = 64
+          Width = 20
+          Font.Color = clWhite
+          OnChange = chkFirstPicksChange
+          ParentFont = False
+          TabOrder = 1
+        end
+        object chkProBowlers: TCheckBox
+          Left = 48
+          Height = 19
+          Top = 92
+          Width = 20
+          Font.Color = clWhite
+          OnChange = chkProBowlersChange
+          ParentFont = False
+          TabOrder = 2
+        end
+        object Label10: TLabel
+          Left = 80
+          Height = 15
+          Top = 96
+          Width = 62
+          Caption = 'Pro Bowlers'
+          ParentColor = False
+        end
+        object Label12: TLabel
+          Left = 79
+          Height = 15
+          Top = 124
+          Width = 94
+          Caption = '1st Team All Pro''s'
+          ParentColor = False
+        end
+        object chkAllPros: TCheckBox
+          Left = 48
+          Height = 19
+          Top = 120
+          Width = 20
+          Font.Color = clWhite
+          OnChange = chkAllProsChange
+          ParentFont = False
+          TabOrder = 3
+        end
       end
-      object Label8: TLabel
-        Left = 143
+      object Label14: TLabel
+        Left = 60
         Height = 15
-        Top = 288
-        Width = 52
-        Caption = 'First Picks'
+        Top = 72
+        Width = 45
+        Caption = 'Years To'
+        Font.Color = 7754266
         ParentColor = False
-      end
-      object Label10: TLabel
-        Left = 143
-        Height = 15
-        Top = 315
-        Width = 62
-        Caption = 'Pro Bowlers'
-        ParentColor = False
-      end
-      object Label12: TLabel
-        Left = 143
-        Height = 15
-        Top = 343
-        Width = 94
-        Caption = '1st Team All Pro''s'
-        ParentColor = False
+        ParentFont = False
       end
     end
     object tsMainData: TTabSheet
@@ -681,6 +703,7 @@ object frmMain: TfrmMain
     ParentColor = False
     ParentFont = False
     TabOrder = 1
+    OnClick = Panel1Click
     OnMouseDown = Panel1MouseDown
     OnMouseMove = Panel1MouseMove
     object SpeedButton1: TSpeedButton
@@ -699,8 +722,8 @@ object frmMain: TfrmMain
     end
   end
   object ActionList1: TActionList
-    Left = 680
-    Top = 88
+    left = 680
+    top = 88
     object actPreferences: TAction
       Caption = 'Preferences'
     end
@@ -748,8 +771,8 @@ object frmMain: TfrmMain
   end
   object dsTable: TDataSource
     DataSet = dm.qryPicks
-    Left = 755
-    Top = 442
+    left = 755
+    top = 442
   end
   object qryYearList: TZQuery
     Connection = dm.conn
@@ -757,8 +780,8 @@ object frmMain: TfrmMain
       'SELECT DISTINCT DRAFT_YR FROM DRAFTS ORDER BY DRAFT_YR DESC'
     )
     Params = <>
-    Left = 432
-    Top = 288
+    left = 432
+    top = 288
   end
   object qryTeamList: TZQuery
     Connection = dm.conn
@@ -778,8 +801,8 @@ object frmMain: TfrmMain
         Name = 'YR_TO'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 352
+    left = 432
+    top = 352
     ParamData = <    
       item
         DataType = ftUnknown
@@ -799,8 +822,8 @@ object frmMain: TfrmMain
       'ORDER BY POS'
     )
     Params = <>
-    Left = 432
-    Top = 416
+    left = 432
+    top = 416
   end
   object qryCollegeList: TZQuery
     Connection = dm.conn
@@ -809,8 +832,8 @@ object frmMain: TfrmMain
       'ORDER BY COLLEGE'
     )
     Params = <>
-    Left = 432
-    Top = 464
+    left = 432
+    top = 464
   end
   object qryRoundList: TZQuery
     Connection = dm.conn
@@ -829,8 +852,8 @@ object frmMain: TfrmMain
         Name = 'yr_to'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 232
+    left = 432
+    top = 232
     ParamData = <    
       item
         DataType = ftUnknown
@@ -844,8 +867,8 @@ object frmMain: TfrmMain
       end>
   end
   object mnuOptions: TPopupMenu
-    Left = 787
-    Top = 209
+    left = 787
+    top = 209
     object MenuItem4: TMenuItem
       Action = actEditPlayer
     end
