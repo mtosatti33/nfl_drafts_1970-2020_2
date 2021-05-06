@@ -1,4 +1,5 @@
 object dm: Tdm
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 275
   HorizontalOffset = 299
@@ -12,12 +13,8 @@ object dm: Tdm
       'AutoEncodeStrings=ON'
       'controls_cp=CP_UTF8'
     )
-    Connected = True
     HostName = 'localhost'
     Port = 0
-    Database = 'D:\Documentos\GitHub\nfl_drafts_1970-2020_2\db\drafts.db'
-    Protocol = 'sqlite'
-    LibraryLocation = 'D:\Documentos\GitHub\nfl_drafts_1970-2020_2\db\lib\x86\sqlite3.dll'
     left = 62
     top = 27
   end
