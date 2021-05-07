@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType, messages;
+  LR_Class, ufillitems, uPrepareQuery, LCLType, Messages;
 
 type
 
@@ -48,10 +48,10 @@ type
     cmbYearToList: TComboBox;
     DBGrid1: TDBGrid;
     dsTable: TDataSource;
-    Label1: TLabel;
-    Label10: TLabel;
+    lblNeverPlayed: TLabel;
+    lblProBowlers: TLabel;
     Label11: TLabel;
-    Label12: TLabel;
+    lblAllPros: TLabel;
     Label13: TLabel;
     Label14: TLabel;
     Label2: TLabel;
@@ -60,7 +60,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    Label8: TLabel;
+    lblFirstPicks: TLabel;
     Label9: TLabel;
     lstCollegeList: TListBox;
     lstPositionList: TListBox;
@@ -104,13 +104,12 @@ type
       Column: TColumn; AState: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure LoadComponents;
     procedure lstClick(Sender: TObject);
-    procedure Panel1Click(Sender: TObject);
     procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
-      );
+      Shift: TShiftState; X, Y: integer);
+    procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     function ValidateSearch: boolean;
     procedure OpenLink(field_url: string);
   private
@@ -192,22 +191,22 @@ begin
           begin
             if self.Components[i] = chkNeverPlayed then
             begin
-              chkText := 'Never played in the NFL';
+              chkText := lblNeverPlayed.Caption;
             end;
 
             if self.Components[i] = chkFirstPicks then
             begin
-              chkText := 'First Picks';
+              chkText := lblFirstPicks.Caption;
             end;
 
             if self.Components[i] = chkAllPros then
             begin
-              chkText := 'All Pros';
+              chkText := lblAllPros.Caption;
             end;
 
             if self.Components[i] = chkProBowlers then
             begin
-              chkText := 'Pro Bowlers';
+              chkText := lblProBowlers.Caption;
             end;
 
             if j = 0 then
@@ -312,11 +311,10 @@ var
 begin
 
   PrepareQuery := TPrepareQuery.Create(cmbYearFromList.Text,
-    cmbYearToList.Text, cmbTeamList.Text,
-    cmbPositionList.Text, cmbCollegeList.Text,
-    cmbRoundList.ItemIndex, cmbSuppl.ItemIndex,
-    chkFirstPicks.Checked, chkNeverPlayed.Checked,
-    chkAllPros.Checked, chkProBowlers.Checked);
+    cmbYearToList.Text, cmbTeamList.Text, cmbPositionList.Text,
+    cmbCollegeList.Text, cmbRoundList.ItemIndex, cmbSuppl.ItemIndex,
+    chkFirstPicks.Checked, chkNeverPlayed.Checked, chkAllPros.Checked,
+    chkProBowlers.Checked);
 
   // because of the cmbYearToListChange event, this line has addicted,
   // else the itemindex of the combobox doesn't works
@@ -355,7 +353,7 @@ begin
     cmbSortByList.ItemIndex := 0;
 
   cmbSortByListChange(nil);
-  pgcMain.ActivePage:= tsMainData;
+  pgcMain.ActivePage := tsMainData;
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
 end;
 
@@ -524,6 +522,11 @@ begin
   LoadComponents;
 end;
 
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+    pgcMain.ActivePage := tsFilters;
+end;
+
 procedure TfrmMain.LoadComponents;
 begin
   FillItems := TFillItems.Create;
@@ -575,25 +578,22 @@ begin
     end;
 end;
 
-procedure TfrmMain.Panel1Click(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmMain.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+  Shift: TShiftState; X, Y: integer);
 begin
-  MouseX:= X + Panel1.Left;   
-  MouseY:= Y + Panel1.Top;
+  MouseX := X + Panel1.Left;
+  MouseY := Y + Panel1.Top;
 
 end;
 
-procedure TfrmMain.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,
-  Y: Integer);
+procedure TfrmMain.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
 begin
   if ssLeft in Shift then
   begin
-    Left:= Mouse.CursorPos.x - MouseX;
+    Left := Mouse.CursorPos.x - MouseX;
+
+
+
     Top := Mouse.CursorPos.y - MouseY;
   end;
 end;

@@ -10,6 +10,7 @@ object frmMain: TfrmMain
   Color = 7754266
   Font.Color = clWhite
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '2.0.4.0'
   object Label7: TLabel
@@ -468,7 +469,7 @@ object frmMain: TfrmMain
           ParentFont = False
           TabOrder = 0
         end
-        object Label1: TLabel
+        object lblNeverPlayed: TLabel
           Left = 80
           Height = 15
           Top = 40
@@ -476,7 +477,7 @@ object frmMain: TfrmMain
           Caption = 'Not Played In NFL'
           ParentColor = False
         end
-        object Label8: TLabel
+        object lblFirstPicks: TLabel
           Left = 80
           Height = 15
           Top = 68
@@ -504,7 +505,7 @@ object frmMain: TfrmMain
           ParentFont = False
           TabOrder = 2
         end
-        object Label10: TLabel
+        object lblProBowlers: TLabel
           Left = 80
           Height = 15
           Top = 96
@@ -512,7 +513,7 @@ object frmMain: TfrmMain
           Caption = 'Pro Bowlers'
           ParentColor = False
         end
-        object Label12: TLabel
+        object lblAllPros: TLabel
           Left = 79
           Height = 15
           Top = 124
@@ -703,7 +704,6 @@ object frmMain: TfrmMain
     ParentColor = False
     ParentFont = False
     TabOrder = 1
-    OnClick = Panel1Click
     OnMouseDown = Panel1MouseDown
     OnMouseMove = Panel1MouseMove
     object SpeedButton1: TSpeedButton
