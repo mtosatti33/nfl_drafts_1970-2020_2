@@ -9,7 +9,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit, UInstructionView,
   ureport, upaintgrid, ufillitems, uPrepareQuery, UColorConstants, UColors,
-  TestIfIs64;
+  TestIfIs64, UConfiguration;
 
 {$R *.res}
 

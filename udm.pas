@@ -5,11 +5,7 @@ unit UDM;
 interface
 
 uses
-  Classes, SysUtils, ZConnection, ZDataset, IniFiles, Dialogs;
-
-const
-  DB_CONFIG = 'database_config';
-  INI_FILE = 'Drafts.ini';
+  Classes, SysUtils, ZConnection, ZDataset, IniFiles, Dialogs, UConfiguration;
 
 type
 
@@ -29,16 +25,9 @@ type
     qryTeamAV: TZQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
-    procedure ReadIniFile;
+
   public
 
-  end;
-
-  TIniStrings = record
-   database: string;
-   library32: string;
-   library64: string;
-   protocol: string;
   end;
 
 var
@@ -54,7 +43,7 @@ implementation
 
 procedure Tdm.DataModuleCreate(Sender: TObject);
 begin
-  ReadIniFile;
+  iniStrings := ReadIniFile;
 
   conn.Database:=iniStrings.database;
   {$IfDef WIN32}
@@ -69,19 +58,6 @@ begin
   except on E: Exception do
     ShowMessage('A error ocurred: '+ E.Message);
   end;
-end;
-
-procedure Tdm.ReadIniFile;
-begin
-   ini := TIniFile.Create(INI_FILE);
-   try
-     iniStrings.database:=ini.ReadString(DB_CONFIG,'database','');
-     iniStrings.library32:=ini.ReadString(DB_CONFIG,'library32','');
-     iniStrings.library64:=ini.ReadString(DB_CONFIG,'library64','');
-     iniStrings.protocol:=ini.ReadString(DB_CONFIG,'protocol','');
-   finally
-     ini.Free;
-   end;
 end;
 
 end.

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType, Messages;
+  LR_Class, ufillitems, uPrepareQuery, LCLType, Messages, UConfiguration;
 
 type
 
@@ -123,6 +123,7 @@ type
 var
   frmMain: TfrmMain;
   FillItems: TFillItems;
+  iniStrings : TIniStrings;
 
 implementation
 
@@ -524,7 +525,11 @@ end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
+    iniStrings := ReadIniFile;
     pgcMain.ActivePage := tsFilters;
+
+    cmbYearFromList.Text:=iniStrings.year;
+    cmbYearToList.Text:=iniStrings.year;
 end;
 
 procedure TfrmMain.LoadComponents;

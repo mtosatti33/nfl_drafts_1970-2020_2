@@ -113,7 +113,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="14">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -193,6 +193,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="TestIfIs64"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="uconfiguration.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UConfiguration"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

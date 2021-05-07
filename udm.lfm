@@ -5,6 +5,7 @@ object dm: Tdm
   HorizontalOffset = 299
   VerticalOffset = 210
   Width = 859
+  PPI = 96
   object conn: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -14,8 +15,8 @@ object dm: Tdm
     )
     HostName = 'localhost'
     Port = 0
-    Left = 62
-    Top = 24
+    left = 62
+    top = 24
   end
   object qryPicks: TZQuery
     Connection = conn
@@ -89,8 +90,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 128
-    Top = 27
+    left = 128
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -224,8 +225,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 208
-    Top = 27
+    left = 208
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -359,8 +360,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 328
-    Top = 27
+    left = 328
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -494,8 +495,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 448
-    Top = 27
+    left = 448
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -629,8 +630,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 208
-    Top = 96
+    left = 208
+    top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -764,8 +765,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 328
-    Top = 96
+    left = 328
+    top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -899,8 +900,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 448
-    Top = 96
+    left = 448
+    top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1034,8 +1035,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 208
-    Top = 176
+    left = 208
+    top = 176
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1169,8 +1170,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 328
-    Top = 176
+    left = 328
+    top = 176
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1304,8 +1305,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 448
-    Top = 176
+    left = 448
+    top = 176
     ParamData = <    
       item
         DataType = ftUnknown
