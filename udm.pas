@@ -36,7 +36,8 @@ type
 
   TIniStrings = record
    database: string;
-   libraryLoc: string;
+   library32: string;
+   library64: string;
    protocol: string;
   end;
 
@@ -56,7 +57,11 @@ begin
   ReadIniFile;
 
   conn.Database:=iniStrings.database;
-  conn.LibraryLocation:=iniStrings.libraryLoc;
+  {$IfDef WIN32}
+         conn.LibraryLocation:=iniStrings.library32;
+  {$ELSE}
+         conn.LibraryLocation:=iniStrings.library64;
+  {$EndIf}
   conn.Protocol:=iniStrings.protocol;
 
   try
@@ -71,7 +76,8 @@ begin
    ini := TIniFile.Create(INI_FILE);
    try
      iniStrings.database:=ini.ReadString(MAIN,'database','');
-     iniStrings.libraryLoc:=ini.ReadString(MAIN,'library','');
+     iniStrings.library32:=ini.ReadString(MAIN,'library32',''); 
+     iniStrings.library64:=ini.ReadString(MAIN,'library64','');
      iniStrings.protocol:=ini.ReadString(MAIN,'protocol','');
    finally
      ini.Free;

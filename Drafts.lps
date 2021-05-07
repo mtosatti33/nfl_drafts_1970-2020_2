@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="11"/>
     <BuildModes Active="Release"/>
-    <Units Count="78">
+    <Units Count="79">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -19,10 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMain"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="564"/>
-        <CursorPos X="47" Y="578"/>
+        <CursorPos X="47" Y="569"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -41,10 +40,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="UDM"/>
-        <CursorPos X="62" Y="8"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="55"/>
+        <CursorPos X="41" Y="60"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="ubrowser.pas"/>
@@ -56,7 +56,7 @@
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <CursorPos X="57" Y="8"/>
-        <UsageCount Value="160"/>
+        <UsageCount Value="161"/>
       </Unit3>
       <Unit4>
         <Filename Value="uplayeredit.pas"/>
@@ -65,9 +65,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UPlayerEdit"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <CursorPos X="26" Y="53"/>
-        <UsageCount Value="155"/>
+        <UsageCount Value="156"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -80,7 +80,7 @@
         <UnitName Value="UInstructionView"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="7"/>
-        <UsageCount Value="146"/>
+        <UsageCount Value="147"/>
       </Unit5>
       <Unit6>
         <Filename Value="ureport.pas"/>
@@ -91,15 +91,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="29"/>
         <CursorPos X="5" Y="41"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="133"/>
       </Unit6>
       <Unit7>
         <Filename Value="upaintgrid.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="65"/>
         <CursorPos X="48" Y="30"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="116"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -108,7 +108,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="14" Y="16"/>
-        <UsageCount Value="114"/>
+        <UsageCount Value="115"/>
       </Unit8>
       <Unit9>
         <Filename Value="upreparequery.pas"/>
@@ -117,7 +117,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="19" Y="51"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="83"/>
       </Unit9>
       <Unit10>
         <Filename Value="ucolorconstants.pas"/>
@@ -126,16 +126,16 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="12"/>
         <CursorPos X="3" Y="20"/>
-        <UsageCount Value="30"/>
+        <UsageCount Value="31"/>
       </Unit10>
       <Unit11>
         <Filename Value="ucolors.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColors"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="178"/>
         <CursorPos X="43" Y="189"/>
-        <UsageCount Value="30"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -221,7 +221,7 @@
       <Unit23>
         <Filename Value="C:\lazarus\lcl\dialogs.pp"/>
         <UnitName Value="Dialogs"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="712"/>
         <CursorPos X="11" Y="724"/>
         <UsageCount Value="11"/>
@@ -477,9 +477,8 @@
       <Unit57>
         <Filename Value="udm.lfm"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="49"/>
         <CursorPos X="48" Y="25"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit57>
       <Unit58>
@@ -624,8 +623,17 @@
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
       </Unit77>
+      <Unit78>
+        <Filename Value="testifis64.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TestIfIs64"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="3" Y="16"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit78>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="umain.pas"/>
         <Caret Line="560" Column="53" TopLine="555"/>
@@ -716,28 +724,20 @@
       </Position22>
       <Position23>
         <Filename Value="umain.pas"/>
-        <Caret Line="313" Column="3" TopLine="345"/>
+        <Caret Line="529" Column="31" TopLine="519"/>
       </Position23>
       <Position24>
         <Filename Value="umain.pas"/>
-        <Caret Line="529" Column="31" TopLine="519"/>
+        <Caret Line="568" Column="55" TopLine="562"/>
       </Position24>
       <Position25>
         <Filename Value="umain.pas"/>
-        <Caret Line="568" Column="55" TopLine="562"/>
+        <Caret Line="573" Column="40" TopLine="417"/>
       </Position25>
       <Position26>
-        <Filename Value="umain.pas"/>
-        <Caret Line="560" Column="3" TopLine="562"/>
+        <Filename Value="testifis64.pas"/>
+        <Caret Line="10" Column="31"/>
       </Position26>
-      <Position27>
-        <Filename Value="umain.pas"/>
-        <Caret Line="573" Column="40" TopLine="417"/>
-      </Position27>
-      <Position28>
-        <Filename Value="umain.pas"/>
-        <Caret Line="313" Column="3" TopLine="342"/>
-      </Position28>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

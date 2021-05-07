@@ -113,7 +113,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="12">
+    <Units Count="13">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -188,6 +188,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColors"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="testifis64.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TestIfIs64"/>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
