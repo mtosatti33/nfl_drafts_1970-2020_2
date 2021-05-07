@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, ZConnection, ZDataset, IniFiles, Dialogs;
 
 const
-  MAIN = 'main';
+  DB_CONFIG = 'database_config';
   INI_FILE = 'Drafts.ini';
 
 type
@@ -75,10 +75,10 @@ procedure Tdm.ReadIniFile;
 begin
    ini := TIniFile.Create(INI_FILE);
    try
-     iniStrings.database:=ini.ReadString(MAIN,'database','');
-     iniStrings.library32:=ini.ReadString(MAIN,'library32',''); 
-     iniStrings.library64:=ini.ReadString(MAIN,'library64','');
-     iniStrings.protocol:=ini.ReadString(MAIN,'protocol','');
+     iniStrings.database:=ini.ReadString(DB_CONFIG,'database','');
+     iniStrings.library32:=ini.ReadString(DB_CONFIG,'library32','');
+     iniStrings.library64:=ini.ReadString(DB_CONFIG,'library64','');
+     iniStrings.protocol:=ini.ReadString(DB_CONFIG,'protocol','');
    finally
      ini.Free;
    end;
