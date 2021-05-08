@@ -5,7 +5,7 @@ unit UDM;
 interface
 
 uses
-  Classes, SysUtils, ZConnection, ZDataset, IniFiles, Dialogs, UConfiguration;
+  Classes, SysUtils, ZConnection, ZDataset, Dialogs, UConfiguration;
 
 type
 
@@ -32,7 +32,6 @@ type
 
 var
   dm: Tdm;
-  ini : TIniFile;
   iniStrings: TIniStrings;
 implementation
 
@@ -48,7 +47,9 @@ begin
   conn.Database:=iniStrings.database;
   {$IfDef WIN32}
          conn.LibraryLocation:=iniStrings.library32;
-  {$ELSE}
+  {$EndIf}
+
+  {$IfDef WIN64}
          conn.LibraryLocation:=iniStrings.library64;
   {$EndIf}
   conn.Protocol:=iniStrings.protocol;

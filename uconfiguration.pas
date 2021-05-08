@@ -10,7 +10,7 @@ uses
 const
   DB_CONFIG = 'database_config';
   GENERAL_CONFIG = 'general_config';
-  INI_FILE = 'Drafts.ini';
+  INI_FILE = 'drafts.ini';
 
 
 type
