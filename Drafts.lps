@@ -20,8 +20,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMain"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="47" Y="10"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="517"/>
+        <CursorPos X="38" Y="541"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -40,7 +41,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="UDM"/>
-        <CursorPos X="33" Y="50"/>
+        <TopLine Value="38"/>
+        <CursorPos X="8" Y="51"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -65,7 +67,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UPlayerEdit"/>
         <EditorIndex Value="3"/>
-        <CursorPos X="26" Y="53"/>
+        <TopLine Value="29"/>
+        <CursorPos X="57" Y="41"/>
         <UsageCount Value="158"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -149,10 +152,11 @@
         <Filename Value="uconfiguration.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UConfiguration"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="4"/>
-        <CursorPos X="16" Y="13"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="25"/>
+        <CursorPos X="71" Y="33"/>
         <UsageCount Value="22"/>
+        <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="uteamcolors.pas"/>
@@ -237,11 +241,10 @@
       <Unit25>
         <Filename Value="C:\lazarus\lcl\dialogs.pp"/>
         <UnitName Value="Dialogs"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="712"/>
         <CursorPos X="11" Y="724"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
@@ -640,7 +643,7 @@
         <UsageCount Value="10"/>
       </Unit79>
     </Units>
-    <JumpHistory Count="26" HistoryIndex="25">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="udm.pas"/>
         <Caret Line="65" Column="44" TopLine="50"/>
@@ -745,6 +748,14 @@
         <Filename Value="udm.pas"/>
         <Caret Line="48" Column="7" TopLine="40"/>
       </Position26>
+      <Position27>
+        <Filename Value="udm.pas"/>
+        <Caret Line="50" Column="33"/>
+      </Position27>
+      <Position28>
+        <Filename Value="umain.pas"/>
+        <Caret Line="10" Column="47"/>
+      </Position28>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

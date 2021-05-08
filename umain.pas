@@ -530,6 +530,8 @@ begin
 
     cmbYearFromList.Text:=iniStrings.year;
     cmbYearToList.Text:=iniStrings.year;
+
+    cmbYearFromListChange(nil);
 end;
 
 procedure TfrmMain.LoadComponents;

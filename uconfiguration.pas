@@ -16,6 +16,7 @@ const
 type
   TIniStrings = record
     database: string;
+    databaseLinux: string;
     library32: string;
     library64: string;
     protocol: string;
@@ -36,6 +37,7 @@ begin
   ini := TIniFile.Create(INI_FILE);
   try
     iniStrings.database := ini.ReadString(DB_CONFIG, 'database', '');
+    iniStrings.databaseLinux := ini.ReadString(DB_CONFIG, 'databaseLinux','');
     iniStrings.library32 := ini.ReadString(DB_CONFIG, 'library32', '');
     iniStrings.library64 := ini.ReadString(DB_CONFIG, 'library64', '');
     iniStrings.protocol := ini.ReadString(DB_CONFIG, 'protocol', '');

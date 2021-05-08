@@ -12,12 +12,12 @@ object frmPlayerEdit: TfrmPlayerEdit
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.4.0'
+  LCLVersion = '2.0.6.0'
   object lblName: TLabel
     Left = 154
-    Height = 37
+    Height = 30
     Top = 57
-    Width = 101
+    Width = 102
     Caption = 'lblName'
     Font.Color = clWhite
     Font.Height = -27
@@ -26,63 +26,63 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object lblPosition: TLabel
     Left = 154
-    Height = 15
+    Height = 14
     Top = 97
-    Width = 56
+    Width = 65
     Caption = 'lblPosition'
     ParentColor = False
   end
   object Label1: TLabel
     Left = 41
-    Height = 15
+    Height = 14
     Top = 232
-    Width = 91
+    Width = 103
     Caption = '1st. Team All-Pro'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 41
-    Height = 15
+    Height = 14
     Top = 264
-    Width = 47
+    Width = 55
     Caption = 'Pro Bowl'
     ParentColor = False
   end
   object Label3: TLabel
     Left = 368
-    Height = 15
+    Height = 14
     Top = 200
-    Width = 56
+    Width = 65
     Caption = 'Yrs. Starter'
     ParentColor = False
   end
   object Label4: TLabel
     Left = 368
-    Height = 15
+    Height = 14
     Top = 232
-    Width = 36
+    Width = 40
     Caption = 'Games'
     ParentColor = False
   end
   object Label5: TLabel
     Left = 368
-    Height = 15
+    Height = 14
     Top = 264
-    Width = 52
+    Width = 59
     Caption = 'Career AV'
     ParentColor = False
   end
   object Label6: TLabel
     Left = 368
-    Height = 15
+    Height = 14
     Top = 296
-    Width = 90
+    Width = 102
     Caption = 'Team Drafted AV'
     ParentColor = False
   end
   object edtAllPro: TEdit
     Left = 153
-    Height = 23
+    Height = 25
     Top = 232
     Width = 176
     Font.Color = 7754266
@@ -91,7 +91,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object edtProBowl: TEdit
     Left = 153
-    Height = 23
+    Height = 25
     Top = 264
     Width = 176
     Font.Color = 7754266
@@ -100,7 +100,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object edtStarter: TEdit
     Left = 480
-    Height = 23
+    Height = 25
     Top = 200
     Width = 176
     Font.Color = 7754266
@@ -109,7 +109,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object edtGames: TEdit
     Left = 480
-    Height = 23
+    Height = 25
     Top = 232
     Width = 176
     Font.Color = 7754266
@@ -118,7 +118,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object edtCarAV: TEdit
     Left = 480
-    Height = 23
+    Height = 25
     Top = 264
     Width = 176
     Font.Color = 7754266
@@ -127,7 +127,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object edtTmAV: TEdit
     Left = 480
-    Height = 23
+    Height = 25
     Top = 296
     Width = 176
     Font.Color = 7754266
@@ -136,7 +136,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object lblCollege: TLabel
     Left = 154
-    Height = 20
+    Height = 15
     Top = 113
     Width = 68
     Caption = 'lblCollege'
@@ -154,6 +154,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     Action = actApply
     Anchors = [akLeft, akBottom]
     Caption = 'Apply && Close'
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 7
   end
   object Button2: TButton
@@ -164,28 +166,30 @@ object frmPlayerEdit: TfrmPlayerEdit
     Action = actCancel
     Anchors = [akLeft, akBottom]
     Caption = 'Cancel && Close'
+    Font.Color = 7754266
+    ParentFont = False
     TabOrder = 8
   end
   object lblID: TLabel
     Left = 154
-    Height = 15
+    Height = 14
     Top = 153
-    Width = 24
+    Width = 30
     Caption = 'lblID'
     ParentColor = False
     Visible = False
   end
   object Label9: TLabel
     Left = 41
-    Height = 15
+    Height = 14
     Top = 200
-    Width = 85
+    Width = 98
     Caption = 'Last Year Played'
     ParentColor = False
   end
   object edtLastYear: TEdit
     Left = 153
-    Height = 23
+    Height = 25
     Top = 200
     Width = 176
     Font.Color = 7754266

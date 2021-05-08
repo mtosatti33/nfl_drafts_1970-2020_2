@@ -33,6 +33,7 @@ type
 var
   dm: Tdm;
   iniStrings: TIniStrings;
+
 implementation
 
 {$R *.lfm}
@@ -44,22 +45,31 @@ procedure Tdm.DataModuleCreate(Sender: TObject);
 begin
   iniStrings := ReadIniFile;
 
-  conn.Database:=iniStrings.database;
+  {$IfDef MSWINDOWS}
+  conn.Database := iniStrings.database;
+  {$EndIf}
+
+  //Linux works with / directories instead \ on windows.
+  // The app should see the database drafts.db
+  {$IFDEF LINUX}
+  conn.Database := iniStrings.databaseLinux;
+  {$EndIf}
+
   {$IfDef WIN32}
-         conn.LibraryLocation:=iniStrings.library32;
+  conn.LibraryLocation := iniStrings.library32;
   {$EndIf}
 
   {$IfDef WIN64}
-         conn.LibraryLocation:=iniStrings.library64;
+  conn.LibraryLocation := iniStrings.library64;
   {$EndIf}
-  conn.Protocol:=iniStrings.protocol;
+  conn.Protocol := iniStrings.protocol;
 
   try
-    conn.Connected:=true;
-  except on E: Exception do
-    ShowMessage('A error ocurred: '+ E.Message);
+    conn.Connected := True;
+  except
+    on E: Exception do
+      ShowMessage('A error ocurred: ' + E.Message);
   end;
 end;
 
 end.
-
