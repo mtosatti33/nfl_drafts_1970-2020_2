@@ -1,0 +1,221 @@
+object frmPlayerComp: TfrmPlayerComp
+  Left = 291
+  Height = 507
+  Top = 128
+  Width = 726
+  BorderStyle = bsNone
+  Caption = 'Player Comparision'
+  ClientHeight = 507
+  ClientWidth = 726
+  Color = 7754266
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '2.0.4.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 32
+    Top = 0
+    Width = 726
+    Align = alTop
+    BevelOuter = bvNone
+    Caption = 'Player Comparision'
+    ClientHeight = 32
+    ClientWidth = 726
+    Color = 9020695
+    Font.Color = clWhite
+    Font.Height = -21
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    OnMouseDown = Panel1MouseDown
+    OnMouseMove = Panel1MouseMove
+    object SpeedButton1: TSpeedButton
+      Left = 692
+      Height = 32
+      Top = 0
+      Width = 34
+      Align = alRight
+      Caption = 'X'
+      Flat = True
+      Font.Color = clWhite
+      Font.Height = -29
+      Font.Name = '@Arial Unicode MS'
+      OnClick = SpeedButton1Click
+      ParentFont = False
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 475
+    Hint = 'Double click for entering player''s site'
+    Top = 32
+    Width = 726
+    Align = alClient
+    BorderStyle = bsNone
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'Player'
+        Width = 160
+        FieldName = 'Player'
+      end    
+      item
+        Title.Caption = 'Yr.'
+        Width = 45
+        FieldName = 'Draft_Yr'
+      end    
+      item
+        Title.Caption = 'Rnd.'
+        Width = 30
+        FieldName = 'Rnd'
+      end    
+      item
+        Title.Caption = 'Pick'
+        Width = 30
+        FieldName = 'Pick'
+      end    
+      item
+        Title.Caption = 'Team'
+        Width = 50
+        FieldName = 'Tm'
+      end    
+      item
+        Title.Caption = 'College'
+        Width = 110
+        FieldName = 'College'
+      end    
+      item
+        Title.Caption = 'Cmp'
+        Width = 40
+        FieldName = 'cmp'
+      end    
+      item
+        Title.Caption = 'Att'
+        Width = 40
+        FieldName = 'att'
+      end    
+      item
+        Title.Caption = 'Yds'
+        Width = 50
+        FieldName = 'yds'
+      end    
+      item
+        Title.Caption = 'TD'
+        Width = 40
+        FieldName = 'td'
+      end    
+      item
+        Title.Caption = 'Int'
+        Width = 40
+        FieldName = 'int'
+      end    
+      item
+        Title.Caption = 'Rush'
+        Width = 40
+        FieldName = 'rush_att'
+      end    
+      item
+        Title.Caption = 'Yds'
+        Width = 50
+        FieldName = 'rush_yds'
+      end    
+      item
+        Title.Caption = 'TD'
+        Width = 40
+        FieldName = 'rush_td'
+      end    
+      item
+        Title.Caption = 'Rec'
+        Width = 40
+        FieldName = 'rec'
+      end    
+      item
+        Title.Caption = 'Yds'
+        Width = 50
+        FieldName = 'rec_yds'
+      end    
+      item
+        Title.Caption = 'TD'
+        Width = 40
+        FieldName = 'rec_td'
+      end    
+      item
+        Title.Caption = 'Solo'
+        Width = 40
+        FieldName = 'solo'
+      end    
+      item
+        Title.Caption = 'Int'
+        Width = 40
+        FieldName = 'def_int'
+      end    
+      item
+        Title.Caption = 'Sk'
+        Width = 35
+        FieldName = 'sk'
+      end>
+    DataSource = dsStats
+    FixedColor = 7754266
+    FixedHotColor = clDefault
+    Flat = True
+    Font.Color = 7754266
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    TabOrder = 1
+    TitleFont.Color = clWhite
+    TitleStyle = tsStandard
+    OnPrepareCanvas = DBGrid1PrepareCanvas
+    OnTitleClick = DBGrid1TitleClick
+  end
+  object dsStats: TDataSource
+    DataSet = qryStats
+    left = 229
+    top = 178
+  end
+  object qryStats: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'SELECT d.Player, d.Draft_Yr, d.Rnd, d.Pick, d.tm, d.College,'
+      'd.Cmp, d.Att, d.Yds, d.TD , d."Int", '
+      'd.Rush_Att, d.Rush_Yds, d.Rush_TD, '
+      'd.Rec, d.Rec_Yds, d.Rec_TD ,'
+      'd.Solo, d.Def_Int, d.Sk '
+      'from drafts d where d.Draft_Yr BETWEEN :dti and :dtf and d.Pos =:pos'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'dti'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dtf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pos'
+        ParamType = ptUnknown
+      end>
+    left = 368
+    top = 173
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'dti'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dtf'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'pos'
+        ParamType = ptUnknown
+      end>
+  end
+end

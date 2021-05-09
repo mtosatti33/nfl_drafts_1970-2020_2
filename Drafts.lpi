@@ -113,7 +113,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="14">
+    <Units Count="15">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -198,6 +198,12 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UConfiguration"/>
       </Unit13>
+      <Unit14>
+        <Filename Value="uplayercomp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPlayerComp"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

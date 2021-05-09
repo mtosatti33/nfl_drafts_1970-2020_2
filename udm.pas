@@ -49,8 +49,8 @@ begin
   conn.Database := iniStrings.database;
   {$EndIf}
 
-  //Linux works with / directories instead \ on windows.
-  // The app should see the database drafts.db
+  //Linux works with "/" directories instead "\" on windows.
+  //The app should see the database drafts.db
   {$IFDEF LINUX}
   conn.Database := iniStrings.databaseLinux;
   {$EndIf}

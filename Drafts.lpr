@@ -9,7 +9,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit, UInstructionView,
   ureport, upaintgrid, ufillitems, uPrepareQuery, UColorConstants, UColors,
-  TestIfIs64, UConfiguration;
+  TestIfIs64, UConfiguration, uplayercomp;
 
 {$R *.res}
 
@@ -21,6 +21,7 @@ begin
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TfrmBrowser, frmBrowser);
   Application.CreateForm(TfrmInstructionView, frmInstructionView);
+  Application.CreateForm(TfrmPlayerComp, frmPlayerComp);
   Application.Run;
 end.
 

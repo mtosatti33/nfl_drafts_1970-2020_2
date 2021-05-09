@@ -5,8 +5,8 @@ unit UPlayerEdit;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList,
-  ExtCtrls, Buttons, ZDataset;
+  Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList,
+  ExtCtrls, Buttons, ComCtrls, DBGrids, DBCtrls, ZDataset, Types;
 
 type
 
@@ -18,29 +18,66 @@ type
     ActionList1: TActionList;
     Button1: TButton;
     Button2: TButton;
+    dsStats: TDataSource;
+    DBEdit1: TDBEdit;
+    DBEdit10: TDBEdit;
+    DBEdit11: TDBEdit;
+    DBEdit12: TDBEdit;
+    DBEdit13: TDBEdit;
+    DBEdit14: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
     edtAllPro: TEdit;
+    edtCarAV: TEdit;
+    edtGames: TEdit;
     edtLastYear: TEdit;
     edtProBowl: TEdit;
     edtStarter: TEdit;
-    edtGames: TEdit;
-    edtCarAV: TEdit;
     edtTmAV: TEdit;
     Image1: TImage;
     Label1: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
     Label2: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     Label9: TLabel;
     lblID: TLabel;
     lblName: TLabel;
     lblPosition: TLabel;
     lblCollege: TLabel;
     Panel1: TPanel;
+    pgcMain: TPageControl;
     qryDrafts: TZQuery;
     Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
     SpeedButton1: TSpeedButton;
+    tsStats: TTabSheet;
+    tsInformation: TTabSheet;
+    qryStats: TZQuery;
     procedure actApplyExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -103,6 +140,8 @@ begin
   edtGames.Text := FGames;
   edtCarAV.Text := FCarAV;
   edtTmAV.Text := FTmAV;
+
+  pgcMain.ActivePage := tsInformation;
 end;
 
 procedure TfrmPlayerEdit.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -124,7 +163,7 @@ end;
 
 procedure TfrmPlayerEdit.SpeedButton1Click(Sender: TObject);
 begin
-  Close;
+  actCancel.Execute;
 end;
 
 procedure TfrmPlayerEdit.actCancelExecute(Sender: TObject);

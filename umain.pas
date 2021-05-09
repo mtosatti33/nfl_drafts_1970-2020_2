@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration;
+  LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration, uplayercomp;
 
 type
 
@@ -65,9 +65,18 @@ type
     lstCollegeList: TListBox;
     lstPositionList: TListBox;
     lstTeamList: TListBox;
+    MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem7: TMenuItem;
+    miTeam: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
+    miPos: TMenuItem;
+    miCollege: TMenuItem;
+    MenuItem9: TMenuItem;
     mnuOptions: TPopupMenu;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -107,6 +116,11 @@ type
     procedure FormShow(Sender: TObject);
     procedure LoadComponents;
     procedure lstClick(Sender: TObject);
+    procedure MenuItem7Click(Sender: TObject);
+    procedure miTeamClick(Sender: TObject);
+    procedure miPosClick(Sender: TObject);
+    procedure miCollegeClick(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
     procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
@@ -276,27 +290,34 @@ begin
   frmPlayerEdit := TfrmPlayerEdit.Create(Application);
 
   try
-    frmPlayerEdit.ID := dm.qryPicks['ID'];
-    frmPlayerEdit.Name := dm.qryPicks['PLAYER'];
-    frmPlayerEdit.Position := dm.qryPicks['POS'];
-    frmPlayerEdit.College := dm.qryPicks['COLLEGE'];
-    frmPlayerEdit.AllPro := dm.qryPicks['AP1'];
-    frmPlayerEdit.ProBowl := dm.qryPicks['PB'];
-    frmPlayerEdit.Starter := dm.qryPicks['ST'];
+    with frmPlayerEdit do
+    begin
+      qryStats.ParamByName('id').AsInteger:= dm.qryPicks['ID'];
+      qryStats.Open;
 
-    if not dm.qryPicks.FieldByName('G').IsNull then
-      frmPlayerEdit.Games := dm.qryPicks['G'];
+      ID := dm.qryPicks['ID'];
+      Name := dm.qryPicks['PLAYER'];
+      Position := dm.qryPicks['POS'];
+      College := dm.qryPicks['COLLEGE'];
+      AllPro := dm.qryPicks['AP1'];
+      ProBowl := dm.qryPicks['PB'];
+      Starter := dm.qryPicks['ST'];
 
-    if not dm.qryPicks.FieldByName('CarAV').IsNull then
-      frmPlayerEdit.CarAV := dm.qryPicks['CarAV'];
+      if not dm.qryPicks.FieldByName('G').IsNull then
+        Games := dm.qryPicks['G'];
 
-    if not dm.qryPicks.FieldByName('DrAv').IsNull then
-      frmPlayerEdit.TmAV := dm.qryPicks['DrAv'];
+      if not dm.qryPicks.FieldByName('CarAV').IsNull then
+        CarAV := dm.qryPicks['CarAV'];
 
-    if not dm.qryPicks.FieldByName('TO').IsNull then
-      frmPlayerEdit.LastYearPlayed := dm.qryPicks['TO'];
+      if not dm.qryPicks.FieldByName('DrAv').IsNull then
+        TmAV := dm.qryPicks['DrAv'];
 
-    frmPlayerEdit.ShowModal;
+      if not dm.qryPicks.FieldByName('TO').IsNull then
+        LastYearPlayed := dm.qryPicks['TO'];
+
+      ShowModal;
+
+    end;
 
   finally
     if frmPlayerEdit.IsSave then
@@ -585,12 +606,70 @@ begin
     end;
 end;
 
+procedure TfrmMain.MenuItem7Click(Sender: TObject);
+begin
+  if cmbTeamList.Text <> '' then
+     cmbTeamList.ItemIndex:=-1;
+  if cmbPositionList.Text <> '' then
+     cmbPositionList.ItemIndex:=-1;
+  if cmbCollegeList.Text <> '' then
+     cmbCollegeList.ItemIndex:=-1;
+
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.miTeamClick(Sender: TObject);
+begin
+  if dm.qryPicks.RecordCount <> 0 then
+  begin
+    cmbTeamList.Text:= dm.qryPicks['tm'];
+    actSearch.Execute;
+  end;
+end;
+
+procedure TfrmMain.miPosClick(Sender: TObject);
+begin
+  if dm.qryPicks.RecordCount <> 0 then
+  begin
+    cmbPositionList.Text:=dm.qryPicks['pos'];
+    actSearch.Execute;
+  end;
+end;
+
+procedure TfrmMain.miCollegeClick(Sender: TObject);
+begin
+  if dm.qryPicks.RecordCount <> 0 then
+  begin
+    cmbCollegeList.Text:=dm.qryPicks['college'];
+    actSearch.Execute;
+  end;
+end;
+
+procedure TfrmMain.MenuItem9Click(Sender: TObject);
+begin
+  //TODO: make comparision from players in the same position
+  //ShowMessage('Comming Soon');
+
+  frmPlayerComp := TfrmPlayerComp.Create(Application);
+
+  try
+    with frmPlayerComp do
+    begin
+      DateInitial:=cmbYearFromList.Text;
+      DateFinal:=cmbYearToList.Text;
+      Position:=dm.qryPicks['pos'];
+    end;
+    frmPlayerComp.ShowModal;
+  finally
+    FreeAndNil(frmPlayerComp);
+  end;
+end;
+
 procedure TfrmMain.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: integer);
 begin
   MouseX := X + Panel1.Left;
   MouseY := Y + Panel1.Top;
-
 end;
 
 procedure TfrmMain.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
@@ -598,9 +677,6 @@ begin
   if ssLeft in Shift then
   begin
     Left := Mouse.CursorPos.x - MouseX;
-
-
-
     Top := Mouse.CursorPos.y - MouseY;
   end;
 end;

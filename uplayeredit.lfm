@@ -1,23 +1,23 @@
 object frmPlayerEdit: TfrmPlayerEdit
-  Left = 324
-  Height = 389
-  Top = 150
-  Width = 712
+  Left = 282
+  Height = 603
+  Top = 108
+  Width = 847
   BorderStyle = bsNone
   Caption = 'Edit Player Information'
-  ClientHeight = 389
-  ClientWidth = 712
+  ClientHeight = 603
+  ClientWidth = 847
   Color = 7754266
   Font.Color = clWhite
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.0.4.0'
   object lblName: TLabel
     Left = 154
-    Height = 30
+    Height = 37
     Top = 57
-    Width = 102
+    Width = 101
     Caption = 'lblName'
     Font.Color = clWhite
     Font.Height = -27
@@ -26,117 +26,15 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object lblPosition: TLabel
     Left = 154
-    Height = 14
+    Height = 15
     Top = 97
-    Width = 65
+    Width = 56
     Caption = 'lblPosition'
     ParentColor = False
   end
-  object Label1: TLabel
-    Left = 41
-    Height = 14
-    Top = 232
-    Width = 103
-    Caption = '1st. Team All-Pro'
-    ParentColor = False
-  end
-  object Label2: TLabel
-    Left = 41
-    Height = 14
-    Top = 264
-    Width = 55
-    Caption = 'Pro Bowl'
-    ParentColor = False
-  end
-  object Label3: TLabel
-    Left = 368
-    Height = 14
-    Top = 200
-    Width = 65
-    Caption = 'Yrs. Starter'
-    ParentColor = False
-  end
-  object Label4: TLabel
-    Left = 368
-    Height = 14
-    Top = 232
-    Width = 40
-    Caption = 'Games'
-    ParentColor = False
-  end
-  object Label5: TLabel
-    Left = 368
-    Height = 14
-    Top = 264
-    Width = 59
-    Caption = 'Career AV'
-    ParentColor = False
-  end
-  object Label6: TLabel
-    Left = 368
-    Height = 14
-    Top = 296
-    Width = 102
-    Caption = 'Team Drafted AV'
-    ParentColor = False
-  end
-  object edtAllPro: TEdit
-    Left = 153
-    Height = 25
-    Top = 232
-    Width = 176
-    Font.Color = 7754266
-    ParentFont = False
-    TabOrder = 1
-  end
-  object edtProBowl: TEdit
-    Left = 153
-    Height = 25
-    Top = 264
-    Width = 176
-    Font.Color = 7754266
-    ParentFont = False
-    TabOrder = 2
-  end
-  object edtStarter: TEdit
-    Left = 480
-    Height = 25
-    Top = 200
-    Width = 176
-    Font.Color = 7754266
-    ParentFont = False
-    TabOrder = 3
-  end
-  object edtGames: TEdit
-    Left = 480
-    Height = 25
-    Top = 232
-    Width = 176
-    Font.Color = 7754266
-    ParentFont = False
-    TabOrder = 4
-  end
-  object edtCarAV: TEdit
-    Left = 480
-    Height = 25
-    Top = 264
-    Width = 176
-    Font.Color = 7754266
-    ParentFont = False
-    TabOrder = 5
-  end
-  object edtTmAV: TEdit
-    Left = 480
-    Height = 25
-    Top = 296
-    Width = 176
-    Font.Color = 7754266
-    ParentFont = False
-    TabOrder = 6
-  end
   object lblCollege: TLabel
     Left = 154
-    Height = 15
+    Height = 20
     Top = 113
     Width = 68
     Caption = 'lblCollege'
@@ -147,54 +45,37 @@ object frmPlayerEdit: TfrmPlayerEdit
     ShowAccelChar = False
   end
   object Button1: TButton
-    Left = 136
+    Left = 192
     Height = 40
-    Top = 344
+    Top = 558
     Width = 224
     Action = actApply
     Anchors = [akLeft, akBottom]
     Caption = 'Apply && Close'
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 0
   end
   object Button2: TButton
-    Left = 360
+    Left = 416
     Height = 40
-    Top = 344
+    Top = 558
     Width = 224
     Action = actCancel
     Anchors = [akLeft, akBottom]
     Caption = 'Cancel && Close'
     Font.Color = 7754266
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 1
   end
   object lblID: TLabel
     Left = 154
-    Height = 14
+    Height = 15
     Top = 153
-    Width = 30
+    Width = 24
     Caption = 'lblID'
     ParentColor = False
     Visible = False
-  end
-  object Label9: TLabel
-    Left = 41
-    Height = 14
-    Top = 200
-    Width = 98
-    Caption = 'Last Year Played'
-    ParentColor = False
-  end
-  object edtLastYear: TEdit
-    Left = 153
-    Height = 25
-    Top = 200
-    Width = 176
-    Font.Color = 7754266
-    ParentFont = False
-    TabOrder = 0
   end
   object Shape1: TShape
     Left = 41
@@ -294,22 +175,532 @@ object frmPlayerEdit: TfrmPlayerEdit
     }
     Stretch = True
   end
+  object pgcMain: TPageControl
+    Left = 41
+    Height = 360
+    Top = 176
+    Width = 751
+    ActivePage = tsStats
+    TabIndex = 1
+    TabOrder = 2
+    object tsInformation: TTabSheet
+      Caption = 'Edit Information'
+      ClientHeight = 332
+      ClientWidth = 743
+      object Label1: TLabel
+        Left = 24
+        Height = 15
+        Top = 96
+        Width = 91
+        Caption = '1st. Team All-Pro'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 24
+        Height = 15
+        Top = 128
+        Width = 47
+        Caption = 'Pro Bowl'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtAllPro: TEdit
+        Left = 144
+        Height = 23
+        Top = 88
+        Width = 176
+        Font.Color = 7754266
+        ParentFont = False
+        TabOrder = 0
+      end
+      object edtProBowl: TEdit
+        Left = 144
+        Height = 23
+        Top = 120
+        Width = 176
+        Font.Color = 7754266
+        ParentFont = False
+        TabOrder = 1
+      end
+      object Label9: TLabel
+        Left = 24
+        Height = 15
+        Top = 64
+        Width = 85
+        Caption = 'Last Year Played'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtLastYear: TEdit
+        Left = 144
+        Height = 23
+        Top = 56
+        Width = 176
+        Font.Color = 7754266
+        ParentFont = False
+        TabOrder = 2
+      end
+      object Label3: TLabel
+        Left = 368
+        Height = 15
+        Top = 64
+        Width = 56
+        Caption = 'Yrs. Starter'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtStarter: TEdit
+        Left = 480
+        Height = 23
+        Top = 56
+        Width = 176
+        Font.Color = 7754266
+        ParentFont = False
+        TabOrder = 3
+      end
+      object Label4: TLabel
+        Left = 368
+        Height = 15
+        Top = 96
+        Width = 36
+        Caption = 'Games'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtGames: TEdit
+        Left = 480
+        Height = 23
+        Top = 88
+        Width = 176
+        Font.Color = 7754266
+        ParentFont = False
+        TabOrder = 4
+      end
+      object Label5: TLabel
+        Left = 368
+        Height = 15
+        Top = 128
+        Width = 52
+        Caption = 'Career AV'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtCarAV: TEdit
+        Left = 480
+        Height = 23
+        Top = 120
+        Width = 176
+        Font.Color = 7754266
+        ParentFont = False
+        TabOrder = 5
+      end
+      object Label6: TLabel
+        Left = 368
+        Height = 15
+        Top = 160
+        Width = 90
+        Caption = 'Team Drafted AV'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtTmAV: TEdit
+        Left = 480
+        Height = 23
+        Top = 152
+        Width = 176
+        Font.Color = 7754266
+        ParentFont = False
+        TabOrder = 6
+      end
+    end
+    object tsStats: TTabSheet
+      Caption = 'Edit Stats'
+      ClientHeight = 332
+      ClientWidth = 743
+      object DBEdit1: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 167
+        Width = 80
+        DataField = 'int'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Label7: TLabel
+        Left = 29
+        Height = 15
+        Top = 167
+        Width = 56
+        Caption = 'Passes Ints'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 29
+        Height = 15
+        Top = 139
+        Width = 57
+        Caption = 'Passes TDs'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit2: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 139
+        Width = 80
+        DataField = 'td'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 1
+      end
+      object Label10: TLabel
+        Left = 29
+        Height = 15
+        Top = 110
+        Width = 66
+        Caption = 'Passes Yards'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit3: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 110
+        Width = 80
+        DataField = 'yds'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 2
+      end
+      object Label11: TLabel
+        Left = 29
+        Height = 15
+        Top = 78
+        Width = 94
+        Caption = 'Passes Attempted'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit4: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 79
+        Width = 80
+        DataField = 'att'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 3
+      end
+      object Label12: TLabel
+        Left = 29
+        Height = 15
+        Top = 48
+        Width = 96
+        Caption = 'Passes Completed'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit5: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 48
+        Width = 80
+        DataField = 'cmp'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 4
+      end
+      object Label13: TLabel
+        Left = 280
+        Height = 15
+        Top = 48
+        Width = 97
+        Caption = 'Rushes Attempted'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit6: TDBEdit
+        Left = 387
+        Height = 23
+        Top = 49
+        Width = 80
+        DataField = 'rush_att'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 5
+      end
+      object DBEdit7: TDBEdit
+        Left = 387
+        Height = 23
+        Top = 80
+        Width = 80
+        DataField = 'rush_yds'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 6
+      end
+      object Label14: TLabel
+        Left = 280
+        Height = 15
+        Top = 80
+        Width = 69
+        Caption = 'Rushes Yards'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label15: TLabel
+        Left = 280
+        Height = 15
+        Top = 109
+        Width = 60
+        Caption = 'Rushes TDs'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit8: TDBEdit
+        Left = 387
+        Height = 23
+        Top = 109
+        Width = 80
+        DataField = 'rush_td'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 7
+      end
+      object Label16: TLabel
+        Left = 528
+        Height = 15
+        Top = 48
+        Width = 82
+        Caption = 'Rec. Attempted'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit9: TDBEdit
+        Left = 635
+        Height = 23
+        Top = 49
+        Width = 80
+        DataField = 'rec'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 8
+      end
+      object DBEdit10: TDBEdit
+        Left = 635
+        Height = 23
+        Top = 80
+        Width = 80
+        DataField = 'rec_yds'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 9
+      end
+      object Label17: TLabel
+        Left = 528
+        Height = 15
+        Top = 80
+        Width = 54
+        Caption = 'Rec. Yards'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label18: TLabel
+        Left = 528
+        Height = 15
+        Top = 109
+        Width = 45
+        Caption = 'Rec. TDs'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit11: TDBEdit
+        Left = 635
+        Height = 23
+        Top = 109
+        Width = 80
+        DataField = 'rec_td'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 10
+      end
+      object Label19: TLabel
+        Left = 29
+        Height = 15
+        Top = 264
+        Width = 23
+        Caption = 'Solo'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit12: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 264
+        Width = 80
+        DataField = 'solo'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 11
+      end
+      object Label20: TLabel
+        Left = 280
+        Height = 15
+        Top = 264
+        Width = 43
+        Caption = 'Def Ints.'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit13: TDBEdit
+        Left = 387
+        Height = 23
+        Top = 264
+        Width = 80
+        DataField = 'def_int'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 12
+      end
+      object Label21: TLabel
+        Left = 528
+        Height = 15
+        Top = 264
+        Width = 29
+        Caption = 'Sacks'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBEdit14: TDBEdit
+        Left = 635
+        Height = 23
+        Top = 264
+        Width = 80
+        DataField = 'sk'
+        DataSource = dsStats
+        CharCase = ecNormal
+        Font.Color = 7754266
+        MaxLength = 0
+        ParentFont = False
+        TabOrder = 13
+      end
+      object Shape2: TShape
+        Left = 29
+        Height = 1
+        Top = 32
+        Width = 685
+        Pen.Color = 7754266
+      end
+      object Shape3: TShape
+        Left = 29
+        Height = 1
+        Top = 252
+        Width = 685
+        Pen.Color = 7754266
+      end
+      object Label22: TLabel
+        Left = 29
+        Height = 15
+        Top = 12
+        Width = 41
+        Caption = 'Offense'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label23: TLabel
+        Left = 29
+        Height = 15
+        Top = 232
+        Width = 42
+        Caption = 'Defense'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+  end
   object Panel1: TPanel
     Left = 0
     Height = 32
     Top = 0
-    Width = 712
+    Width = 847
     Align = alTop
     BevelOuter = bvNone
+    Caption = 'Edit Player Information'
     ClientHeight = 32
-    ClientWidth = 712
+    ClientWidth = 847
     Color = 9020695
+    Font.Color = clWhite
+    Font.Height = -21
     ParentColor = False
-    TabOrder = 9
-    OnMouseDown = Panel1MouseDown
-    OnMouseMove = Panel1MouseMove
+    ParentFont = False
+    TabOrder = 3
     object SpeedButton1: TSpeedButton
-      Left = 678
+      Left = 813
       Height = 32
       Top = 0
       Width = 34
@@ -427,6 +818,35 @@ object frmPlayerEdit: TfrmPlayerEdit
         Name = 'DrAV'
         ParamType = ptUnknown
       end    
+      item
+        DataType = ftUnknown
+        Name = 'id'
+        ParamType = ptUnknown
+      end>
+  end
+  object dsStats: TDataSource
+    DataSet = qryStats
+    left = 331
+    top = 372
+  end
+  object qryStats: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'SELECT d.Cmp, d.Att, d.Yds, d.TD , d."Int", '
+      'd.Rush_Att, d.Rush_Yds, d.Rush_TD, '
+      'd.Rec, d.Rec_Yds, d.Rec_TD ,'
+      'd.Solo, d.Def_Int, d.Sk '
+      'from drafts d where d.ID = :id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'id'
+        ParamType = ptUnknown
+      end>
+    left = 416
+    top = 336
+    ParamData = <    
       item
         DataType = ftUnknown
         Name = 'id'

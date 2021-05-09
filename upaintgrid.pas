@@ -17,7 +17,8 @@ type
     FQuery: TZQuery;
     FDatacol: integer;
   public
-    procedure Paint(index: byte);
+    procedure Paint(index: byte); overload;
+    procedure Paint; overload;
     constructor Create(grid: TDBGrid; qry: TZQuery; datacol: integer);
   end;
 
@@ -57,7 +58,7 @@ begin
       car_av := SetValue('carAV');
       tm_av := SetValue('DrAV');
       rnd := SetValue('rnd');
-      starter := SetValue('ST'); 
+      starter := SetValue('ST');
       res := car_av - tm_av;
 
       case Index of
@@ -106,6 +107,28 @@ begin
     TeamColor.Free;
     MarginColor.Free;
     RoundColor.Free;
+  end;
+end;
+
+procedure TPaintGrid.Paint;
+var
+  draft_yr, team: string;
+  TeamColor: TTeamColor;
+begin
+  draft_yr := FQuery.FieldByName('draft_yr').AsString;
+  team := FQuery.FieldByName('Tm').AsString;
+
+  TeamColor := TTeamColor.Create;
+
+  try
+    if FDataCol = 4 then
+    begin
+      FGrid.Canvas.Font.Color := TeamColor.GetColor(draft_yr, team, FORECOLOR);
+      FGrid.Canvas.Brush.Color := TeamColor.GetColor(draft_yr, team, BACKCOLOR);
+    end;
+
+  finally
+    TeamColor.Free;
   end;
 end;
 
