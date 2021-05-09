@@ -63,7 +63,7 @@ var
   i: integer;
 begin
   //Quarterbacks
-  if Position = 'QB' then
+  if FPosition = 'QB' then
   begin
     for i := 6 to 10 do
     begin
@@ -72,7 +72,7 @@ begin
   end;
 
   //Running Backs and Fullbacks
-  if (Position = 'RB') or (Position = 'FB') then
+  if (FPosition = 'RB') or (FPosition = 'FB') then
   begin
     for i := 11 to 13 do
     begin
@@ -80,7 +80,7 @@ begin
     end;
   end;
   //Wide Receivers and Tight Ends
-  if (Position = 'WR') or (Position = 'TE') then
+  if (FPosition = 'WR') or (FPosition = 'TE') then
   begin
     for i := 14 to 16 do
     begin
@@ -88,9 +88,9 @@ begin
     end;
   end;
   //Defense
-  if (Position = 'DE') or (Position = 'DT') or (Position = 'DL') or
-    (Position = 'NT') or (Position = 'OLB') or (Position = 'ILB') or
-    (Position = 'LB') or (Position = 'CB') or (Position = 'DB') or (Position = 'S') then
+  if (FPosition = 'DE') or (FPosition = 'DT') or (FPosition = 'DL') or
+    (FPosition = 'NT') or (FPosition = 'OLB') or (FPosition = 'ILB') or
+    (FPosition = 'LB') or (FPosition = 'CB') or (FPosition = 'DB') or (FPosition = 'S') then
   begin
     for i := 17 to 19 do
     begin

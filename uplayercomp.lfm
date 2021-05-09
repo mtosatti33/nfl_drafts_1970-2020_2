@@ -11,7 +11,7 @@ object frmPlayerComp: TfrmPlayerComp
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.4.0'
+  LCLVersion = '2.0.10.0'
   object Panel1: TPanel
     Left = 0
     Height = 32
@@ -170,8 +170,8 @@ object frmPlayerComp: TfrmPlayerComp
   end
   object dsStats: TDataSource
     DataSet = qryStats
-    left = 229
-    top = 178
+    Left = 229
+    Top = 178
   end
   object qryStats: TZQuery
     Connection = dm.conn
@@ -199,8 +199,8 @@ object frmPlayerComp: TfrmPlayerComp
         Name = 'pos'
         ParamType = ptUnknown
       end>
-    left = 368
-    top = 173
+    Left = 368
+    Top = 173
     ParamData = <    
       item
         DataType = ftUnknown
