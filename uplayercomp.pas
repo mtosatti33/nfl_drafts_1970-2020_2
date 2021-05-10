@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  DBGrids, UDM, ZDataset, Grids, upaintgrid;
+  DBGrids, UDM, ZDataset, Grids, upaintgrid, uextendcomponents;
 
 type
 
@@ -23,9 +23,6 @@ type
     procedure DBGrid1TitleClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: integer);
-    procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     procedure SpeedButton1Click(Sender: TObject);
   private
     FDateFinal: string;
@@ -111,14 +108,8 @@ end;
 
 procedure TfrmPlayerComp.LoadComponents;
 begin
-  FAsc := False;
-end;
-
-procedure TfrmPlayerComp.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: integer);
-begin
-  MouseX := X + Panel1.Left;
-  MouseY := Y + Panel1.Top;
+  FAsc := False; 
+  panel1.MoveMousePanel:=true;
 end;
 
 procedure TfrmPlayerComp.DBGrid1PrepareCanvas(Sender: TObject;
@@ -159,16 +150,6 @@ begin
 
   HideColumns;
   setColumnVisibilityByPosition;
-end;
-
-procedure TfrmPlayerComp.Panel1MouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: integer);
-begin
-  if ssLeft in Shift then
-  begin
-    Left := Mouse.CursorPos.x - MouseX;
-    Top := Mouse.CursorPos.y - MouseY;
-  end;
 end;
 
 end.

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList,
-  ExtCtrls, Buttons, ComCtrls, DBGrids, DBCtrls, ZDataset, Types;
+  ExtCtrls, Buttons, ComCtrls, DBGrids, DBCtrls, ZDataset, Types, uextendcomponents;
 
 type
 
@@ -82,9 +82,6 @@ type
     procedure actCancelExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: integer);
-    procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     procedure SpeedButton1Click(Sender: TObject);
   private
     FId: string;
@@ -144,23 +141,6 @@ begin
   pgcMain.ActivePage := tsInformation;
 end;
 
-procedure TfrmPlayerEdit.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: integer);
-begin
-  MouseX := X + Panel1.Left;
-  MouseY := Y + Panel1.Top;
-end;
-
-procedure TfrmPlayerEdit.Panel1MouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: integer);
-begin
-  if ssLeft in Shift then
-  begin
-    Left := Mouse.CursorPos.x - MouseX;
-    Top := Mouse.CursorPos.y - MouseY;
-  end;
-end;
-
 procedure TfrmPlayerEdit.SpeedButton1Click(Sender: TObject);
 begin
   actCancel.Execute;
@@ -174,6 +154,7 @@ end;
 procedure TfrmPlayerEdit.FormCreate(Sender: TObject);
 begin
   FIsSave := False;
+  panel1.MoveMousePanel:=true;
 end;
 
 procedure TfrmPlayerEdit.actApplyExecute(Sender: TObject);

@@ -30,8 +30,8 @@ object frmMain: TfrmMain
     Height = 568
     Top = 48
     Width = 736
-    ActivePage = tsMainData
-    TabIndex = 1
+    ActivePage = tsFilters
+    TabIndex = 0
     TabOrder = 0
     object tsFilters: TTabSheet
       Caption = 'Filters'
@@ -714,8 +714,6 @@ object frmMain: TfrmMain
     ParentColor = False
     ParentFont = False
     TabOrder = 1
-    OnMouseDown = Panel1MouseDown
-    OnMouseMove = Panel1MouseMove
     object SpeedButton1: TSpeedButton
       Left = 721
       Height = 32

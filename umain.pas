@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration, uplayercomp;
+  LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration, uplayercomp, uextendcomponents;
 
 type
 
@@ -121,9 +121,6 @@ type
     procedure miPosClick(Sender: TObject);
     procedure miCollegeClick(Sender: TObject);
     procedure MenuItem9Click(Sender: TObject);
-    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: integer);
-    procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     function ValidateSearch: boolean;
     procedure OpenLink(field_url: string);
   private
@@ -559,6 +556,8 @@ procedure TfrmMain.LoadComponents;
 begin
   FillItems := TFillItems.Create;
   FAsc := False;
+  panel1.MoveMousePanel:=true;
+  panel2.MoveMousePanel:=false;
 
   if not qryYearList.active then
     qryYearList.active := True;
@@ -662,22 +661,6 @@ begin
     frmPlayerComp.ShowModal;
   finally
     FreeAndNil(frmPlayerComp);
-  end;
-end;
-
-procedure TfrmMain.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: integer);
-begin
-  MouseX := X + Panel1.Left;
-  MouseY := Y + Panel1.Top;
-end;
-
-procedure TfrmMain.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
-begin
-  if ssLeft in Shift then
-  begin
-    Left := Mouse.CursorPos.x - MouseX;
-    Top := Mouse.CursorPos.y - MouseY;
   end;
 end;
 
