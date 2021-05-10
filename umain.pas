@@ -125,8 +125,6 @@ type
     procedure OpenLink(field_url: string);
   private
     FAsc: boolean;
-    MouseX: integer;
-    MouseY: integer;
   public
 
   end;

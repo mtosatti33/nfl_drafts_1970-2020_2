@@ -12,7 +12,7 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.4.0'
+  LCLVersion = '2.0.10.0'
   object Label7: TLabel
     Left = 472
     Height = 16
@@ -730,8 +730,8 @@ object frmMain: TfrmMain
     end
   end
   object ActionList1: TActionList
-    left = 584
-    top = 168
+    Left = 584
+    Top = 168
     object actPreferences: TAction
       Caption = 'Preferences'
     end
@@ -779,8 +779,8 @@ object frmMain: TfrmMain
   end
   object dsTable: TDataSource
     DataSet = dm.qryPicks
-    left = 232
-    top = 328
+    Left = 232
+    Top = 328
   end
   object qryYearList: TZQuery
     Connection = dm.conn
@@ -788,8 +788,8 @@ object frmMain: TfrmMain
       'SELECT DISTINCT DRAFT_YR FROM DRAFTS ORDER BY DRAFT_YR DESC'
     )
     Params = <>
-    left = 432
-    top = 288
+    Left = 432
+    Top = 288
   end
   object qryTeamList: TZQuery
     Connection = dm.conn
@@ -809,8 +809,8 @@ object frmMain: TfrmMain
         Name = 'YR_TO'
         ParamType = ptUnknown
       end>
-    left = 432
-    top = 352
+    Left = 432
+    Top = 352
     ParamData = <    
       item
         DataType = ftUnknown
@@ -830,8 +830,8 @@ object frmMain: TfrmMain
       'ORDER BY POS'
     )
     Params = <>
-    left = 432
-    top = 416
+    Left = 432
+    Top = 416
   end
   object qryCollegeList: TZQuery
     Connection = dm.conn
@@ -840,8 +840,8 @@ object frmMain: TfrmMain
       'ORDER BY COLLEGE'
     )
     Params = <>
-    left = 432
-    top = 464
+    Left = 432
+    Top = 464
   end
   object qryRoundList: TZQuery
     Connection = dm.conn
@@ -860,8 +860,8 @@ object frmMain: TfrmMain
         Name = 'yr_to'
         ParamType = ptUnknown
       end>
-    left = 432
-    top = 232
+    Left = 432
+    Top = 232
     ParamData = <    
       item
         DataType = ftUnknown
@@ -875,8 +875,8 @@ object frmMain: TfrmMain
       end>
   end
   object mnuOptions: TPopupMenu
-    left = 288
-    top = 200
+    Left = 288
+    Top = 200
     object MenuItem4: TMenuItem
       Action = actEditPlayer
     end
