@@ -17,8 +17,7 @@ type
   TIniStrings = record
     database: string;
     databaseLinux: string;
-    library32: string;
-    library64: string;
+    lib: string;
     protocol: string;
     year: string;
   end;
@@ -36,23 +35,8 @@ var
 begin
   ini := TIniFile.Create(INI_FILE);
   try
-    {$IfDef MSWINDOWS}
     iniStrings.database := ini.ReadString(DB_CONFIG, 'database', '');
-    {$EndIf}
-    //Linux works with "/" directories instead "\" on windows.
-    //The app should see the database drafts.db
-    {$IfDef LINUX}
-    iniStrings.databaseLinux := ini.ReadString(DB_CONFIG, 'databaseLinux', '');
-    {$EndIf}
-
-    {$IfDef WIN32}
-    iniStrings.library32 := ini.ReadString(DB_CONFIG, 'library32', '');
-    {$EndIf}
-
-    {$IfDef WIN64}
-    iniStrings.library64 := ini.ReadString(DB_CONFIG, 'library64', '');
-    {$EndIf}
-
+    iniStrings.lib := ini.ReadString(DB_CONFIG, 'library', '');
     iniStrings.protocol := ini.ReadString(DB_CONFIG, 'protocol', '');
     iniStrings.year := ini.ReadString(GENERAL_CONFIG, 'year', '');
   finally

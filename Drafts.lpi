@@ -113,7 +113,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="16">
+    <Units Count="17">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -209,6 +209,11 @@
         <Filename Value="uextendcomponents.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit15>
+      <Unit16>
+        <Filename Value="udatasetconstants.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UDatasetConstants"/>
+      </Unit16>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

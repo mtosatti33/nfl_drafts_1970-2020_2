@@ -29,8 +29,6 @@ type
     FDateInitial: string;
     FPosition: string;
     FAsc: boolean;
-    MouseX: integer;
-    MouseY: integer;
     procedure setColumnVisibilityByPosition;
     procedure HideColumns;
     procedure LoadComponents;

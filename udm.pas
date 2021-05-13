@@ -5,7 +5,8 @@ unit UDM;
 interface
 
 uses
-  Classes, SysUtils, ZConnection, ZDataset, Dialogs, UConfiguration;
+  Classes, SysUtils, ZConnection, ZDataset, Dialogs, UConfiguration,
+  UDatasetConstants;
 
 type
 
@@ -42,26 +43,31 @@ implementation
 { Tdm }
 
 procedure Tdm.DataModuleCreate(Sender: TObject);
+var
+  dir, arch: string;
 begin
   iniStrings := ReadIniFile;
 
   {$IfDef MSWINDOWS}
-  conn.Database := iniStrings.database;
+  dir:= WIN_DIR;
   {$EndIf}
 
   //Linux works with "/" directories instead "\" on windows.
   //The app should see the database drafts.db
   {$IFDEF LINUX}
-  conn.Database := iniStrings.databaseLinux;
+  dir:= LINUX_DIR;
   {$EndIf}
 
   {$IfDef WIN32}
-  conn.LibraryLocation := iniStrings.library32;
+  arch := ARCH_X86;
   {$EndIf}
 
   {$IfDef WIN64}
-  conn.LibraryLocation := iniStrings.library64;
+  arch := ARCH_X64;
   {$EndIf}
+
+  conn.LibraryLocation := arch + iniStrings.lib;
+  conn.Database := dir + iniStrings.database;
   conn.Protocol := iniStrings.protocol;
 
   try
