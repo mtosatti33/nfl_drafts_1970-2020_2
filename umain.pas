@@ -48,10 +48,7 @@ type
     cmbYearToList: TComboBox;
     DBGrid1: TDBGrid;
     dsTable: TDataSource;
-    lblNeverPlayed: TLabel;
-    lblProBowlers: TLabel;
     Label11: TLabel;
-    lblAllPros: TLabel;
     Label13: TLabel;
     Label14: TLabel;
     Label2: TLabel;
@@ -60,7 +57,6 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    lblFirstPicks: TLabel;
     Label9: TLabel;
     lstCollegeList: TListBox;
     lstPositionList: TListBox;
@@ -80,6 +76,7 @@ type
     mnuOptions: TPopupMenu;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     pgcMain: TPageControl;
     qryCollegeList: TZQuery;
     qryYearList: TZQuery;
@@ -201,22 +198,22 @@ begin
           begin
             if self.Components[i] = chkNeverPlayed then
             begin
-              chkText := lblNeverPlayed.Caption;
+              chkText := chkNeverPlayed.Caption;
             end;
 
             if self.Components[i] = chkFirstPicks then
             begin
-              chkText := lblFirstPicks.Caption;
+              chkText := chkFirstPicks.Caption;
             end;
 
             if self.Components[i] = chkAllPros then
             begin
-              chkText := lblAllPros.Caption;
+              chkText := chkAllPros.Caption;
             end;
 
             if self.Components[i] = chkProBowlers then
             begin
-              chkText := lblProBowlers.Caption;
+              chkText := chkProBowlers.Caption;
             end;
 
             if j = 0 then
@@ -540,6 +537,8 @@ begin
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
+var
+  i: integer;
 begin
     iniStrings := ReadIniFile;
     pgcMain.ActivePage := tsFilters;
@@ -548,6 +547,20 @@ begin
     cmbYearToList.Text:=iniStrings.year;
 
     cmbYearFromListChange(nil);
+
+    {$IfDef LINUX}
+    for i := 0 to self.ComponentCount - 1 do
+    begin
+      if self.Components[i] is TLabel then
+         TLabel(self.Components[i]).Font.Color:=clWhite; 
+      if self.Components[i] is TCheckBox then
+         TCheckBox(self.Components[i]).Font.Color:=clWhite;
+
+
+      if self.Components[i] = Panel2 then
+         Panel2.Color:=$0076521A;
+    end;
+    {$endif}
 end;
 
 procedure TfrmMain.LoadComponents;
