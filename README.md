@@ -1,9 +1,5 @@
 This program is made on LazarusIDE
 
--Installing the program/source: C:\ Disk
-
--Database is in sqlite
-
--Opening the project you should inform the database path ('../db/drafts.db') on component TZConnection named "conn" on datamodule 'dm'.
+-Install the program/source: C:\ Disk or clone this repo with "git clone command"
 
 -Compile the source and Enjoy
