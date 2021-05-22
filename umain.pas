@@ -81,8 +81,8 @@ type
     miRound: TMenuItem;
     miTeam: TMenuItem;
     MenuItem4: TMenuItem;
-    MenuItem5: TMenuItem;
-    MenuItem6: TMenuItem;
+    miNFLProfile: TMenuItem;
+    miNCAAProfile: TMenuItem;
     miPos: TMenuItem;
     miCollege: TMenuItem;
     MenuItem9: TMenuItem;
@@ -119,6 +119,8 @@ type
     procedure cmbSupplChange(Sender: TObject);
     procedure cmbYearFromListChange(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
@@ -258,6 +260,7 @@ end;
 
 procedure TfrmMain.actClearExecute(Sender: TObject);
 begin
+  pgcMain.ActivePage:= tsFilters;
   actLstClear.Execute;
   actCmbClear.Execute;
   actChkSetToFalse.Execute;
@@ -527,6 +530,12 @@ end;
 procedure TfrmMain.DBGrid1DblClick(Sender: TObject);
 begin
   actViewNFLProfile.Execute;
+end;
+
+procedure TfrmMain.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = 13 then actViewNFLProfile.Execute;
 end;
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;

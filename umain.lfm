@@ -30,8 +30,8 @@ object frmMain: TfrmMain
     Height = 512
     Top = 48
     Width = 736
-    ActivePage = tsFilters
-    TabIndex = 0
+    ActivePage = tsMainData
+    TabIndex = 1
     TabOrder = 0
     object tsFilters: TTabSheet
       Caption = 'Filters'
@@ -57,7 +57,7 @@ object frmMain: TfrmMain
         OnChange = cmbSortByListChange
         ParentFont = False
         Style = csOwnerDrawFixed
-        TabOrder = 2
+        TabOrder = 5
         TabStop = False
         Text = 'Name / Picks'
       end
@@ -81,7 +81,7 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 70
-        TabOrder = 3
+        TabOrder = 2
         TabStop = False
       end
       object lstCollegeList: TListBox
@@ -94,7 +94,7 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 150
-        TabOrder = 4
+        TabOrder = 3
         TabStop = False
       end
       object lstPositionList: TListBox
@@ -107,7 +107,7 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 102
-        TabOrder = 5
+        TabOrder = 4
         TabStop = False
       end
       object btnClear: TButton
@@ -632,6 +632,7 @@ object frmMain: TfrmMain
         TitleFont.Color = clWhite
         TitleStyle = tsStandard
         OnDblClick = DBGrid1DblClick
+        OnKeyDown = DBGrid1KeyDown
         OnPrepareCanvas = DBGrid1PrepareCanvas
         OnTitleClick = DBGrid1TitleClick
       end
@@ -732,10 +733,12 @@ object frmMain: TfrmMain
     object actClear: TAction
       Caption = 'Clear'
       OnExecute = actClearExecute
+      ShortCut = 16460
     end
     object actReport: TAction
       Caption = 'Report'
       OnExecute = actReportExecute
+      ShortCut = 16464
     end
     object actEditPlayer: TAction
       Caption = 'Edit Player'
@@ -744,7 +747,6 @@ object frmMain: TfrmMain
     end
     object actCmbClear: TAction
       OnExecute = actCmbClearExecute
-      ShortCut = 8219
     end
     object actLstClear: TAction
       OnExecute = actLstClearExecute
@@ -864,10 +866,10 @@ object frmMain: TfrmMain
     object MenuItem4: TMenuItem
       Action = actEditPlayer
     end
-    object MenuItem5: TMenuItem
+    object miNFLProfile: TMenuItem
       Action = actViewNFLProfile
     end
-    object MenuItem6: TMenuItem
+    object miNCAAProfile: TMenuItem
       Action = actViewNCAAProfile
     end
     object MenuItem2: TMenuItem

@@ -226,6 +226,7 @@
         <Filename Value="uyeardialog.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmYearDialog"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uYearDialog"/>
       </Unit18>
