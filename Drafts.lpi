@@ -113,7 +113,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="17">
+    <Units Count="19">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -214,6 +214,21 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UDatasetConstants"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="urounddialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRoundDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UroundDialog"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="uyeardialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmYearDialog"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uYearDialog"/>
+      </Unit18>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

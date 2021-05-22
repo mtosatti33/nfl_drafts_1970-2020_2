@@ -9,7 +9,8 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit, UInstructionView,
   ureport, upaintgrid, ufillitems, uPrepareQuery, UColorConstants, UColors,
-  TestIfIs64, UConfiguration, uplayercomp, uextendcomponents, UDatasetConstants;
+  TestIfIs64, UConfiguration, uplayercomp, uextendcomponents, UDatasetConstants,
+  UroundDialog, uYearDialog;
 
 {$R *.res}
 
@@ -21,6 +22,7 @@ begin
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TfrmBrowser, frmBrowser);
   Application.CreateForm(TfrmInstructionView, frmInstructionView);
+  Application.CreateForm(TfrmYearDialog, frmYearDialog);
   Application.Run;
 end.
 

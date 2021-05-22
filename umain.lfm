@@ -57,7 +57,8 @@ object frmMain: TfrmMain
         OnChange = cmbSortByListChange
         ParentFont = False
         Style = csOwnerDrawFixed
-        TabOrder = 1
+        TabOrder = 2
+        TabStop = False
         Text = 'Name / Picks'
       end
       object Label5: TLabel
@@ -80,7 +81,8 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 70
-        TabOrder = 2
+        TabOrder = 3
+        TabStop = False
       end
       object lstCollegeList: TListBox
         Left = 392
@@ -92,7 +94,8 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 150
-        TabOrder = 3
+        TabOrder = 4
+        TabStop = False
       end
       object lstPositionList: TListBox
         Left = 552
@@ -104,7 +107,8 @@ object frmMain: TfrmMain
         OnClick = lstClick
         ParentFont = False
         ScrollWidth = 102
-        TabOrder = 4
+        TabOrder = 5
+        TabStop = False
       end
       object btnClear: TButton
         Left = 154
@@ -112,7 +116,7 @@ object frmMain: TfrmMain
         Top = 432
         Width = 144
         Action = actClear
-        TabOrder = 6
+        TabOrder = 7
       end
       object btnSearch: TButton
         Left = 10
@@ -120,7 +124,7 @@ object frmMain: TfrmMain
         Top = 432
         Width = 144
         Action = actSearch
-        TabOrder = 5
+        TabOrder = 6
       end
       object Panel2: TPanel
         Left = 8
@@ -132,7 +136,7 @@ object frmMain: TfrmMain
         ClientWidth = 288
         Color = clWhite
         ParentColor = False
-        TabOrder = 0
+        TabOrder = 1
         object chkNeverPlayed: TCheckBox
           Left = 86
           Height = 19
@@ -190,7 +194,7 @@ object frmMain: TfrmMain
         ClientWidth = 290
         Color = clNone
         ParentColor = False
-        TabOrder = 7
+        TabOrder = 0
         object Label9: TLabel
           Left = 16
           Height = 15
@@ -623,7 +627,7 @@ object frmMain: TfrmMain
         Font.Color = 7754266
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         ParentFont = False
-        PopupMenu = mnuOptions
+        PopupMenu = options
         TabOrder = 0
         TitleFont.Color = clWhite
         TitleStyle = tsStandard
@@ -707,7 +711,7 @@ object frmMain: TfrmMain
       ParentFont = False
     end
   end
-  object ActionList1: TActionList
+  object actions: TActionList
     left = 584
     top = 168
     object actPreferences: TAction
@@ -716,6 +720,9 @@ object frmMain: TfrmMain
     object actExit: TAction
       Caption = 'Exit'
       OnExecute = actExitExecute
+      SecondaryShortCuts.Strings = (
+        'Esc'
+      )
     end
     object actSearch: TAction
       Caption = 'Search'
@@ -725,7 +732,6 @@ object frmMain: TfrmMain
     object actClear: TAction
       Caption = 'Clear'
       OnExecute = actClearExecute
-      ShortCut = 27
     end
     object actReport: TAction
       Caption = 'Report'
@@ -852,9 +858,9 @@ object frmMain: TfrmMain
         ParamType = ptUnknown
       end>
   end
-  object mnuOptions: TPopupMenu
-    left = 216
-    top = 184
+  object options: TPopupMenu
+    left = 280
+    top = 312
     object MenuItem4: TMenuItem
       Action = actEditPlayer
     end
@@ -871,22 +877,73 @@ object frmMain: TfrmMain
       Caption = 'Filter'
       object miTeam: TMenuItem
         Caption = 'By Team'
+        ShortCut = 8276
         OnClick = miTeamClick
       end
       object miPos: TMenuItem
         Caption = 'By Position'
+        ShortCut = 8272
         OnClick = miPosClick
       end
       object miCollege: TMenuItem
         Caption = 'By College'
+        ShortCut = 8259
         OnClick = miCollegeClick
+      end
+      object miRound: TMenuItem
+        Caption = 'By Round'
+        ShortCut = 8274
+        OnClick = miRoundClick
+      end
+      object miYear: TMenuItem
+        Caption = 'By Year'
+        ShortCut = 8281
+        OnClick = miYearClick
+      end
+      object miPB: TMenuItem
+        Caption = 'Pro Bowlers Only'
+        ShortCut = 8258
+        OnClick = miPBClick
+      end
+      object miAP: TMenuItem
+        Caption = 'All-Pros Only'
+        ShortCut = 8257
+        OnClick = miAPClick
+      end
+      object miSuppl: TMenuItem
+        AutoCheck = True
+        Caption = 'Supplemental'
+        ShortCut = 8275
+        OnClick = miSupplClick
       end
       object MenuItem3: TMenuItem
         Caption = '-'
       end
-      object MenuItem7: TMenuItem
+      object miReset: TMenuItem
         Caption = 'Reset'
-        OnClick = MenuItem7Click
+        ShortCut = 24658
+        OnClick = miResetClick
+      end
+    end
+    object MenuItem15: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem14: TMenuItem
+      Caption = 'Order'
+      object miPick: TMenuItem
+        Caption = 'By Pick'
+        ShortCut = 32848
+        OnClick = miPickClick
+      end
+      object miAV: TMenuItem
+        Caption = 'By AV'
+        ShortCut = 32833
+        OnClick = miAVClick
+      end
+      object miDRAV: TMenuItem
+        Caption = 'By Team AV'
+        ShortCut = 32852
+        OnClick = miDRAVClick
       end
     end
     object MenuItem10: TMenuItem
@@ -895,6 +952,14 @@ object frmMain: TfrmMain
     object MenuItem9: TMenuItem
       Caption = 'Compare Players From Position'
       OnClick = MenuItem9Click
+    end
+    object MenuItem20: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem19: TMenuItem
+      Caption = 'Return To Filters Tab'
+      ShortCut = 8
+      OnClick = MenuItem19Click
     end
   end
 end

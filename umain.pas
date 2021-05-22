@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration, uplayercomp, uextendcomponents;
+  LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration,
+  uplayercomp, uextendcomponents, uYearDialog;
 
 type
 
@@ -25,7 +26,7 @@ type
     actReport: TAction;
     actSearch: TAction;
     actPreferences: TAction;
-    ActionList1: TActionList;
+    actions: TActionList;
     btnClear: TButton;
     btnCollegeClear: TSpeedButton;
     btnPositionClear: TSpeedButton;
@@ -63,9 +64,21 @@ type
     lstTeamList: TListBox;
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
+    miYear: TMenuItem;
+    miPB: TMenuItem;
+    miAP: TMenuItem;
+    MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
+    miPick: TMenuItem;
+    miAV: TMenuItem;
+    miDRAV: TMenuItem;
+    MenuItem19: TMenuItem;
     MenuItem2: TMenuItem;
+    MenuItem20: TMenuItem;
+    miSuppl: TMenuItem;
     MenuItem3: TMenuItem;
-    MenuItem7: TMenuItem;
+    miReset: TMenuItem;
+    miRound: TMenuItem;
     miTeam: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -73,7 +86,7 @@ type
     miPos: TMenuItem;
     miCollege: TMenuItem;
     MenuItem9: TMenuItem;
-    mnuOptions: TPopupMenu;
+    options: TPopupMenu;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
@@ -113,7 +126,16 @@ type
     procedure FormShow(Sender: TObject);
     procedure LoadComponents;
     procedure lstClick(Sender: TObject);
-    procedure MenuItem7Click(Sender: TObject);
+    procedure miYearClick(Sender: TObject);
+    procedure miPBClick(Sender: TObject);
+    procedure miAPClick(Sender: TObject);
+    procedure miPickClick(Sender: TObject);
+    procedure miAVClick(Sender: TObject);
+    procedure miDRAVClick(Sender: TObject);
+    procedure MenuItem19Click(Sender: TObject);
+    procedure miSupplClick(Sender: TObject);
+    procedure miResetClick(Sender: TObject);
+    procedure miRoundClick(Sender: TObject);
     procedure miTeamClick(Sender: TObject);
     procedure miPosClick(Sender: TObject);
     procedure miCollegeClick(Sender: TObject);
@@ -129,11 +151,11 @@ type
 var
   frmMain: TfrmMain;
   FillItems: TFillItems;
-  iniStrings : TIniStrings;
+  iniStrings: TIniStrings;
 
 implementation
 
-uses UDM, UPlayerEdit, upaintgrid, ureport;
+uses UDM, UPlayerEdit, upaintgrid, ureport, UroundDialog;
 
 {$R *.lfm}
 
@@ -284,7 +306,7 @@ begin
   try
     with frmPlayerEdit do
     begin
-      qryStats.ParamByName('id').AsInteger:= dm.qryPicks['ID'];
+      qryStats.ParamByName('id').AsInteger := dm.qryPicks['ID'];
       qryStats.Open;
 
       ID := dm.qryPicks['ID'];
@@ -369,6 +391,7 @@ begin
   cmbSortByListChange(nil);
   pgcMain.ActivePage := tsMainData;
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
+  DBGrid1.SetFocus;
 end;
 
 procedure TfrmMain.actViewNCAAProfileExecute(Sender: TObject);
@@ -534,31 +557,32 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   LoadComponents;
+  //TODO: uncluir no menu suspenso os filtros como: Rnd, Year From, Year To...
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
 var
   i: integer;
 begin
-    iniStrings := ReadIniFile;
-    pgcMain.ActivePage := tsFilters;
+  iniStrings := ReadIniFile;
+  pgcMain.ActivePage := tsFilters;
 
-    cmbYearFromList.Text:=iniStrings.year;
-    cmbYearToList.Text:=iniStrings.year;
+  cmbYearFromList.Text := iniStrings.year;
+  cmbYearToList.Text := iniStrings.year;
 
-    cmbYearFromListChange(nil);
+  cmbYearFromListChange(nil);
 
     {$IfDef LINUX}
     for i := 0 to self.ComponentCount - 1 do
     begin
       if self.Components[i] is TLabel then
-         TLabel(self.Components[i]).Font.Color:=clWhite; 
+        TLabel(self.Components[i]).Font.Color := clWhite;
       if self.Components[i] is TCheckBox then
-         TCheckBox(self.Components[i]).Font.Color:=clWhite;
+        TCheckBox(self.Components[i]).Font.Color := clWhite;
 
 
       if self.Components[i] = Panel2 then
-         Panel2.Color:=$0076521A;
+        Panel2.Color := $0076521A;
     end;
     {$endif}
 end;
@@ -567,8 +591,8 @@ procedure TfrmMain.LoadComponents;
 begin
   FillItems := TFillItems.Create;
   FAsc := False;
-  panel1.MoveMousePanel:=true;
-  panel2.MoveMousePanel:=false;
+  panel1.MoveMousePanel := True;
+  panel2.MoveMousePanel := False;
 
   if not qryYearList.active then
     qryYearList.active := True;
@@ -616,15 +640,87 @@ begin
     end;
 end;
 
-procedure TfrmMain.MenuItem7Click(Sender: TObject);
+procedure TfrmMain.miYearClick(Sender: TObject);
 begin
-  if cmbTeamList.Text <> '' then
-     cmbTeamList.ItemIndex:=-1;
-  if cmbPositionList.Text <> '' then
-     cmbPositionList.ItemIndex:=-1;
-  if cmbCollegeList.Text <> '' then
-     cmbCollegeList.ItemIndex:=-1;
+  if frmYearDialog = nil then
+    frmYearDialog := TfrmYearDialog.Create(nil);
 
+  try
+    frmYearDialog.ShowModal;
+  finally
+    cmbYearFromList.Text := frmYearDialog.YearFrom;
+    cmbYearToList.Text := frmYearDialog.YearTo;
+    FreeAndNil(frmYearDialog);
+  end;
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.miPBClick(Sender: TObject);
+begin
+  chkProBowlers.Checked := True;
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.miAPClick(Sender: TObject);
+begin
+  chkAllPros.Checked := True;
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.miPickClick(Sender: TObject);
+begin
+  DBGrid1TitleClick(DBGrid1.Columns[2]);
+end;
+
+procedure TfrmMain.miAVClick(Sender: TObject);
+begin
+  DBGrid1TitleClick(DBGrid1.Columns[12]);
+end;
+
+procedure TfrmMain.miDRAVClick(Sender: TObject);
+begin
+  DBGrid1TitleClick(DBGrid1.Columns[13]);
+end;
+
+procedure TfrmMain.MenuItem19Click(Sender: TObject);
+begin
+  pgcMain.ActivePage:= tsFilters;
+  cmbYearFromList.SetFocus;
+end;
+
+procedure TfrmMain.miSupplClick(Sender: TObject);
+begin
+  if miSuppl.Checked then
+     cmbSuppl.ItemIndex:=2
+  else
+    cmbSuppl.ItemIndex:=1;
+
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.miResetClick(Sender: TObject);
+begin
+  cmbTeamList.ItemIndex := -1;
+  cmbPositionList.ItemIndex := -1;
+  cmbCollegeList.ItemIndex := -1;
+  cmbRoundList.ItemIndex := -1;
+  chkProBowlers.Checked := False;
+  chkAllPros.Checked := False;
+
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.miRoundClick(Sender: TObject);
+begin
+  if frmRoundDialog = nil then
+    frmRoundDialog := TfrmRoundDialog.Create(nil);
+
+  try
+    frmRoundDialog.ShowModal;
+  finally
+    cmbRoundList.Text := frmRoundDialog.Round;
+    FreeAndNil(frmRoundDialog);
+  end;
   actSearch.Execute;
 end;
 
@@ -632,7 +728,7 @@ procedure TfrmMain.miTeamClick(Sender: TObject);
 begin
   if dm.qryPicks.RecordCount <> 0 then
   begin
-    cmbTeamList.Text:= dm.qryPicks['tm'];
+    cmbTeamList.Text := dm.qryPicks['tm'];
     actSearch.Execute;
   end;
 end;
@@ -641,7 +737,7 @@ procedure TfrmMain.miPosClick(Sender: TObject);
 begin
   if dm.qryPicks.RecordCount <> 0 then
   begin
-    cmbPositionList.Text:=dm.qryPicks['pos'];
+    cmbPositionList.Text := dm.qryPicks['pos'];
     actSearch.Execute;
   end;
 end;
@@ -650,24 +746,21 @@ procedure TfrmMain.miCollegeClick(Sender: TObject);
 begin
   if dm.qryPicks.RecordCount <> 0 then
   begin
-    cmbCollegeList.Text:=dm.qryPicks['college'];
+    cmbCollegeList.Text := dm.qryPicks['college'];
     actSearch.Execute;
   end;
 end;
 
 procedure TfrmMain.MenuItem9Click(Sender: TObject);
 begin
-  //TODO: make comparision from players in the same position
-  //ShowMessage('Comming Soon');
-
   frmPlayerComp := TfrmPlayerComp.Create(Application);
 
   try
     with frmPlayerComp do
     begin
-      DateInitial:=cmbYearFromList.Text;
-      DateFinal:=cmbYearToList.Text;
-      Position:=dm.qryPicks['pos'];
+      DateInitial := cmbYearFromList.Text;
+      DateFinal := cmbYearToList.Text;
+      Position := dm.qryPicks['pos'];
     end;
     frmPlayerComp.ShowModal;
   finally
