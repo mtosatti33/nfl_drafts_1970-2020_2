@@ -1,4 +1,4 @@
-This program is made on LazarusIDE
+This program is made in LazarusIDE
 
 -Install the program/source: C:\ Disk or clone this repo with "git clone" command
 
