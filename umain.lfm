@@ -542,7 +542,7 @@ object frmMain: TfrmMain
       object DBGrid1: TDBGrid
         Left = 0
         Height = 432
-        Hint = 'Double click for entering player''s site'
+        Hint = 'Double click: Enters the player site'#13#10'Enter: Enters the player site'#13#10'-------------------------------------------------'#13#10'Shift + T: Filter by Team'#13#10'Shift + P: Filter by Position'#13#10'Shift + C: Filter by College'#13#10'Shift + R: Filter by Round'#13#10'Shift + Y: Filter by Year'#13#10'Shift + B: Filter by Pro Bowlers'#13#10'Shift + A: Filter by All-Pros'#13#10'Shift + S: Filter by Supplemental Drafts'#13#10'-------------------------------------------------'#13#10'Alt + T: Order by Team Drafted AV'#13#10'Alt + A: Order by Player AV'#13#10'Alt + P: Order by Pick'#13#10'-------------------------------------------------'#13#10'Shift + Ctrl + R: Reset Filters'
         Top = 0
         Width = 728
         Align = alTop
@@ -628,6 +628,7 @@ object frmMain: TfrmMain
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         ParentFont = False
         PopupMenu = options
+        ShowHint = True
         TabOrder = 0
         TitleFont.Color = clWhite
         TitleStyle = tsStandard
