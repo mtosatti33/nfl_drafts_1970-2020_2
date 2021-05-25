@@ -205,8 +205,14 @@ begin
   if team = 'PIT' then
     FColor := Steelers[index];
 
-  if (team = 'RAM') or (team = 'LAR') or (team = 'STL') then
+  if (team = 'RAM') or (team = 'LAR') then
     FColor := Rams[index];
+
+  if team = 'STL' then
+    if StrToInt(year) <= 1987 then
+       FColor:=Cardinals[index]
+    else if StrToInt(year) >= 1995 then
+       FColor:=Rams[index];
 
   if team = 'SEA' then
     FColor := Seahawks[index];
