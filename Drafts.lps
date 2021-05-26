@@ -20,6 +20,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMain"/>
+        <IsVisibleTab Value="True"/>
         <TopLine Value="658"/>
         <CursorPos X="52" Y="659"/>
         <ExtraEditorCount Value="1"/>
@@ -53,7 +54,7 @@
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <CursorPos X="57" Y="8"/>
-        <UsageCount Value="187"/>
+        <UsageCount Value="188"/>
       </Unit3>
       <Unit4>
         <Filename Value="uplayeredit.pas"/>
@@ -65,7 +66,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="83"/>
         <CursorPos X="52" Y="95"/>
-        <UsageCount Value="182"/>
+        <UsageCount Value="183"/>
       </Unit4>
       <Unit5>
         <Filename Value="uinstructionview.pas"/>
@@ -76,7 +77,7 @@
         <UnitName Value="UInstructionView"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="7"/>
-        <UsageCount Value="173"/>
+        <UsageCount Value="174"/>
       </Unit5>
       <Unit6>
         <Filename Value="ureport.pas"/>
@@ -86,7 +87,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="41"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="160"/>
       </Unit6>
       <Unit7>
         <Filename Value="upaintgrid.pas"/>
@@ -94,7 +95,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="106"/>
         <CursorPos X="27" Y="110"/>
-        <UsageCount Value="142"/>
+        <UsageCount Value="143"/>
       </Unit7>
       <Unit8>
         <Filename Value="ufillitems.pas"/>
@@ -102,7 +103,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="14" Y="16"/>
-        <UsageCount Value="141"/>
+        <UsageCount Value="142"/>
       </Unit8>
       <Unit9>
         <Filename Value="upreparequery.pas"/>
@@ -111,7 +112,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="34"/>
         <CursorPos X="24" Y="45"/>
-        <UsageCount Value="109"/>
+        <UsageCount Value="110"/>
       </Unit9>
       <Unit10>
         <Filename Value="ucolorconstants.pas"/>
@@ -119,17 +120,16 @@
         <UnitName Value="UColorConstants"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="58"/>
       </Unit10>
       <Unit11>
         <Filename Value="ucolors.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColors"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="205"/>
-        <CursorPos X="32" Y="213"/>
-        <UsageCount Value="57"/>
+        <CursorPos X="49" Y="219"/>
+        <UsageCount Value="58"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -138,7 +138,7 @@
         <UnitName Value="TestIfIs64"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="16"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="48"/>
       </Unit12>
       <Unit13>
         <Filename Value="uconfiguration.pas"/>
@@ -146,7 +146,7 @@
         <UnitName Value="UConfiguration"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="47"/>
       </Unit13>
       <Unit14>
         <Filename Value="uplayercomp.pas"/>
@@ -157,7 +157,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="136"/>
         <CursorPos X="33" Y="59"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="42"/>
       </Unit14>
       <Unit15>
         <Filename Value="uextendcomponents.pas"/>
@@ -165,7 +165,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos X="3" Y="33"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="39"/>
       </Unit15>
       <Unit16>
         <Filename Value="udatasetconstants.pas"/>
@@ -173,7 +173,7 @@
         <UnitName Value="UDatasetConstants"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="11"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="35"/>
       </Unit16>
       <Unit17>
         <Filename Value="urounddialog.pas"/>
@@ -185,7 +185,7 @@
         <EditorIndex Value="3"/>
         <TopLine Value="31"/>
         <CursorPos X="65" Y="44"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit17>
@@ -197,9 +197,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uYearDialog"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="43"/>
         <CursorPos X="12" Y="62"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit18>
@@ -676,7 +675,7 @@
         <UsageCount Value="9"/>
       </Unit85>
       <Unit86>
-        <Filename Value="C:\Users\Marcelo\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\component\ZConnectionGroup.pas"/>
+        <Filename Value="..\..\..\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\component\ZConnectionGroup.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="323"/>
         <CursorPos X="41" Y="159"/>
@@ -705,7 +704,7 @@
         <UsageCount Value="10"/>
       </Unit89>
       <Unit90>
-        <Filename Value="C:\Users\Marcelo\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\component\ZConnection.pas"/>
+        <Filename Value="..\..\..\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\component\ZConnection.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="64"/>
         <CursorPos X="44" Y="59"/>
@@ -713,7 +712,7 @@
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit90>
       <Unit91>
-        <Filename Value="C:\Users\Marcelo\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\core\ZClasses.pas"/>
+        <Filename Value="..\..\..\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\core\ZClasses.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="109"/>
         <CursorPos X="20" Y="68"/>
@@ -729,7 +728,7 @@
         <UsageCount Value="11"/>
       </Unit92>
       <Unit93>
-        <Filename Value="C:\Users\Marcelo\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\component\ZAbstractConnection.pas"/>
+        <Filename Value="..\..\..\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\component\ZAbstractConnection.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1236"/>
         <CursorPos X="3" Y="101"/>
