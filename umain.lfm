@@ -30,8 +30,8 @@ object frmMain: TfrmMain
     Height = 512
     Top = 48
     Width = 736
-    ActivePage = tsMainData
-    TabIndex = 1
+    ActivePage = tsFilters
+    TabIndex = 0
     TabOrder = 0
     object tsFilters: TTabSheet
       Caption = 'Filters'

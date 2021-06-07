@@ -348,14 +348,32 @@ procedure TfrmMain.actSearchExecute(Sender: TObject);
 var
   PrepareQuery: TPrepareQuery;
 begin
-
   PrepareQuery := TPrepareQuery.Create(cmbYearFromList.Text,
     cmbYearToList.Text, cmbTeamList.Text, cmbPositionList.Text,
     cmbCollegeList.Text, cmbRoundList.ItemIndex, cmbSuppl.ItemIndex,
     chkFirstPicks.Checked, chkNeverPlayed.Checked, chkAllPros.Checked,
     chkProBowlers.Checked);
 
-  // because of the cmbYearToListChange event, this line has addicted,
+  if cmbRoundList.Items.Count <> 0 then
+    cmbRoundList.Items.Clear;
+
+  if cmbTeamList.Items.Count <> 0 then
+    cmbTeamList.Items.Clear;
+
+  qryRoundList.Close;
+  qryRoundList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
+  qryRoundList.ParamByName('yr_to').AsString := cmbYearToList.Text;
+  qryRoundList.Open;
+
+  qryTeamList.Close;
+  qryTeamList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
+  qryTeamList.ParamByName('yr_to').AsString := cmbYearToList.Text;
+  qryTeamList.Open;
+
+  cmbRoundList.Items := FillItems.Fill(qryRoundList, ['RND']);
+  cmbTeamList.Items := FillItems.Fill(qryTeamList, ['Tm']);
+
+  // because of the cmbYearToListChange event, this line has added,
   // else the itemindex of the combobox doesn't works
   cmbRoundList.ItemIndex := cmbRoundList.items.IndexOf(trim(cmbRoundList.Text));
 
@@ -566,7 +584,6 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   LoadComponents;
-  //TODO: uncluir no menu suspenso os filtros como: Rnd, Year From, Year To...
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
@@ -729,6 +746,7 @@ begin
 
   try
     frmRoundDialog.Round:=cmbRoundList.Text;
+    frmRoundDialog.UpDown1.Max:=cmbRoundList.Items.Count;
     frmRoundDialog.ShowModal;
   finally
     cmbRoundList.Text := frmRoundDialog.Round;
