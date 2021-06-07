@@ -20,6 +20,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMain"/>
+        <IsVisibleTab Value="True"/>
         <TopLine Value="717"/>
         <CursorPos X="25" Y="731"/>
         <ExtraEditorCount Value="1"/>
@@ -181,7 +182,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UroundDialog"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="35"/>
         <CursorPos X="16" Y="51"/>
