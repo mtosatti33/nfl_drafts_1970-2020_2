@@ -5,7 +5,8 @@ unit uYearDialog;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  ComCtrls;
 
 type
 
@@ -17,9 +18,12 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Panel1: TPanel;
+    UpDown1: TUpDown;
+    UpDown2: TUpDown;
     procedure edtYrFromChange(Sender: TObject);
     procedure edtYrFromKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure edtYrToKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
   private
     FYearFrom: string;
     FYearTo: string;
@@ -66,6 +70,12 @@ begin
 
     Close;
   end;
+end;
+
+procedure TfrmYearDialog.FormShow(Sender: TObject);
+begin
+  edtYrFrom.Text:=FYearFrom;
+  edtYrTo.Text:=FYearTo;
 end;
 
 end.

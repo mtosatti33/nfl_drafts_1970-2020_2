@@ -655,6 +655,9 @@ begin
     frmYearDialog := TfrmYearDialog.Create(nil);
 
   try
+    frmYearDialog.YearFrom := cmbYearFromList.Text;
+    frmYearDialog.YearTo:=cmbYearToList.Text;
+
     frmYearDialog.ShowModal;
   finally
     cmbYearFromList.Text := frmYearDialog.YearFrom;
@@ -725,6 +728,7 @@ begin
     frmRoundDialog := TfrmRoundDialog.Create(nil);
 
   try
+    frmRoundDialog.Round:=cmbRoundList.Text;
     frmRoundDialog.ShowModal;
   finally
     cmbRoundList.Text := frmRoundDialog.Round;

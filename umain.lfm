@@ -12,7 +12,7 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '2.0.4.0'
   object Label7: TLabel
     Left = 472
     Height = 16
@@ -30,8 +30,8 @@ object frmMain: TfrmMain
     Height = 512
     Top = 48
     Width = 736
-    ActivePage = tsFilters
-    TabIndex = 0
+    ActivePage = tsMainData
+    TabIndex = 1
     TabOrder = 0
     object tsFilters: TTabSheet
       Caption = 'Filters'
@@ -714,8 +714,8 @@ object frmMain: TfrmMain
     end
   end
   object actions: TActionList
-    Left = 584
-    Top = 168
+    left = 584
+    top = 168
     object actPreferences: TAction
       Caption = 'Preferences'
     end
@@ -766,8 +766,8 @@ object frmMain: TfrmMain
   end
   object dsTable: TDataSource
     DataSet = dm.qryPicks
-    Left = 232
-    Top = 328
+    left = 232
+    top = 328
   end
   object qryYearList: TZQuery
     Connection = dm.conn
@@ -775,8 +775,8 @@ object frmMain: TfrmMain
       'SELECT DISTINCT DRAFT_YR FROM DRAFTS ORDER BY DRAFT_YR DESC'
     )
     Params = <>
-    Left = 432
-    Top = 288
+    left = 432
+    top = 288
   end
   object qryTeamList: TZQuery
     Connection = dm.conn
@@ -796,8 +796,8 @@ object frmMain: TfrmMain
         Name = 'YR_TO'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 352
+    left = 432
+    top = 352
     ParamData = <    
       item
         DataType = ftUnknown
@@ -817,8 +817,8 @@ object frmMain: TfrmMain
       'ORDER BY POS'
     )
     Params = <>
-    Left = 432
-    Top = 416
+    left = 432
+    top = 416
   end
   object qryCollegeList: TZQuery
     Connection = dm.conn
@@ -827,8 +827,8 @@ object frmMain: TfrmMain
       'ORDER BY COLLEGE'
     )
     Params = <>
-    Left = 432
-    Top = 464
+    left = 432
+    top = 464
   end
   object qryRoundList: TZQuery
     Connection = dm.conn
@@ -847,8 +847,8 @@ object frmMain: TfrmMain
         Name = 'yr_to'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 232
+    left = 432
+    top = 232
     ParamData = <    
       item
         DataType = ftUnknown
@@ -862,8 +862,8 @@ object frmMain: TfrmMain
       end>
   end
   object options: TPopupMenu
-    Left = 280
-    Top = 312
+    left = 280
+    top = 312
     object MenuItem4: TMenuItem
       Action = actEditPlayer
     end

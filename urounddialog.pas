@@ -5,7 +5,8 @@ unit UroundDialog;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  ComCtrls;
 
 type
 
@@ -15,7 +16,9 @@ type
     edtRound: TEdit;
     lblRound: TLabel;
     Panel1: TPanel;
+    UpDown1: TUpDown;
     procedure edtRoundKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
   private
     FRound: string;
     procedure SetRound(AValue: string);
@@ -41,6 +44,11 @@ begin
     FRound := edtRound.Text;
     Close;
   end;
+end;
+
+procedure TfrmRoundDialog.FormShow(Sender: TObject);
+begin
+  edtRound.Text:=FRound;
 end;
 
 procedure TfrmRoundDialog.SetRound(AValue: string);
