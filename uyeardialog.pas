@@ -27,10 +27,12 @@ type
   private
     FYearFrom: string;
     FYearTo: string;
+    procedure SetYearFrom(AValue: string);
+    procedure SetYearTo(AValue: string);
 
   public
-    property YearFrom: string read FYearFrom write FYearFrom;
-    property YearTo: string read FYearTo write FYearTo;
+    property YearFrom: string read FYearFrom write SetYearFrom;
+    property YearTo: string read FYearTo write SetYearTo;
   end;
 
 var
@@ -74,8 +76,22 @@ end;
 
 procedure TfrmYearDialog.FormShow(Sender: TObject);
 begin
-  edtYrFrom.Text:=FYearFrom;
-  edtYrTo.Text:=FYearTo;
+  if FYearFrom <> '' then
+     edtYrFrom.Text:=FYearFrom;
+  if FYearTo <> '' then
+     edtYrTo.Text:=FYearTo;
+end;
+
+procedure TfrmYearDialog.SetYearFrom(AValue: string);
+begin
+  if FYearFrom=AValue then Exit;
+  FYearFrom:=AValue;
+end;
+
+procedure TfrmYearDialog.SetYearTo(AValue: string);
+begin
+  if FYearTo=AValue then Exit;
+  FYearTo:=AValue;
 end;
 
 end.

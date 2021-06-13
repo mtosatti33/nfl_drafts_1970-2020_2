@@ -10,7 +10,6 @@ object frmRoundDialog: TfrmRoundDialog
   Color = 9020695
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.4.0'
   object Panel1: TPanel
     Left = 0
     Height = 69

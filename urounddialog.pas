@@ -48,7 +48,8 @@ end;
 
 procedure TfrmRoundDialog.FormShow(Sender: TObject);
 begin
-  edtRound.Text:=FRound;
+  if FRound <> '' then
+     edtRound.Text:=FRound;
 end;
 
 procedure TfrmRoundDialog.SetRound(AValue: string);

@@ -146,6 +146,7 @@ type
     procedure OpenLink(field_url: string);
   private
     FAsc: boolean;
+    FFiltered: boolean;
   public
 
   end;
@@ -584,6 +585,7 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   LoadComponents;
+  //TODO: dividi a consulta round entre uma rodada e outra
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
@@ -617,6 +619,7 @@ procedure TfrmMain.LoadComponents;
 begin
   FillItems := TFillItems.Create;
   FAsc := False;
+  FFiltered := False;
   panel1.MoveMousePanel := True;
   panel2.MoveMousePanel := False;
 
