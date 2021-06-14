@@ -41,7 +41,8 @@ type
     cmbCollegeList: TComboBox;
     cmbHighlight: TComboBox;
     cmbPositionList: TComboBox;
-    cmbRoundList: TComboBox;
+    cmbRoundFromList: TComboBox;
+    cmbRoundToList: TComboBox;
     cmbSortByList: TComboBox;
     cmbSuppl: TComboBox;
     cmbTeamList: TComboBox;
@@ -58,6 +59,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
     Label9: TLabel;
     lstCollegeList: TListBox;
     lstPositionList: TListBox;
@@ -109,18 +111,19 @@ type
     procedure actSearchExecute(Sender: TObject);
     procedure actViewNCAAProfileExecute(Sender: TObject);
     procedure actViewNFLProfileExecute(Sender: TObject);
+    procedure btnClearClick(Sender: TObject);
     procedure btnRoundClearClick(Sender: TObject);
     procedure chkAllProsChange(Sender: TObject);
     procedure chkFirstPicksChange(Sender: TObject);
     procedure chkNeverPlayedChange(Sender: TObject);
     procedure chkProBowlersChange(Sender: TObject);
     procedure cmbHighlightChange(Sender: TObject);
+    procedure cmbRoundFromListChange(Sender: TObject);
     procedure cmbSortByListChange(Sender: TObject);
     procedure cmbSupplChange(Sender: TObject);
     procedure cmbYearFromListChange(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
-      );
+    procedure DBGrid1KeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
@@ -202,8 +205,8 @@ begin
         filter1 := filter1 + 'Year: ' + cmbYearFromList.Text + ' to ' +
           cmbYearToList.Text + #13;
 
-      if cmbRoundList.ItemIndex <> -1 then
-        filter1 := filter1 + 'Round: ' + cmbRoundList.Text + #13;
+      if cmbRoundFromList.ItemIndex <> -1 then
+        filter1 := filter1 + 'Round: ' + cmbRoundFromList.Text + #13;
 
       if cmbTeamList.ItemIndex <> -1 then
         filter1 := filter1 + 'Team: ' + cmbTeamList.Text + #13;
@@ -261,7 +264,7 @@ end;
 
 procedure TfrmMain.actClearExecute(Sender: TObject);
 begin
-  pgcMain.ActivePage:= tsFilters;
+  pgcMain.ActivePage := tsFilters;
   actLstClear.Execute;
   actCmbClear.Execute;
   actChkSetToFalse.Execute;
@@ -351,12 +354,12 @@ var
 begin
   PrepareQuery := TPrepareQuery.Create(cmbYearFromList.Text,
     cmbYearToList.Text, cmbTeamList.Text, cmbPositionList.Text,
-    cmbCollegeList.Text, cmbRoundList.ItemIndex, cmbSuppl.ItemIndex,
-    chkFirstPicks.Checked, chkNeverPlayed.Checked, chkAllPros.Checked,
-    chkProBowlers.Checked);
+    cmbCollegeList.Text, cmbRoundFromList.ItemIndex, cmbRoundToList.ItemIndex,
+    cmbSuppl.ItemIndex, chkFirstPicks.Checked, chkNeverPlayed.Checked,
+    chkAllPros.Checked, chkProBowlers.Checked);
 
-  if cmbRoundList.Items.Count <> 0 then
-    cmbRoundList.Items.Clear;
+  if cmbRoundFromList.Items.Count <> 0 then
+    cmbRoundFromList.Items.Clear;
 
   if cmbTeamList.Items.Count <> 0 then
     cmbTeamList.Items.Clear;
@@ -371,12 +374,13 @@ begin
   qryTeamList.ParamByName('yr_to').AsString := cmbYearToList.Text;
   qryTeamList.Open;
 
-  cmbRoundList.Items := FillItems.Fill(qryRoundList, ['RND']);
+  cmbRoundFromList.Items := FillItems.Fill(qryRoundList, ['RND']);
   cmbTeamList.Items := FillItems.Fill(qryTeamList, ['Tm']);
 
   // because of the cmbYearToListChange event, this line has added,
   // else the itemindex of the combobox doesn't works
-  cmbRoundList.ItemIndex := cmbRoundList.items.IndexOf(trim(cmbRoundList.Text));
+  cmbRoundFromList.ItemIndex :=
+    cmbRoundFromList.items.IndexOf(trim(cmbRoundFromList.Text));
 
   if not cmbHighlight.Enabled then
     cmbHighlight.Enabled := True;
@@ -400,7 +404,7 @@ begin
 
     if StrToInt(cmbYearFromList.Text) > StrToInt(cmbYearToList.Text) then
     begin
-      ShowMessage('Inicial year can`t be greater than final year');
+      ShowMessage('Final Year < Initial Year');
       Exit;
     end;
   end;
@@ -426,15 +430,14 @@ begin
   OpenLink('PLAYER_NFL_LINK');
 end;
 
-procedure TfrmMain.btnRoundClearClick(Sender: TObject);
+procedure TfrmMain.btnClearClick(Sender: TObject);
 var
   btn: TSpeedButton;
   ComboBox: TComboBox;
 begin
   btn := Sender as TSpeedButton;
   ComboBox := nil;
-  if btn = btnRoundClear then
-    ComboBox := cmbRoundList;
+
   if btn = btnTeamClear then
     ComboBox := cmbTeamList;
   if btn = btnPositionClear then
@@ -447,6 +450,12 @@ begin
   //actSearch.Execute;
 end;
 
+procedure TfrmMain.btnRoundClearClick(Sender: TObject);
+begin
+  cmbRoundFromList.ItemIndex := -1;
+  cmbRoundToList.ItemIndex := -1;
+end;
+
 procedure TfrmMain.chkAllProsChange(Sender: TObject);
 begin
   chkNeverPlayed.Enabled := not chkAllPros.Checked;
@@ -456,11 +465,11 @@ procedure TfrmMain.chkFirstPicksChange(Sender: TObject);
 begin
   if chkFirstPicks.Checked then
   begin
-    cmbRoundList.ItemIndex := -1;
+    cmbRoundFromList.ItemIndex := -1;
     cmbSuppl.ItemIndex := 1;
   end;
 
-  cmbRoundList.Enabled := not chkFirstPicks.Checked;
+  cmbRoundFromList.Enabled := not chkFirstPicks.Checked;
   cmbSuppl.Enabled := not chkFirstPicks.Checked;
 end;
 
@@ -479,6 +488,11 @@ procedure TfrmMain.cmbHighlightChange(Sender: TObject);
 begin
   DBGrid1.OnPrepareCanvas := @DBGrid1PrepareCanvas;
   actSearch.Execute;
+end;
+
+procedure TfrmMain.cmbRoundFromListChange(Sender: TObject);
+begin
+  cmbRoundToList.Text := cmbRoundFromList.Text;
 end;
 
 procedure TfrmMain.cmbSortByListChange(Sender: TObject);
@@ -526,8 +540,11 @@ begin
   if cmbYearFromList.Text <> '' then
     cmbYearToList.Text := cmbYearFromList.Text;
 
-  if cmbRoundList.Items.Count <> 0 then
-    cmbRoundList.Items.Clear;
+  if cmbRoundFromList.Items.Count <> 0 then
+    cmbRoundFromList.Items.Clear;
+
+  if cmbRoundToList.Items.Count <> 0 then
+    cmbRoundToList.Items.Clear;
 
   if cmbTeamList.Items.Count <> 0 then
     cmbTeamList.Items.Clear;
@@ -542,7 +559,8 @@ begin
   qryTeamList.ParamByName('yr_to').AsString := cmbYearToList.Text;
   qryTeamList.Open;
 
-  cmbRoundList.Items := FillItems.Fill(qryRoundList, ['RND']);
+  cmbRoundFromList.Items := FillItems.Fill(qryRoundList, ['RND']);
+  cmbRoundToList.Items := FillItems.Fill(qryRoundList, ['RND']);
   cmbTeamList.Items := FillItems.Fill(qryTeamList, ['Tm']);
 end;
 
@@ -551,10 +569,10 @@ begin
   actViewNFLProfile.Execute;
 end;
 
-procedure TfrmMain.DBGrid1KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TfrmMain.DBGrid1KeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
 begin
-  if Key = 13 then actViewNFLProfile.Execute;
+  if Key = 13 then
+    actViewNFLProfile.Execute;
 end;
 
 procedure TfrmMain.DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
@@ -585,12 +603,14 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   LoadComponents;
-  //TODO: dividi a consulta round entre uma rodada e outra
+  //TODO: converter evento onClick no menu de contexto em actions
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
+  {$IfDef LINUX}
 var
   i: integer;
+  {$EndIf}
 begin
   iniStrings := ReadIniFile;
   pgcMain.ActivePage := tsFilters;
@@ -601,17 +621,17 @@ begin
   cmbYearFromListChange(nil);
 
     {$IfDef LINUX}
-    for i := 0 to self.ComponentCount - 1 do
-    begin
-      if self.Components[i] is TLabel then
-        TLabel(self.Components[i]).Font.Color := clWhite;
-      if self.Components[i] is TCheckBox then
-        TCheckBox(self.Components[i]).Font.Color := clWhite;
+  for i := 0 to self.ComponentCount - 1 do
+  begin
+    if self.Components[i] is TLabel then
+      TLabel(self.Components[i]).Font.Color := clWhite;
+    if self.Components[i] is TCheckBox then
+      TCheckBox(self.Components[i]).Font.Color := clWhite;
 
 
-      if self.Components[i] = Panel2 then
-        Panel2.Color := $0076521A;
-    end;
+    if self.Components[i] = Panel2 then
+      Panel2.Color := $0076521A;
+  end;
     {$endif}
 end;
 
@@ -676,7 +696,7 @@ begin
 
   try
     frmYearDialog.YearFrom := cmbYearFromList.Text;
-    frmYearDialog.YearTo:=cmbYearToList.Text;
+    frmYearDialog.YearTo := cmbYearToList.Text;
 
     frmYearDialog.ShowModal;
   finally
@@ -716,16 +736,16 @@ end;
 
 procedure TfrmMain.MenuItem19Click(Sender: TObject);
 begin
-  pgcMain.ActivePage:= tsFilters;
+  pgcMain.ActivePage := tsFilters;
   cmbYearFromList.SetFocus;
 end;
 
 procedure TfrmMain.miSupplClick(Sender: TObject);
 begin
   if miSuppl.Checked then
-     cmbSuppl.ItemIndex:=2
+    cmbSuppl.ItemIndex := 2
   else
-    cmbSuppl.ItemIndex:=1;
+    cmbSuppl.ItemIndex := 1;
 
   actSearch.Execute;
 end;
@@ -735,7 +755,7 @@ begin
   cmbTeamList.ItemIndex := -1;
   cmbPositionList.ItemIndex := -1;
   cmbCollegeList.ItemIndex := -1;
-  cmbRoundList.ItemIndex := -1;
+  cmbRoundFromList.ItemIndex := -1;
   chkProBowlers.Checked := False;
   chkAllPros.Checked := False;
 
@@ -748,11 +768,13 @@ begin
     frmRoundDialog := TfrmRoundDialog.Create(nil);
 
   try
-    frmRoundDialog.Round:=cmbRoundList.Text;
-    frmRoundDialog.UpDown1.Max:=cmbRoundList.Items.Count;
+    frmRoundDialog.RoundFrom := cmbRoundFromList.Text;
+    frmRoundDialog.RoundTo := cmbRoundToList.Text;
+    frmRoundDialog.UpDown1.Max := cmbRoundFromList.Items.Count;
     frmRoundDialog.ShowModal;
   finally
-    cmbRoundList.Text := frmRoundDialog.Round;
+    cmbRoundFromList.Text := frmRoundDialog.RoundFrom;
+    cmbRoundToList.Text := frmRoundDialog.RoundTo;
     FreeAndNil(frmRoundDialog);
   end;
   actSearch.Execute;
@@ -806,7 +828,7 @@ function TfrmMain.ValidateSearch: boolean;
 begin
   Result := True;
   if (cmbYearFromList.ItemIndex = -1) and (cmbYearToList.ItemIndex = -1) and
-    (cmbRoundList.ItemIndex = -1) and (cmbTeamList.ItemIndex = -1) and
+    (cmbRoundFromList.ItemIndex = -1) and (cmbTeamList.ItemIndex = -1) and
     (cmbPositionList.ItemIndex = -1) and (cmbCollegeList.ItemIndex = -1) and
     not (chkNeverPlayed.Checked) and not (chkFirstPicks.Checked) and
     not (chkProBowlers.Checked) and not (chkAllPros.Checked) then

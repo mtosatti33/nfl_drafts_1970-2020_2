@@ -12,7 +12,7 @@ object frmPlayerEdit: TfrmPlayerEdit
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.4.0'
+  LCLVersion = '2.0.12.0'
   object lblName: TLabel
     Left = 154
     Height = 37
@@ -188,19 +188,19 @@ object frmPlayerEdit: TfrmPlayerEdit
       ClientHeight = 332
       ClientWidth = 743
       object Label1: TLabel
-        Left = 24
+        Left = 48
         Height = 15
-        Top = 96
-        Width = 91
+        Top = 136
+        Width = 89
         Caption = '1st. Team All-Pro'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 24
+        Left = 48
         Height = 15
-        Top = 128
+        Top = 168
         Width = 47
         Caption = 'Pro Bowl'
         Font.Color = 7754266
@@ -208,65 +208,65 @@ object frmPlayerEdit: TfrmPlayerEdit
         ParentFont = False
       end
       object edtAllPro: TEdit
-        Left = 144
+        Left = 168
         Height = 23
-        Top = 88
+        Top = 128
         Width = 176
         Font.Color = 7754266
         ParentFont = False
-        TabOrder = 0
+        TabOrder = 2
       end
       object edtProBowl: TEdit
-        Left = 144
+        Left = 168
         Height = 23
-        Top = 120
+        Top = 160
         Width = 176
         Font.Color = 7754266
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 3
       end
       object Label9: TLabel
-        Left = 24
+        Left = 48
         Height = 15
-        Top = 64
-        Width = 85
+        Top = 104
+        Width = 84
         Caption = 'Last Year Played'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
       end
       object edtLastYear: TEdit
-        Left = 144
+        Left = 168
         Height = 23
-        Top = 56
+        Top = 96
         Width = 176
         Font.Color = 7754266
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 1
       end
       object Label3: TLabel
-        Left = 368
+        Left = 392
         Height = 15
-        Top = 64
-        Width = 56
+        Top = 72
+        Width = 55
         Caption = 'Yrs. Starter'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
       end
       object edtStarter: TEdit
-        Left = 480
+        Left = 504
         Height = 23
-        Top = 56
+        Top = 64
         Width = 176
         Font.Color = 7754266
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 4
       end
       object Label4: TLabel
-        Left = 368
+        Left = 392
         Height = 15
-        Top = 96
+        Top = 104
         Width = 36
         Caption = 'Games'
         Font.Color = 7754266
@@ -274,51 +274,73 @@ object frmPlayerEdit: TfrmPlayerEdit
         ParentFont = False
       end
       object edtGames: TEdit
-        Left = 480
+        Left = 504
         Height = 23
-        Top = 88
+        Top = 96
         Width = 176
         Font.Color = 7754266
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 5
       end
       object Label5: TLabel
-        Left = 368
+        Left = 392
         Height = 15
-        Top = 128
-        Width = 52
+        Top = 136
+        Width = 51
         Caption = 'Career AV'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
       end
       object edtCarAV: TEdit
-        Left = 480
+        Left = 504
         Height = 23
-        Top = 120
+        Top = 128
         Width = 176
         Font.Color = 7754266
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 6
       end
       object Label6: TLabel
-        Left = 368
+        Left = 392
         Height = 15
-        Top = 160
-        Width = 90
+        Top = 168
+        Width = 87
         Caption = 'Team Drafted AV'
         Font.Color = 7754266
         ParentColor = False
         ParentFont = False
       end
       object edtTmAV: TEdit
-        Left = 480
+        Left = 504
         Height = 23
-        Top = 152
+        Top = 160
         Width = 176
         Font.Color = 7754266
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 7
+      end
+      object Label24: TLabel
+        Left = 48
+        Height = 15
+        Top = 72
+        Width = 40
+        Caption = 'College'
+        Font.Color = 7754266
+        ParentColor = False
+        ParentFont = False
+      end
+      object cmbCollegeList: TComboBox
+        Left = 168
+        Height = 23
+        Top = 64
+        Width = 176
+        AutoComplete = True
+        AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+        Font.Color = 7754266
+        ItemHeight = 15
+        ParentFont = False
+        TabOrder = 0
       end
     end
     object tsStats: TTabSheet
@@ -336,7 +358,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Font.Color = 7754266
         MaxLength = 0
         ParentFont = False
-        TabOrder = 0
+        TabOrder = 4
       end
       object Label7: TLabel
         Left = 29
@@ -352,7 +374,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 29
         Height = 15
         Top = 139
-        Width = 57
+        Width = 56
         Caption = 'Passes TDs'
         Font.Color = 7754266
         ParentColor = False
@@ -369,13 +391,13 @@ object frmPlayerEdit: TfrmPlayerEdit
         Font.Color = 7754266
         MaxLength = 0
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 3
       end
       object Label10: TLabel
         Left = 29
         Height = 15
         Top = 110
-        Width = 66
+        Width = 65
         Caption = 'Passes Yards'
         Font.Color = 7754266
         ParentColor = False
@@ -415,7 +437,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Font.Color = 7754266
         MaxLength = 0
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 1
       end
       object Label12: TLabel
         Left = 29
@@ -438,7 +460,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Font.Color = 7754266
         MaxLength = 0
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 0
       end
       object Label13: TLabel
         Left = 280
@@ -480,7 +502,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 280
         Height = 15
         Top = 80
-        Width = 69
+        Width = 68
         Caption = 'Rushes Yards'
         Font.Color = 7754266
         ParentColor = False
@@ -490,7 +512,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 280
         Height = 15
         Top = 109
-        Width = 60
+        Width = 59
         Caption = 'Rushes TDs'
         Font.Color = 7754266
         ParentColor = False
@@ -549,7 +571,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 528
         Height = 15
         Top = 80
-        Width = 54
+        Width = 53
         Caption = 'Rec. Yards'
         Font.Color = 7754266
         ParentColor = False
@@ -559,7 +581,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 528
         Height = 15
         Top = 109
-        Width = 45
+        Width = 44
         Caption = 'Rec. TDs'
         Font.Color = 7754266
         ParentColor = False
@@ -715,8 +737,8 @@ object frmPlayerEdit: TfrmPlayerEdit
     end
   end
   object ActionList1: TActionList
-    left = 274
-    top = 57
+    Left = 280
+    Top = 57
     object actApply: TAction
       Caption = 'Apply'
       OnExecute = actApplyExecute
@@ -736,7 +758,8 @@ object frmPlayerEdit: TfrmPlayerEdit
       'ST=:ST,'
       'G=:G,'
       'CarAV=:CarAV,'
-      'DrAV=:DrAV'
+      'DrAV=:DrAV,'
+      'College=:College '
       'where ID =:id'
     )
     Params = <    
@@ -777,11 +800,16 @@ object frmPlayerEdit: TfrmPlayerEdit
       end    
       item
         DataType = ftUnknown
+        Name = 'College'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
         Name = 'id'
         ParamType = ptUnknown
       end>
-    left = 330
-    top = 57
+    Left = 344
+    Top = 57
     ParamData = <    
       item
         DataType = ftUnknown
@@ -820,14 +848,19 @@ object frmPlayerEdit: TfrmPlayerEdit
       end    
       item
         DataType = ftUnknown
+        Name = 'College'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
         Name = 'id'
         ParamType = ptUnknown
       end>
   end
   object dsStats: TDataSource
     DataSet = qryStats
-    left = 331
-    top = 372
+    Left = 331
+    Top = 372
   end
   object qryStats: TZQuery
     Connection = dm.conn
@@ -844,13 +877,23 @@ object frmPlayerEdit: TfrmPlayerEdit
         Name = 'id'
         ParamType = ptUnknown
       end>
-    left = 416
-    top = 336
+    Left = 416
+    Top = 336
     ParamData = <    
       item
         DataType = ftUnknown
         Name = 'id'
         ParamType = ptUnknown
       end>
+  end
+  object qryCollegeList: TZQuery
+    Connection = dm.conn
+    SQL.Strings = (
+      'SELECT DISTINCT COLLEGE FROM DRAFTS'
+      'ORDER BY COLLEGE'
+    )
+    Params = <>
+    Left = 144
+    Top = 448
   end
 end

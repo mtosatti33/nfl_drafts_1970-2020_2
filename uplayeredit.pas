@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList,
-  ExtCtrls, Buttons, ComCtrls, DBGrids, DBCtrls, ZDataset, Types, uextendcomponents;
+  ExtCtrls, Buttons, ComCtrls, DBGrids, DBCtrls, ZDataset, Types,
+  uextendcomponents, ufillitems;
 
 type
 
@@ -18,6 +19,7 @@ type
     ActionList1: TActionList;
     Button1: TButton;
     Button2: TButton;
+    cmbCollegeList: TComboBox;
     dsStats: TDataSource;
     DBEdit1: TDBEdit;
     DBEdit10: TDBEdit;
@@ -57,6 +59,7 @@ type
     Label21: TLabel;
     Label22: TLabel;
     Label23: TLabel;
+    Label24: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -70,6 +73,7 @@ type
     lblCollege: TLabel;
     Panel1: TPanel;
     pgcMain: TPageControl;
+    qryCollegeList: TZQuery;
     qryDrafts: TZQuery;
     Shape1: TShape;
     Shape2: TShape;
@@ -96,9 +100,6 @@ type
     FTmAV: string;
     FLastYear: string;
     FIsSave: boolean;
-
-    MouseX: integer;
-    MouseY: integer;
   public
     property ID: string read FId write FId;
     property Name: string read FName write FName;
@@ -111,11 +112,12 @@ type
     property CarAV: string read FCarAV write FCarAV;
     property TmAV: string read FTmAV write FTmAV;
     property LastYearPlayed: string read FLastYear write FLastYear;
-    property IsSave: boolean read FIsSave write FIsSave;
+    property IsSave: boolean read FIsSave write FIsSave default False;
   end;
 
 var
   frmPlayerEdit: TfrmPlayerEdit;
+  FillItems : TFillItems;
 
 implementation
 
@@ -130,6 +132,7 @@ begin
   lblPosition.Caption := FPosition;
   lblCollege.Caption := FCollege;
 
+  cmbCollegeList.Text := FCollege;
   edtLastYear.Text := FLastYear;
   edtAllPro.Text := FAllPro;
   edtProBowl.Text := FProBowl;
@@ -139,6 +142,8 @@ begin
   edtTmAV.Text := FTmAV;
 
   pgcMain.ActivePage := tsInformation;
+
+  cmbCollegeList.Items := FillItems.Fill(qryCollegeList, ['college']);
 end;
 
 procedure TfrmPlayerEdit.SpeedButton1Click(Sender: TObject);
@@ -152,8 +157,11 @@ begin
 end;
 
 procedure TfrmPlayerEdit.FormCreate(Sender: TObject);
-begin
-  FIsSave := False;
+begin                     
+  if not qryCollegeList.Active then
+    qryCollegeList.Active := True;
+
+  FillItems := TFillItems.Create;
   panel1.MoveMousePanel:=true;
 end;
 
@@ -167,6 +175,7 @@ begin
   FCarAV := edtCarAV.Text;
   FTmAV := edtTmAV.Text;
   FLastYear := edtLastYear.Text;
+  FCollege := cmbCollegeList.Text;
 
   qryDrafts.ParamByName('AP1').AsString := FAllPro;
   qryDrafts.ParamByName('PB').AsString := FProBowl;
@@ -192,6 +201,7 @@ begin
   else
     qryDrafts.ParamByName('TO').IsNull;
 
+  qryDrafts.ParamByName('COLLEGE').AsString := FCollege;
   qryDrafts.ParamByName('ID').AsString := FId;
 
   try

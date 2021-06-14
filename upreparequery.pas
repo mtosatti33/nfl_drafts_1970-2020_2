@@ -16,7 +16,8 @@ type
     Fyr_from: string;
     Fyr_to: string;
     Fteam: string;
-    Fround: integer;
+    FroundFrom: integer;
+    FroundTo: integer;
     Fposition: string;
     Fcollege: string;
     Fsupplemental: integer;
@@ -27,7 +28,7 @@ type
   public
     procedure Load;
     constructor Create(yr_from, yr_to, team, position, college: string;
-      round, supplemental: integer;
+      round_from, round_to, supplemental: integer;
       first_pick, never_played, all_pro, pro_bowl: boolean);
   end;
 
@@ -57,7 +58,8 @@ begin
 
         qry.ParamByName('yr_to').AsString := Fyr_to;
         qry.ParamByName('team_id').AsString := Fteam;
-        qry.ParamByName('rnd').AsInteger := Fround;
+        qry.ParamByName('rnd_from').AsInteger := FroundFrom; 
+        qry.ParamByName('rnd_to').AsInteger := FroundTo;
         qry.ParamByName('position').AsString := Fposition;
         qry.ParamByName('college').AsString := Fcollege;
         qry.ParamByName('is_suppl').AsInteger := Fsupplemental;
@@ -74,12 +76,13 @@ begin
 end;
 
 constructor TPrepareQuery.Create(yr_from, yr_to, team, position, college: string;
-  round, supplemental: integer; first_pick, never_played, all_pro, pro_bowl: boolean);
+  round_from, round_to, supplemental: integer; first_pick, never_played, all_pro, pro_bowl: boolean);
 begin
   Fyr_from := yr_from;
   Fyr_to := yr_to;
   Fteam := team;
-  Fround := round + 1;
+  FroundFrom := round_from + 1;
+  FroundTo := round_to + 1;
   Fposition := position;
   Fcollege := college;
   Fsupplemental := supplemental - 1;

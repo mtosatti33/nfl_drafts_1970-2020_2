@@ -1,0 +1,12 @@
+SELECT * FROM drafts
+WHERE (-1=:yr_from or Draft_Yr between :yr_from and :yr_to)
+and (''=:team_id or Tm=:team_id)
+and (0=:rnd or Rnd=:rnd)
+and (''=:position or "Pos"=:position)
+and (''=:college or College=:college)
+and (-1=:is_suppl or Is_Suppl=:is_suppl)
+and (0=:first_pick or Pick=1)
+and (0=:never_played or (G=0 or G=''))
+and (0=:all_pro or AP1 > 0)
+and (0=:pro_bowl or PB > 0)
+order by Draft_Yr ,RND, PICK
