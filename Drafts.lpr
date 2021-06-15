@@ -10,7 +10,7 @@ uses
   Forms, zcomponent, UMain, UDM, UBrowser, UPlayerEdit, UInstructionView,
   ureport, upaintgrid, ufillitems, uPrepareQuery, UColorConstants, UColors,
   TestIfIs64, UConfiguration, uplayercomp, uextendcomponents, UDatasetConstants,
-  UroundDialog, uYearDialog;
+  UroundDialog, uYearDialog, uquerybuilder, uquerybuilderconstants;
 
 {$R *.res}
 

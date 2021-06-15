@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="11"/>
     <BuildModes Active="Release"/>
-    <Units Count="94">
+    <Units Count="96">
       <Unit0>
         <Filename Value="Drafts.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -20,9 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UMain"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="609"/>
-        <CursorPos X="4" Y="612"/>
+        <TopLine Value="600"/>
+        <CursorPos X="19" Y="615"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -40,6 +39,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="UDM"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="7"/>
         <CursorPos X="21" Y="9"/>
@@ -57,7 +57,7 @@
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <CursorPos X="57" Y="8"/>
-        <UsageCount Value="195"/>
+        <UsageCount Value="196"/>
       </Unit3>
       <Unit4>
         <Filename Value="uplayeredit.pas"/>
@@ -66,10 +66,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UPlayerEdit"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="149"/>
         <CursorPos X="5" Y="165"/>
-        <UsageCount Value="190"/>
+        <UsageCount Value="191"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -82,7 +82,7 @@
         <UnitName Value="UInstructionView"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="7"/>
-        <UsageCount Value="181"/>
+        <UsageCount Value="182"/>
       </Unit5>
       <Unit6>
         <Filename Value="ureport.pas"/>
@@ -92,7 +92,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="41"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="168"/>
       </Unit6>
       <Unit7>
         <Filename Value="upaintgrid.pas"/>
@@ -100,7 +100,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="106"/>
         <CursorPos X="27" Y="110"/>
-        <UsageCount Value="150"/>
+        <UsageCount Value="151"/>
       </Unit7>
       <Unit8>
         <Filename Value="ufillitems.pas"/>
@@ -108,7 +108,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos X="3" Y="29"/>
-        <UsageCount Value="149"/>
+        <UsageCount Value="150"/>
       </Unit8>
       <Unit9>
         <Filename Value="upreparequery.pas"/>
@@ -117,7 +117,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="4"/>
         <CursorPos X="11" Y="85"/>
-        <UsageCount Value="117"/>
+        <UsageCount Value="118"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -125,7 +125,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColorConstants"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="66"/>
       </Unit10>
       <Unit11>
         <Filename Value="ucolors.pas"/>
@@ -133,7 +133,7 @@
         <UnitName Value="UColors"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="49" Y="219"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="66"/>
       </Unit11>
       <Unit12>
         <Filename Value="testifis64.pas"/>
@@ -141,7 +141,7 @@
         <UnitName Value="TestIfIs64"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="15"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
       </Unit12>
       <Unit13>
         <Filename Value="uconfiguration.pas"/>
@@ -149,7 +149,7 @@
         <UnitName Value="UConfiguration"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="55"/>
       </Unit13>
       <Unit14>
         <Filename Value="uplayercomp.pas"/>
@@ -160,7 +160,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="136"/>
         <CursorPos X="33" Y="59"/>
-        <UsageCount Value="49"/>
+        <UsageCount Value="50"/>
       </Unit14>
       <Unit15>
         <Filename Value="uextendcomponents.pas"/>
@@ -168,7 +168,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="3" Y="14"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="47"/>
       </Unit15>
       <Unit16>
         <Filename Value="udatasetconstants.pas"/>
@@ -176,7 +176,7 @@
         <UnitName Value="UDatasetConstants"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="11"/>
-        <UsageCount Value="42"/>
+        <UsageCount Value="43"/>
       </Unit16>
       <Unit17>
         <Filename Value="urounddialog.pas"/>
@@ -185,10 +185,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UroundDialog"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="54"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="42"/>
         <CursorPos X="5" Y="60"/>
-        <UsageCount Value="31"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit17>
@@ -199,10 +199,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uYearDialog"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="68"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="55"/>
         <CursorPos X="27" Y="69"/>
-        <UsageCount Value="31"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit18>
@@ -426,8 +426,8 @@
       <Unit49>
         <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\win\sysutils.pp"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="938"/>
-        <UsageCount Value="4"/>
+        <TopLine Value="25"/>
+        <UsageCount Value="10"/>
       </Unit49>
       <Unit50>
         <Filename Value="C:\lazarus\lcl\graphics.pp"/>
@@ -739,8 +739,23 @@
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit93>
+      <Unit94>
+        <Filename Value="uquerybuilder.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="28" Y="9"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit94>
+      <Unit95>
+        <Filename Value="uquerybuilderconstants.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit95>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="urounddialog.pas"/>
         <Caret Line="48" Column="3" TopLine="39"/>
@@ -857,6 +872,10 @@
         <Filename Value="umain.pas"/>
         <Caret Line="613" Column="11" TopLine="602"/>
       </Position29>
+      <Position30>
+        <Filename Value="uquerybuilder.pas"/>
+        <Caret Line="2" Column="88"/>
+      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
