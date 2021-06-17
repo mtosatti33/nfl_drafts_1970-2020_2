@@ -20,6 +20,20 @@ type
     actEditPlayer: TAction;
     actCmbClear: TAction;
     actChkSetToFalse: TAction;
+    actFilterByTeam: TAction;
+    actFilterByPosition: TAction;
+    actFilterByCollege: TAction;
+    actFilterByRound: TAction;
+    actFilterByYear: TAction;
+    actFilterByPB: TAction;
+    actFilterByAP: TAction;
+    actFilterBySuppl: TAction;
+    actFilterReset: TAction;
+    actReturningFilterTab: TAction;
+    actViewComparePlayers: TAction;
+    actOrderByPick: TAction;
+    actOrderByAV: TAction;
+    actOrderByTeamAV: TAction;
     actViewNCAAProfile: TAction;
     actViewNFLProfile: TAction;
     actLstClear: TAction;
@@ -106,9 +120,23 @@ type
     procedure actCmbClearExecute(Sender: TObject);
     procedure actEditPlayerExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
+    procedure actFilterByAPExecute(Sender: TObject);
+    procedure actFilterByCollegeExecute(Sender: TObject);
+    procedure actFilterByPBExecute(Sender: TObject);
+    procedure actFilterByPositionExecute(Sender: TObject);
+    procedure actFilterByRoundExecute(Sender: TObject);
+    procedure actFilterBySupplExecute(Sender: TObject);
+    procedure actFilterByTeamExecute(Sender: TObject);
+    procedure actFilterByYearExecute(Sender: TObject);
+    procedure actFilterResetExecute(Sender: TObject);
     procedure actLstClearExecute(Sender: TObject);
+    procedure actOrderByAVExecute(Sender: TObject);
+    procedure actOrderByPickExecute(Sender: TObject);
+    procedure actOrderByTeamAVExecute(Sender: TObject);
     procedure actReportExecute(Sender: TObject);
+    procedure actReturningFilterTabExecute(Sender: TObject);
     procedure actSearchExecute(Sender: TObject);
+    procedure actViewComparePlayersExecute(Sender: TObject);
     procedure actViewNCAAProfileExecute(Sender: TObject);
     procedure actViewNFLProfileExecute(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
@@ -131,20 +159,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure LoadComponents;
     procedure lstClick(Sender: TObject);
-    procedure miYearClick(Sender: TObject);
-    procedure miPBClick(Sender: TObject);
-    procedure miAPClick(Sender: TObject);
-    procedure miPickClick(Sender: TObject);
-    procedure miAVClick(Sender: TObject);
-    procedure miDRAVClick(Sender: TObject);
-    procedure MenuItem19Click(Sender: TObject);
-    procedure miSupplClick(Sender: TObject);
-    procedure miResetClick(Sender: TObject);
-    procedure miRoundClick(Sender: TObject);
-    procedure miTeamClick(Sender: TObject);
-    procedure miPosClick(Sender: TObject);
-    procedure miCollegeClick(Sender: TObject);
-    procedure MenuItem9Click(Sender: TObject);
     function ValidateSearch: boolean;
     procedure OpenLink(field_url: string);
   private
@@ -172,6 +186,103 @@ begin
   Application.Terminate;
 end;
 
+procedure TfrmMain.actFilterByAPExecute(Sender: TObject);
+begin
+  chkAllPros.Checked := True;
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.actFilterByCollegeExecute(Sender: TObject);
+begin
+  if dm.qryPicks.RecordCount <> 0 then
+  begin
+    cmbCollegeList.Text := dm.qryPicks['college'];
+    actSearch.Execute;
+  end;
+end;
+
+procedure TfrmMain.actFilterByPBExecute(Sender: TObject);
+begin
+  chkProBowlers.Checked := True;
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.actFilterByPositionExecute(Sender: TObject);
+begin
+  if dm.qryPicks.RecordCount <> 0 then
+  begin
+    cmbPositionList.Text := dm.qryPicks['pos'];
+    actSearch.Execute;
+  end;
+end;
+
+procedure TfrmMain.actFilterByRoundExecute(Sender: TObject);
+begin
+  if frmRoundDialog = nil then
+    frmRoundDialog := TfrmRoundDialog.Create(nil);
+
+  try
+    frmRoundDialog.RoundFrom := cmbRoundFromList.Text;
+    frmRoundDialog.RoundTo := cmbRoundToList.Text;
+    frmRoundDialog.UpDown1.Max := cmbRoundFromList.Items.Count;
+    frmRoundDialog.ShowModal;
+  finally
+    cmbRoundFromList.Text := frmRoundDialog.RoundFrom;
+    cmbRoundToList.Text := frmRoundDialog.RoundTo;
+    FreeAndNil(frmRoundDialog);
+  end;
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.actFilterBySupplExecute(Sender: TObject);
+begin
+  if miSuppl.Checked then
+    cmbSuppl.ItemIndex := 2
+  else
+    cmbSuppl.ItemIndex := 1;
+
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.actFilterByTeamExecute(Sender: TObject);
+begin
+  if dm.qryPicks.RecordCount <> 0 then
+  begin
+    cmbTeamList.Text := dm.qryPicks['tm'];
+    actSearch.Execute;
+  end;
+end;
+
+procedure TfrmMain.actFilterByYearExecute(Sender: TObject);
+begin
+  if frmYearDialog = nil then
+    frmYearDialog := TfrmYearDialog.Create(nil);
+
+  try
+    frmYearDialog.YearFrom := cmbYearFromList.Text;
+    frmYearDialog.YearTo := cmbYearToList.Text;
+
+    frmYearDialog.ShowModal;
+  finally
+    cmbYearFromList.Text := frmYearDialog.YearFrom;
+    cmbYearToList.Text := frmYearDialog.YearTo;
+    FreeAndNil(frmYearDialog);
+  end;
+  actSearch.Execute;
+end;
+
+procedure TfrmMain.actFilterResetExecute(Sender: TObject);
+begin
+  cmbTeamList.ItemIndex := -1;
+  cmbPositionList.ItemIndex := -1;
+  cmbCollegeList.ItemIndex := -1;
+  cmbRoundFromList.ItemIndex := -1;
+  chkProBowlers.Checked := False;
+  chkAllPros.Checked := False;
+
+  actSearch.Execute;
+end;
+
 procedure TfrmMain.actLstClearExecute(Sender: TObject);
 var
   i: word;
@@ -182,6 +293,21 @@ begin
       if TListBox(Components[i]).Items.Count <> 0 then
         TListBox(Components[i]).Items.Clear;
   end;
+end;
+
+procedure TfrmMain.actOrderByAVExecute(Sender: TObject);
+begin
+  DBGrid1TitleClick(DBGrid1.Columns[12]);
+end;
+
+procedure TfrmMain.actOrderByPickExecute(Sender: TObject);
+begin
+  DBGrid1TitleClick(DBGrid1.Columns[2]);
+end;
+
+procedure TfrmMain.actOrderByTeamAVExecute(Sender: TObject);
+begin
+  DBGrid1TitleClick(DBGrid1.Columns[13]);
 end;
 
 procedure TfrmMain.actReportExecute(Sender: TObject);
@@ -260,6 +386,12 @@ begin
   finally
     FreeAndNil(frmReport);
   end;
+end;
+
+procedure TfrmMain.actReturningFilterTabExecute(Sender: TObject);
+begin
+  pgcMain.ActivePage := tsFilters;
+  cmbYearFromList.SetFocus;
 end;
 
 procedure TfrmMain.actClearExecute(Sender: TObject);
@@ -418,6 +550,23 @@ begin
   pgcMain.ActivePage := tsMainData;
   btnReport.Enabled := (dsTable.DataSet.RecordCount <> 0) or (dsTable.DataSet.Active);
   DBGrid1.SetFocus;
+end;
+
+procedure TfrmMain.actViewComparePlayersExecute(Sender: TObject);
+begin
+  frmPlayerComp := TfrmPlayerComp.Create(Application);
+
+  try
+    with frmPlayerComp do
+    begin
+      DateInitial := cmbYearFromList.Text;
+      DateFinal := cmbYearToList.Text;
+      Position := dm.qryPicks['pos'];
+    end;
+    frmPlayerComp.ShowModal;
+  finally
+    FreeAndNil(frmPlayerComp);
+  end;
 end;
 
 procedure TfrmMain.actViewNCAAProfileExecute(Sender: TObject);
@@ -603,7 +752,6 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   LoadComponents;
-  //TODO: converter evento onClick no menu de contexto em actions
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
@@ -687,141 +835,6 @@ begin
       actSearch.Execute;
       pgcMain.ActivePage := tsMainData;
     end;
-end;
-
-procedure TfrmMain.miYearClick(Sender: TObject);
-begin
-  if frmYearDialog = nil then
-    frmYearDialog := TfrmYearDialog.Create(nil);
-
-  try
-    frmYearDialog.YearFrom := cmbYearFromList.Text;
-    frmYearDialog.YearTo := cmbYearToList.Text;
-
-    frmYearDialog.ShowModal;
-  finally
-    cmbYearFromList.Text := frmYearDialog.YearFrom;
-    cmbYearToList.Text := frmYearDialog.YearTo;
-    FreeAndNil(frmYearDialog);
-  end;
-  actSearch.Execute;
-end;
-
-procedure TfrmMain.miPBClick(Sender: TObject);
-begin
-  chkProBowlers.Checked := True;
-  actSearch.Execute;
-end;
-
-procedure TfrmMain.miAPClick(Sender: TObject);
-begin
-  chkAllPros.Checked := True;
-  actSearch.Execute;
-end;
-
-procedure TfrmMain.miPickClick(Sender: TObject);
-begin
-  DBGrid1TitleClick(DBGrid1.Columns[2]);
-end;
-
-procedure TfrmMain.miAVClick(Sender: TObject);
-begin
-  DBGrid1TitleClick(DBGrid1.Columns[12]);
-end;
-
-procedure TfrmMain.miDRAVClick(Sender: TObject);
-begin
-  DBGrid1TitleClick(DBGrid1.Columns[13]);
-end;
-
-procedure TfrmMain.MenuItem19Click(Sender: TObject);
-begin
-  pgcMain.ActivePage := tsFilters;
-  cmbYearFromList.SetFocus;
-end;
-
-procedure TfrmMain.miSupplClick(Sender: TObject);
-begin
-  if miSuppl.Checked then
-    cmbSuppl.ItemIndex := 2
-  else
-    cmbSuppl.ItemIndex := 1;
-
-  actSearch.Execute;
-end;
-
-procedure TfrmMain.miResetClick(Sender: TObject);
-begin
-  cmbTeamList.ItemIndex := -1;
-  cmbPositionList.ItemIndex := -1;
-  cmbCollegeList.ItemIndex := -1;
-  cmbRoundFromList.ItemIndex := -1;
-  chkProBowlers.Checked := False;
-  chkAllPros.Checked := False;
-
-  actSearch.Execute;
-end;
-
-procedure TfrmMain.miRoundClick(Sender: TObject);
-begin
-  if frmRoundDialog = nil then
-    frmRoundDialog := TfrmRoundDialog.Create(nil);
-
-  try
-    frmRoundDialog.RoundFrom := cmbRoundFromList.Text;
-    frmRoundDialog.RoundTo := cmbRoundToList.Text;
-    frmRoundDialog.UpDown1.Max := cmbRoundFromList.Items.Count;
-    frmRoundDialog.ShowModal;
-  finally
-    cmbRoundFromList.Text := frmRoundDialog.RoundFrom;
-    cmbRoundToList.Text := frmRoundDialog.RoundTo;
-    FreeAndNil(frmRoundDialog);
-  end;
-  actSearch.Execute;
-end;
-
-procedure TfrmMain.miTeamClick(Sender: TObject);
-begin
-  if dm.qryPicks.RecordCount <> 0 then
-  begin
-    cmbTeamList.Text := dm.qryPicks['tm'];
-    actSearch.Execute;
-  end;
-end;
-
-procedure TfrmMain.miPosClick(Sender: TObject);
-begin
-  if dm.qryPicks.RecordCount <> 0 then
-  begin
-    cmbPositionList.Text := dm.qryPicks['pos'];
-    actSearch.Execute;
-  end;
-end;
-
-procedure TfrmMain.miCollegeClick(Sender: TObject);
-begin
-  if dm.qryPicks.RecordCount <> 0 then
-  begin
-    cmbCollegeList.Text := dm.qryPicks['college'];
-    actSearch.Execute;
-  end;
-end;
-
-procedure TfrmMain.MenuItem9Click(Sender: TObject);
-begin
-  frmPlayerComp := TfrmPlayerComp.Create(Application);
-
-  try
-    with frmPlayerComp do
-    begin
-      DateInitial := cmbYearFromList.Text;
-      DateFinal := cmbYearToList.Text;
-      Position := dm.qryPicks['pos'];
-    end;
-    frmPlayerComp.ShowModal;
-  finally
-    FreeAndNil(frmPlayerComp);
-  end;
 end;
 
 function TfrmMain.ValidateSearch: boolean;

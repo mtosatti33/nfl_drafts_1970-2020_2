@@ -80,7 +80,7 @@ begin
      edtRoundFrom.Text:=FRoundFrom;
 
   if FRoundTo <> '' then
-     edtRoundFrom.Text:=FRoundTo;
+     edtRoundTo.Text:=FRoundTo;
 end;
 
 procedure TfrmRoundDialog.SetRoundFrom(AValue: string);

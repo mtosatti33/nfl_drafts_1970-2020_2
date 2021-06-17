@@ -12,7 +12,6 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.12.0'
   object Label7: TLabel
     Left = 472
     Height = 16
@@ -176,7 +175,7 @@ object frmMain: TfrmMain
           Left = 86
           Height = 19
           Top = 92
-          Width = 113
+          Width = 114
           Caption = '1st Team All Pro''s'
           Font.Color = clWhite
           OnChange = chkAllProsChange
@@ -199,7 +198,7 @@ object frmMain: TfrmMain
           Left = 16
           Height = 15
           Top = 16
-          Width = 58
+          Width = 59
           Caption = 'Years From'
           Font.Color = 7754266
           ParentColor = False
@@ -220,7 +219,7 @@ object frmMain: TfrmMain
           Left = 30
           Height = 15
           Top = 48
-          Width = 42
+          Width = 45
           Caption = 'Years To'
           Font.Color = 7754266
           ParentColor = False
@@ -263,7 +262,7 @@ object frmMain: TfrmMain
           Left = 45
           Height = 15
           Top = 144
-          Width = 28
+          Width = 30
           Caption = 'Team'
           Font.Color = 7754266
           ParentColor = False
@@ -536,7 +535,7 @@ object frmMain: TfrmMain
           Left = 22
           Height = 15
           Top = 112
-          Width = 50
+          Width = 52
           Caption = 'Round To'
           Font.Color = 7754266
           ParentColor = False
@@ -737,12 +736,14 @@ object frmMain: TfrmMain
     end
   end
   object actions: TActionList
-    Left = 584
-    Top = 168
+    left = 584
+    top = 168
     object actPreferences: TAction
+      Category = 'General'
       Caption = 'Preferences'
     end
     object actExit: TAction
+      Category = 'General'
       Caption = 'Exit'
       OnExecute = actExitExecute
       SecondaryShortCuts.Strings = (
@@ -750,47 +751,142 @@ object frmMain: TfrmMain
       )
     end
     object actSearch: TAction
+      Category = 'Actions'
       Caption = 'Search'
       OnExecute = actSearchExecute
       ShortCut = 13
     end
     object actClear: TAction
+      Category = 'Actions'
       Caption = 'Clear'
       OnExecute = actClearExecute
       ShortCut = 16460
     end
     object actReport: TAction
+      Category = 'Views'
       Caption = 'Report'
       OnExecute = actReportExecute
       ShortCut = 16464
     end
     object actEditPlayer: TAction
+      Category = 'Actions'
       Caption = 'Edit Player'
       OnExecute = actEditPlayerExecute
       ShortCut = 16453
     end
     object actCmbClear: TAction
+      Category = 'Actions'
       OnExecute = actCmbClearExecute
     end
     object actLstClear: TAction
+      Category = 'Actions'
       OnExecute = actLstClearExecute
     end
     object actChkSetToFalse: TAction
+      Category = 'Actions'
       OnExecute = actChkSetToFalseExecute
     end
     object actViewNFLProfile: TAction
+      Category = 'Views'
       Caption = 'View NFL Profile'
       OnExecute = actViewNFLProfileExecute
+      ShortCut = 13
     end
     object actViewNCAAProfile: TAction
+      Category = 'Views'
       Caption = 'View NCAA Profile'
       OnExecute = actViewNCAAProfileExecute
+      ShortCut = 8205
+    end
+    object actFilterByTeam: TAction
+      Category = 'Filters'
+      Caption = 'By Team'
+      OnExecute = actFilterByTeamExecute
+      ShortCut = 8276
+    end
+    object actFilterByPosition: TAction
+      Category = 'Filters'
+      Caption = 'By Position'
+      OnExecute = actFilterByPositionExecute
+      ShortCut = 8272
+    end
+    object actFilterByCollege: TAction
+      Category = 'Filters'
+      Caption = 'By College'
+      OnExecute = actFilterByCollegeExecute
+      ShortCut = 8259
+    end
+    object actFilterByRound: TAction
+      Category = 'Filters'
+      Caption = 'By Round'
+      OnExecute = actFilterByRoundExecute
+      ShortCut = 8274
+    end
+    object actFilterByYear: TAction
+      Category = 'Filters'
+      Caption = 'By Year'
+      OnExecute = actFilterByYearExecute
+      ShortCut = 8281
+    end
+    object actFilterByPB: TAction
+      Category = 'Filters'
+      Caption = 'Pro Bowlers'
+      OnExecute = actFilterByPBExecute
+      ShortCut = 8258
+    end
+    object actFilterByAP: TAction
+      Category = 'Filters'
+      Caption = 'All Pros'
+      OnExecute = actFilterByAPExecute
+      ShortCut = 8257
+    end
+    object actFilterBySuppl: TAction
+      Category = 'Filters'
+      Caption = 'Supplemental'
+      OnExecute = actFilterBySupplExecute
+      ShortCut = 8275
+    end
+    object actFilterReset: TAction
+      Category = 'Filters'
+      Caption = 'Reset'
+      OnExecute = actFilterResetExecute
+      ShortCut = 24658
+    end
+    object actOrderByPick: TAction
+      Category = 'Ordering'
+      Caption = 'By Pick'
+      OnExecute = actOrderByPickExecute
+      ShortCut = 32848
+    end
+    object actOrderByAV: TAction
+      Category = 'Ordering'
+      Caption = 'By AV'
+      OnExecute = actOrderByAVExecute
+      ShortCut = 32833
+    end
+    object actOrderByTeamAV: TAction
+      Category = 'Ordering'
+      Caption = 'By TeamAV'
+      OnExecute = actOrderByTeamAVExecute
+      ShortCut = 32852
+    end
+    object actViewComparePlayers: TAction
+      Category = 'Views'
+      Caption = 'Compare Players By Position'
+      OnExecute = actViewComparePlayersExecute
+      ShortCut = 16461
+    end
+    object actReturningFilterTab: TAction
+      Category = 'Actions'
+      Caption = 'Return to Filters Tab'
+      OnExecute = actReturningFilterTabExecute
+      ShortCut = 8
     end
   end
   object dsTable: TDataSource
     DataSet = dm.qryPicks
-    Left = 232
-    Top = 328
+    left = 232
+    top = 328
   end
   object qryYearList: TZQuery
     Connection = dm.conn
@@ -798,8 +894,8 @@ object frmMain: TfrmMain
       'SELECT DISTINCT DRAFT_YR FROM DRAFTS ORDER BY DRAFT_YR DESC'
     )
     Params = <>
-    Left = 432
-    Top = 288
+    left = 432
+    top = 288
   end
   object qryTeamList: TZQuery
     Connection = dm.conn
@@ -819,8 +915,8 @@ object frmMain: TfrmMain
         Name = 'YR_TO'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 352
+    left = 432
+    top = 352
     ParamData = <    
       item
         DataType = ftUnknown
@@ -840,8 +936,8 @@ object frmMain: TfrmMain
       'ORDER BY POS'
     )
     Params = <>
-    Left = 432
-    Top = 416
+    left = 432
+    top = 416
   end
   object qryCollegeList: TZQuery
     Connection = dm.conn
@@ -850,8 +946,8 @@ object frmMain: TfrmMain
       'ORDER BY COLLEGE'
     )
     Params = <>
-    Left = 432
-    Top = 464
+    left = 432
+    top = 464
   end
   object qryRoundList: TZQuery
     Connection = dm.conn
@@ -870,8 +966,8 @@ object frmMain: TfrmMain
         Name = 'yr_to'
         ParamType = ptUnknown
       end>
-    Left = 432
-    Top = 232
+    left = 432
+    top = 232
     ParamData = <    
       item
         DataType = ftUnknown
@@ -885,8 +981,8 @@ object frmMain: TfrmMain
       end>
   end
   object options: TPopupMenu
-    Left = 280
-    Top = 312
+    left = 280
+    top = 312
     object MenuItem4: TMenuItem
       Action = actEditPlayer
     end
@@ -902,53 +998,34 @@ object frmMain: TfrmMain
     object MenuItem1: TMenuItem
       Caption = 'Filter'
       object miTeam: TMenuItem
-        Caption = 'By Team'
-        ShortCut = 8276
-        OnClick = miTeamClick
+        Action = actFilterByTeam
       end
       object miPos: TMenuItem
-        Caption = 'By Position'
-        ShortCut = 8272
-        OnClick = miPosClick
+        Action = actFilterByPosition
       end
       object miCollege: TMenuItem
-        Caption = 'By College'
-        ShortCut = 8259
-        OnClick = miCollegeClick
+        Action = actFilterByCollege
       end
       object miRound: TMenuItem
-        Caption = 'By Round'
-        ShortCut = 8274
-        OnClick = miRoundClick
+        Action = actFilterByRound
       end
       object miYear: TMenuItem
-        Caption = 'By Year'
-        ShortCut = 8281
-        OnClick = miYearClick
+        Action = actFilterByYear
       end
       object miPB: TMenuItem
-        Caption = 'Pro Bowlers Only'
-        ShortCut = 8258
-        OnClick = miPBClick
+        Action = actFilterByPB
       end
       object miAP: TMenuItem
-        Caption = 'All-Pros Only'
-        ShortCut = 8257
-        OnClick = miAPClick
+        Action = actFilterByAP
       end
       object miSuppl: TMenuItem
-        AutoCheck = True
-        Caption = 'Supplemental'
-        ShortCut = 8275
-        OnClick = miSupplClick
+        Action = actFilterBySuppl
       end
       object MenuItem3: TMenuItem
         Caption = '-'
       end
       object miReset: TMenuItem
-        Caption = 'Reset'
-        ShortCut = 24658
-        OnClick = miResetClick
+        Action = actFilterReset
       end
     end
     object MenuItem15: TMenuItem
@@ -957,35 +1034,26 @@ object frmMain: TfrmMain
     object MenuItem14: TMenuItem
       Caption = 'Order'
       object miPick: TMenuItem
-        Caption = 'By Pick'
-        ShortCut = 32848
-        OnClick = miPickClick
+        Action = actOrderByPick
       end
       object miAV: TMenuItem
-        Caption = 'By AV'
-        ShortCut = 32833
-        OnClick = miAVClick
+        Action = actOrderByAV
       end
       object miDRAV: TMenuItem
-        Caption = 'By Team AV'
-        ShortCut = 32852
-        OnClick = miDRAVClick
+        Action = actOrderByTeamAV
       end
     end
     object MenuItem10: TMenuItem
       Caption = '-'
     end
     object MenuItem9: TMenuItem
-      Caption = 'Compare Players From Position'
-      OnClick = MenuItem9Click
+      Action = actViewComparePlayers
     end
     object MenuItem20: TMenuItem
       Caption = '-'
     end
     object MenuItem19: TMenuItem
-      Caption = 'Return To Filters Tab'
-      ShortCut = 8
-      OnClick = MenuItem19Click
+      Action = actReturningFilterTab
     end
   end
 end
