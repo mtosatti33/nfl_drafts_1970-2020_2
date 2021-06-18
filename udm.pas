@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, ZConnection, ZDataset, Dialogs, UConfiguration,
-  UDatasetConstants;
+  UDatasetConstants, uquerybuilder;
 type
 
   { Tdm }
@@ -33,7 +33,7 @@ type
 var
   dm: Tdm;
   iniStrings: TIniStrings;
-
+  QueryBuilder: TQueryBuilder;
 implementation
 
 {$R *.lfm}
@@ -46,6 +46,7 @@ var
   dir, arch: string;
 begin
   iniStrings := ReadIniFile;
+  QueryBuilder:= TQueryBuilder.Create;
 
   {$IfDef MSWINDOWS}
   dir:= WIN_DIR;
@@ -75,6 +76,17 @@ begin
     on E: Exception do
       ShowMessage('A error ocurred: ' + E.Message);
   end;
+
+  qryPicks.SQL := QueryBuilder.Get(cqSelect);
+  qryTeamCount.SQL := QueryBuilder.Get(cqTeamCount);
+  qryTeamAV.SQL := QueryBuilder.Get(cqTeamAV);
+  qryTeamName.SQL := QueryBuilder.Get(cqTeamName);
+  qryCollegeCount.SQL := QueryBuilder.Get(cqCollegeCount);
+  qryCollegeAV.SQL := QueryBuilder.Get(cqCollegeAV);
+  qryCollegeName.SQL := QueryBuilder.Get(cqCollegeName);
+  qryPositionCount.SQL := QueryBuilder.Get(cqPosCount);
+  qryPositionAV.SQL := QueryBuilder.Get(cqPosAV);
+  qryPositionName.SQL := QueryBuilder.Get(cqPosName);
 end;
 
 end.

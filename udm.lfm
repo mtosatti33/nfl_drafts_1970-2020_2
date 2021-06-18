@@ -5,6 +5,7 @@ object dm: Tdm
   HorizontalOffset = 299
   VerticalOffset = 210
   Width = 859
+  PPI = 96
   object conn: TZConnection
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
@@ -14,24 +15,24 @@ object dm: Tdm
     )
     HostName = 'localhost'
     Port = 0
-    Left = 62
-    Top = 24
+    left = 62
+    top = 24
   end
   object qryPicks: TZQuery
     Connection = conn
     SQL.Strings = (
       'SELECT * FROM drafts'
-      '      WHERE (-1=:yr_from or Draft_Yr between :yr_from and :yr_to)'
-      '      and (''''=:team_id or Tm=:team_id)'
-      '      and (0=:rnd_from or Rnd BETWEEN :rnd_from and :rnd_to)'
-      '      and (''''=:position or "Pos"=:position)'
-      '      and (''''=:college or College=:college)'
-      '      and (-1=:is_suppl or Is_Suppl=:is_suppl)'
-      '      and (0=:first_pick or Pick=1)'
-      '      and (0=:never_played or (G=0 or G=''''))'
-      '      and (0=:all_pro or AP1 > 0)'
-      '      and (0=:pro_bowl or PB > 0)'
-      '      order by Draft_Yr ,RND, PICK'
+      'WHERE (-1=:yr_from or Draft_Yr between :yr_from and :yr_to)'
+      'and (''''=:team_id or Tm=:team_id)'
+      'and (0=:rnd_from or Rnd BETWEEN :rnd_from and :rnd_to)'
+      'and (''''=:position or "Pos"=:position)'
+      'and (''''=:college or College=:college)'
+      'and (-1=:is_suppl or Is_Suppl=:is_suppl)'
+      'and (0=:first_pick or Pick=1)'
+      'and (0=:never_played or (G=0 or G=''''))'
+      'and (0=:all_pro or AP1 > 0)'
+      'and (0=:pro_bowl or PB > 0)'
+      'order by Draft_Yr ,RND, PICK'
     )
     Params = <    
       item
@@ -94,8 +95,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 128
-    Top = 27
+    left = 128
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -239,8 +240,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 208
-    Top = 27
+    left = 208
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -384,8 +385,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 328
-    Top = 27
+    left = 328
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -529,8 +530,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 448
-    Top = 27
+    left = 448
+    top = 27
     ParamData = <    
       item
         DataType = ftUnknown
@@ -674,8 +675,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 208
-    Top = 96
+    left = 208
+    top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -819,8 +820,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 328
-    Top = 96
+    left = 328
+    top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -964,8 +965,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 448
-    Top = 96
+    left = 448
+    top = 96
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1109,8 +1110,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 208
-    Top = 176
+    left = 208
+    top = 176
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1254,8 +1255,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 328
-    Top = 176
+    left = 328
+    top = 176
     ParamData = <    
       item
         DataType = ftUnknown
@@ -1399,8 +1400,8 @@ object dm: Tdm
         Name = 'pro_bowl'
         ParamType = ptUnknown
       end>
-    Left = 448
-    Top = 176
+    left = 448
+    top = 176
     ParamData = <    
       item
         DataType = ftUnknown

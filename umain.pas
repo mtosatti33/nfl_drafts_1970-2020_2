@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
   LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration,
-  uplayercomp, uextendcomponents, uYearDialog;
+  uplayercomp, uextendcomponents, uYearDialog, UInstructionView;
 
 type
 
@@ -484,6 +484,9 @@ procedure TfrmMain.actSearchExecute(Sender: TObject);
 var
   PrepareQuery: TPrepareQuery;
 begin
+  {frmInstructionView.mmoSQL.Lines := dm.qryPicks.SQL;
+  frmInstructionView.ShowModal; }
+
   PrepareQuery := TPrepareQuery.Create(cmbYearFromList.Text,
     cmbYearToList.Text, cmbTeamList.Text, cmbPositionList.Text,
     cmbCollegeList.Text, cmbRoundFromList.ItemIndex, cmbRoundToList.ItemIndex,
