@@ -52,8 +52,6 @@ begin
   dir:= WIN_DIR;
   {$EndIf}
 
-  //Linux works with "/" directories instead "\" on windows.
-  //The app should see the database drafts.db
   {$IFDEF LINUX}
   dir:= LINUX_DIR;
   {$EndIf}
@@ -77,16 +75,16 @@ begin
       ShowMessage('A error ocurred: ' + E.Message);
   end;
 
-  qryPicks.SQL := QueryBuilder.Get(cqSelect);
-  qryTeamCount.SQL := QueryBuilder.Get(cqTeamCount);
-  qryTeamAV.SQL := QueryBuilder.Get(cqTeamAV);
-  qryTeamName.SQL := QueryBuilder.Get(cqTeamName);
-  qryCollegeCount.SQL := QueryBuilder.Get(cqCollegeCount);
-  qryCollegeAV.SQL := QueryBuilder.Get(cqCollegeAV);
-  qryCollegeName.SQL := QueryBuilder.Get(cqCollegeName);
-  qryPositionCount.SQL := QueryBuilder.Get(cqPosCount);
-  qryPositionAV.SQL := QueryBuilder.Get(cqPosAV);
-  qryPositionName.SQL := QueryBuilder.Get(cqPosName);
+  qryPicks.SQL := QueryBuilder.GetSQL(cqSelect);
+  qryTeamCount.SQL := QueryBuilder.GetSQL(cqTeamCount);
+  qryTeamAV.SQL := QueryBuilder.GetSQL(cqTeamAV);
+  qryTeamName.SQL := QueryBuilder.GetSQL(cqTeamName);
+  qryCollegeCount.SQL := QueryBuilder.GetSQL(cqCollegeCount);
+  qryCollegeAV.SQL := QueryBuilder.GetSQL(cqCollegeAV);
+  qryCollegeName.SQL := QueryBuilder.GetSQL(cqCollegeName);
+  qryPositionCount.SQL := QueryBuilder.GetSQL(cqPosCount);
+  qryPositionAV.SQL := QueryBuilder.GetSQL(cqPosAV);
+  qryPositionName.SQL := QueryBuilder.GetSQL(cqPosName);
 end;
 
 end.

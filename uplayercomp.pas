@@ -6,18 +6,21 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  DBGrids, UDM, ZDataset, Grids, upaintgrid, uextendcomponents;
+  DBGrids, UDM, ZDataset, Grids, ActnList, upaintgrid, uextendcomponents;
 
 type
 
   { TfrmPlayerComp }
 
   TfrmPlayerComp = class(TForm)
+    actExit: TAction;
+    actions: TActionList;
     dsStats: TDataSource;
     DBGrid1: TDBGrid;
     Panel1: TPanel;
     SpeedButton1: TSpeedButton;
     qryStats: TZQuery;
+    procedure actExitExecute(Sender: TObject);
     procedure DBGrid1PrepareCanvas(Sender: TObject; DataCol: integer;
       Column: TColumn; AState: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
@@ -121,6 +124,11 @@ begin
   finally
     FreeAndNil(PaintGrid);
   end;
+end;
+
+procedure TfrmPlayerComp.actExitExecute(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfrmPlayerComp.DBGrid1TitleClick(Column: TColumn);

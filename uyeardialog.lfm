@@ -11,7 +11,6 @@ object frmYearDialog: TfrmYearDialog
   Font.Color = clWhite
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.4.0'
   object Panel1: TPanel
     Left = 0
     Height = 89
@@ -80,6 +79,17 @@ object frmYearDialog: TfrmYearDialog
       Position = 1970
       TabOrder = 3
       Thousands = False
+    end
+  end
+  object actions: TActionList
+    left = 120
+    top = 32
+    object actExit: TAction
+      Caption = 'actExit'
+      OnExecute = actExitExecute
+      SecondaryShortCuts.Strings = (
+        'Esc'
+      )
     end
   end
 end

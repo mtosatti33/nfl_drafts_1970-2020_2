@@ -5,14 +5,17 @@ unit UInstructionView;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList;
 
 type
 
   { TfrmInstructionView }
 
   TfrmInstructionView = class(TForm)
+    actExit: TAction;
+    actions: TActionList;
     mmoSQL: TMemo;
+    procedure actExitExecute(Sender: TObject);
   private
 
   public
@@ -25,6 +28,13 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TfrmInstructionView }
+
+procedure TfrmInstructionView.actExitExecute(Sender: TObject);
+begin
+  Close;
+end;
 
 end.
 

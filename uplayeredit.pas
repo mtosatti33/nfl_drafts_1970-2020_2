@@ -16,7 +16,8 @@ type
   TfrmPlayerEdit = class(TForm)
     actApply: TAction;
     actCancel: TAction;
-    ActionList1: TActionList;
+    actExit: TAction;
+    actions: TActionList;
     Button1: TButton;
     Button2: TButton;
     cmbCollegeList: TComboBox;
@@ -84,6 +85,7 @@ type
     qryStats: TZQuery;
     procedure actApplyExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
+    procedure actExitExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -152,6 +154,11 @@ begin
 end;
 
 procedure TfrmPlayerEdit.actCancelExecute(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmPlayerEdit.actExitExecute(Sender: TObject);
 begin
   Close;
 end;

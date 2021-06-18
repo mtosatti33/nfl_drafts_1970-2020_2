@@ -12,7 +12,6 @@ object frmPlayerEdit: TfrmPlayerEdit
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.12.0'
   object lblName: TLabel
     Left = 154
     Height = 37
@@ -374,7 +373,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 29
         Height = 15
         Top = 139
-        Width = 56
+        Width = 57
         Caption = 'Passes TDs'
         Font.Color = 7754266
         ParentColor = False
@@ -397,7 +396,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 29
         Height = 15
         Top = 110
-        Width = 65
+        Width = 66
         Caption = 'Passes Yards'
         Font.Color = 7754266
         ParentColor = False
@@ -502,7 +501,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 280
         Height = 15
         Top = 80
-        Width = 68
+        Width = 69
         Caption = 'Rushes Yards'
         Font.Color = 7754266
         ParentColor = False
@@ -512,7 +511,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 280
         Height = 15
         Top = 109
-        Width = 59
+        Width = 60
         Caption = 'Rushes TDs'
         Font.Color = 7754266
         ParentColor = False
@@ -571,7 +570,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 528
         Height = 15
         Top = 80
-        Width = 53
+        Width = 54
         Caption = 'Rec. Yards'
         Font.Color = 7754266
         ParentColor = False
@@ -581,7 +580,7 @@ object frmPlayerEdit: TfrmPlayerEdit
         Left = 528
         Height = 15
         Top = 109
-        Width = 44
+        Width = 45
         Caption = 'Rec. TDs'
         Font.Color = 7754266
         ParentColor = False
@@ -736,9 +735,9 @@ object frmPlayerEdit: TfrmPlayerEdit
       ParentFont = False
     end
   end
-  object ActionList1: TActionList
-    Left = 280
-    Top = 57
+  object actions: TActionList
+    left = 280
+    top = 57
     object actApply: TAction
       Caption = 'Apply'
       OnExecute = actApplyExecute
@@ -746,6 +745,13 @@ object frmPlayerEdit: TfrmPlayerEdit
     object actCancel: TAction
       Caption = 'Cancel'
       OnExecute = actCancelExecute
+    end
+    object actExit: TAction
+      Caption = 'actExit'
+      OnExecute = actExitExecute
+      SecondaryShortCuts.Strings = (
+        'Esc'
+      )
     end
   end
   object qryDrafts: TZQuery
@@ -808,8 +814,8 @@ object frmPlayerEdit: TfrmPlayerEdit
         Name = 'id'
         ParamType = ptUnknown
       end>
-    Left = 344
-    Top = 57
+    left = 344
+    top = 57
     ParamData = <    
       item
         DataType = ftUnknown
@@ -859,8 +865,8 @@ object frmPlayerEdit: TfrmPlayerEdit
   end
   object dsStats: TDataSource
     DataSet = qryStats
-    Left = 331
-    Top = 372
+    left = 331
+    top = 372
   end
   object qryStats: TZQuery
     Connection = dm.conn
@@ -877,8 +883,8 @@ object frmPlayerEdit: TfrmPlayerEdit
         Name = 'id'
         ParamType = ptUnknown
       end>
-    Left = 416
-    Top = 336
+    left = 416
+    top = 336
     ParamData = <    
       item
         DataType = ftUnknown
@@ -893,7 +899,7 @@ object frmPlayerEdit: TfrmPlayerEdit
       'ORDER BY COLLEGE'
     )
     Params = <>
-    Left = 144
-    Top = 448
+    left = 144
+    top = 448
   end
 end

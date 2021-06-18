@@ -225,13 +225,16 @@ begin
     frmRoundDialog.RoundFrom := cmbRoundFromList.Text;
     frmRoundDialog.RoundTo := cmbRoundToList.Text;
     frmRoundDialog.UpDown1.Max := cmbRoundFromList.Items.Count;
+    frmRoundDialog.UpDown2.Max := cmbRoundToList.Items.Count;
     frmRoundDialog.ShowModal;
   finally
     cmbRoundFromList.Text := frmRoundDialog.RoundFrom;
     cmbRoundToList.Text := frmRoundDialog.RoundTo;
+    if not frmRoundDialog.IsEscPressed then
+      actSearch.Execute;
+
     FreeAndNil(frmRoundDialog);
   end;
-  actSearch.Execute;
 end;
 
 procedure TfrmMain.actFilterBySupplExecute(Sender: TObject);
@@ -266,9 +269,10 @@ begin
   finally
     cmbYearFromList.Text := frmYearDialog.YearFrom;
     cmbYearToList.Text := frmYearDialog.YearTo;
+    if not frmYearDialog.IsEscPressed then
+      actSearch.Execute;
     FreeAndNil(frmYearDialog);
   end;
-  actSearch.Execute;
 end;
 
 procedure TfrmMain.actFilterResetExecute(Sender: TObject);

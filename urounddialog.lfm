@@ -84,4 +84,15 @@ object frmRoundDialog: TfrmRoundDialog
       ParentFont = False
     end
   end
+  object actions: TActionList
+    left = 168
+    top = 16
+    object actExit: TAction
+      Caption = 'actExit'
+      OnExecute = actExitExecute
+      SecondaryShortCuts.Strings = (
+        'Esc'
+      )
+    end
+  end
 end

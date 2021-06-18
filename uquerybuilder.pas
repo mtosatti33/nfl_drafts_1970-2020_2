@@ -42,7 +42,7 @@ type
     procedure SetPosName;
     function GetResultQuery: TStringList;
   public
-    function Get(AChooseQuery: TChooseQuery): TStringList;
+    function GetSQL(AChooseQuery: TChooseQuery): TStringList;
     constructor Create;
   end;
 
@@ -155,7 +155,7 @@ begin
   Result := List;
 end;
 
-function TQueryBuilder.Get(AChooseQuery: TChooseQuery): TStringList;
+function TQueryBuilder.GetSQL(AChooseQuery: TChooseQuery): TStringList;
 begin
   case AChooseQuery of
 

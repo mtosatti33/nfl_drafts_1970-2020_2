@@ -11,7 +11,6 @@ object frmPlayerComp: TfrmPlayerComp
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.10.0'
   object Panel1: TPanel
     Left = 0
     Height = 32
@@ -168,8 +167,8 @@ object frmPlayerComp: TfrmPlayerComp
   end
   object dsStats: TDataSource
     DataSet = qryStats
-    Left = 229
-    Top = 178
+    left = 229
+    top = 178
   end
   object qryStats: TZQuery
     Connection = dm.conn
@@ -197,8 +196,8 @@ object frmPlayerComp: TfrmPlayerComp
         Name = 'pos'
         ParamType = ptUnknown
       end>
-    Left = 368
-    Top = 173
+    left = 368
+    top = 173
     ParamData = <    
       item
         DataType = ftUnknown
@@ -215,5 +214,16 @@ object frmPlayerComp: TfrmPlayerComp
         Name = 'pos'
         ParamType = ptUnknown
       end>
+  end
+  object actions: TActionList
+    left = 72
+    top = 136
+    object actExit: TAction
+      Caption = 'actExit'
+      OnExecute = actExitExecute
+      SecondaryShortCuts.Strings = (
+        'Esc'
+      )
+    end
   end
 end

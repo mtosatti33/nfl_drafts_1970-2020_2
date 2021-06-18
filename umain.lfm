@@ -796,7 +796,6 @@ object frmMain: TfrmMain
       Category = 'Views'
       Caption = 'View NCAA Profile'
       OnExecute = actViewNCAAProfileExecute
-      ShortCut = 8205
     end
     object actFilterByTeam: TAction
       Category = 'Filters'

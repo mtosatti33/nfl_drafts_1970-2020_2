@@ -7,7 +7,6 @@ object frmInstructionView: TfrmInstructionView
   Caption = 'frmInstructionView'
   ClientHeight = 240
   ClientWidth = 630
-  LCLVersion = '2.0.4.0'
   object mmoSQL: TMemo
     Left = 0
     Height = 240
@@ -15,5 +14,16 @@ object frmInstructionView: TfrmInstructionView
     Width = 630
     Align = alClient
     TabOrder = 0
+  end
+  object actions: TActionList
+    left = 169
+    top = 79
+    object actExit: TAction
+      Caption = 'actExit'
+      OnExecute = actExitExecute
+      SecondaryShortCuts.Strings = (
+        'Esc'
+      )
+    end
   end
 end

@@ -39,7 +39,7 @@ var
     if FQuery.FieldByName(field).IsNull then
       Result := 0
     else
-      Result := FQuery.FieldByName(field).Value;
+      Result := FQuery.FieldByName(field).AsInteger;
   end;
 
 begin
