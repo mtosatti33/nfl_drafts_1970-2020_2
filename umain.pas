@@ -281,6 +281,7 @@ begin
   cmbPositionList.ItemIndex := -1;
   cmbCollegeList.ItemIndex := -1;
   cmbRoundFromList.ItemIndex := -1;
+  cmbRoundToList.ItemIndex := -1;
   chkProBowlers.Checked := False;
   chkAllPros.Checked := False;
 
@@ -500,21 +501,26 @@ begin
   if cmbRoundFromList.Items.Count <> 0 then
     cmbRoundFromList.Items.Clear;
 
+  //Necessary for avoiding bugs on Linux
+  {$IfDef MSWINDOWS}
   if cmbTeamList.Items.Count <> 0 then
     cmbTeamList.Items.Clear;
-
-  qryRoundList.Close;
-  qryRoundList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
-  qryRoundList.ParamByName('yr_to').AsString := cmbYearToList.Text;
-  qryRoundList.Open;
 
   qryTeamList.Close;
   qryTeamList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
   qryTeamList.ParamByName('yr_to').AsString := cmbYearToList.Text;
   qryTeamList.Open;
 
-  cmbRoundFromList.Items := FillItems.Fill(qryRoundList, ['RND']);
   cmbTeamList.Items := FillItems.Fill(qryTeamList, ['Tm']);
+
+  {$EndIf}
+
+  qryRoundList.Close;
+  qryRoundList.ParamByName('yr_from').AsString := cmbYearFromList.Text;
+  qryRoundList.ParamByName('yr_to').AsString := cmbYearToList.Text;
+  qryRoundList.Open;
+
+  cmbRoundFromList.Items := FillItems.Fill(qryRoundList, ['RND']);
 
   // because of the cmbYearToListChange event, this line has added,
   // else the itemindex of the combobox doesn't works
@@ -600,9 +606,11 @@ begin
     ComboBox := cmbPositionList;
   if btn = btnCollegeClear then
     ComboBox := cmbCollegeList;
+  ShowMessage('Index: '+ IntToStr(ComboBox.ItemIndex));
 
   ComboBox.ItemIndex := -1;
 
+  ShowMessage('Index: '+ IntToStr(ComboBox.ItemIndex))
   //actSearch.Execute;
 end;
 
@@ -775,7 +783,12 @@ begin
 
   cmbYearFromListChange(nil);
 
-    {$IfDef LINUX}
+  {$IfDef LINUX}
+
+  lstTeamList.ClickOnSelChange := false;
+  lstPositionList.ClickOnSelChange := false;
+  lstCollegeList.ClickOnSelChange := false;
+
   for i := 0 to self.ComponentCount - 1 do
   begin
     if self.Components[i] is TLabel then
@@ -787,7 +800,7 @@ begin
     if self.Components[i] = Panel2 then
       Panel2.Color := $0076521A;
   end;
-    {$endif}
+  {$endif}
 end;
 
 procedure TfrmMain.LoadComponents;
@@ -824,6 +837,8 @@ var
 begin
   ListBox := Sender as TListBox;
   ComboBox := nil;
+
+  //ShowMessage('index: ' + inttostr(ListBox.ItemIndex));
 
   if ListBox.Items.Count <> 0 then
     if ListBox.ItemIndex <> -1 then

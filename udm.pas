@@ -64,6 +64,10 @@ begin
   arch := ARCH_X64;
   {$EndIf}
 
+  {$IfDef LINUX}
+  arch := '';
+  {$EndIf}
+
   conn.LibraryLocation := arch + iniStrings.lib;
   conn.Database := dir + iniStrings.database;
   conn.Protocol := iniStrings.protocol;

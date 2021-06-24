@@ -37,6 +37,11 @@ begin
   try
     iniStrings.database := ini.ReadString(DB_CONFIG, 'database', '');
     iniStrings.lib := ini.ReadString(DB_CONFIG, 'library', '');
+
+    {$IfDef LINUX}
+    iniStrings.lib := '';
+    {$EndIf}
+
     iniStrings.protocol := ini.ReadString(DB_CONFIG, 'protocol', '');
     iniStrings.year := ini.ReadString(GENERAL_CONFIG, 'year', '');
   finally
