@@ -66,9 +66,9 @@
         <UnitName Value="UPlayerEdit"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="151"/>
-        <CursorPos X="9" Y="163"/>
-        <UsageCount Value="198"/>
+        <TopLine Value="124"/>
+        <CursorPos X="42" Y="137"/>
+        <UsageCount Value="199"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -82,7 +82,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="17"/>
         <CursorPos X="9" Y="36"/>
-        <UsageCount Value="189"/>
+        <UsageCount Value="190"/>
       </Unit5>
       <Unit6>
         <Filename Value="ureport.pas"/>
@@ -92,7 +92,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="41"/>
-        <UsageCount Value="175"/>
+        <UsageCount Value="176"/>
       </Unit6>
       <Unit7>
         <Filename Value="upaintgrid.pas"/>
@@ -100,7 +100,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="35"/>
         <CursorPos X="52" Y="42"/>
-        <UsageCount Value="158"/>
+        <UsageCount Value="159"/>
       </Unit7>
       <Unit8>
         <Filename Value="ufillitems.pas"/>
@@ -108,7 +108,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26"/>
         <CursorPos X="35" Y="30"/>
-        <UsageCount Value="157"/>
+        <UsageCount Value="158"/>
       </Unit8>
       <Unit9>
         <Filename Value="upreparequery.pas"/>
@@ -117,21 +117,21 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="52"/>
         <CursorPos Y="60"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="126"/>
       </Unit9>
       <Unit10>
         <Filename Value="ucolorconstants.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColorConstants"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="73"/>
+        <UsageCount Value="74"/>
       </Unit10>
       <Unit11>
         <Filename Value="ucolors.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UColors"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="73"/>
+        <UsageCount Value="74"/>
       </Unit11>
       <Unit12>
         <Filename Value="testifis64.pas"/>
@@ -139,7 +139,7 @@
         <UnitName Value="TestIfIs64"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="15"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
       </Unit12>
       <Unit13>
         <Filename Value="uconfiguration.pas"/>
@@ -147,7 +147,7 @@
         <UnitName Value="UConfiguration"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
-        <UsageCount Value="62"/>
+        <UsageCount Value="63"/>
       </Unit13>
       <Unit14>
         <Filename Value="uplayercomp.pas"/>
@@ -158,7 +158,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="128"/>
         <CursorPos X="9" Y="131"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="58"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -168,7 +168,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="3" Y="14"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="55"/>
       </Unit15>
       <Unit16>
         <Filename Value="udatasetconstants.pas"/>
@@ -176,7 +176,7 @@
         <UnitName Value="UDatasetConstants"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="11"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="51"/>
       </Unit16>
       <Unit17>
         <Filename Value="urounddialog.pas"/>
@@ -188,7 +188,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="84"/>
         <CursorPos X="89" Y="40"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit17>
@@ -202,7 +202,7 @@
         <EditorIndex Value="5"/>
         <TopLine Value="48"/>
         <CursorPos X="74" Y="40"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit18>
@@ -211,7 +211,7 @@
         <IsPartOfProject Value="True"/>
         <TopLine Value="36"/>
         <CursorPos X="20" Y="45"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="29"/>
         <Loaded Value="True"/>
       </Unit19>
       <Unit20>
@@ -769,7 +769,7 @@
         <UsageCount Value="10"/>
       </Unit97>
     </Units>
-    <JumpHistory Count="20" HistoryIndex="19">
+    <JumpHistory Count="25" HistoryIndex="24">
       <Position1>
         <Filename Value="umain.pas"/>
         <Caret Line="112" Column="58" TopLine="3"/>
@@ -816,40 +816,60 @@
       </Position11>
       <Position12>
         <Filename Value="uyeardialog.pas"/>
-        <Caret Line="75" Column="45" TopLine="85"/>
+        <Caret Line="83" Column="45" TopLine="83"/>
       </Position12>
       <Position13>
-        <Filename Value="uyeardialog.pas"/>
-        <Caret Line="83" Column="45" TopLine="83"/>
+        <Filename Value="urounddialog.pas"/>
+        <Caret Line="78" Column="51" TopLine="55"/>
       </Position13>
       <Position14>
         <Filename Value="urounddialog.pas"/>
-        <Caret Line="78" Column="51" TopLine="55"/>
+        <Caret Line="40" Column="75" TopLine="22"/>
       </Position14>
       <Position15>
-        <Filename Value="urounddialog.pas"/>
-        <Caret Line="40" Column="75" TopLine="22"/>
-      </Position15>
-      <Position16>
         <Filename Value="uyeardialog.pas"/>
         <Caret Line="40" Column="76" TopLine="26"/>
-      </Position16>
-      <Position17>
+      </Position15>
+      <Position16>
         <Filename Value="urounddialog.pas"/>
         <Caret Line="31" Column="36" TopLine="22"/>
-      </Position17>
-      <Position18>
+      </Position16>
+      <Position17>
         <Filename Value="uyeardialog.pas"/>
         <Caret Line="40" Column="73" TopLine="26"/>
+      </Position17>
+      <Position18>
+        <Filename Value="umain.pas"/>
+        <Caret Line="228" Column="55" TopLine="219"/>
       </Position18>
       <Position19>
         <Filename Value="umain.pas"/>
-        <Caret Line="228" Column="55" TopLine="219"/>
+        <Caret Line="273" Column="25" TopLine="255"/>
       </Position19>
       <Position20>
-        <Filename Value="umain.pas"/>
-        <Caret Line="273" Column="25" TopLine="255"/>
+        <Filename Value="uplayeredit.pas"/>
+        <Caret Line="163" Column="3" TopLine="148"/>
       </Position20>
+      <Position21>
+        <Filename Value="uplayeredit.pas"/>
+        <Caret Line="162" Column="3" TopLine="147"/>
+      </Position21>
+      <Position22>
+        <Filename Value="uplayeredit.pas"/>
+        <Caret Line="153" TopLine="146"/>
+      </Position22>
+      <Position23>
+        <Filename Value="uplayeredit.pas"/>
+        <Caret Line="137" Column="42" TopLine="124"/>
+      </Position23>
+      <Position24>
+        <Filename Value="uplayeredit.pas"/>
+        <Caret Line="138" Column="42" TopLine="125"/>
+      </Position24>
+      <Position25>
+        <Filename Value="uplayeredit.pas"/>
+        <Caret Line="137" Column="42" TopLine="124"/>
+      </Position25>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

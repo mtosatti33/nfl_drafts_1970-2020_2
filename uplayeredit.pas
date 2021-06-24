@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, Forms, Controls, Graphics, Dialogs, StdCtrls, ActnList,
-  ExtCtrls, Buttons, ComCtrls, DBGrids, DBCtrls, ZDataset, Types,
+  ExtCtrls, Buttons, ComCtrls, DBGrids, DBCtrls, EditBtn, ZDataset, Types,
   uextendcomponents, ufillitems;
 
 type
@@ -15,7 +15,6 @@ type
 
   TfrmPlayerEdit = class(TForm)
     actApply: TAction;
-    actCancel: TAction;
     actExit: TAction;
     actions: TActionList;
     Button1: TButton;
@@ -84,7 +83,6 @@ type
     tsInformation: TTabSheet;
     qryStats: TZQuery;
     procedure actApplyExecute(Sender: TObject);
-    procedure actCancelExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -150,12 +148,7 @@ end;
 
 procedure TfrmPlayerEdit.SpeedButton1Click(Sender: TObject);
 begin
-  actCancel.Execute;
-end;
-
-procedure TfrmPlayerEdit.actCancelExecute(Sender: TObject);
-begin
-  Close;
+  actExit.Execute;
 end;
 
 procedure TfrmPlayerEdit.actExitExecute(Sender: TObject);
