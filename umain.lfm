@@ -12,11 +12,11 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  object Label7: TLabel
-    Left = 472
+  object lblRights: TLabel
+    Left = 440
     Height = 16
     Top = 576
-    Width = 272
+    Width = 448
     AutoSize = False
     Caption = 'All data and rights to pro-football-reference.com'
     Font.Color = clWhite
@@ -570,7 +570,7 @@ object frmMain: TfrmMain
         Height = 432
         Hint = 'Double click: Enters the player site'#13#10'Enter: Enters the player site'#13#10'-------------------------------------------------'#13#10'Shift + T: Filter by Team'#13#10'Shift + P: Filter by Position'#13#10'Shift + C: Filter by College'#13#10'Shift + R: Filter by Round'#13#10'Shift + Y: Filter by Year'#13#10'Shift + B: Filter by Pro Bowlers'#13#10'Shift + A: Filter by All-Pros'#13#10'Shift + S: Filter by Supplemental Drafts'#13#10'-------------------------------------------------'#13#10'Alt + T: Order by Team Drafted AV'#13#10'Alt + A: Order by Player AV'#13#10'Alt + P: Order by Pick'#13#10'-------------------------------------------------'#13#10'Shift + Ctrl + R: Reset Filters'#13#10'Backspace: Back to Filters'
         Top = 0
-        Width = 728
+        Width = 730
         Align = alTop
         BorderStyle = bsNone
         Color = clWindow
@@ -674,7 +674,7 @@ object frmMain: TfrmMain
       end
       object cmbHighlight: TComboBox
         Left = 320
-        Height = 21
+        Height = 37
         Top = 440
         Width = 168
         AutoComplete = True
@@ -699,7 +699,7 @@ object frmMain: TfrmMain
         Left = 232
         Height = 15
         Top = 446
-        Width = 75
+        Width = 89
         Caption = 'Highlight Grid'
         Font.Color = 7754266
         ParentColor = False

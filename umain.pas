@@ -72,7 +72,7 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
+    lblRights: TLabel;
     Label8: TLabel;
     Label9: TLabel;
     lstCollegeList: TListBox;
@@ -164,6 +164,7 @@ type
   private
     FAsc: boolean;
     FFiltered: boolean;
+    procedure LinuxMode;
   public
 
   end;
@@ -489,8 +490,8 @@ procedure TfrmMain.actSearchExecute(Sender: TObject);
 var
   PrepareQuery: TPrepareQuery;
 begin
-  {frmInstructionView.mmoSQL.Lines := dm.qryPicks.SQL;
-  frmInstructionView.ShowModal; }
+  //frmInstructionView.mmoSQL.Lines := dm.qryPicks.SQL;
+  //frmInstructionView.ShowModal;
 
   PrepareQuery := TPrepareQuery.Create(cmbYearFromList.Text,
     cmbYearToList.Text, cmbTeamList.Text, cmbPositionList.Text,
@@ -606,11 +607,11 @@ begin
     ComboBox := cmbPositionList;
   if btn = btnCollegeClear then
     ComboBox := cmbCollegeList;
-  ShowMessage('Index: '+ IntToStr(ComboBox.ItemIndex));
+  //ShowMessage('Index: '+ IntToStr(ComboBox.ItemIndex));
 
   ComboBox.ItemIndex := -1;
 
-  ShowMessage('Index: '+ IntToStr(ComboBox.ItemIndex))
+  //ShowMessage('Index: '+ IntToStr(ComboBox.ItemIndex))
   //actSearch.Execute;
 end;
 
@@ -770,10 +771,6 @@ begin
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
-  {$IfDef LINUX}
-var
-  i: integer;
-  {$EndIf}
 begin
   iniStrings := ReadIniFile;
   pgcMain.ActivePage := tsFilters;
@@ -784,22 +781,7 @@ begin
   cmbYearFromListChange(nil);
 
   {$IfDef LINUX}
-
-  lstTeamList.ClickOnSelChange := false;
-  lstPositionList.ClickOnSelChange := false;
-  lstCollegeList.ClickOnSelChange := false;
-
-  for i := 0 to self.ComponentCount - 1 do
-  begin
-    if self.Components[i] is TLabel then
-      TLabel(self.Components[i]).Font.Color := clWhite;
-    if self.Components[i] is TCheckBox then
-      TCheckBox(self.Components[i]).Font.Color := clWhite;
-
-
-    if self.Components[i] = Panel2 then
-      Panel2.Color := $0076521A;
-  end;
+  LinuxMode;
   {$endif}
 end;
 
@@ -863,7 +845,8 @@ function TfrmMain.ValidateSearch: boolean;
 begin
   Result := True;
   if (cmbYearFromList.ItemIndex = -1) and (cmbYearToList.ItemIndex = -1) and
-    (cmbRoundFromList.ItemIndex = -1) and (cmbTeamList.ItemIndex = -1) and
+    (cmbRoundFromList.ItemIndex = -1) and (cmbRoundToList.ItemIndex = -1) and
+    (cmbTeamList.ItemIndex = -1) and
     (cmbPositionList.ItemIndex = -1) and (cmbCollegeList.ItemIndex = -1) and
     not (chkNeverPlayed.Checked) and not (chkFirstPicks.Checked) and
     not (chkProBowlers.Checked) and not (chkAllPros.Checked) then
@@ -876,6 +859,37 @@ begin
     if dm.qryPicks.RecordCount <> 0 then
       if not dm.qryPicks.FieldByName(field_url).IsNull then
         OpenURL(dm.qryPicks.FieldByName(field_url).AsString);
+end;
+
+procedure TfrmMain.LinuxMode;
+var
+  i: integer;
+begin
+  lstTeamList.ClickOnSelChange := false;
+  lstPositionList.ClickOnSelChange := false;
+  lstCollegeList.ClickOnSelChange := false;
+
+  for i := 0 to self.ComponentCount - 1 do
+  begin
+    if self.Components[i] is TTabSheet then
+       TTabSheet(self.Components[i]).Font.Color := clWhite;
+    if self.Components[i] is TLabel then
+      TLabel(self.Components[i]).Font.Color := clWhite;
+    if self.Components[i] is TCheckBox then
+      TCheckBox(self.Components[i]).Font.Color := clWhite; 
+    if self.Components[i] is TListBox then
+      TListBox(self.Components[i]).Font.Color := clWhite;
+    if self.Components[i] is TPanel then
+      TPanel(self.Components[i]).Color := $0076521A;
+
+    if self.Components[i] = Panel1 then
+    Panel1.Color := $0089A517;
+  end;
+  
+
+
+  DBGrid1.Color := clWhite;
+  lblRights.Alignment := taLeftJustify;
 end;
 
 end.
