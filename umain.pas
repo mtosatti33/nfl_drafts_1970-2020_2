@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
   Menus, ActnList, Buttons, ExtCtrls, ZDataset, LCLIntf, Grids, ComCtrls,
-  LR_Class, ufillitems, uPrepareQuery, LCLType, UConfiguration,
+  LR_Class, ufillitems, uPrepareQuery, LCLType, ECLink, UConfiguration,
   uplayercomp, uextendcomponents, uYearDialog, UInstructionView;
 
 type
@@ -64,6 +64,7 @@ type
     cmbYearToList: TComboBox;
     DBGrid1: TDBGrid;
     dsTable: TDataSource;
+    ECLink1: TECLink;
     Label11: TLabel;
     Label13: TLabel;
     Label14: TLabel;

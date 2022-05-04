@@ -28,7 +28,7 @@ object dm: Tdm
       'and (''''=:college or College=:college)'
       'and (-1=:is_suppl or Is_Suppl=:is_suppl)'
       'and (0=:first_pick or Pick=1)'
-      'and (0=:never_played or (G=0 or G=''''))'
+      'and (0=:never_played or (G=0 or G is null))'
       'and (0=:all_pro or AP1 > 0)'
       'and (0=:pro_bowl or PB > 0)'
       'order by Draft_Yr ,RND, PICK'
